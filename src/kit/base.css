@@ -1,0 +1,379 @@
+/* Prototype kit — shared CSS base for every app under prototypes/.
+ *
+ * Two rules here are load-bearing, and both are easy to undo by accident:
+ *
+ * 1. No Preflight. These styles are also compiled into the landing site, where
+ *    a global reset would flatten that page's own typography. Everything
+ *    Preflight does is done below instead, scoped to `[data-proto]` — the
+ *    attribute an app puts on its root when standalone and on each block's
+ *    stage when embedded.
+ *
+ * 2. Utilities stay OUT of a cascade layer. The landing site's CSS is
+ *    unlayered, and unlayered rules beat layered ones regardless of
+ *    specificity — with utilities in a layer, that site's global `*` reset
+ *    silently zeroed every padding and margin in every block.
+ *
+ * An app imports this file, then declares its own `@theme` block overriding
+ * the token defaults below. Same names everywhere, so `bg-surface` and
+ * `text-ink-3` mean the same thing in every prototype and retheming is one
+ * file. See prototypes/_kit/README.md. */
+@layer theme, base, components;
+@import "tailwindcss/theme.css" layer(theme);
+@import "tailwindcss/utilities.css";
+
+/* Explicit, because this file is also compiled from the landing site's Vite
+   root, where Tailwind's automatic source detection never reaches up here. */
+@source "./";
+
+/**
+ * Neutral defaults. Every one of these is meant to be overridden by the app's
+ * own @theme block; they exist so a half-themed app still renders legibly and
+ * so the token vocabulary is documented in one place.
+ */
+@theme {
+  /* Grounds, back to front. */
+  --color-ground: #f7f7f7; /* page behind everything */
+  --color-panel: #f7f7f7; /* side rails, settings nav */
+  --color-surface: #ffffff; /* cards, sheets, menus */
+  --color-surface-2: #f5f5f5; /* inset wells, canvas */
+  --color-surface-3: #f0f0f0; /* chips, inset tracks */
+  --color-field: #eaebed; /* the search field, a notch below the chips */
+
+  /* Ink, darkest to lightest. */
+  --color-ink: #212126; /* titles and primary values */
+  --color-ink-2: #3a3a40; /* body */
+  --color-ink-3: #747686; /* secondary, meta */
+  --color-ink-4: #9c9eaa; /* placeholder, inactive */
+
+  /* Lines, lightest to darkest. */
+  --color-line: #eaeaea;
+  --color-line-2: #e0e0e0;
+  --color-line-3: #dddddd;
+
+  /* Brand: the one hue an app is recognised by. */
+  --color-brand: #ff671a;
+  --color-brand-ink: #ffffff; /* text on --color-brand */
+  --color-brand-soft: #fef6f0; /* tinted tile behind a brand glyph */
+
+  /* Accent: the dark, high-commitment action surface. */
+  --color-accent: #3a3238;
+  --color-accent-2: #484046; /* the lit top of the accent gradient */
+  --color-accent-ink: #ffffff;
+
+  /* Overlay veil. A token rather than `bg-ink/25`, because ink inverts between
+     themes and a veil must not. */
+  --color-veil: rgb(33 33 38 / 0.25);
+
+  /* Empty-state washes. Large, blurred and low-contrast, so they cannot be
+     mixed from the ink ramp — they are their own small palette. */
+  --color-calm-1: #cdd7eb;
+  --color-calm-2: #eee8db;
+  --color-calm-3: #dbe1eb;
+  --color-tropical-1: #e2d8f3;
+  --color-tropical-2: #f0cfec;
+  --color-tropical-3: #f7cddf;
+  --color-tropical-4: #f8e1db;
+
+  /* Status. */
+  --color-ok: #22c543;
+  --color-ok-2: #28b344;
+  --color-ok-soft: #d3ecd8;
+  --color-danger: #ef4444;
+  --color-danger-soft: #fdecec;
+
+  --radius-field: 0.375rem; /* 6px — buttons, inputs, filter pills */
+  --radius-card: 0.625rem; /* 10px — list rows, cards, nodes */
+  --radius-panel: 0.75rem; /* 12px — sheets, menus, the auth card */
+
+  /* Cards in these comps sit on a hairline, not a cloud: a light top and side
+     rule with a slightly heavier bottom edge doing the lifting. */
+  --shadow-card: 0 1px 0 rgb(0 0 0 / 0.04), 0 1px 2px rgb(0 0 0 / 0.04);
+  --shadow-pop:
+    0 4px 6px -2px rgb(0 0 0 / 0.05), 0 12px 28px -8px rgb(0 0 0 / 0.16);
+  --shadow-accent:
+    inset 0 1px 0 rgb(255 255 255 / 0.09), 0 1px 2px rgb(0 0 0 / 0.24);
+
+  --ease-out-expo: cubic-bezier(0.16, 1, 0.3, 1);
+  --ease-out-quint: cubic-bezier(0.22, 1, 0.36, 1);
+}
+
+@layer base {
+  /**
+   * Dark mode. Every token above is redeclared here and nowhere else, so a
+   * component never branches on the theme — `bg-surface` is the right surface
+   * in both, and a screen built without dark mode in mind gets it anyway.
+   *
+   * These are the kit's neutral defaults; an app overrides the same names in
+   * its own `[data-proto][data-theme="dark"]` block.
+   *
+   * The selector sits on the app root rather than on `html`, because the root
+   * is also each embedded block's stage — a block inherits the page's theme
+   * without the page having to know the token names.
+   */
+  [data-proto][data-theme="dark"] {
+    --color-ground: #141317;
+    --color-panel: #18171c;
+    --color-surface: #1e1d23;
+    --color-surface-2: #131216;
+    --color-surface-3: #27262d;
+    --color-field: #27262d;
+
+    --color-ink: #f4f3f6;
+    --color-ink-2: #cecdd6;
+    --color-ink-3: #9a98a5;
+    --color-ink-4: #6e6c79;
+
+    --color-line: #292830;
+    --color-line-2: #35333d;
+    --color-line-3: #423f4b;
+
+    --color-brand: #ff7a35;
+    --color-brand-ink: #1a1216;
+    --color-brand-soft: #2b1d16;
+
+    /* The dark primary action cannot be near-black on a near-black page, so it
+       lifts above the surface instead of dropping below it. Same gesture,
+       opposite direction. */
+    --color-accent: #45434f;
+    --color-accent-2: #55525f;
+    --color-accent-ink: #ffffff;
+
+    --color-ok: #34d05c;
+    --color-ok-2: #35c258;
+    --color-ok-soft: #1d3626;
+    --color-danger: #f87171;
+    --color-danger-soft: #37201f;
+
+    --color-veil: rgb(0 0 0 / 0.6);
+
+    --color-calm-1: #2b3550;
+    --color-calm-2: #3a3327;
+    --color-calm-3: #2c3242;
+    --color-tropical-1: #372d4d;
+    --color-tropical-2: #4a2b45;
+    --color-tropical-3: #4a2b3a;
+    --color-tropical-4: #43302a;
+
+    --shadow-card: 0 1px 0 rgb(0 0 0 / 0.4), 0 1px 2px rgb(0 0 0 / 0.4);
+    --shadow-pop:
+      0 4px 6px -2px rgb(0 0 0 / 0.4), 0 12px 28px -8px rgb(0 0 0 / 0.6);
+    --shadow-accent:
+      inset 0 1px 0 rgb(255 255 255 / 0.08), 0 1px 2px rgb(0 0 0 / 0.5);
+
+    color-scheme: dark;
+  }
+
+  /* Scoped reset. `[data-proto]` is on the app root when this runs standalone,
+     and on each block's stage when it runs embedded in a project page. */
+  [data-proto] {
+    color-scheme: light;
+    -webkit-font-smoothing: antialiased;
+    -moz-osx-font-smoothing: grayscale;
+    text-rendering: optimizeLegibility;
+    font-family: var(--font-sans);
+    font-size: 16px;
+    line-height: 1.5;
+    font-weight: 400;
+    font-style: normal;
+    letter-spacing: normal;
+    text-transform: none;
+    background: var(--color-ground);
+    color: var(--color-ink);
+  }
+
+  [data-proto] *,
+  [data-proto] *::before,
+  [data-proto] *::after {
+    box-sizing: border-box;
+    border: 0 solid var(--color-line);
+  }
+
+  [data-proto] h1,
+  [data-proto] h2,
+  [data-proto] h3,
+  [data-proto] h4,
+  [data-proto] p,
+  /* <pre> keeps a 1em UA margin otherwise, which is invisible until a code
+     block is laid out beside its own line numbers and the two disagree by a
+     line. */
+  [data-proto] pre,
+  [data-proto] ul,
+  [data-proto] ol,
+  [data-proto] dl,
+  [data-proto] dd,
+  [data-proto] figure,
+  [data-proto] fieldset,
+  [data-proto] legend,
+  [data-proto] table {
+    margin: 0;
+    padding: 0;
+    font: inherit;
+    letter-spacing: inherit;
+  }
+
+  /* …except its font: a <pre> that inherits the body font is not a <pre>. */
+  [data-proto] pre {
+    font-family: var(--font-mono, ui-monospace, monospace);
+    font-size: inherit;
+  }
+
+  [data-proto] ul,
+  [data-proto] ol {
+    list-style: none;
+  }
+
+  [data-proto] img,
+  [data-proto] svg,
+  [data-proto] video {
+    display: block;
+    max-width: 100%;
+  }
+
+  /* Without this an <img> carrying width/height attributes uses the raw height
+     attribute as its used height and ignores the width it was given. Preflight
+     normally handles it; this file deliberately does not load Preflight. */
+  [data-proto] img,
+  [data-proto] video {
+    height: auto;
+  }
+
+  [data-proto] button,
+  [data-proto] input,
+  [data-proto] select,
+  [data-proto] textarea {
+    font: inherit;
+    letter-spacing: inherit;
+    color: inherit;
+    margin: 0;
+    padding: 0;
+    border: 0;
+    background: none;
+  }
+
+  [data-proto] textarea {
+    resize: none;
+  }
+
+  [data-proto] input::placeholder,
+  [data-proto] textarea::placeholder {
+    color: var(--color-ink-4);
+    opacity: 1;
+  }
+
+  [data-proto] button {
+    cursor: pointer;
+    text-align: inherit;
+  }
+
+  [data-proto] a,
+  [data-proto] [role="button"],
+  [data-proto] summary,
+  [data-proto] label[for] {
+    cursor: pointer;
+  }
+
+  [data-proto] a {
+    color: inherit;
+    text-decoration: none;
+  }
+
+  [data-proto] table {
+    border-collapse: collapse;
+  }
+
+  [data-proto] :focus-visible {
+    outline: 2px solid var(--color-brand);
+    outline-offset: 2px;
+    border-radius: 4px;
+  }
+
+  @media (prefers-reduced-motion: reduce) {
+    [data-proto] *,
+    [data-proto] *::before,
+    [data-proto] *::after {
+      animation-duration: 0.001ms !important;
+      animation-iteration-count: 1 !important;
+      transition-duration: 0.001ms !important;
+      scroll-behavior: auto !important;
+    }
+  }
+}
+
+@layer components {
+  /* Overlay enter/exit. Hand-rolled rather than pulled from an animation
+     plugin: the plugin's utilities would land in a cascade layer, and layered
+     rules lose to the landing site's unlayered global reset. */
+  .pop-anim[data-state="open"] {
+    animation: proto-pop-in 130ms var(--ease-out-quint);
+  }
+
+  .pop-anim[data-state="closed"] {
+    animation: proto-pop-out 90ms ease-in forwards;
+  }
+
+  .sheet-anim[data-state="open"] {
+    animation: proto-sheet-in 240ms var(--ease-out-quint);
+  }
+
+  .sheet-anim[data-state="closed"] {
+    animation: proto-sheet-out 170ms ease-in forwards;
+  }
+
+  .sheet-anim[data-side="left"] {
+    --proto-sheet-from: -100%;
+  }
+
+  .veil-anim[data-state="open"] {
+    animation: proto-fade-in 150ms linear;
+  }
+
+  .veil-anim[data-state="closed"] {
+    animation: proto-fade-out 110ms linear forwards;
+  }
+}
+
+@keyframes proto-pop-in {
+  from {
+    opacity: 0;
+    transform: scale(0.97) translateY(-2px);
+  }
+}
+
+@keyframes proto-pop-out {
+  to {
+    opacity: 0;
+    transform: scale(0.98);
+  }
+}
+
+@keyframes proto-sheet-in {
+  from {
+    transform: translateX(var(--proto-sheet-from, 100%));
+  }
+}
+
+@keyframes proto-sheet-out {
+  to {
+    transform: translateX(var(--proto-sheet-from, 100%));
+  }
+}
+
+@keyframes proto-fade-in {
+  from {
+    opacity: 0;
+  }
+}
+
+@keyframes proto-fade-out {
+  to {
+    opacity: 0;
+  }
+}
+
+@layer utilities {
+  /* Counts, dates and step positions are read column against column;
+     proportional digits make the rows shimmer and the eye loses its place. */
+  .num {
+    font-variant-numeric: tabular-nums;
+  }
+}
