@@ -21,6 +21,7 @@ import {
   LEVELS,
   WORKPLACES,
   hueFor,
+  type Company,
   type Discipline,
   type Employment,
   type Level,
@@ -33,6 +34,7 @@ import {
   addCompany,
   listIndustries,
   postJob,
+  requestClaim,
   saveProfile,
 } from "../db/mutations";
 import { Basemap } from "../map/basemap";
@@ -190,7 +192,6 @@ function useIndustries() {
   return industries;
 }
 
-
 /**
  * The district picker.
  *
@@ -273,7 +274,8 @@ export function AddCompany({
           hue: hueFor(name),
           industryId: str(data, "company-industry"),
           headcount: Number(headcount) || 1,
-          founded: Number(str(data, "company-founded")) || new Date().getFullYear(),
+          founded:
+            Number(str(data, "company-founded")) || new Date().getFullYear(),
           stage: str(data, "company-stage") || "Bootstrapped",
           workplace,
           district,
@@ -312,7 +314,11 @@ export function AddCompany({
             <Button type="button" onClick={() => onOpenChange(false)}>
               Cancel
             </Button>
-            <Button type="submit" variant="accent" disabled={!name.trim() || busy}>
+            <Button
+              type="submit"
+              variant="accent"
+              disabled={!name.trim() || busy}
+            >
               {busy ? "Submitting…" : "Submit"}
             </Button>
           </div>
@@ -553,7 +559,8 @@ export function PostJob({
           title: title.trim(),
           discipline,
           level: (str(data, "job-level") || "Mid") as Level,
-          employment: (str(data, "job-employment") || "Full-time") as Employment,
+          employment: (str(data, "job-employment") ||
+            "Full-time") as Employment,
           workplace: (str(data, "job-workplace") || "Hybrid") as Workplace,
           payLow: Number(low),
           payHigh: Number(high),
@@ -936,7 +943,10 @@ export function EditProfile({
             <Input
               id="profile-last"
               name="profile-last"
-              defaultValue={(mine?.name ?? viewer.name).split(" ").slice(1).join(" ")}
+              defaultValue={(mine?.name ?? viewer.name)
+                .split(" ")
+                .slice(1)
+                .join(" ")}
               autoComplete="family-name"
             />
           </FieldRow>
@@ -1026,6 +1036,110 @@ export function EditProfile({
             </span>
           </span>
         </label>
+      </div>
+    </Sheetish>
+  );
+}
+
+/**
+ * Claiming a listing.
+ *
+ * A request, not an action. No policy in `db/schema.sql` lets anybody write
+ * `claimed_by` — this form can only add a row somebody else reads — so the
+ * button it sits behind says "Request claim" rather than "Claim", and the
+ * screen it returns to says the request is pending rather than pretending it
+ * landed.
+ *
+ * The work email is the entire evidence, so it is the one required field. It
+ * defaults to the address the account was created with: a person who signed up
+ * with their work address should not have to type it twice, and one who did
+ * not needs to see that this particular field wants the other one.
+ */
+export function ClaimListing({
+  company,
+  open,
+  onOpenChange,
+  onSubmitted,
+}: {
+  company: Company;
+  open: boolean;
+  onOpenChange: (open: boolean) => void;
+  onSubmitted: () => void;
+}) {
+  const viewer = useViewer();
+  const { busy, error, run } = useSubmit(() => onOpenChange(false));
+
+  /* The bare host, so the hint names the domain the address should be at
+     rather than reprinting the whole URL with its scheme. */
+  const host = company.website.replace(/^https?:\/\//, "").replace(/\/.*$/, "");
+
+  const submit = (data: FormData) => {
+    if (!viewer) return;
+    run(async () => {
+      await requestClaim(
+        company.id,
+        str(data, "claim-email"),
+        str(data, "claim-note"),
+        viewer.id,
+      );
+      onSubmitted();
+    });
+  };
+
+  return (
+    <Sheetish
+      open={open}
+      onOpenChange={onOpenChange}
+      title={`Claim ${company.name}`}
+      description="Tell us how to check you work there. Someone reads this by hand."
+      onSubmit={submit}
+      busy={busy}
+      error={error}
+      footer={
+        <>
+          <p className="text-[0.8125rem] text-ink-3">
+            Reviewed by a person — usually within a day.
+          </p>
+          <div className="ml-auto flex gap-2">
+            <Button type="button" onClick={() => onOpenChange(false)}>
+              Cancel
+            </Button>
+            <Button type="submit" variant="accent" disabled={busy}>
+              {busy ? "Sending…" : "Request claim"}
+            </Button>
+          </div>
+        </>
+      }
+    >
+      <div className="grid gap-4">
+        <FieldRow
+          label="Work email"
+          htmlFor="claim-email"
+          hint={`An address at ${host} is what makes this checkable.`}
+        >
+          <Input
+            id="claim-email"
+            name="claim-email"
+            type="email"
+            required
+            defaultValue={viewer?.email ?? ""}
+            placeholder={`you@${host}`}
+            autoComplete="email"
+          />
+        </FieldRow>
+
+        <FieldRow
+          label="Anything that helps"
+          htmlFor="claim-note"
+          hint="Optional. A title, or where to find you on the site."
+        >
+          <Textarea
+            id="claim-note"
+            name="claim-note"
+            rows={3}
+            placeholder="I run engineering here — I am on the team page."
+          />
+        </FieldRow>
       </div>
     </Sheetish>
   );

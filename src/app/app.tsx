@@ -414,6 +414,7 @@ function Root() {
                     {selected.kind === "company" && (
                       <CompanyDetail
                         company={selected.company}
+                        onSignIn={() => setAuthOpen(true)}
                         onJob={(job: Job) =>
                           setSelection({ kind: "job", id: job.id })
                         }
@@ -426,6 +427,7 @@ function Root() {
                       <JobDetail
                         job={selected.job}
                         company={selected.company}
+                        onSignIn={() => setAuthOpen(true)}
                         onCompany={(c: Company) =>
                           setSelection({ kind: "company", id: c.id })
                         }

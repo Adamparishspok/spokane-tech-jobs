@@ -33,9 +33,12 @@ import {
   type Job,
   type Person,
 } from "../domain";
+import { useViewer } from "../db/auth";
 import { useDirectory } from "../db/directory";
+import { useMine } from "../db/mine";
 import { Monogram } from "../design/brand";
 import { Fact, Panel, Tag } from "./chrome";
+import { ClaimListing } from "./forms";
 
 /**
  * The detail column.
@@ -89,15 +92,21 @@ export function CompanyDetail({
   company,
   onJob,
   onPerson,
+  onSignIn,
 }: {
   company: Company;
   onJob: (job: Job) => void;
   onPerson: (person: Person) => void;
+  onSignIn: () => void;
 }) {
   const { jobsAt, peopleAt } = useDirectory();
+  const viewer = useViewer();
+  const { hasClaimRequest, noteClaimRequest } = useMine();
   const jobs = jobsAt(company.id);
   const people = peopleAt(company.id);
   const [tab, setTab] = useState("about");
+  const [claiming, setClaiming] = useState(false);
+  const requested = hasClaimRequest(company.id);
 
   return (
     <article>
@@ -204,13 +213,26 @@ export function CompanyDetail({
               <ShieldCheck className="size-4 text-ok" />
               Claimed and kept current by someone who works here.
             </p>
+          ) : requested ? (
+            /* Asked and waiting. Offering the button again here would invite
+               the second ask a person makes when the first one left no trace,
+               and the table refuses it anyway — one claim per person per
+               company. */
+            <p className="flex items-center gap-2 text-[0.8125rem] text-ink-3">
+              <Check className="size-4 text-ok" />
+              You have asked to claim this. Someone checks it by hand.
+            </p>
           ) : (
             <div className="rounded-card border border-line-2 bg-surface-2 p-3">
               <p className="text-[0.8125rem] text-ink-2">
                 Nobody from {company.name} has claimed this listing. The details
                 came from public sources and may be out of date.
               </p>
-              <Button size="sm" className="mt-2.5">
+              <Button
+                size="sm"
+                className="mt-2.5"
+                onClick={() => (viewer ? setClaiming(true) : onSignIn())}
+              >
                 Claim this listing
               </Button>
             </div>
@@ -276,6 +298,15 @@ export function CompanyDetail({
           </TabsContent>
         )}
       </Tabs>
+
+      {/* Outside the tabs: switching to Jobs mid-claim should not close the
+          dialog the person is typing into. */}
+      <ClaimListing
+        company={company}
+        open={claiming}
+        onOpenChange={setClaiming}
+        onSubmitted={() => noteClaimRequest(company.id)}
+      />
     </article>
   );
 }
@@ -284,12 +315,16 @@ export function JobDetail({
   job,
   company,
   onCompany,
+  onSignIn,
 }: {
   job: Job;
   company: Company;
   onCompany: (company: Company) => void;
+  onSignIn: () => void;
 }) {
-  const [saved, setSaved] = useState(false);
+  const viewer = useViewer();
+  const { isSaved, toggleSave, savingJobId, error } = useMine();
+  const saved = isSaved(job.id);
 
   return (
     <article className="px-5 py-4">
@@ -340,11 +375,20 @@ export function JobDetail({
           size="icon"
           aria-pressed={saved}
           aria-label={saved ? "Saved" : "Save this job"}
-          onClick={() => setSaved(!saved)}
+          disabled={savingJobId === job.id}
+          /* Saving is the one thing here that needs an account, so the button
+             asks for one rather than failing at the policy and reporting it. */
+          onClick={() => (viewer ? toggleSave(job.id) : onSignIn())}
         >
           {saved ? <Check /> : <Bookmark />}
         </Button>
       </div>
+
+      {error && (
+        <p role="alert" className="mt-2 text-[0.8125rem] text-danger">
+          {error}
+        </p>
+      )}
 
       <p className="mt-5 text-sm leading-relaxed text-ink-2">{job.summary}</p>
 
@@ -479,8 +523,8 @@ export function PersonDetail({
         Get in touch
       </Button>
       <p className="mt-2 text-center text-[0.75rem] text-ink-4">
-        Introductions go through Spokane Tech Jobs. {person.name.split(" ")[0]} sees
-        your message before you see their address.
+        Introductions go through Spokane Tech Jobs. {person.name.split(" ")[0]}{" "}
+        sees your message before you see their address.
       </p>
     </article>
   );

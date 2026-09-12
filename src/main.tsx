@@ -3,6 +3,7 @@ import { createRoot } from "react-dom/client";
 import "./design/theme.css";
 import { App } from "./app/app";
 import { DirectoryProvider } from "./db/directory";
+import { MineProvider } from "./db/mine";
 
 /* No auth provider. The Neon SDK holds the session itself — including an
    anonymous token for readers with no account — so `useViewer` reads it
@@ -10,7 +11,9 @@ import { DirectoryProvider } from "./db/directory";
 createRoot(document.getElementById("root")!).render(
   <StrictMode>
     <DirectoryProvider>
-      <App />
+      <MineProvider>
+        <App />
+      </MineProvider>
     </DirectoryProvider>
   </StrictMode>,
 );

@@ -52,7 +52,9 @@ export async function addCompany(input: NewCompany, viewerId: string) {
      every URL in the product unreadable. */
   const id = `${slugify(input.name)}-${Math.random().toString(36).slice(2, 6)}`;
 
-  const { error } = await db().from("companies").insert({
+  const { error } = await db()
+    .from("companies")
+    .insert({
       id,
       name: input.name,
       tagline: input.tagline,
@@ -71,8 +73,8 @@ export async function addCompany(input: NewCompany, viewerId: string) {
       website: input.website || null,
       email: input.email || null,
       phone: input.phone || null,
-    submitted_by: viewerId,
-  });
+      submitted_by: viewerId,
+    });
   if (error) throw error;
 
   return id;
@@ -95,7 +97,9 @@ export type NewJob = {
 };
 
 export async function postJob(input: NewJob, viewerId: string) {
-  const { error } = await db().from("jobs").insert({
+  const { error } = await db()
+    .from("jobs")
+    .insert({
       company_id: input.companyId,
       title: input.title,
       discipline: input.discipline,
@@ -109,8 +113,8 @@ export async function postJob(input: NewJob, viewerId: string) {
       responsibilities: input.responsibilities,
       requirements: input.requirements,
       apply_url: input.applyUrl || null,
-    posted_by: viewerId,
-  });
+      posted_by: viewerId,
+    });
   if (error) throw error;
 }
 
@@ -140,17 +144,17 @@ export async function saveProfile(input: ProfileInput, viewerId: string) {
     .from("people")
     .upsert(
       {
-      id: `u-${viewerId}`,
-      user_id: viewerId,
-      name: input.name,
-      role: input.role,
-      hue: input.hue,
-      company_id: input.companyId,
-      district_id: input.district,
-      open_to: input.openTo,
-      skills: input.skills,
-      bio: input.bio,
-      years: input.years,
+        id: `u-${viewerId}`,
+        user_id: viewerId,
+        name: input.name,
+        role: input.role,
+        hue: input.hue,
+        company_id: input.companyId,
+        district_id: input.district,
+        open_to: input.openTo,
+        skills: input.skills,
+        bio: input.bio,
+        years: input.years,
         listed: input.listed,
       },
       { onConflict: "user_id" },
@@ -213,6 +217,23 @@ export async function listSavedJobIds(viewerId: string): Promise<string[]> {
     .eq("user_id", viewerId);
   if (error) throw error;
   return (data ?? []).map((r: { job_id: string }) => r.job_id);
+}
+
+/**
+ * The company ids this viewer has already asked to claim.
+ *
+ * `claims_read_own` is the only policy on the table that returns anything, so
+ * this is every claim they can see — which is exactly the set the button needs
+ * in order to stop offering. A claim under review is not a rejection, and
+ * asking twice is the thing a person does when the first ask left no trace.
+ */
+export async function listMyClaims(viewerId: string): Promise<string[]> {
+  const { data, error } = await db()
+    .from("claims")
+    .select("company_id")
+    .eq("user_id", viewerId);
+  if (error) throw error;
+  return (data ?? []).map((r: { company_id: string }) => r.company_id);
 }
 
 /** The industries table, for the Add Company select. Cached for the session. */
