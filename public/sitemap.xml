@@ -1,0 +1,12 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<!-- One entry, because the app has one URL. When companies and jobs get
+     their own routes this file should be generated at build time from the
+     same Neon query the pages are rendered from, so a listing cannot be in
+     the sitemap without being on the site or the other way round. -->
+<urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
+  <url>
+    <loc>https://spokanetechjobs.com/</loc>
+    <changefreq>daily</changefreq>
+    <priority>1.0</priority>
+  </url>
+</urlset>
