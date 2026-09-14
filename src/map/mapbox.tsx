@@ -187,7 +187,21 @@ export function MapboxBasemap({
     map.current?.resize();
   }, [size.width, size.height]);
 
-  return <div ref={host} className="absolute inset-0" />;
+  /* Two divs rather than one, because Mapbox turns whatever container it is
+     given into `.mapboxgl-map`, and its stylesheet sets `position: relative`
+     on that class. The stylesheet is imported dynamically, so it lands after
+     the app's CSS and wins at equal specificity over an `absolute` utility on
+     the same element — and `inset-0` does nothing to a relative box, which
+     then collapses to its content height of zero and leaves Mapbox sizing its
+     canvas to a 300px fallback.
+
+     So the outer div does the positioning, where the late stylesheet cannot
+     reach it, and the inner one is only ever asked to fill its parent. */
+  return (
+    <div className="absolute inset-0">
+      <div ref={host} className="h-full w-full" />
+    </div>
+  );
 }
 
 /** Apply the token palette over whichever Mapbox style just loaded. */
