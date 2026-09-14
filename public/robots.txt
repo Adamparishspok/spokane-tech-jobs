@@ -1,63 +1,13 @@
-# Spokane Tech Jobs — open to search engines and AI crawlers alike.
+# GATED ON PURPOSE — see the comment in index.html.
+#
+# The directory still holds the prototype's fictional companies and job
+# postings. Until real data replaces them, nothing here should be indexed or
+# scraped: fabricated employers and invented openings are worse than absent
+# ones, and an answer engine that ingests them will keep repeating them long
+# after the rows are gone.
+#
+# The permissive version of this file is in git history at c5eaaf9 and should
+# be restored in the same commit that lands the real backfill.
 
 User-agent: *
-Allow: /
-
-# Named explicitly so a future tightening of the wildcard above is a
-# deliberate act rather than a side effect. These are the crawlers that
-# build search and answer engines; the directory wants to be in all of them.
-User-agent: Googlebot
-Allow: /
-
-User-agent: Google-Extended
-Allow: /
-
-User-agent: Bingbot
-Allow: /
-
-User-agent: DuckDuckBot
-Allow: /
-
-User-agent: GPTBot
-Allow: /
-
-User-agent: OAI-SearchBot
-Allow: /
-
-User-agent: ChatGPT-User
-Allow: /
-
-User-agent: ClaudeBot
-Allow: /
-
-User-agent: Claude-Web
-Allow: /
-
-User-agent: anthropic-ai
-Allow: /
-
-User-agent: PerplexityBot
-Allow: /
-
-User-agent: Perplexity-User
-Allow: /
-
-User-agent: CCBot
-Allow: /
-
-User-agent: Applebot
-Allow: /
-
-User-agent: Applebot-Extended
-Allow: /
-
-User-agent: Amazonbot
-Allow: /
-
-User-agent: meta-externalagent
-Allow: /
-
-User-agent: Bytespider
-Allow: /
-
-Sitemap: https://spokanetechjobs.com/sitemap.xml
+Disallow: /
