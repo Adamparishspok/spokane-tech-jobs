@@ -3,7 +3,7 @@
   "url": "https://spokanetechjobs.com",
   "licence": "CC BY 4.0",
   "attribution": "Spokane Tech Jobs",
-  "generated": "2026-09-17T23:42:44.848Z",
+  "generated": "2026-09-17T23:47:41.749Z",
   "note": "Every field is sourced or null. A null is a fact nobody has published, not a zero.",
   "companies": [
     {
@@ -21,7 +21,7 @@
       "lat": 47.6734,
       "website": "myavista.com",
       "phone": null,
-      "logo_url": "/logos/avista.ico",
+      "logo_url": null,
       "district": "Logan",
       "industry": "Cleantech"
     },
