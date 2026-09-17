@@ -1,5 +1,19 @@
+import { useState } from "react";
 import { cn } from "@kit/lib/cn";
 import { initials } from "../domain";
+import LOGOS from "../generated/logos.json";
+
+/**
+ * The company's logo, or null.
+ *
+ * Written by `bun run db:logos` into `src/generated/logos.json` and compiled
+ * in, rather than read off the row: the column is there too, but the Data API
+ * caches its schema and a new column can take a while to reach the browser.
+ * A company with no entry gets its monogram, which is the normal case for a
+ * listing somebody added by hand.
+ */
+export const logoFor = (id: string): string | null =>
+  (LOGOS as Record<string, string>)[id] ?? null;
 
 /**
  * The mark.
@@ -61,14 +75,52 @@ export function Wordmark({ className }: { className?: string }) {
 export function Monogram({
   name,
   hue,
+  logo,
   className,
   round,
 }: {
   name: string;
   hue: number;
+  /**
+   * A self-hosted logo under /logos, from `bun run db:logos`. The monogram is
+   * not a placeholder waiting for it — most companies in a local directory are
+   * added by somebody else and never get one — so the two are drawn the same
+   * size and shape, and a row looks deliberate either way.
+   */
+  logo?: string | null;
   className?: string;
   round?: boolean;
 }) {
+  /* A favicon that fails to load leaves a broken-image glyph, which is worse
+     than the monogram it replaced. Failing back in state means the fallback is
+     the same component, not a second styling of it. */
+  const [failed, setFailed] = useState(false);
+
+  if (logo && !failed) {
+    return (
+      <span
+        className={cn(
+          "grid shrink-0 place-items-center overflow-hidden border border-line-2 bg-solid",
+          round ? "rounded-full" : "rounded-card",
+          "size-10",
+          className,
+        )}
+        aria-hidden="true"
+      >
+        {/* `contain`, not `cover`: a wordmark cropped to fill a circle is
+            usually the middle three letters of the company's name. */}
+        <img
+          src={logo}
+          alt=""
+          loading="lazy"
+          decoding="async"
+          className="size-full object-contain p-1"
+          onError={() => setFailed(true)}
+        />
+      </span>
+    );
+  }
+
   return (
     <span
       className={cn(

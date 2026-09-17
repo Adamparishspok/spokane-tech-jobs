@@ -52,6 +52,12 @@ export type Company = {
   name: string;
   /** The monogram tile's hue. One number, so the mark cannot drift from the name. */
   hue: number;
+  /**
+   * A self-hosted logo under /logos, or null — then the monogram stands in.
+   * Optional on the type because the seed fixtures predate it and a company
+   * added through the app has none until somebody fetches one.
+   */
+  logo?: string | null;
   tagline: string;
   about: string;
   industry: Industry;

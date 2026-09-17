@@ -36,7 +36,7 @@ import {
 import { useViewer } from "../db/auth";
 import { useDirectory } from "../db/directory";
 import { useMine } from "../db/mine";
-import { Monogram } from "../design/brand";
+import { Monogram, logoFor } from "../design/brand";
 import { Fact, Panel, Tag } from "./chrome";
 import { ClaimListing } from "./forms";
 
@@ -115,6 +115,7 @@ export function CompanyDetail({
           <Monogram
             name={company.name}
             hue={company.hue}
+            logo={company.logo ?? logoFor(company.id)}
             className="size-12 text-base"
           />
           <div className="min-w-0 flex-1">

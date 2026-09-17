@@ -11,7 +11,8 @@
     "db:push": "bun --env-file=.env.local run db/push.ts",
     "db:seed": "bun --env-file=.env.local run db/seed.ts",
     "db:load-real": "bun --env-file=.env.local run db/load-real.ts",
-    "db:export": "bun --env-file=.env.local run db/export-open-data.ts"
+    "db:export": "bun --env-file=.env.local run db/export-open-data.ts",
+    "db:logos": "bun --env-file=.env.local run db/fetch-logos.ts"
   },
   "dependencies": {
     "@neondatabase/neon-js": "^0.7.0-beta",

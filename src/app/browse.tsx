@@ -12,7 +12,7 @@ import {
   type Person,
 } from "../domain";
 import { useDirectory } from "../db/directory";
-import { Monogram } from "../design/brand";
+import { Monogram, logoFor } from "../design/brand";
 import { FirstDay, NoResults, Panel, PanelHeader, Tag } from "./chrome";
 import { EMPTY_QUERY, FilterBar, SearchField, type Query } from "./filters";
 
@@ -273,7 +273,7 @@ function CompanyRow({
 
   return (
     <Row id={company.id} label={company.name} {...rest}>
-      <Monogram name={company.name} hue={company.hue} />
+      <Monogram name={company.name} hue={company.hue} logo={company.logo ?? logoFor(company.id)} />
       <div className="min-w-0 flex-1">
         <div className="flex items-baseline gap-2">
           <h3 className="truncate text-sm font-semibold text-ink">
@@ -319,7 +319,7 @@ function JobRow({
 }) {
   return (
     <Row id={job.id} label={`${job.title} at ${company.name}`} {...rest}>
-      <Monogram name={company.name} hue={company.hue} />
+      <Monogram name={company.name} hue={company.hue} logo={company.logo ?? logoFor(company.id)} />
       <div className="min-w-0 flex-1">
         <h3 className="text-sm leading-snug font-semibold text-ink">
           {job.title}

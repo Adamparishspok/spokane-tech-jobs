@@ -1,3 +1,4 @@
+import { logoFor } from "../design/brand";
 import { PortalHost } from "@kit/lib/portal-host";
 import { ThemeProvider, useTheme } from "@kit/lib/theme";
 import { TooltipProvider } from "@kit/ui";
@@ -154,6 +155,8 @@ function Root() {
         id: c.id,
         at: { lng: c.lng, lat: c.lat },
         label: c.name,
+        logo: c.logo ?? logoFor(c.id),
+        hue: c.hue,
         count: jobsAt(c.id).length,
         unit: "open role",
         hiring: jobsAt(c.id).length > 0,
@@ -170,6 +173,8 @@ function Root() {
           id: c.id,
           at: { lng: c.lng, lat: c.lat },
           label: c.name,
+          logo: c.logo ?? logoFor(c.id),
+          hue: c.hue,
           count,
           unit: "matching role",
           hiring: true,
@@ -190,6 +195,8 @@ function Root() {
         id: c.id,
         at: { lng: c.lng, lat: c.lat },
         label: c.name,
+        logo: c.logo ?? logoFor(c.id),
+        hue: c.hue,
         count,
         unit: "person",
         /* On the People tab an orange mark would mean "hiring", which is not

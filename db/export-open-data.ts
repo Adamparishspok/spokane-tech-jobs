@@ -37,6 +37,7 @@ type Row = Record<string, string | number | null>;
 const companies = (await sql`
   select c.id, c.name, c.tagline, c.about, c.headcount, c.founded, c.stage,
          c.workplace, c.address, c.zip, c.lng, c.lat, c.website, c.phone,
+         c.logo_url,
          d.name as district, i.name as industry
     from companies c
     join districts d on d.id = c.district_id
@@ -144,8 +145,10 @@ for (const c of companies) {
       addressCountry: "US",
     },
     geo: { "@type": "GeoCoordinates", latitude: c.lat, longitude: c.lng },
+    logo: c.logo_url ? `${SITE}${c.logo_url}` : undefined,
   };
   const body = `    <nav><a href="${SITE}/companies/">All companies</a> · <a href="${SITE}/">Map</a></nav>
+    ${c.logo_url ? `<img src="${SITE}${c.logo_url}" alt="" width="48" height="48" style="border-radius:50%;border:1px solid rgba(0,0,0,.1);background:#fff;object-fit:contain;padding:4px" />` : ""}
     <h1>${esc(c.name)}</h1>
     <p class="lede">${esc(c.tagline)}</p>
     ${c.about && c.about !== c.tagline ? `<p>${esc(c.about)}</p>` : ""}

@@ -10,6 +10,7 @@ bun run dev          # http://localhost:5184
 bun run typecheck
 bun run db:push      # apply db/schema.sql
 bun run db:load-real # load db/research/real-companies.json, clear the seed
+bun run db:logos     # fetch each company's logo into public/logos
 bun run db:export    # rebuild the open data, llms.txt and the static pages
 bun run db:seed      # the prototype's demo directory, for a scratch branch
 ```

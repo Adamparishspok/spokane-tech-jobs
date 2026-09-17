@@ -60,6 +60,7 @@ type CompanyRow = {
   about: string;
   hue: number;
   industry_id: string;
+  logo_url: string | null;
   headcount: number | null;
   founded: number | null;
   stage: Stage | null;
@@ -118,6 +119,7 @@ const toCompany = (row: CompanyRow): Company => ({
      came back empty the row is still usable, so it falls back rather than
      dropping a company off the map over a label. */
   industry: (row.industries?.name ?? row.industry_id) as Industry,
+  logo: row.logo_url,
   headcount: row.headcount,
   founded: row.founded,
   stage: row.stage,

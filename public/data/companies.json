@@ -3,7 +3,7 @@
   "url": "https://spokanetechjobs.com",
   "licence": "CC BY 4.0",
   "attribution": "Spokane Tech Jobs",
-  "generated": "2026-09-17T21:42:04.862Z",
+  "generated": "2026-09-17T23:42:44.848Z",
   "note": "Every field is sourced or null. A null is a fact nobody has published, not a zero.",
   "companies": [
     {
@@ -21,6 +21,7 @@
       "lat": 47.6734,
       "website": "myavista.com",
       "phone": null,
+      "logo_url": "/logos/avista.ico",
       "district": "Logan",
       "industry": "Cleantech"
     },
@@ -39,6 +40,7 @@
       "lat": 47.659017,
       "website": "commerce-architects.com",
       "phone": null,
+      "logo_url": "/logos/commerce-architects.png",
       "district": "Downtown",
       "industry": "E-commerce"
     },
@@ -57,6 +59,7 @@
       "lat": 47.658233,
       "website": "corporatetools.com",
       "phone": null,
+      "logo_url": "/logos/corporate-tools.png",
       "district": "Downtown",
       "industry": "Business software"
     },
@@ -75,6 +78,7 @@
       "lat": 47.669409,
       "website": "engieimpact.com",
       "phone": null,
+      "logo_url": "/logos/engie-impact.png",
       "district": "Kendall Yards",
       "industry": "Data & analytics"
     },
@@ -93,6 +97,7 @@
       "lat": 47.652757,
       "website": "intellitect.com",
       "phone": "(509) 315-3400",
+      "logo_url": "/logos/intellitect.png",
       "district": "Browne's Addition",
       "industry": "IT services"
     },
@@ -111,6 +116,7 @@
       "lat": 47.675171,
       "website": "itron.com",
       "phone": "(509) 924-9900",
+      "logo_url": "/logos/itron.png",
       "district": "Liberty Lake",
       "industry": "Cleantech"
     },
@@ -129,6 +135,7 @@
       "lat": 47.696799,
       "website": "keytronic.com",
       "phone": null,
+      "logo_url": "/logos/key-tronic.png",
       "district": "Spokane Valley",
       "industry": "Advanced manufacturing"
     },
@@ -147,6 +154,7 @@
       "lat": 47.648135,
       "website": "nuvodia.com",
       "phone": "(509) 461-2596",
+      "logo_url": "/logos/nuvodia.png",
       "district": "Downtown",
       "industry": "IT services"
     },
@@ -165,6 +173,7 @@
       "lat": 47.657765,
       "website": "spiceology.com",
       "phone": null,
+      "logo_url": "/logos/spiceology.jpg",
       "district": "East Central",
       "industry": "E-commerce"
     }

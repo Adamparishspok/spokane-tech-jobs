@@ -96,6 +96,12 @@ create table if not exists companies (
   website       text,
   email         text,
   phone         text,
+  -- A path under /logos, written by db/fetch-logos.ts and served from this
+  -- app rather than hot-linked: a marker that depends on a third party is a
+  -- marker that disappears when the third party rate-limits us, and every
+  -- reader's browser would be announcing to that third party which companies
+  -- they are looking at.
+  logo_url      text,
   -- Whoever proved they work here. Null is the honest default: most listings
   -- in a local directory are added by somebody else.
   claimed_by    text,
@@ -188,6 +194,7 @@ alter table companies alter column headcount drop not null;
 alter table companies alter column founded   drop not null;
 alter table companies alter column stage     drop not null;
 alter table companies alter column workplace drop not null;
+alter table companies add column if not exists logo_url text;
 
 -- ------------------------------------------------------------ claims
 -- Claiming a listing is a request, not an action. Approving it is the one

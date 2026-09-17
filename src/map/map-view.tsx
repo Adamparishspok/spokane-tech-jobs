@@ -8,6 +8,7 @@ import {
   useRef,
   useState,
 } from "react";
+import { Monogram } from "../design/brand";
 import { Basemap } from "./basemap";
 import { hasMapbox, MapboxBasemap, mapboxProjector, type MapboxMap } from "./mapbox";
 import {
@@ -46,6 +47,10 @@ export type Pin = {
   id: string;
   at: LngLat;
   label: string;
+  /** The company's self-hosted logo, or null for its monogram. */
+  logo?: string | null;
+  /** The monogram's hue, used when there is no logo. */
+  hue: number;
   /** What the mark counts on this tab. */
   count?: number;
   /**
@@ -499,12 +504,17 @@ function MapButton({
 }
 
 /**
- * One company on the map.
+ * One company on the map: its logo, in a circle.
  *
- * The comps drew a generic red teardrop carrying no information at all. This
- * one carries the number the whole product is about: how many roles are open.
- * A company with none is a smaller, quieter dot — still findable, but the
- * hiring ones come forward, which is the correct default for a job board.
+ * The comps drew a generic red teardrop carrying no information at all, and
+ * the first build replaced it with the number of open roles. The mark is the
+ * company itself now — you recognise Avista or Itron on the map the way you
+ * recognise them on a building — and the number it was carrying moves to a
+ * badge on the corner, where it still says which companies are hiring without
+ * being the only thing a pin can say.
+ *
+ * A company with no logo gets its monogram at the same size, so a directory
+ * that is mostly small companies does not read as a map of broken images.
  */
 function Marker({
   pin,
@@ -546,25 +556,39 @@ function Marker({
           : pin.label
       }
     >
-      {pin.hiring ? (
+      <span
+        className={cn(
+          /* The ring is the marker's edge against the map, and it is what
+             changes when a pin is the selected one — not the logo, which is
+             the company's and not ours to recolour. */
+          "block rounded-full border-2 shadow-[var(--shadow-marker)] transition-colors",
+          selected ? "border-ink" : pin.hiring ? "border-hiring" : "border-solid",
+        )}
+      >
+        <Monogram
+          name={pin.label}
+          hue={pin.hue}
+          logo={pin.logo}
+          round
+          className={cn("size-8 bg-solid", !pin.hiring && !active && "opacity-90")}
+        />
+      </span>
+
+      {/* How many roles are open, on the corner. Only where there are any:
+          a badge reading 0 is a label nobody needs and forty of them is
+          noise over the city. */}
+      {pin.hiring && pin.count ? (
         <span
           className={cn(
-            "num flex h-6 min-w-6 items-center justify-center rounded-full border-2 px-1.5 text-[0.75rem] font-semibold shadow-[var(--shadow-marker)]",
+            "num absolute -top-1 -right-1 flex h-4.5 min-w-4.5 items-center justify-center rounded-full border-2 px-1 text-[0.6875rem] font-semibold tabular-nums",
             selected
-              ? "border-ink bg-ink text-ground"
-              : "border-surface bg-hiring text-white",
+              ? "border-solid bg-ink text-ground"
+              : "border-solid bg-hiring text-white",
           )}
         >
           {pin.count}
         </span>
-      ) : (
-        <span
-          className={cn(
-            "block size-3 rounded-full border-2 shadow-[var(--shadow-marker)]",
-            selected ? "border-ink bg-ink" : "border-surface bg-ink-3",
-          )}
-        />
-      )}
+      ) : null}
 
       {/* The name arrives on hover and on focus, not permanently: forty
           labels at once is a map with no map left in it. */}
