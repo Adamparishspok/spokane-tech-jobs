@@ -38,10 +38,32 @@
      the screen and the chrome has to sit back from it, not compete. */
   --color-ground: #f6f6f3; /* the page behind the panels */
   --color-panel: #ffffff; /* the browse panel and the rail */
-  --color-surface: #ffffff; /* cards, rows, menus, popovers */
-  --color-surface-2: #f3f3ef; /* inset wells, hovered rows */
-  --color-surface-3: #eaeae4; /* chips, tracks, monogram tiles */
-  --color-field: #ffffff;
+  /* Cards, fields and buttons sit *on* glass, so they are a tint of white
+     rather than a second opaque white — a solid control on a frosted panel
+     reads as a sticker on a window. */
+  --color-surface: rgb(255 255 255 / 0.55);
+  /* The one genuinely solid surface: a thumb or a tick that has to read as
+     "this is the selected one" against the tint under it. */
+  --color-solid: #ffffff;
+  /* Inset wells, hovered rows, chips and tracks are *tints of the ink*, not
+     opaque greys. Everything they sit inside is glass now (see `.glass`), and
+     an opaque row on a translucent panel reads as a hole cut in it. */
+  --color-surface-2: rgb(22 25 26 / 0.05);
+  --color-surface-3: rgb(22 25 26 / 0.09);
+  --color-field: rgb(255 255 255 / 0.55);
+
+  /* Glass. The panels, the rail, the map controls and every popover float
+     over the city, so they are frosted rather than filled: the map's colour
+     comes through, the type stays on an even ground, and the edge is a lit
+     hairline rather than a drawn border.
+
+     The alpha is the whole trick. Below ~0.6 the road labels under a panel
+     compete with the text on it; above ~0.8 it is a white box with a blur tax.
+     `saturate` puts back the colour the blur washes out of the map. */
+  --color-glass: rgb(255 255 255 / 0.68);
+  --color-glass-2: rgb(255 255 255 / 0.45); /* a surface *on* glass */
+  --color-glass-line: rgb(255 255 255 / 0.6);
+  --blur-glass: blur(20px) saturate(180%);
 
   /* Ink. Stone, not slate — a warm grey ramp under a green brand. */
   --color-ink: #16191a; /* titles, company names, values */
@@ -162,13 +184,24 @@
    * - **The brand chip.** A pale green ground carrying deep green text is a
    *   tint holding a shade, and a tint is unreadable dark. The two swap ends.
    */
-  [data-proto="ponderosa"][data-theme="dark"] {
+  /* `spokane`, not `ponderosa`: the prototype's name went with it when the
+     app graduated, and a stale selector here means dark mode silently falls
+     back to the kit's own greys — this app's whole dark palette missing. */
+  [data-proto="spokane"][data-theme="dark"] {
     --color-ground: #0e1112;
     --color-panel: #15191a;
-    --color-surface: #191e1f;
-    --color-surface-2: #141819;
-    --color-surface-3: #232a2b;
-    --color-field: #191e1f;
+    --color-surface: rgb(255 255 255 / 0.07);
+    --color-solid: #232a2b;
+    --color-surface-2: rgb(255 255 255 / 0.05);
+    --color-surface-3: rgb(255 255 255 / 0.09);
+    --color-field: rgb(255 255 255 / 0.05);
+
+    /* Dark glass is the same idea inverted: the panel is a dark pane the city
+       glows through, and the lit edge drops to a tenth of white — at the light
+       theme's weight it would ring every panel in white. */
+    --color-glass: rgb(16 20 21 / 0.66);
+    --color-glass-2: rgb(255 255 255 / 0.06);
+    --color-glass-line: rgb(255 255 255 / 0.12);
 
     --color-ink: #eef1f0;
     --color-ink-2: #cdd3d2;
@@ -231,6 +264,52 @@
 }
 
 @layer components {
+  /**
+   * Frosted glass: the finish for anything that floats over the map — the
+   * rail, the browse and detail panels, the ecosystem strip, the map
+   * controls, every popover, menu and dialog.
+   *
+   * `backdrop-filter` only frosts what is *behind* the element, so a glass
+   * panel inside another glass panel blurs an already-blurred backdrop and
+   * goes muddy. Inner surfaces take `--color-glass-2`, which is a tint with no
+   * filter of its own.
+   *
+   * The inset top highlight is what makes it read as a pane with a thickness
+   * rather than as a low-opacity rectangle; it is the one part that has to
+   * change between themes, because a white lip on dark glass is a glare.
+   */
+  .glass {
+    background: var(--color-glass);
+    -webkit-backdrop-filter: var(--blur-glass);
+    backdrop-filter: var(--blur-glass);
+    border-color: var(--color-glass-line);
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.5),
+      var(--shadow-panel);
+  }
+
+  [data-theme="dark"] .glass {
+    box-shadow:
+      inset 0 1px 0 rgb(255 255 255 / 0.06),
+      var(--shadow-panel);
+  }
+
+  /* A surface sitting on glass — a card inside a panel. No filter of its own;
+     it tints what the panel already frosted. */
+  .glass-inset {
+    background: var(--color-glass-2);
+    border-color: var(--color-glass-line);
+  }
+
+  /* Safari on iOS drops `backdrop-filter` under memory pressure and the panel
+     would turn into unreadable 68% white. Where the browser cannot frost, the
+     panels go solid instead. */
+  @supports not (backdrop-filter: blur(1px)) {
+    .glass {
+      background: var(--color-panel);
+    }
+  }
+
   /* The dark primary action: a two-stop vertical gradient rather than a flat
      fill, lit top to foot. The kit's `Button variant="accent"` reaches for
      this class by name. */
@@ -261,6 +340,6 @@
      is more" rather than as the end. Painted from the panel's own ground, so
      it needs no second colour in dark. */
   .list-fade {
-    background: linear-gradient(to bottom, transparent, var(--color-panel) 70%);
+    background: linear-gradient(to bottom, transparent, var(--color-glass) 70%);
   }
 }

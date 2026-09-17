@@ -20,7 +20,7 @@ export function PopoverContent({
         align={align}
         sideOffset={sideOffset}
         className={cn(
-          "pop-anim z-50 origin-(--radix-popover-content-transform-origin) rounded-panel border border-line bg-surface p-2 shadow-[var(--shadow-pop)] outline-none",
+          "pop-anim z-50 origin-(--radix-popover-content-transform-origin) glass rounded-panel border border-line p-2 shadow-[var(--shadow-pop)] outline-none",
           className,
         )}
         {...props}

@@ -20,7 +20,7 @@ export function MenuContent({
         data-slot="menu-content"
         sideOffset={sideOffset}
         className={cn(
-          "pop-anim z-50 min-w-[10rem] origin-(--radix-dropdown-menu-content-transform-origin) overflow-hidden rounded-panel border border-line bg-surface p-1 shadow-[var(--shadow-pop)]",
+          "pop-anim z-50 min-w-[10rem] origin-(--radix-dropdown-menu-content-transform-origin) glass overflow-hidden rounded-panel border border-line p-1 shadow-[var(--shadow-pop)]",
           className,
         )}
         {...props}

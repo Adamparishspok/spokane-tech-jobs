@@ -67,7 +67,7 @@ const PAINT: { layer: string; prop: string; token: string }[] = [
   { layer: "water-line-label", prop: "text-color", token: "--color-map-water" },
 ];
 
-type MapboxMap = {
+export type MapboxMap = {
   on: (event: string, fn: () => void) => void;
   remove: () => void;
   getCenter: () => { lng: number; lat: number };
@@ -95,8 +95,12 @@ export function MapboxBasemap({
   camera: Camera;
   size: Size;
   theme: "light" | "dark";
-  /** Fires on every move, so the list filtered to the viewport stays true. */
-  onCamera: (camera: Camera) => void;
+  /**
+   * Fires on every move. `fromUser` is false while Mapbox is animating a
+   * camera this app pushed down, so the caller can keep the app's camera in
+   * step without treating its own `easeTo` as the reader panning the map.
+   */
+  onCamera: (camera: Camera, fromUser: boolean) => void;
   /** Hands back Mapbox's own projector, replacing the local Mercator one. */
   onReady: (map: MapboxMap | null) => void;
 }) {
@@ -141,14 +145,22 @@ export function MapboxBasemap({
       map.current = instance;
 
       instance.on("style.load", () => retone(instance!));
-      instance.on("move", () => {
-        if (selfMove.current) return;
-        onCamera({
-          center: instance!.getCenter(),
-          zoom: instance!.getZoom(),
-        });
-      });
-      instance.on("load", () => onReady(instance));
+      const report = () =>
+        onCamera(
+          { center: instance!.getCenter(), zoom: instance!.getZoom() },
+          !selfMove.current,
+        );
+      instance.on("move", report);
+      instance.on("moveend", report);
+
+      /* Hand the projector over now rather than on `load`.
+         `load` waits for the first tiles, and until it fires the marker layer
+         projects with this app's own Mercator against the app's camera — which
+         is the camera Mapbox is still easing *towards*. That is the opening
+         drift: pins placed for the destination over a basemap that has not
+         arrived. Mapbox's transform is set from the constructor options, so
+         `project` is right from the first frame. */
+      onReady(instance);
     })();
 
     return () => {

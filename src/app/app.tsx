@@ -353,6 +353,9 @@ function Root() {
                 theme={resolved}
                 onSearchArea={searchArea}
                 areaSearched={query.area !== null}
+                /* The strip sits in the same top-centre slot; 44px of pill
+                   plus a 12px gap puts "Search this area" under it. */
+                topInset={empty ? 0 : 56}
                 onSize={(size) => (mapSize.current = size)}
               />
 

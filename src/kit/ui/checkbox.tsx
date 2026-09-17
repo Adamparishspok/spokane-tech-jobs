@@ -11,7 +11,7 @@ export function Checkbox({
     <CheckboxPrimitive.Root
       data-slot="checkbox"
       className={cn(
-        "peer size-4 shrink-0 rounded-[0.25rem] border border-line-3 bg-surface transition-colors outline-none data-[state=checked]:border-accent data-[state=checked]:bg-accent data-[state=checked]:text-accent-ink",
+        "peer size-4 shrink-0 rounded-[0.25rem] border border-line-3 bg-solid transition-colors outline-none data-[state=checked]:border-accent data-[state=checked]:bg-accent data-[state=checked]:text-accent-ink",
         className,
       )}
       {...props}

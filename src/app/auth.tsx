@@ -235,7 +235,7 @@ export function Unreachable({
   return (
     <div className="relative grid h-dvh place-items-center overflow-hidden bg-ground p-6">
       <Stage camera={camera} />
-      <div className="relative w-full max-w-[24rem] rounded-panel border border-line-2 bg-panel p-6 shadow-[var(--shadow-panel)]">
+      <div className="glass relative w-full max-w-[24rem] rounded-panel border p-6">
         <Wordmark />
         <div className="mt-5 grid size-10 place-items-center rounded-full bg-warn-soft text-warn">
           <TriangleAlert className="size-5" />

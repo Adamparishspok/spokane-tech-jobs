@@ -61,7 +61,7 @@ export function Segmented<T extends string>({
               <motion.span
                 layoutId={layoutId}
                 transition={{ type: "spring", stiffness: 560, damping: 42 }}
-                className="absolute inset-0 rounded-[0.3125rem] border border-line-2 bg-surface shadow-[var(--shadow-card)]"
+                className="absolute inset-0 rounded-[0.3125rem] border border-line-2 bg-solid shadow-[var(--shadow-card)]"
               />
             )}
             <span className="relative inline-flex items-center gap-1.5">

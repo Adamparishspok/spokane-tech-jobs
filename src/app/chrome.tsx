@@ -65,7 +65,7 @@ export function Rail({
   return (
     <nav
       aria-label="Sections"
-      className="z-30 flex w-16 shrink-0 flex-col items-center gap-1 border-r border-line-2 bg-panel py-3"
+      className="glass z-30 flex w-16 shrink-0 flex-col items-center gap-1 border-r py-3"
     >
       <button
         type="button"
@@ -202,7 +202,7 @@ export function Panel({
   return (
     <section
       className={cn(
-        "flex flex-col overflow-hidden rounded-panel border border-line-2 bg-panel shadow-[var(--shadow-panel)]",
+        "glass flex flex-col overflow-hidden rounded-panel border",
         className,
       )}
       {...props}

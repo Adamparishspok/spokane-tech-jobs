@@ -399,7 +399,7 @@ export function EcosystemStrip({
   const roles = jobs.length;
 
   return (
-    <div className="pointer-events-auto flex items-center gap-1 rounded-full border border-line-2 bg-panel px-1 py-1 shadow-[var(--shadow-panel)]">
+    <div className="glass pointer-events-auto flex items-center gap-1 rounded-full border px-1 py-1">
       <StripStat
         icon={<Building2 />}
         value={companies.length}

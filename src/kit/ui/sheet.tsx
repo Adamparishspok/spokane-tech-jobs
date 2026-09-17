@@ -31,7 +31,7 @@ export function SheetContent({
         data-slot="sheet-content"
         data-side={side}
         className={cn(
-          "sheet-anim fixed inset-y-0 z-50 flex w-[30rem] max-w-[92vw] flex-col bg-surface shadow-[var(--shadow-pop)] outline-none",
+          "sheet-anim fixed inset-y-0 z-50 glass flex w-[30rem] max-w-[92vw] flex-col shadow-[var(--shadow-pop)] outline-none",
           side === "right"
             ? "right-0 border-l border-line"
             : "left-0 border-r border-line",

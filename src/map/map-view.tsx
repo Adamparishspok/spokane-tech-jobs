@@ -9,7 +9,7 @@ import {
   useState,
 } from "react";
 import { Basemap } from "./basemap";
-import { hasMapbox, MapboxBasemap, mapboxProjector } from "./mapbox";
+import { hasMapbox, MapboxBasemap, mapboxProjector, type MapboxMap } from "./mapbox";
 import {
   pan as panCamera,
   projector,
@@ -140,6 +140,7 @@ export function MapView({
   /** Set when the viewport filter is armed, so the map can offer to re-run it. */
   onSearchArea,
   areaSearched,
+  topInset = 0,
   onSize,
   className,
 }: {
@@ -154,15 +155,25 @@ export function MapView({
   theme: "light" | "dark";
   onSearchArea?: () => void;
   areaSearched?: boolean;
+  /**
+   * Pixels already occupied at the top-centre of the map by something the app
+   * floats there — the ecosystem strip. "Search this area" takes the same slot
+   * and would otherwise land on top of it.
+   */
+  topInset?: number;
   /** The map's measured box, so the app can fit a camera against the truth. */
   onSize?: (size: Size) => void;
   className?: string;
 }) {
   const host = useRef<HTMLDivElement>(null);
   const [size, setSize] = useState<Size>({ width: 0, height: 0 });
-  const [mapbox, setMapbox] = useState<
-    Parameters<typeof mapboxProjector>[0] | null
-  >(null);
+  const [mapbox, setMapbox] = useState<MapboxMap | null>(null);
+  /* Mapbox moves its canvas every frame of a pan, a zoom or an `easeTo`, and
+     it does all of that outside React. The markers are DOM on top of that
+     canvas, so they have to be re-projected on the same frames or they hang
+     behind the basemap and snap into place at the end of the move. Bumping a
+     counter on Mapbox's own events is what puts the two back on one clock. */
+  const [frame, setFrame] = useState(0);
   const [dragging, setDragging] = useState(false);
   const [moved, setMoved] = useState(false);
 
@@ -186,14 +197,30 @@ export function MapView({
      moment it is available, because its camera is authoritative once it has
      the wheel — matching it from the outside with our own Mercator would drift
      by a pixel or two at high zoom and the pins would sit slightly wrong. */
+  useEffect(() => {
+    if (!mapbox) return;
+    const tick = () => setFrame((n) => n + 1);
+    for (const event of ["move", "zoom", "resize"]) mapbox.on(event, tick);
+    tick();
+    /* Mapbox has no `off` in the surface this app types, and the map is torn
+       down with the component, so the listeners go with it. */
+  }, [mapbox]);
+
   const project: Projector = useMemo(
     () => (mapbox ? mapboxProjector(mapbox) : projector(camera, size)),
-    [mapbox, camera, size],
+    /* `frame` is the dependency that matters while Mapbox owns the camera: it
+       is what re-reads the live transform. `camera` and `size` drive the
+       fallback basemap's own projector. */
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+    [mapbox, camera, size, frame],
   );
 
   const clusters = useMemo(
-    () => (size.width ? cluster(pins, project, size, camera.zoom) : []),
-    [pins, project, size, camera.zoom],
+    () =>
+      size.width
+        ? cluster(pins, project, size, mapbox ? mapbox.getZoom() : camera.zoom)
+        : [],
+    [pins, project, size, camera.zoom, mapbox],
   );
 
   const move = useCallback(
@@ -335,7 +362,9 @@ export function MapView({
           camera={camera}
           size={size}
           theme={theme}
-          onCamera={move}
+          /* A move the reader made arms "Search this area"; one this app
+             asked for only keeps the camera honest. */
+          onCamera={(next, fromUser) => (fromUser ? move(next) : onCamera(next))}
           onReady={setMapbox}
         />
       ) : (
@@ -390,14 +419,15 @@ export function MapView({
                 setMoved(false);
                 onSearchArea();
               }}
-              className="pointer-events-auto absolute top-4 left-1/2 -translate-x-1/2 rounded-full border border-line-2 bg-surface px-4 py-2 text-[0.8125rem] font-medium text-ink shadow-[var(--shadow-panel)] transition-colors hover:bg-surface-2"
+              style={{ top: 16 + topInset }}
+              className="glass pointer-events-auto absolute left-1/2 -translate-x-1/2 rounded-full border px-4 py-2 text-[0.8125rem] font-medium text-ink transition-colors hover:bg-surface-2"
             >
               Search this area
             </button>
           )}
 
           <div className="pointer-events-auto absolute right-4 bottom-4 flex flex-col gap-2">
-            <div className="flex flex-col overflow-hidden rounded-field border border-line-2 bg-surface shadow-[var(--shadow-panel)]">
+            <div className="glass flex flex-col overflow-hidden rounded-field border">
               <MapButton
                 label="Zoom in"
                 onClick={() => nudgeZoom(0.8)}
@@ -414,7 +444,7 @@ export function MapView({
                 <Minus />
               </MapButton>
             </div>
-            <div className="overflow-hidden rounded-field border border-line-2 bg-surface shadow-[var(--shadow-panel)]">
+            <div className="glass overflow-hidden rounded-field border">
               <MapButton label="Back to Spokane" onClick={home}>
                 <Crosshair />
               </MapButton>
