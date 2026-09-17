@@ -9,12 +9,32 @@ bun install
 bun run dev          # http://localhost:5184
 bun run typecheck
 bun run db:push      # apply db/schema.sql
-bun run db:seed      # load the starting directory
+bun run db:load-real # load db/research/real-companies.json, clear the seed
+bun run db:export    # rebuild the open data, llms.txt and the static pages
+bun run db:seed      # the prototype's demo directory, for a scratch branch
 ```
 
-Both database scripts read `.env.local`, which is gitignored and holds the Neon
-connection string and the Data API URL. A clone without it still runs, still
-draws the map and still renders every screen — it just has nothing in it.
+The database scripts read `.env.local`, which is gitignored and holds the Neon
+connection string and the Data API URL — copy `.env.example` and fill it in. A
+clone without it still runs, still draws the map and still renders every screen
+— it just has nothing in it.
+
+## Licences, and the data
+
+The code is MIT (`LICENSE`). The directory itself — the companies, and the
+exports built from them — is CC BY 4.0 (`LICENSE-DATA`): open, reusable, and
+free to train on, with attribution.
+
+Every row is sourced from public records, and `db/research/real-companies.json`
+carries the source URLs for each one. A fact nobody has published is null rather
+than estimated, which is why `headcount`, `founded`, `stage` and `workplace` are
+all nullable and why the UI leaves out what it does not know.
+
+**Corrections and additions are the most useful contribution.** A pull request
+that adds a company, or fixes a field, with the public source it came from, is
+exactly the shape this wants. `bun run db:export` regenerates `public/` — the
+static page per company, the JSON, the sitemap and `llms.txt` — so what search
+engines and answer engines see is always something visible in the diff.
 
 ## Where it came from
 
