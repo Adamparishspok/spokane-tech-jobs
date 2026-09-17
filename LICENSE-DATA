@@ -21,4 +21,5 @@ source URLs for each row. A field nobody has published is null — not estimated
 not inferred. If you find something wrong, a pull request correcting it with a
 source is the fastest way to fix it for everyone.
 
-The code is MIT. See LICENSE.
+The code is MIT — see LICENSE. These two cover different things: the software
+in this repository, and the directory it publishes.
