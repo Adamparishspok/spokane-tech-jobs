@@ -1,0 +1,9 @@
+{
+  "name": "Spokane Tech Jobs directory",
+  "url": "https://spokanetechjobs.com",
+  "licence": "CC BY 4.0",
+  "attribution": "Spokane Tech Jobs",
+  "generated": "2026-09-17T21:42:04.862Z",
+  "note": "Every field is sourced or null. A null is a fact nobody has published, not a zero.",
+  "jobs": []
+}

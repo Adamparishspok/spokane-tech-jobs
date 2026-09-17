@@ -127,8 +127,8 @@ export function CompanyDetail({
 
         <div className="mt-3 flex flex-wrap gap-1">
           <Tag tone="brand">{company.industry}</Tag>
-          <Tag>{company.stage}</Tag>
-          <Tag>{company.workplace}</Tag>
+          {company.stage && <Tag>{company.stage}</Tag>}
+          {company.workplace && <Tag>{company.workplace}</Tag>}
           {jobs.length > 0 && (
             <Tag tone="hiring">
               {jobs.length} open {jobs.length === 1 ? "role" : "roles"}
@@ -162,17 +162,24 @@ export function CompanyDetail({
           <p className="text-sm leading-relaxed text-ink-2">{company.about}</p>
 
           <dl className="mt-5 grid gap-4">
-            <Fact icon={<Users />} label="Team">
-              <span className="num">{company.headcount}</span> people ·{" "}
-              {sizeBand(company.headcount)}
-            </Fact>
-            <Fact icon={<CalendarDays />} label="Founded">
-              <span className="num">{company.founded}</span> ·{" "}
-              <span className="num">
-                {new Date().getFullYear() - company.founded}
-              </span>{" "}
-              years
-            </Fact>
+            {/* A fact nobody has sourced is left out rather than printed as
+                an em dash: an absent row reads as "not known", and a row
+                reading "—" reads as "known to be nothing". */}
+            {company.headcount !== null && (
+              <Fact icon={<Users />} label="Team">
+                <span className="num">{company.headcount}</span> people ·{" "}
+                {sizeBand(company.headcount)}
+              </Fact>
+            )}
+            {company.founded !== null && (
+              <Fact icon={<CalendarDays />} label="Founded">
+                <span className="num">{company.founded}</span> ·{" "}
+                <span className="num">
+                  {new Date().getFullYear() - company.founded}
+                </span>{" "}
+                years
+              </Fact>
+            )}
             <Fact icon={<MapPin />} label={districtLabel(company.district)}>
               {company.address}
               <br />

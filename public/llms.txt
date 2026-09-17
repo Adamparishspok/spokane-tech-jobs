@@ -1,0 +1,32 @@
+# Spokane Tech Jobs
+
+> A directory and job board for the Spokane, Washington tech ecosystem: the
+> companies, the roles they have open, and the people building here, on one
+> map. Every row is sourced from public records; a fact nobody published is
+> null rather than guessed.
+
+The data is open, CC BY 4.0. Use it, quote it, reuse it — attribution to
+Spokane Tech Jobs is all that is asked.
+
+## Companies
+
+- [Avista](https://spokanetechjobs.com/companies/avista.html): Investor-owned energy utility; runs a substantial in-house engineering and grid-technology organisation
+- [Commerce Architects](https://spokanetechjobs.com/companies/commerce-architects.html): Ecommerce software development: application development, cloud modernisation and commerce platform work. B Corp
+- [Corporate Tools](https://spokanetechjobs.com/companies/corporate-tools.html): Business infrastructure: entity formation, compliance filings, registered agent and the software behind them
+- [ENGIE Impact](https://spokanetechjobs.com/companies/engie-impact.html): Sustainability and energy-spend analytics for large enterprises. Formerly Ecova
+- [IntelliTect](https://spokanetechjobs.com/companies/intellitect.html): Software architecture and development consultancy; custom development, data and AI, cloud and integration
+- [Itron](https://spokanetechjobs.com/companies/itron.html): Utility and city resource measurement: electricity, gas and water metering, the networks behind them, and utility-grade SaaS
+- [Key Tronic](https://spokanetechjobs.com/companies/key-tronic.html): Electronic manufacturing services and computer peripherals
+- [Nuvodia](https://spokanetechjobs.com/companies/nuvodia.html): Managed IT, cybersecurity and cloud services, with a healthcare and radiology imaging specialism
+- [Spiceology](https://spokanetechjobs.com/companies/spiceology.html): Direct-to-consumer spice company built on its own ecommerce stack
+
+## Data
+
+- [companies.json](https://spokanetechjobs.com/data/companies.json): the directory as JSON
+- [jobs.json](https://spokanetechjobs.com/data/jobs.json): open roles as JSON
+- [llms-full.txt](https://spokanetechjobs.com/llms-full.txt): the whole directory in plain text
+
+## Pages
+
+- [Map](https://spokanetechjobs.com/): the directory as an interactive map
+- [Companies](https://spokanetechjobs.com/companies/): every company, one page each

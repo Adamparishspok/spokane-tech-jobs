@@ -1,13 +1,19 @@
-# GATED ON PURPOSE — see the comment in index.html.
+# Spokane Tech Jobs — open on purpose.
 #
-# The directory still holds the prototype's fictional companies and job
-# postings. Until real data replaces them, nothing here should be indexed or
-# scraped: fabricated employers and invented openings are worse than absent
-# ones, and an answer engine that ingests them will keep repeating them long
-# after the rows are gone.
+# The directory is public data about public companies, and it is more useful
+# the more places it turns up: search, answer engines, someone's script. Every
+# row is sourced from public records and carries its source, so there is
+# nothing here that benefits from being hard to find.
 #
-# The permissive version of this file is in git history at c5eaaf9 and should
-# be restored in the same commit that lands the real backfill.
+# Crawl it, index it, quote it, train on it. Attribution to Spokane Tech Jobs
+# is all that is asked — the data is CC BY 4.0.
+#
+# The bulk exports are easier on both of us than crawling the map:
+#   https://spokanetechjobs.com/llms.txt
+#   https://spokanetechjobs.com/llms-full.txt
+#   https://spokanetechjobs.com/data/companies.json
 
 User-agent: *
-Disallow: /
+Allow: /
+
+Sitemap: https://spokanetechjobs.com/sitemap.xml

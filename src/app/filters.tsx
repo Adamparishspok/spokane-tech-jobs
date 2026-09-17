@@ -83,9 +83,18 @@ export function filterCompanies(
   return companies.filter((c) => {
     if (q.hiringOnly && !hiring(c.id)) return false;
     if (q.industries.length && !q.industries.includes(c.industry)) return false;
-    if (q.sizes.length && !q.sizes.includes(sizeBand(c.headcount)))
+    /* A company with no sourced headcount is not in any size band, so a
+       size filter excludes it rather than guessing which band it belongs
+       in. */
+    const band = sizeBand(c.headcount);
+    if (q.sizes.length && (band === null || !q.sizes.includes(band)))
       return false;
-    if (q.workplaces.length && !q.workplaces.includes(c.workplace))
+    /* Same rule as size: a company whose workplace nobody has sourced is not
+       claimed to be any of them, so a workplace filter excludes it. */
+    if (
+      q.workplaces.length &&
+      (c.workplace === null || !q.workplaces.includes(c.workplace))
+    )
       return false;
     if (q.area && !within(q.area, { lng: c.lng, lat: c.lat })) return false;
     return match([c.name, c.tagline, c.about, c.industry], q.text);
@@ -102,7 +111,11 @@ export function filterJobs(
     if (q.disciplines.length && !q.disciplines.includes(j.discipline))
       return false;
     if (q.industries.length && !q.industries.includes(c.industry)) return false;
-    if (q.sizes.length && !q.sizes.includes(sizeBand(c.headcount)))
+    /* A company with no sourced headcount is not in any size band, so a
+       size filter excludes it rather than guessing which band it belongs
+       in. */
+    const band = sizeBand(c.headcount);
+    if (q.sizes.length && (band === null || !q.sizes.includes(band)))
       return false;
     if (q.workplaces.length && !q.workplaces.includes(j.workplace))
       return false;
@@ -123,9 +136,13 @@ export function filterPeople(
       return false;
     /* A person not at a company has no size or workplace to filter on, and
        silently dropping them would hide exactly the people who are looking. */
-    if (q.sizes.length && (!c || !q.sizes.includes(sizeBand(c.headcount))))
+    const band = c ? sizeBand(c.headcount) : null;
+    if (q.sizes.length && (band === null || !q.sizes.includes(band)))
       return false;
-    if (q.workplaces.length && (!c || !q.workplaces.includes(c.workplace)))
+    if (
+      q.workplaces.length &&
+      (!c || c.workplace === null || !q.workplaces.includes(c.workplace))
+    )
       return false;
     return match([p.name, p.role, p.bio, ...p.skills, c?.name ?? ""], q.text);
   });

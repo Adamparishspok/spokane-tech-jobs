@@ -77,10 +77,17 @@ create table if not exists companies (
   -- later uploads a real logo does not change colour on the way past.
   hue           int  not null default 200 check (hue between 0 and 359),
   industry_id   text not null references industries(id),
-  headcount     int  not null check (headcount > 0),
-  founded       int  not null check (founded between 1850 and 2100),
-  stage         funding_stage not null,
-  workplace     workplace not null,
+  -- Null where the fact is not public. A real directory is built from
+  -- sourced rows, and a sourced row is routinely missing a headcount, a
+  -- founding year or a funding stage — inventing a plausible number to
+  -- satisfy a NOT NULL is how a directory stops being trustworthy.
+  headcount     int  check (headcount > 0),
+  founded       int  check (founded between 1850 and 2100),
+  stage         funding_stage,
+  -- Also null where unsourced: whether a company is on-site, hybrid or remote
+  -- is rarely stated anywhere citable, and guessing it misdescribes the job
+  -- somebody is deciding whether to apply for.
+  workplace     workplace,
   district_id   text not null references districts(id),
   address       text not null default '',
   zip           text not null default '',
@@ -172,6 +179,15 @@ create table if not exists saved_jobs (
   saved_at  timestamptz not null default now(),
   primary key (user_id, job_id)
 );
+
+-- The three facts above were NOT NULL in the first cut of this schema, when
+-- the only rows were the prototype's invented ones and every field could be
+-- filled in. Dropping the constraint is what lets a sourced company land with
+-- the gaps its sources actually have.
+alter table companies alter column headcount drop not null;
+alter table companies alter column founded   drop not null;
+alter table companies alter column stage     drop not null;
+alter table companies alter column workplace drop not null;
 
 -- ------------------------------------------------------------ claims
 -- Claiming a listing is a request, not an action. Approving it is the one

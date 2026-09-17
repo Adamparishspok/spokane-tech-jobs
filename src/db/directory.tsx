@@ -60,10 +60,10 @@ type CompanyRow = {
   about: string;
   hue: number;
   industry_id: string;
-  headcount: number;
-  founded: number;
-  stage: Stage;
-  workplace: Workplace;
+  headcount: number | null;
+  founded: number | null;
+  stage: Stage | null;
+  workplace: Workplace | null;
   district_id: DistrictId;
   address: string;
   zip: string;

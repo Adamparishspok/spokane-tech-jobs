@@ -1,0 +1,128 @@
+# Spokane Tech Jobs — the whole directory
+
+Source: https://spokanetechjobs.com
+Licence: CC BY 4.0, attribution to Spokane Tech Jobs
+Generated: 2026-09-17
+Companies: 9. Open roles: 0.
+
+Every field here is sourced from public records. A field that could not be
+sourced is absent rather than estimated.
+
+## Avista
+
+Investor-owned energy utility; runs a substantial in-house engineering and grid-technology organisation.
+
+Industry: Cleantech
+District: Logan
+Address: 1411 E Mission Ave, Spokane, WA 99202
+Founded: 1889
+Website: myavista.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/avista.html
+
+## Commerce Architects
+
+Ecommerce software development: application development, cloud modernisation and commerce platform work. B Corp.
+
+Industry: E-commerce
+District: Downtown
+Team: 45 people
+Founded: 2008
+Website: commerce-architects.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/commerce-architects.html
+
+## Corporate Tools
+
+Business infrastructure: entity formation, compliance filings, registered agent and the software behind them.
+
+Industry: Business software
+District: Downtown
+Address: 522 W Riverside Ave, Spokane, WA 99201
+Team: 1200 people
+Founded: 2014
+Website: corporatetools.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/corporate-tools.html
+
+## ENGIE Impact
+
+Sustainability and energy-spend analytics for large enterprises. Formerly Ecova.
+
+Industry: Data & analytics
+District: Kendall Yards
+Address: 1313 N Atlantic St, Suite 5000, Spokane, WA 99201
+Website: engieimpact.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/engie-impact.html
+
+## IntelliTect
+
+Software architecture and development consultancy; custom development, data and AI, cloud and integration.
+
+Industry: IT services
+District: Browne's Addition
+Address: 1720 W 4th Ave, Unit B, Spokane, WA 99201
+Website: intellitect.com
+Phone: (509) 315-3400
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/intellitect.html
+
+## Itron
+
+Utility and city resource measurement: electricity, gas and water metering, the networks behind them, and utility-grade SaaS.
+
+Industry: Cleantech
+District: Liberty Lake
+Address: 2111 N Molter Rd, Spokane, WA 99019
+Team: 5635 people
+Founded: 1977
+Website: itron.com
+Phone: (509) 924-9900
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/itron.html
+
+## Key Tronic
+
+Electronic manufacturing services and computer peripherals.
+
+Industry: Advanced manufacturing
+District: Spokane Valley
+Address: 4424 N Sullivan Rd, Spokane, WA 99216
+Team: 5447 people
+Founded: 1969
+Website: keytronic.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/key-tronic.html
+
+## Nuvodia
+
+Managed IT, cybersecurity and cloud services, with a healthcare and radiology imaging specialism.
+
+Industry: IT services
+District: Downtown
+Address: 801 S Stevens St, Spokane, WA 99204
+Website: nuvodia.com
+Phone: (509) 461-2596
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/nuvodia.html
+
+## Spiceology
+
+Direct-to-consumer spice company built on its own ecommerce stack.
+
+Industry: E-commerce
+District: East Central
+Address: 715 E Sprague Ave, Suite 115, Spokane, WA 99202
+Website: spiceology.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/spiceology.html

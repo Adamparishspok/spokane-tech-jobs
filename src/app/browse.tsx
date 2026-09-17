@@ -291,8 +291,12 @@ function CompanyRow({
         <p className="mt-1 flex items-center gap-1.5 text-[0.75rem] text-ink-4">
           <MapPin className="size-3" />
           {districtLabel(company.district)}
-          <span aria-hidden>·</span>
-          <span className="num">{sizeBand(company.headcount)}</span>
+          {sizeBand(company.headcount) !== null && (
+            <>
+              <span aria-hidden>·</span>
+              <span className="num">{sizeBand(company.headcount)}</span>
+            </>
+          )}
           <span aria-hidden>·</span>
           <span className="truncate">{company.industry}</span>
         </p>

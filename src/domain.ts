@@ -31,7 +31,9 @@ export type Industry =
   | "Data & analytics"
   | "Robotics"
   | "E-commerce"
-  | "Design studio";
+  | "Design studio"
+  | "Business software"
+  | "IT services";
 
 export type Stage =
   | "Bootstrapped"
@@ -53,10 +55,11 @@ export type Company = {
   tagline: string;
   about: string;
   industry: Industry;
-  headcount: number;
-  founded: number;
-  stage: Stage;
-  workplace: Workplace;
+  /** Null where the fact is not public — see the schema. */
+  headcount: number | null;
+  founded: number | null;
+  stage: Stage | null;
+  workplace: Workplace | null;
   district: DistrictId;
   address: string;
   zip: string;
@@ -76,7 +79,10 @@ export type Company = {
  * every company including a 1–10; a band that disagrees with the headcount
  * beside it is worse than no band.
  */
-export function sizeBand(headcount: number): SizeBand {
+export function sizeBand(headcount: number): SizeBand;
+export function sizeBand(headcount: number | null): SizeBand | null;
+export function sizeBand(headcount: number | null): SizeBand | null {
+  if (headcount === null) return null;
   if (headcount <= 10) return "1–10";
   if (headcount <= 50) return "11–50";
   if (headcount <= 200) return "51–200";
@@ -173,6 +179,12 @@ export const INDUSTRIES: Industry[] = [
   "Health tech",
   "Logistics",
   "Robotics",
+  /* Added when the directory moved to sourced companies: the largest
+     employers here are a metering manufacturer, two IT consultancies and a
+     compliance-software company, and forcing those into "Developer tools" to
+     fit the prototype's fifteen categories would mislabel them. */
+  "Business software",
+  "IT services",
 ];
 
 export const STAGES: Stage[] = [
