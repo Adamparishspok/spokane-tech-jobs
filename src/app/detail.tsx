@@ -9,13 +9,16 @@ import {
 } from "@kit/ui";
 import {
   ArrowUpRight,
+  BookOpen,
   Bookmark,
   Briefcase,
   Building2,
   CalendarDays,
   Check,
   ChevronLeft,
+  Flag,
   Globe,
+  Link2,
   Mail,
   MapPin,
   Phone,
@@ -26,6 +29,7 @@ import {
 import { useState } from "react";
 import {
   districtLabel,
+  hueFor,
   payRange,
   postedLabel,
   sizeBand,
@@ -35,6 +39,16 @@ import {
 } from "../domain";
 import { useViewer } from "../db/auth";
 import { useDirectory } from "../db/directory";
+import {
+  figure as findFigure,
+  isExact,
+  lifespan,
+  pastCompany,
+  PAST_KIND_LABEL,
+  sourceLabel,
+  type Figure,
+  type PastCompany,
+} from "../ecosystem";
 import { useMine } from "../db/mine";
 import { Monogram, logoFor } from "../design/brand";
 import { Fact, Panel, Tag } from "./chrome";
@@ -197,17 +211,21 @@ export function CompanyDetail({
                 <ArrowUpRight className="size-3.5" />
               </a>
             </Fact>
-            <Fact icon={<Mail />} label="Email">
-              <a
-                href={`mailto:${company.email}`}
-                className="font-medium text-brand-2 underline-offset-2 hover:underline"
-              >
-                {company.email}
-              </a>
-            </Fact>
-            <Fact icon={<Phone />} label="Phone">
-              <span className="num">{company.phone}</span>
-            </Fact>
+            {company.email && (
+              <Fact icon={<Mail />} label="Email">
+                <a
+                  href={`mailto:${company.email}`}
+                  className="font-medium text-brand-2 underline-offset-2 hover:underline"
+                >
+                  {company.email}
+                </a>
+              </Fact>
+            )}
+            {company.phone && (
+              <Fact icon={<Phone />} label="Phone">
+                <span className="num">{company.phone}</span>
+              </Fact>
+            )}
           </dl>
 
           <Separator className="my-5" />
@@ -535,6 +553,318 @@ export function PersonDetail({
         sees your message before you see their address.
       </p>
     </article>
+  );
+}
+
+/**
+ * A community figure: what they have built and where it is now.
+ *
+ * Not a profile. Nobody here signed up, so there is no "open to work", no
+ * years-of-experience count and no "get in touch" — every one of those would
+ * be a claim about a person the person never made.
+ */
+export function FigureDetail({
+  figure,
+  onCompany,
+  onPast,
+}: {
+  figure: Figure;
+  onCompany: (company: Company) => void;
+  onPast: (past: PastCompany) => void;
+}) {
+  const { company } = useDirectory();
+  const companies = figure.companies
+    .map((id) => company(id))
+    .filter((c): c is Company => c !== null);
+  const built = figure.history
+    .map((id) => pastCompany(id))
+    .filter((p): p is PastCompany => p !== null);
+
+  return (
+    <article className="px-5 py-4">
+      <header className="flex items-start gap-3">
+        <Monogram
+          name={figure.name}
+          hue={hueFor(figure.name)}
+          round
+          className="size-12 text-base"
+        />
+        <div className="min-w-0 flex-1">
+          <h2 className="text-lg leading-tight font-semibold tracking-tight text-ink">
+            {figure.name}
+          </h2>
+          <p className="text-[0.8125rem] text-ink-3">{figure.role}</p>
+        </div>
+      </header>
+
+      <p className="mt-4 text-sm leading-relaxed text-ink-2">
+        {figure.summary}
+      </p>
+
+      <section className="mt-5">
+        <SectionTitle>Roles</SectionTitle>
+        <ul className="mt-2 grid gap-1.5">
+          {figure.roles.map((role) => (
+            <li key={role} className="flex gap-2.5 text-sm text-ink-2">
+              <span
+                className="mt-2 size-1 shrink-0 rounded-full bg-ink-4"
+                aria-hidden
+              />
+              {role}
+            </li>
+          ))}
+        </ul>
+      </section>
+
+      {(companies.length > 0 || built.length > 0) && (
+        <section className="mt-5">
+          <SectionTitle>In the directory</SectionTitle>
+          <ul className="mt-2 grid grid-cols-[minmax(0,1fr)] gap-1">
+            {companies.map((c) => (
+              <li key={c.id}>
+                <LinkedRecord
+                  onClick={() => onCompany(c)}
+                  mark={
+                    <Monogram
+                      name={c.name}
+                      hue={c.hue}
+                      logo={c.logo ?? logoFor(c.id)}
+                      className="size-8"
+                    />
+                  }
+                  title={c.name}
+                  detail={c.tagline}
+                />
+              </li>
+            ))}
+            {built.map((p) => (
+              <li key={p.id}>
+                <LinkedRecord
+                  onClick={() => onPast(p)}
+                  mark={
+                    <Monogram
+                      name={p.name}
+                      hue={hueFor(p.name)}
+                      className="size-8 grayscale"
+                    />
+                  }
+                  title={p.name}
+                  detail={`${PAST_KIND_LABEL[p.kind]} · ${lifespan(p)}`}
+                />
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {figure.links.length > 0 && (
+        <section className="mt-5">
+          <SectionTitle>Links</SectionTitle>
+          <ul className="mt-2 grid gap-1.5">
+            {figure.links.map((link) => (
+              <li key={link.url}>
+                <a
+                  href={link.url}
+                  target="_blank"
+                  rel="noreferrer noopener"
+                  className="inline-flex items-center gap-1.5 text-sm font-medium text-brand-2 underline-offset-2 hover:underline"
+                >
+                  <Link2 className="size-3.5" />
+                  {link.label}
+                  <ArrowUpRight className="size-3.5" />
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      <Sources urls={figure.sources} note={figure.note} />
+    </article>
+  );
+}
+
+/**
+ * A company that is no longer trading on its own: what it did, how it ended,
+ * and — where there is one — what it lives on as.
+ */
+export function PastDetail({
+  past,
+  onCompany,
+  onFigure,
+}: {
+  past: PastCompany;
+  onCompany: (company: Company) => void;
+  onFigure: (figure: Figure) => void;
+}) {
+  const { company } = useDirectory();
+  const successor = past.successor ? company(past.successor) : null;
+  const people = past.people
+    .map((id) => findFigure(id))
+    .filter((f): f is Figure => f !== null);
+
+  return (
+    <article className="px-5 py-4">
+      <header className="flex items-start gap-3">
+        <Monogram
+          name={past.name}
+          hue={hueFor(past.name)}
+          className="size-12 text-base grayscale"
+        />
+        <div className="min-w-0 flex-1">
+          <h2 className="text-lg leading-tight font-semibold tracking-tight text-ink">
+            {past.name}
+          </h2>
+          <p className="text-[0.8125rem] text-ink-3">{past.what}</p>
+        </div>
+      </header>
+
+      <div className="mt-3 flex flex-wrap gap-1">
+        <Tag tone={past.kind === "exited" ? "brand" : "neutral"}>
+          {PAST_KIND_LABEL[past.kind]}
+        </Tag>
+        <Tag>
+          <span className="num">{lifespan(past)}</span>
+        </Tag>
+      </div>
+
+      <p className="mt-4 text-sm leading-relaxed text-ink-2">{past.outcome}</p>
+
+      <dl className="mt-5 grid gap-4">
+        {past.founded !== null && (
+          <Fact icon={<CalendarDays />} label="Founded">
+            <span className="num">{past.founded}</span>
+          </Fact>
+        )}
+        <Fact
+          icon={<Flag />}
+          label={past.kind === "exited" ? "Acquired" : "Closed"}
+        >
+          {past.year !== null ? (
+            <span className="num">{past.year}</span>
+          ) : (
+            "Not on record"
+          )}
+          {past.acquirer && <> by {past.acquirer}</>}
+        </Fact>
+        <Fact icon={<MapPin />} label="Based in">
+          {past.place}
+          {!isExact(past) && (
+            <span className="block text-[0.75rem] text-ink-4">
+              No street address was sourced; the pin marks the area.
+            </span>
+          )}
+        </Fact>
+      </dl>
+
+      {(successor || people.length > 0) && (
+        <section className="mt-5">
+          <SectionTitle>Connected</SectionTitle>
+          <ul className="mt-2 grid grid-cols-[minmax(0,1fr)] gap-1">
+            {successor && (
+              <li>
+                <LinkedRecord
+                  onClick={() => onCompany(successor)}
+                  mark={
+                    <Monogram
+                      name={successor.name}
+                      hue={successor.hue}
+                      logo={successor.logo ?? logoFor(successor.id)}
+                      className="size-8"
+                    />
+                  }
+                  title={successor.name}
+                  detail="What it lives on as today"
+                />
+              </li>
+            )}
+            {people.map((f) => (
+              <li key={f.id}>
+                <LinkedRecord
+                  onClick={() => onFigure(f)}
+                  mark={
+                    <Monogram
+                      name={f.name}
+                      hue={hueFor(f.name)}
+                      round
+                      className="size-8"
+                    />
+                  }
+                  title={f.name}
+                  detail={f.role}
+                />
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      <Sources urls={past.sources} />
+    </article>
+  );
+}
+
+function SectionTitle({ children }: { children: React.ReactNode }) {
+  return (
+    <h3 className="text-[0.6875rem] font-medium tracking-wide text-ink-4 uppercase">
+      {children}
+    </h3>
+  );
+}
+
+function LinkedRecord({
+  onClick,
+  mark,
+  title,
+  detail,
+}: {
+  onClick: () => void;
+  mark: React.ReactNode;
+  title: string;
+  detail: string;
+}) {
+  return (
+    <button
+      type="button"
+      onClick={onClick}
+      className="flex w-full items-center gap-3 rounded-card px-2 py-2 text-left transition-colors hover:bg-surface-2"
+    >
+      {mark}
+      <div className="min-w-0 flex-1">
+        <h4 className="truncate text-sm font-semibold text-ink">{title}</h4>
+        <p className="truncate text-[0.8125rem] text-ink-3">{detail}</p>
+      </div>
+    </button>
+  );
+}
+
+/**
+ * Where every sentence above came from. An editorial record that does not show
+ * its sources is an opinion with a layout.
+ */
+function Sources({ urls, note }: { urls: string[]; note?: string }) {
+  return (
+    <section className="mt-6 border-t border-line pt-4">
+      <SectionTitle>Sources</SectionTitle>
+      {note && (
+        <p className="mt-2 text-[0.75rem] leading-relaxed text-ink-4">{note}</p>
+      )}
+      <ul className="mt-2 grid grid-cols-[minmax(0,1fr)] gap-1">
+        {urls.map((url) => (
+          <li key={url}>
+            <a
+              href={url}
+              target="_blank"
+              rel="noreferrer noopener"
+              className="inline-flex items-center gap-1.5 text-[0.8125rem] text-ink-3 underline-offset-2 hover:text-ink hover:underline"
+            >
+              <BookOpen className="size-3.5 shrink-0" />
+              {sourceLabel(url)}
+            </a>
+          </li>
+        ))}
+      </ul>
+    </section>
   );
 }
 

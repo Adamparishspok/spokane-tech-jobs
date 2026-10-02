@@ -10,6 +10,7 @@ bun run dev          # http://localhost:5184
 bun run typecheck
 bun run db:push      # apply db/schema.sql
 bun run db:load-real # load db/research/real-companies.json, clear the seed
+bun run db:load-jobs # load db/research/real-jobs.json, expiring in 90 days
 bun run db:logos     # fetch each company's logo into public/logos
 bun run db:export    # rebuild the open data, llms.txt and the static pages
 bun run db:seed      # the prototype's demo directory, for a scratch branch
@@ -30,6 +31,13 @@ Every row is sourced from public records, and `db/research/real-companies.json`
 carries the source URLs for each one. A fact nobody has published is null rather
 than estimated, which is why `headcount`, `founded`, `stage` and `workplace` are
 all nullable and why the UI leaves out what it does not know.
+
+Open roles live in `db/research/real-jobs.json`: each one was read off the
+employer's own board with its posted pay range, and expires 90 days after it is
+loaded (or on the employer's closing date, if sooner). The Community and History
+tabs — people who shaped the scene, and the companies that were acquired or shut
+down — are editorial and ship with the app from `src/data/`, sourced the same
+way.
 
 **Corrections and additions are the most useful contribution.** A pull request
 that adds a company, or fixes a field, with the public source it came from, is

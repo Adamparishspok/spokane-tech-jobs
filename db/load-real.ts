@@ -3,7 +3,7 @@
  *
  *   bun run db:load-real
  *
- * `db/research/real-companies.json` is nine Spokane-area employers researched
+ * `db/research/real-companies.json` is the Spokane-area employers researched
  * from public sources, each row carrying the URLs it came from. This script
  * writes them and deletes the seed — the fictional companies, and the jobs and
  * people hung off them — in one pass.
@@ -44,6 +44,8 @@ type Researched = {
   phone: string | null;
   founded: number | null;
   headcount: number | null;
+  /** Only where a funding round is reported; the row's note cites it. */
+  stage?: string | null;
   what: string;
   sources: string[];
 };
@@ -63,6 +65,29 @@ const INDUSTRY: Record<string, string> = {
   Nuvodia: "IT services",
   "Commerce Architects": "E-commerce",
   Spiceology: "E-commerce",
+  "Gravity Jack": "IT services",
+  "Two Barrels": "Business software",
+  Treasury4: "Fintech",
+  OpenEye: "Cybersecurity",
+  Wagstaff: "Advanced manufacturing",
+  "Pearson Packaging Systems": "Robotics",
+  "Gestalt Diagnostics": "Health tech",
+  "14Four": "Design studio",
+  Seven2: "Design studio",
+  "Amphenol Network Solutions": "Advanced manufacturing",
+  "Accra-Fab": "Advanced manufacturing",
+  "MacKay Manufacturing": "Advanced manufacturing",
+  TierPoint: "IT services",
+  "Limelyte Technology Group": "IT services",
+  "Berg Companies": "Advanced manufacturing",
+  CarbonQuest: "Cleantech",
+  Medcurity: "Health tech",
+  "Impact Laboratories": "Cleantech",
+  BuyWander: "E-commerce",
+  "Litehouse Health": "Health tech",
+  "Blaze Barrier": "Advanced manufacturing",
+  "Credential Network": "Health tech",
+  VATA7: "Advanced manufacturing",
 };
 
 const slug = (name: string) =>
@@ -114,7 +139,7 @@ for (const c of file.companies) {
     ) values (
       ${slug(c.name)}, ${c.name}, ${taglineOf(c.what)}, ${c.what},
       ${hueOf(c.name)}, ${industryId(industry)}, ${c.headcount}, ${c.founded},
-      null, null, ${c.district}, ${c.address ?? ""}, ${c.zip ?? ""},
+      ${c.stage ?? null}::funding_stage, null, ${c.district}, ${c.address ?? ""}, ${c.zip ?? ""},
       ${c.lng}, ${c.lat}, ${c.website}, null, ${c.phone}, 'published'
     )
     on conflict (id) do update set
@@ -124,6 +149,7 @@ for (const c of file.companies) {
       industry_id = excluded.industry_id,
       headcount = excluded.headcount,
       founded = excluded.founded,
+      stage = excluded.stage,
       district_id = excluded.district_id,
       address = excluded.address,
       zip = excluded.zip,

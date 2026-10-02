@@ -68,7 +68,9 @@ const PAINT: { layer: string; prop: string; token: string }[] = [
 ];
 
 export type MapboxMap = {
-  on: (event: string, fn: () => void) => void;
+  /* Mapbox passes an event; `originalEvent` is set only when a person caused
+     the move, which is how a drag is told apart from this app's own ease. */
+  on: (event: string, fn: (e?: { originalEvent?: unknown }) => void) => void;
   remove: () => void;
   getCenter: () => { lng: number; lat: number };
   getZoom: () => number;
@@ -89,27 +91,31 @@ export function MapboxBasemap({
   camera,
   size,
   theme,
-  onCamera,
+  onUserMove,
+  onMoveEnd,
   onReady,
 }: {
   camera: Camera;
   size: Size;
   theme: "light" | "dark";
+  /** A person started moving the map — a drag, a wheel, a pinch. */
+  onUserMove: () => void;
   /**
-   * Fires on every move. `fromUser` is false while Mapbox is animating a
-   * camera this app pushed down, so the caller can keep the app's camera in
-   * step without treating its own `easeTo` as the reader panning the map.
+   * The camera once a move has settled. Deliberately not per frame: every
+   * report re-renders the app above the map, and Mapbox moves at 60Hz. The
+   * markers follow Mapbox frame by frame on their own, through its events.
    */
-  onCamera: (camera: Camera, fromUser: boolean) => void;
+  onMoveEnd: (camera: Camera) => void;
   /** Hands back Mapbox's own projector, replacing the local Mercator one. */
   onReady: (map: MapboxMap | null) => void;
 }) {
   const host = useRef<HTMLDivElement>(null);
   const map = useRef<MapboxMap | null>(null);
-  /* The camera prop is echoed back through onCamera, so without this every
-     user drag would be followed by the app pushing the pre-drag camera back
-     down and the map would fight the mouse. */
-  const selfMove = useRef(false);
+  /* The listeners below are registered once, at mount; reading the callbacks
+     through a ref keeps them from calling the first render's closures for the
+     lifetime of the map. */
+  const handlers = useRef({ onUserMove, onMoveEnd });
+  handlers.current = { onUserMove, onMoveEnd };
 
   useEffect(() => {
     if (!host.current || !MAPBOX_TOKEN) return;
@@ -145,13 +151,18 @@ export function MapboxBasemap({
       map.current = instance;
 
       instance.on("style.load", () => retone(instance!));
-      const report = () =>
-        onCamera(
-          { center: instance!.getCenter(), zoom: instance!.getZoom() },
-          !selfMove.current,
-        );
-      instance.on("move", report);
-      instance.on("moveend", report);
+      instance.on("movestart", (e) => {
+        if (e?.originalEvent) handlers.current.onUserMove();
+      });
+      /* The camera prop is echoed back from here, and the push-down effect
+         below compares against the live map before easing — so the echo of a
+         settled move is a no-op rather than the map fighting the mouse. */
+      instance.on("moveend", () =>
+        handlers.current.onMoveEnd({
+          center: instance!.getCenter(),
+          zoom: instance!.getZoom(),
+        }),
+      );
 
       /* Hand the projector over now rather than on `load`.
          `load` waits for the first tiles, and until it fires the marker layer
@@ -185,14 +196,11 @@ export function MapboxBasemap({
       Math.abs(here.lat - camera.center.lat) > 1e-6 ||
       Math.abs(m.getZoom() - camera.zoom) > 1e-3;
     if (!moved) return;
-    selfMove.current = true;
     m.easeTo({
       center: [camera.center.lng, camera.center.lat],
       zoom: camera.zoom,
       duration: 420,
     });
-    const t = setTimeout(() => (selfMove.current = false), 460);
-    return () => clearTimeout(t);
   }, [camera]);
 
   useEffect(() => {
