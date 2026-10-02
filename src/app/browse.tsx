@@ -1,9 +1,10 @@
 import { cn } from "@kit/lib/cn";
-import { Button } from "@kit/ui";
+import { Button, Segmented } from "@kit/ui";
 import { Building2, MapPin, MapPinOff, Plus, Users } from "lucide-react";
 import { useEffect, useRef } from "react";
 import {
   districtLabel,
+  hueFor,
   payRange,
   postedLabel,
   sizeBand,
@@ -12,6 +13,14 @@ import {
   type Person,
 } from "../domain";
 import { useDirectory } from "../db/directory";
+import {
+  lifespan,
+  pastCompany,
+  PAST_KIND_LABEL,
+  isExact,
+  type Figure,
+  type PastCompany,
+} from "../ecosystem";
 import { Monogram, logoFor } from "../design/brand";
 import { FirstDay, NoResults, Panel, PanelHeader, Tag } from "./chrome";
 import { EMPTY_QUERY, FilterBar, SearchField, type Query } from "./filters";
@@ -27,7 +36,11 @@ import { EMPTY_QUERY, FilterBar, SearchField, type Query } from "./filters";
  * list.
  */
 
-export type Tab = "companies" | "jobs" | "people";
+export type Tab = "companies" | "jobs" | "people" | "community" | "history";
+
+/** The two tabs read from the editorial records rather than the database. */
+export const isEditorial = (tab: Tab) =>
+  tab === "community" || tab === "history";
 
 const TAB_COPY: Record<Tab, { title: string; noun: string; search: string }> = {
   companies: {
@@ -37,6 +50,16 @@ const TAB_COPY: Record<Tab, { title: string; noun: string; search: string }> = {
   },
   jobs: { title: "Jobs", noun: "role", search: "Search roles, companies…" },
   people: { title: "People", noun: "person", search: "Search people, skills…" },
+  community: {
+    title: "Community",
+    noun: "person",
+    search: "Search people, companies…",
+  },
+  history: {
+    title: "History",
+    noun: "company",
+    search: "Search exits, closures, acquirers…",
+  },
 };
 
 export function BrowsePanel({
@@ -46,13 +69,15 @@ export function BrowsePanel({
   companies,
   jobs,
   people,
+  figures,
+  past,
   selectedId,
   hoveredId,
   onSelect,
   onHover,
   onAdd,
   companyOf,
-  firstDay,
+  firstDay: noData,
 }: {
   tab: Tab;
   query: Query;
@@ -60,6 +85,8 @@ export function BrowsePanel({
   companies: Company[];
   jobs: Job[];
   people: Person[];
+  figures: Figure[];
+  past: PastCompany[];
   selectedId: string | null;
   hoveredId: string | null;
   onSelect: (id: string) => void;
@@ -71,12 +98,17 @@ export function BrowsePanel({
 }) {
   const { jobsAt } = useDirectory();
   const copy = TAB_COPY[tab];
-  const count =
-    tab === "companies"
-      ? companies.length
-      : tab === "jobs"
-        ? jobs.length
-        : people.length;
+  const editorial = isEditorial(tab);
+  /* The editorial tabs ship with the app, so an empty database is not a
+     first day for them. */
+  const firstDay = noData && !editorial;
+  const count = {
+    companies: companies.length,
+    jobs: jobs.length,
+    people: people.length,
+    community: figures.length,
+    history: past.length,
+  }[tab];
 
   const empty = count === 0;
 
@@ -86,7 +118,11 @@ export function BrowsePanel({
      than left to be discovered — and the people it concerns are exactly the
      ones most likely to be looking. */
   const offMap =
-    tab === "people" ? people.filter((p) => !p.companyId).length : 0;
+    tab === "people"
+      ? people.filter((p) => !p.companyId).length
+      : tab === "history"
+        ? past.filter((p) => !isExact(p)).length
+        : 0;
 
   return (
     <Panel className="pointer-events-auto w-[23rem] shrink-0">
@@ -95,19 +131,21 @@ export function BrowsePanel({
         count={count}
         noun={copy.noun}
         actions={
-          <Button size="sm" variant="accent" onClick={onAdd}>
-            <Plus />
-            {/* On the first day there is nothing to post a job against, so
+          !editorial && (
+            <Button size="sm" variant="accent" onClick={onAdd}>
+              <Plus />
+              {/* On the first day there is nothing to post a job against, so
                 the header offers the same thing the empty state does rather
                 than contradicting it. */}
-            {firstDay && tab === "jobs"
-              ? "Add"
-              : tab === "jobs"
-                ? "Post a job"
-                : tab === "companies"
-                  ? "Add"
-                  : "Profile"}
-          </Button>
+              {firstDay && tab === "jobs"
+                ? "Add"
+                : tab === "jobs"
+                  ? "Post a job"
+                  : tab === "companies"
+                    ? "Add"
+                    : "Profile"}
+            </Button>
+          )
         }
       >
         <div className="mt-3">
@@ -119,23 +157,53 @@ export function BrowsePanel({
         </div>
         {/* Filters are hidden on the first day. Four pills that can only ever
             narrow nothing to nothing are not a control, they are furniture. */}
-        {!firstDay && <FilterBar tab={tab} query={query} onQuery={onQuery} />}
+        {tab === "history" ? (
+          <div className="mt-3">
+            <Segmented
+              size="sm"
+              className="w-full"
+              aria-label="Exits or closures"
+              value={query.pastKind}
+              onChange={(pastKind) => onQuery({ ...query, pastKind })}
+              items={[
+                { value: "all", label: "All" },
+                { value: "exited", label: "Exits" },
+                { value: "closed", label: "Graveyard" },
+              ]}
+            />
+          </div>
+        ) : (
+          !firstDay &&
+          !editorial && <FilterBar tab={tab} query={query} onQuery={onQuery} />
+        )}
 
         {offMap > 0 && (
           <p className="mt-2.5 flex items-start gap-1.5 text-[0.75rem] leading-relaxed text-ink-4">
             <MapPinOff className="mt-px size-3.5 shrink-0" />
-            <span>
-              <span className="num">{offMap}</span> of these{" "}
-              {offMap === 1 ? "is" : "are"} between roles, so{" "}
-              {offMap === 1 ? "it has" : "they have"} no pin on the map.
-            </span>
+            {tab === "history" ? (
+              <span>
+                <span className="num">{offMap}</span> of these{" "}
+                {offMap === 1 ? "has" : "have"} no sourced street address, so{" "}
+                {offMap === 1 ? "its pin marks" : "their pins mark"} the area,
+                not the building.
+              </span>
+            ) : (
+              <span>
+                <span className="num">{offMap}</span> of these{" "}
+                {offMap === 1 ? "is" : "are"} between roles, so{" "}
+                {offMap === 1 ? "it has" : "they have"} no pin on the map.
+              </span>
+            )}
           </p>
         )}
       </PanelHeader>
 
       {empty ? (
-        firstDay ? (
-          <FirstDay tab={tab} onAdd={onAdd} />
+        firstDay && !editorial ? (
+          <FirstDay
+            tab={tab as "companies" | "jobs" | "people"}
+            onAdd={onAdd}
+          />
         ) : (
           <NoResults noun={copy.noun} onClear={() => onQuery(EMPTY_QUERY)} />
         )
@@ -174,6 +242,31 @@ export function BrowsePanel({
                   key={p.id}
                   person={p}
                   company={p.companyId ? companyOf(p.companyId) : null}
+                  selected={p.id === selectedId}
+                  hovered={p.id === hoveredId}
+                  onSelect={onSelect}
+                  onHover={onHover}
+                />
+              ))}
+            {tab === "community" &&
+              figures.map((f) => (
+                <FigureRow
+                  key={f.id}
+                  figure={f}
+                  selected={f.id === selectedId}
+                  hovered={
+                    f.id === hoveredId ||
+                    (hoveredId !== null && f.companies.includes(hoveredId))
+                  }
+                  onSelect={onSelect}
+                  onHover={onHover}
+                />
+              ))}
+            {tab === "history" &&
+              past.map((p) => (
+                <PastRow
+                  key={p.id}
+                  past={p}
                   selected={p.id === selectedId}
                   hovered={p.id === hoveredId}
                   onSelect={onSelect}
@@ -273,7 +366,11 @@ function CompanyRow({
 
   return (
     <Row id={company.id} label={company.name} {...rest}>
-      <Monogram name={company.name} hue={company.hue} logo={company.logo ?? logoFor(company.id)} />
+      <Monogram
+        name={company.name}
+        hue={company.hue}
+        logo={company.logo ?? logoFor(company.id)}
+      />
       <div className="min-w-0 flex-1">
         <div className="flex items-baseline gap-2">
           <h3 className="truncate text-sm font-semibold text-ink">
@@ -319,7 +416,11 @@ function JobRow({
 }) {
   return (
     <Row id={job.id} label={`${job.title} at ${company.name}`} {...rest}>
-      <Monogram name={company.name} hue={company.hue} logo={company.logo ?? logoFor(company.id)} />
+      <Monogram
+        name={company.name}
+        hue={company.hue}
+        logo={company.logo ?? logoFor(company.id)}
+      />
       <div className="min-w-0 flex-1">
         <h3 className="text-sm leading-snug font-semibold text-ink">
           {job.title}
@@ -381,6 +482,82 @@ function PersonRow({
         </p>
         <p className="mt-1 truncate text-[0.75rem] text-ink-4">
           {person.skills.slice(0, 3).join(" · ")}
+        </p>
+      </div>
+    </Row>
+  );
+}
+
+function FigureRow({
+  figure,
+  ...rest
+}: {
+  figure: Figure;
+  selected: boolean;
+  hovered: boolean;
+  onSelect: (id: string) => void;
+  onHover: (id: string | null) => void;
+}) {
+  /* What they built, by name — the reason anybody in this list is in it. */
+  const built = figure.history
+    .map((id) => pastCompany(id)?.name)
+    .filter(Boolean);
+
+  return (
+    <Row id={figure.id} label={figure.name} {...rest}>
+      <Monogram name={figure.name} hue={hueFor(figure.name)} round />
+      <div className="min-w-0 flex-1">
+        <h3 className="truncate text-sm font-semibold text-ink">
+          {figure.name}
+        </h3>
+        <p className="truncate text-[0.8125rem] text-ink-3">{figure.role}</p>
+        {built.length > 0 && (
+          <p className="mt-1 truncate text-[0.75rem] text-ink-4">
+            Built {built.join(" · ")}
+          </p>
+        )}
+      </div>
+    </Row>
+  );
+}
+
+function PastRow({
+  past,
+  ...rest
+}: {
+  past: PastCompany;
+  selected: boolean;
+  hovered: boolean;
+  onSelect: (id: string) => void;
+  onHover: (id: string | null) => void;
+}) {
+  return (
+    <Row id={past.id} label={past.name} {...rest}>
+      {/* Desaturated: the mark of something that is no longer trading, in
+          the same tile every live company gets. */}
+      <Monogram
+        name={past.name}
+        hue={hueFor(past.name)}
+        className="grayscale"
+      />
+      <div className="min-w-0 flex-1">
+        <div className="flex items-baseline gap-2">
+          <h3 className="truncate text-sm font-semibold text-ink">
+            {past.name}
+          </h3>
+          <span className="ml-auto shrink-0">
+            <Tag tone={past.kind === "exited" ? "brand" : "neutral"}>
+              {PAST_KIND_LABEL[past.kind]}
+            </Tag>
+          </span>
+        </div>
+        <p className="truncate text-[0.8125rem] text-ink-3">{past.what}</p>
+        <p className="mt-1 flex items-center gap-1.5 text-[0.75rem] text-ink-4">
+          <span className="num">{lifespan(past)}</span>
+          <span aria-hidden>·</span>
+          <span className="truncate">
+            {past.acquirer ? `to ${past.acquirer}` : past.place}
+          </span>
         </p>
       </div>
     </Row>

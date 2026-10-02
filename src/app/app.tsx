@@ -2,24 +2,47 @@ import { logoFor } from "../design/brand";
 import { PortalHost } from "@kit/lib/portal-host";
 import { ThemeProvider, useTheme } from "@kit/lib/theme";
 import { TooltipProvider } from "@kit/ui";
-import { Briefcase, Building2, Users } from "lucide-react";
+import { Briefcase, Building2, History, Sparkles, Users } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
-import { type Company, type Job, type Person } from "../domain";
+import { hueFor, type Company, type Job, type Person } from "../domain";
+import {
+  FIGURES,
+  PAST,
+  figure as findFigure,
+  pastCompany,
+  placeOf,
+  type Figure,
+  type PastCompany,
+} from "../ecosystem";
 import { signOut, useViewer } from "../db/auth";
 import { useDirectory, type Directory } from "../db/directory";
 import { Specimen } from "../design/specimen";
 import { MapView, type Padding, type Pin } from "../map/map-view";
-import { fit, viewportBounds, type Camera } from "../map/projection";
+import {
+  fit,
+  viewportBounds,
+  type Camera,
+  type LngLat,
+} from "../map/projection";
 import { HOME } from "../map/spokane";
 import { AuthDialog, Unreachable } from "./auth";
-import { BrowsePanel, EcosystemStrip, type Tab } from "./browse";
+import { BrowsePanel, EcosystemStrip, isEditorial, type Tab } from "./browse";
 import { Rail, Shell, type RailItem } from "./chrome";
-import { CompanyDetail, DetailPanel, JobDetail, PersonDetail } from "./detail";
+import {
+  CompanyDetail,
+  DetailPanel,
+  FigureDetail,
+  JobDetail,
+  PastDetail,
+  PersonDetail,
+} from "./detail";
 import { AddCompany, EditProfile, PostJob } from "./forms";
 import {
   EMPTY_QUERY,
   filterCompanies,
+  filterFigures,
   filterJobs,
+  filterPast,
   filterPeople,
   type Query,
 } from "./filters";
@@ -48,6 +71,8 @@ const NAV: RailItem[] = [
   { id: "companies", label: "Companies", icon: <Building2 /> },
   { id: "jobs", label: "Jobs", icon: <Briefcase /> },
   { id: "people", label: "People", icon: <Users /> },
+  { id: "community", label: "Community", icon: <Sparkles /> },
+  { id: "history", label: "History", icon: <History /> },
 ];
 
 /** What the detail column is showing. */
@@ -55,6 +80,8 @@ type Selection =
   | { kind: "company"; id: string }
   | { kind: "job"; id: string }
   | { kind: "person"; id: string }
+  | { kind: "figure"; id: string }
+  | { kind: "past"; id: string }
   | null;
 
 /* The panels' footprint, so `fit` and the map controls stay clear of them.
@@ -139,6 +166,8 @@ function Root() {
     () => filterPeople(people, query, (id) => companyOf(id) ?? null),
     [people, query, companyOf],
   );
+  const shownFigures = useMemo(() => filterFigures(FIGURES, query), [query]);
+  const shownPast = useMemo(() => filterPast(PAST, query), [query]);
 
   /**
    * Pins.
@@ -182,6 +211,41 @@ function Root() {
       });
     }
 
+    if (tab === "community") {
+      /* A figure has no address of their own; their mark is the company they
+         are part of now, where that company is in the directory. */
+      const byCompany = new Map<string, number>();
+      for (const f of shownFigures)
+        for (const id of f.companies)
+          if (findCompany(id)) byCompany.set(id, (byCompany.get(id) ?? 0) + 1);
+      return [...byCompany].map(([id, count]) => {
+        const c = companyOf(id);
+        return {
+          id: c.id,
+          at: { lng: c.lng, lat: c.lat },
+          label: c.name,
+          logo: c.logo ?? logoFor(c.id),
+          hue: c.hue,
+          count,
+          unit: "person",
+          hiring: false,
+        };
+      });
+    }
+
+    if (tab === "history") {
+      return shownPast.map((p) => ({
+        id: p.id,
+        at: placeOf(p),
+        label: p.name,
+        logo: null,
+        hue: hueFor(p.name),
+        unit: "company",
+        hiring: false,
+        ghost: true,
+      }));
+    }
+
     const byCompany = new Map<string, number>();
     for (const person of shownPeople)
       if (person.companyId)
@@ -204,7 +268,16 @@ function Root() {
         hiring: false,
       };
     });
-  }, [tab, shownCompanies, shownJobs, shownPeople, companyOf]);
+  }, [
+    tab,
+    shownCompanies,
+    shownJobs,
+    shownPeople,
+    shownFigures,
+    shownPast,
+    companyOf,
+    findCompany,
+  ]);
 
   /**
    * What the map and the list agree is highlighted.
@@ -220,11 +293,19 @@ function Root() {
         ? (jobs.find((j) => j.id === selection.id)?.companyId ?? null)
         : selection?.kind === "person"
           ? (people.find((p) => p.id === selection.id)?.companyId ?? null)
-          : null;
+          : selection?.kind === "figure"
+            ? (findFigure(selection.id)?.companies[0] ?? null)
+            : /* A History pin is the past company itself. */
+              selection?.kind === "past"
+              ? selection.id
+              : null;
 
   const hoveredCompanyId = useMemo(() => {
     if (!hovered) return null;
     if (findCompany(hovered)) return hovered;
+    if (pastCompany(hovered)) return hovered;
+    const fig = findFigure(hovered);
+    if (fig) return fig.companies[0] ?? null;
     const job = jobs.find((j) => j.id === hovered);
     if (job) return job.companyId;
     const person = people.find((p) => p.id === hovered);
@@ -234,6 +315,12 @@ function Root() {
   /* ---- selection ------------------------------------------------------- */
 
   const select = (id: string) => {
+    if (tab === "history" && pastCompany(id))
+      return setSelection({ kind: "past", id });
+    if (tab === "community") {
+      if (findFigure(id)) return setSelection({ kind: "figure", id });
+      return setSelection({ kind: "company", id });
+    }
     if (tab === "jobs") {
       const job = jobs.find((j) => j.id === id);
       if (job) return setSelection({ kind: "job", id });
@@ -258,14 +345,21 @@ function Root() {
    */
   useEffect(() => {
     if (!selectedCompanyId) return;
-    const c = findCompany(selectedCompanyId);
+    const past = pastCompany(selectedCompanyId);
+    const c: LngLat | null =
+      findCompany(selectedCompanyId) ?? (past && placeOf(past));
     if (!c) return;
     /* A single point has no extent, so `fit` would take it to the top of the
        zoom range and land on a street corner. What is wanted is the
        neighbourhood: close enough to see where the company is, far enough to
        see what it is near. Pinning both limits to one value turns `fit` into
        "recentre, with the panels accounted for", which is the whole job. */
-    const zoom = Math.min(Math.max(camera.zoom, 13.4), 14.4);
+    /* A History pin often shares its area's centre with others, and they only
+       fan apart past the clustering zoom — so it goes all the way in. */
+    const zoom =
+      selection?.kind === "past"
+        ? 14.4
+        : Math.min(Math.max(camera.zoom, 13.4), 14.4);
     const next = fit(
       [{ lng: c.lng, lat: c.lat }],
       mapSize.current,
@@ -285,6 +379,8 @@ function Root() {
     setHovered(null);
   };
 
+  /* The viewport filter narrows the database tabs. The editorial tabs are a
+     few dozen rows, most without a street address, so it is not offered. */
   const searchArea = () =>
     setQuery((q) => ({ ...q, area: viewportBounds(camera, mapSize.current) }));
 
@@ -358,7 +454,7 @@ function Root() {
                 onHover={setHovered}
                 padding={selection ? PANEL_PAD_DETAIL : PANEL_PAD}
                 theme={resolved}
-                onSearchArea={searchArea}
+                onSearchArea={isEditorial(tab) ? undefined : searchArea}
                 areaSearched={query.area !== null}
                 /* The strip sits in the same top-centre slot; 44px of pill
                    plus a 12px gap puts "Search this area" under it. */
@@ -374,6 +470,8 @@ function Root() {
                   companies={shownCompanies}
                   jobs={shownJobs}
                   people={shownPeople}
+                  figures={shownFigures}
+                  past={shownPast}
                   selectedId={
                     selection?.kind === "company"
                       ? selection.id
@@ -412,7 +510,8 @@ function Root() {
                   <DetailPanel
                     onClose={() => setSelection(null)}
                     onBack={
-                      selected.kind !== "company" && selectedCompanyId
+                      (selected.kind === "job" || selected.kind === "person") &&
+                      selectedCompanyId
                         ? () =>
                             setSelection({
                               kind: "company",
@@ -440,6 +539,28 @@ function Root() {
                         onSignIn={() => setAuthOpen(true)}
                         onCompany={(c: Company) =>
                           setSelection({ kind: "company", id: c.id })
+                        }
+                      />
+                    )}
+                    {selected.kind === "figure" && (
+                      <FigureDetail
+                        figure={selected.figure}
+                        onCompany={(c: Company) =>
+                          setSelection({ kind: "company", id: c.id })
+                        }
+                        onPast={(p: PastCompany) =>
+                          setSelection({ kind: "past", id: p.id })
+                        }
+                      />
+                    )}
+                    {selected.kind === "past" && (
+                      <PastDetail
+                        past={selected.past}
+                        onCompany={(c: Company) =>
+                          setSelection({ kind: "company", id: c.id })
+                        }
+                        onFigure={(f: Figure) =>
+                          setSelection({ kind: "figure", id: f.id })
                         }
                       />
                     )}
@@ -497,6 +618,16 @@ function resolve(selection: Selection, d: Directory) {
     const company = job && d.company(job.companyId);
     if (!job || !company) return null;
     return { kind: "job", job, company } as const;
+  }
+
+  if (selection.kind === "figure") {
+    const figure = findFigure(selection.id);
+    return figure ? ({ kind: "figure", figure } as const) : null;
+  }
+
+  if (selection.kind === "past") {
+    const past = pastCompany(selection.id);
+    return past ? ({ kind: "past", past } as const) : null;
   }
 
   const person = d.people.find((p) => p.id === selection.id);

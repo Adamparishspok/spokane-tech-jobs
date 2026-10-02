@@ -16,6 +16,7 @@ import {
   type SizeBand,
   type Workplace,
 } from "../domain";
+import type { Figure, PastCompany, PastKind } from "../ecosystem";
 import { within, type Bounds } from "../map/projection";
 
 /**
@@ -41,6 +42,8 @@ export type Query = {
   hiringOnly: boolean;
   /** People only: listed *and* looking. */
   openToOnly: boolean;
+  /** History only: exits, the graveyard, or both. */
+  pastKind: PastKind | "all";
   /**
    * The map viewport, when the person has asked for it. Null means the whole
    * region — panning the map does not silently drop results, it offers to.
@@ -56,6 +59,7 @@ export const EMPTY_QUERY: Query = {
   disciplines: [],
   hiringOnly: false,
   openToOnly: false,
+  pastKind: "all",
   area: null,
 };
 
@@ -67,6 +71,7 @@ export const isFiltered = (q: Query) =>
   q.disciplines.length > 0 ||
   q.hiringOnly ||
   q.openToOnly ||
+  q.pastKind !== "all" ||
   q.area !== null;
 
 const match = (haystack: string[], text: string) => {
@@ -149,6 +154,24 @@ export function filterPeople(
 }
 
 /* ---- the bar ----------------------------------------------------------- */
+
+/** Community figures answer to the search text and nothing else. */
+export function filterFigures(figures: Figure[], q: Query): Figure[] {
+  return figures.filter((f) =>
+    match([f.name, f.role, f.summary, ...f.roles], q.text),
+  );
+}
+
+export function filterPast(past: PastCompany[], q: Query): PastCompany[] {
+  return past.filter(
+    (p) =>
+      (q.pastKind === "all" || p.kind === q.pastKind) &&
+      match(
+        [p.name, p.what, p.outcome, p.place, p.acquirer ?? "", String(p.year)],
+        q.text,
+      ),
+  );
+}
 
 export function SearchField({
   value,

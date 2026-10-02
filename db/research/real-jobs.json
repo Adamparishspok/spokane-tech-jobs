@@ -1,0 +1,290 @@
+{
+  "_about": "Open roles at Spokane-area companies in the directory, each one read off the employer's own board or ATS feed on 2026-10-02 and carrying the URL it came from. title, pay and posted date are the posting's own; pay_posted is the range exactly as the employer wrote it.",
+  "_classification": "discipline, level and workplace are the posting mapped onto this board's closed vocabularies, not facts the employer stated in those words. Where the posting gave no workplace at all the role is left out rather than guessed.",
+  "_expiry": "db/load-jobs.ts expires every row 90 days after the load, or on closes_at where the employer published a closing date, whichever is sooner.",
+  "_excluded": "Seen and left out: IntelliTect 'Product Sales Manager – Case Amplify' and Key Tronic 'Senior Program Manager' (no pay range on the employer's page; the schema requires one). Corporate Tools' Spokane roles (posted as 'Up to $X' with no floor). Itron 'Senior Product Manager' (Austin-primary, no workplace stated). OpenEye 'Technical Product Manager' (no workplace stated). Spiceology 'FSQA Coordinator' (food safety, not a tech role). ENGIE Impact, Gravity Jack and Treasury4 had no verifiable Spokane postings on their own sites.",
+  "jobs": [
+    {
+      "id": "commerce-architects-principal-sales-ae",
+      "company": "commerce-architects",
+      "title": "Principal Sales Account Executive",
+      "discipline": "Sales", "level": "Staff", "employment": "Full-time", "workplace": "Remote-first",
+      "pay_low": 150000, "pay_high": 175000, "hourly": false,
+      "pay_posted": "$150,000 – $175,000 per year, plus commission (on-target earnings of approximately $300,000)",
+      "summary": "The company's first principal sales hire: a hunter seat with no inherited book, no inbound and no SDR, building new-logo services revenue for a 15-year custom software consultancy.",
+      "responsibilities": [
+        "Build and run a sales strategy toward a $3M annual new-logo services target, mostly self-sourced",
+        "Own six-figure custom software deals end to end, from prospecting through negotiation",
+        "Scope ambiguous engagements with the solutions architects",
+        "Report pipeline health and forecast weekly to the COO"
+      ],
+      "requirements": [
+        "Seven or more years as an account executive selling services engagements",
+        "Over $5M of cloud, ecommerce or custom software services closed in the last three years",
+        "Several engagements closed at $250K+ ACV with Director, VP or C-level buyers",
+        "A portable network in retail, ecommerce, supply chain, travel, health or financial services"
+      ],
+      "apply_url": "https://jobs.lever.co/commercearchitects/969a6423-bae0-4047-b00b-470a1c50aa9a",
+      "posted_at": "2026-08-19T00:00:00Z",
+      "closes_at": null,
+      "sources": ["https://api.lever.co/v0/postings/commercearchitects?mode=json"]
+    },
+    {
+      "id": "commerce-architects-senior-software-engineer",
+      "company": "commerce-architects",
+      "title": "Senior Software Engineer",
+      "discipline": "Engineering", "level": "Senior", "employment": "Full-time", "workplace": "Remote-first",
+      "pay_low": 120000, "pay_high": 180000, "hourly": false,
+      "pay_posted": "$120,000 – $180,000 per year",
+      "summary": "Lead large functional areas of client projects, shape architecture and mentor engineers, hired at one of two senior levels depending on experience.",
+      "responsibilities": [
+        "Lead the design, estimation and delivery of complex features",
+        "Drive architectural direction and break large initiatives into workable pieces",
+        "Mentor junior and mid-level engineers",
+        "Act as a trusted technical advisor to client executives"
+      ],
+      "requirements": [
+        "Four to seven years of professional software development with growing technical leadership",
+        "SQL and NoSQL databases, including performance work",
+        "CI/CD and infrastructure as code (Terraform, CloudFormation or AWS CDK)",
+        "Authorized to work in the US without sponsorship"
+      ],
+      "apply_url": "https://jobs.lever.co/commercearchitects/519984f5-40c0-47d6-bd10-241d88659ebf",
+      "posted_at": "2025-09-26T00:00:00Z",
+      "closes_at": null,
+      "sources": ["https://api.lever.co/v0/postings/commercearchitects?mode=json"]
+    },
+    {
+      "id": "commerce-architects-software-engineer-1",
+      "company": "commerce-architects",
+      "title": "Software Engineer (1-3 Years Experience)",
+      "discipline": "Engineering", "level": "Junior", "employment": "Full-time", "workplace": "Remote-first",
+      "pay_low": 85000, "pay_high": 105000, "hourly": false,
+      "pay_posted": "$85,000 – $105,000 per year",
+      "summary": "Implement features and contribute to the design of cloud applications for enterprise clients, across several technology stacks.",
+      "responsibilities": [
+        "Build complex features autonomously, with strong testing and clear documentation",
+        "Contribute to component design and architecture discussions",
+        "Work across client stacks — Java, React, AWS and Terraform among them"
+      ],
+      "requirements": [
+        "One to three years of professional software development",
+        "Object-oriented programming and testing practice",
+        "SQL or NoSQL databases, CI/CD and version control",
+        "Authorized to work in the US without sponsorship"
+      ],
+      "apply_url": "https://jobs.lever.co/commercearchitects/ec4bd3b5-3219-4524-805a-d9dff354c5ec",
+      "posted_at": "2025-03-04T00:00:00Z",
+      "closes_at": null,
+      "sources": ["https://api.lever.co/v0/postings/commercearchitects?mode=json"]
+    },
+    {
+      "id": "itron-intern-data-science-jr102942",
+      "company": "itron",
+      "title": "Intern - Data Science, Distributed Intelligence",
+      "discipline": "Data", "level": "Junior", "employment": "Internship", "workplace": "Hybrid",
+      "pay_low": 15.87, "pay_high": 44.23, "hourly": true,
+      "pay_posted": "Liberty Lake, WA: $15.87 - $44.23 per hour",
+      "summary": "Summer 2027 internship with the Distributed Intelligence data science team, supporting grid optimization, asset management and distributed-energy integration work.",
+      "responsibilities": [
+        "Support data and ML pipelines that run in production",
+        "Clean, prepare and validate datasets in the tens to hundreds of gigabytes",
+        "Run exploratory analysis with senior team members and present what it shows"
+      ],
+      "requirements": [
+        "Enrolled in a bachelor's program in statistics, data science, applied math, computer science or similar",
+        "Intermediate Python and SQL",
+        "Experience using AI agent-driven tools for development, testing or code review"
+      ],
+      "apply_url": "https://itron.wd5.myworkdayjobs.com/Itron/job/United-States-of-America-Washington-Liberty-Lake/Intern---Data-Science--Distributed-Intelligence_JR102942",
+      "posted_at": "2026-09-29T00:00:00Z",
+      "closes_at": null,
+      "sources": ["https://itron.wd5.myworkdayjobs.com/wday/cxs/itron/Itron/job/United-States-of-America-Washington-Liberty-Lake/Intern---Data-Science--Distributed-Intelligence_JR102942"]
+    },
+    {
+      "id": "itron-intern-ai-jr102924",
+      "company": "itron",
+      "title": "Intern - Artificial Intelligence",
+      "discipline": "Engineering", "level": "Junior", "employment": "Internship", "workplace": "On-site",
+      "pay_low": 17.13, "pay_high": 44.23, "hourly": true,
+      "pay_posted": "Liberty Lake, WA: hourly, state minimum up to $44.23/hr",
+      "summary": "Internship with Itron's Information Security team applying AI, automation and security engineering practice — part-time in the academic year, full-time in summer 2027. Not remote; Liberty Lake preferred.",
+      "responsibilities": [
+        "Help develop, test and document AI-enabled security tools and prototypes",
+        "Automate security engineering tasks, data collection and reporting with scripts and APIs",
+        "Analyze security data for patterns, anomalies and threats"
+      ],
+      "requirements": [
+        "Enrolled in cybersecurity, computer science, software engineering, data science, AI or a related degree",
+        "Intermediate Python, PowerShell, JavaScript or C#",
+        "Foundational security knowledge: identity, cloud, endpoint and networking"
+      ],
+      "apply_url": "https://itron.wd5.myworkdayjobs.com/Itron/job/United-States-of-America-Washington-Liberty-Lake/Intern---Artificial-Intelligence_JR102924",
+      "posted_at": "2026-09-29T00:00:00Z",
+      "closes_at": null,
+      "note": "The posting's floor is 'state minimum'; pay_low is Washington's 2026 statewide minimum wage of $17.13.",
+      "sources": ["https://itron.wd5.myworkdayjobs.com/Itron/job/United-States-of-America-Washington-Liberty-Lake/Intern---Artificial-Intelligence_JR102924", "https://lni.wa.gov/workers-rights/wages/minimum-wage/"]
+    },
+    {
+      "id": "two-barrels-software-engineer",
+      "company": "two-barrels",
+      "title": "Software Engineer",
+      "discipline": "Engineering", "level": "Mid", "employment": "Full-time", "workplace": "Remote-first",
+      "pay_low": 90000, "pay_high": 140000, "hourly": false,
+      "pay_posted": "$90,000 - $140,000/year DOE",
+      "summary": "A broad Ruby on Rails engineering role: maintaining legacy code, building high-traffic applications and designing new systems from scratch. Remote, or from the Spokane, Austin or Salt Lake City offices.",
+      "responsibilities": [
+        "Build software in Ruby, JavaScript and on AWS",
+        "Design and build high-traffic Rails applications",
+        "Help design new systems from scratch"
+      ],
+      "requirements": [
+        "BS in computer science or equivalent professional experience",
+        "Two or more years of front-end web development — HTML, CSS, JavaScript",
+        "CI/CD, Docker or similar tooling"
+      ],
+      "apply_url": "https://www.twobarrels.com/jobs/software/software-engineer/",
+      "posted_at": null,
+      "closes_at": null,
+      "sources": ["https://www.twobarrels.com/jobs/software/software-engineer/"]
+    },
+    {
+      "id": "two-barrels-marketing-manager",
+      "company": "two-barrels",
+      "title": "Marketing Manager",
+      "discipline": "Sales", "level": "Lead", "employment": "Full-time", "workplace": "Remote-first",
+      "pay_low": 100000, "pay_high": 120000, "hourly": false,
+      "pay_posted": "$100,000 - $120,000/year DOE",
+      "summary": "Lead a team of up to ten marketing associates, approaching marketing through storytelling, positioning and customer acquisition. Remote, on-site or hybrid from Spokane, Salt Lake City or Austin.",
+      "responsibilities": [
+        "Manage a team of up to ten marketing associates",
+        "Develop marketing strategies grounded in the user's perspective"
+      ],
+      "requirements": [
+        "Three or more years managing a marketing team of ten or more",
+        "Seven or more years in marketing-centred roles",
+        "Current knowledge of marketing trends and team structures"
+      ],
+      "apply_url": "https://www.twobarrels.com/jobs/marketing/marketing-manager/",
+      "posted_at": null,
+      "closes_at": null,
+      "note": "The board has no marketing discipline; Sales is the nearest go-to-market bucket.",
+      "sources": ["https://www.twobarrels.com/jobs/marketing/marketing-manager/"]
+    },
+    {
+      "id": "nuvodia-deployment-systems-engineer-ii-req4185",
+      "company": "nuvodia",
+      "title": "Deployment Systems Engineer II",
+      "discipline": "Engineering", "level": "Mid", "employment": "Full-time", "workplace": "On-site",
+      "pay_low": 31.57, "pay_high": 50.76, "hourly": true,
+      "pay_posted": "Base Pay Range: $31.57 - $50.76",
+      "summary": "Deploy, configure, test and document network, system, cloud and security solutions in client environments. On-site Monday to Friday at the Spokane Valley office, with an on-call rotation.",
+      "responsibilities": [
+        "Build and deploy network, system, cloud and security solutions for clients",
+        "Write and run test and cutover plans under change management",
+        "Produce as-built documentation and hand off to operational support"
+      ],
+      "requirements": [
+        "Strong troubleshooting and hands-on implementation experience",
+        "Able to juggle several projects against deadlines",
+        "Occasional regional travel, weekend work and on-call rotation"
+      ],
+      "apply_url": "https://inlandimaging.wd5.myworkdayjobs.com/Nuvodia_Careers/job/Sullivan-Valley-Commons/Deployment-Systems-Engineer-II--NUVO-_REQ4185",
+      "posted_at": "2026-09-02T00:00:00Z",
+      "closes_at": null,
+      "sources": ["https://inlandimaging.wd5.myworkdayjobs.com/Nuvodia_Careers/job/Sullivan-Valley-Commons/Deployment-Systems-Engineer-II--NUVO-_REQ4185"]
+    },
+    {
+      "id": "avista-integrations-developer-integ005811",
+      "company": "avista",
+      "title": "Integrations Developer",
+      "discipline": "Engineering", "level": "Mid", "employment": "Full-time", "workplace": "Hybrid",
+      "pay_low": 68027, "pay_high": 150183, "hourly": false,
+      "pay_posted": "Full salary range $68,027 to $186,159. Hiring ranges by level: Associate $68,027-$87,754; Career $77,595-$100,486; Senior $88,336-$114,838; Expert $100,378-$131,496; Solution Architect $114,207-$150,183",
+      "summary": "Build the integration and automation layer around Avista's new SAP S/4HANA Private Cloud implementation, on SAP Integration Suite. Hired at Associate through Solution Architect depending on experience; pay_low/pay_high are the posted hiring ranges, not the full band.",
+      "responsibilities": [
+        "Design, build and unit test integration flows on SAP Integration Suite",
+        "Write mappings and transformations in Groovy and XSLT across REST, OData, SOAP, IDoc and file interfaces",
+        "Build and maintain Redwood RunMyJobs batch automation for SAP and non-SAP systems"
+      ],
+      "requirements": [
+        "Professional experience building system integrations or APIs",
+        "REST, OData, SOAP, JSON, XML, OAuth and certificate auth",
+        "Groovy, JavaScript or Java"
+      ],
+      "apply_url": "https://recruiting2.ultipro.com/AVI1000AMAST/JobBoard/362abf68-95c3-4b17-a39d-76a6efe5ff18/OpportunityDetail?opportunityId=0ba89b1f-4ea1-4927-afdc-1c12fd25a647",
+      "posted_at": "2026-09-29T00:00:00Z",
+      "closes_at": "2026-10-07T07:00:00Z",
+      "sources": ["https://recruiting2.ultipro.com/AVI1000AMAST/JobBoard/362abf68-95c3-4b17-a39d-76a6efe5ff18/OpportunityDetail?opportunityId=0ba89b1f-4ea1-4927-afdc-1c12fd25a647"]
+    },
+    {
+      "id": "openeye-devops-engineer-ii-8858377002",
+      "company": "openeye",
+      "title": "DevOps Engineer II",
+      "discipline": "Engineering", "level": "Mid", "employment": "Full-time", "workplace": "Hybrid",
+      "pay_low": 90000, "pay_high": 125000, "hourly": false,
+      "pay_posted": "$90,000 - $125,000 USD",
+      "summary": "Run OpenEye's AWS environments for its cloud video platform: deployments, pipeline work and production health.",
+      "responsibilities": [
+        "Keep highly available AWS infrastructure running for global video services",
+        "Make CI/CD pipelines faster and more reliable",
+        "Diagnose live production issues, find root causes and ship fixes"
+      ],
+      "requirements": [
+        "Two or more years of DevOps or related experience",
+        "Strong AWS: scaling, networking, security and automation",
+        "Programming or scripting in Java, TypeScript, JavaScript, Python or similar"
+      ],
+      "apply_url": "https://job-boards.greenhouse.io/openeye/jobs/8858377002",
+      "posted_at": null,
+      "closes_at": null,
+      "sources": ["https://job-boards.greenhouse.io/openeye/jobs/8858377002"]
+    },
+    {
+      "id": "openeye-senior-software-engineer-8538619002",
+      "company": "openeye",
+      "title": "Senior Software Engineer",
+      "discipline": "Engineering", "level": "Senior", "employment": "Full-time", "workplace": "Hybrid",
+      "pay_low": 110000, "pay_high": 140000, "hourly": false,
+      "pay_posted": "$110,000 - $140,000 USD",
+      "summary": "Develop and maintain OpenEye Web Services, the cloud side of its video surveillance platform, leading significant projects with little oversight.",
+      "responsibilities": [
+        "Design and build major architectural changes and high-complexity features",
+        "Scope, design and prioritize significant development projects",
+        "Mentor other developers"
+      ],
+      "requirements": [
+        "Bachelor's degree in computer science or a related field",
+        "Five or more years of professional software engineering",
+        "Expertise in Java, C# or a similar language"
+      ],
+      "apply_url": "https://job-boards.greenhouse.io/openeye/jobs/8538619002",
+      "posted_at": null,
+      "closes_at": null,
+      "sources": ["https://job-boards.greenhouse.io/openeye/jobs/8538619002"]
+    },
+    {
+      "id": "openeye-software-engineer-ii-8608680002",
+      "company": "openeye",
+      "title": "Software Engineer II",
+      "discipline": "Engineering", "level": "Mid", "employment": "Full-time", "workplace": "Hybrid",
+      "pay_low": 90000, "pay_high": 125000, "hourly": false,
+      "pay_posted": "$90,000 - $125,000 USD",
+      "summary": "Develop and maintain OpenEye Web Services on a team working with cloud video and security technology.",
+      "responsibilities": [
+        "Build features, fix complex bugs and write advanced unit tests independently",
+        "Lead smaller projects or individual features",
+        "Mentor entry-level developers"
+      ],
+      "requirements": [
+        "Bachelor's degree in computer science or a related field",
+        "Two to five years with Java, C# or similar",
+        "Solid object-oriented programming and development practice"
+      ],
+      "apply_url": "https://job-boards.greenhouse.io/openeye/jobs/8608680002",
+      "posted_at": null,
+      "closes_at": null,
+      "sources": ["https://job-boards.greenhouse.io/openeye/jobs/8608680002"]
+    }
+  ]
+}

@@ -1,0 +1,217 @@
+{
+  "_about": "People who have shaped the Spokane tech community, researched from public sources 2026-10-02. Professional, public facts only, each with its sources. These are editorial entries, not user profiles: nobody here signed up, and nothing here says whether anyone is looking for work.",
+  "people": [
+    {
+      "id": "adam-parish",
+      "name": "Adam Parish",
+      "role": "Lead Product Designer, Atomic",
+      "summary": "Spokane-based design engineer working across product design, design systems and React/TypeScript. Lead Product Designer at fintech company Atomic since 2022, previously at Aon, and co-founder of XpenseOne (2014–2018).",
+      "roles": [
+        "Lead Product Designer, Atomic (2022–)",
+        "Product design, Aon (2019–2022)",
+        "Co-founder, XpenseOne (2014–2018)"
+      ],
+      "companies": [],
+      "history": [],
+      "links": [
+        {
+          "label": "atomparish.com",
+          "url": "https://atomparish.com"
+        },
+        {
+          "label": "GitHub",
+          "url": "https://github.com/adamparishspok"
+        }
+      ],
+      "sources": [
+        "https://atomparish.com"
+      ],
+      "note": "Self-published on his own site; no independent press coverage found."
+    },
+    {
+      "id": "tom-simpson",
+      "name": "Tom Simpson",
+      "role": "President, Spokane Angel Alliance · CEO, Ignite Northwest",
+      "summary": "Longtime Spokane venture investor. Founded Northwest Venture Associates in 1986, has led the Spokane Angel Alliance since 2008, runs the Kick-Start seed funds, and co-founded etailz. As CEO of the nonprofit accelerator Ignite Northwest he oversaw the sale of the Spokane Technology Center to WSU.",
+      "roles": [
+        "President, Spokane Angel Alliance (2008–)",
+        "CEO, Ignite Northwest",
+        "Managing member, Kick-Start seed funds",
+        "Co-founder and executive chairman, etailz",
+        "Founder, Northwest Venture Associates (1986–2011)"
+      ],
+      "companies": [],
+      "history": [
+        "etailz"
+      ],
+      "links": [],
+      "sources": [
+        "https://www.spokanejournal.com/articles/15658-tom-simpson-ceo-ignite-and-president-of-the-spokane-angel-alliance-and-managing-member-kick-start-seed-fund",
+        "https://www.spokesman.com/stories/2017/feb/26/front-center-keeping-his-head-in-the-game/"
+      ]
+    },
+    {
+      "id": "connor-simpson",
+      "name": "Connor Simpson",
+      "role": "Founder",
+      "summary": "Spokane entrepreneur who co-founded the secondhand-clothing marketplace Barters Closet after Spokane's first Startup Weekend, and later co-founded Weddings By Owner, an 'Airbnb for weddings' launched in Spokane with Jordan Allen.",
+      "roles": [
+        "Co-founder, Barters Closet",
+        "Co-founder, Weddings By Owner"
+      ],
+      "companies": [],
+      "history": [],
+      "links": [],
+      "sources": [
+        "https://www.spokesman.com/stories/2013/feb/22/startup-event-lights-fire-for-budding-entrepeneurs/",
+        "https://www.spokanejournal.com/articles/3480-a-airbnb-for-weddings-launches-in-spokane?v=preview"
+      ],
+      "note": "No current role found in a citable source."
+    },
+    {
+      "id": "jordan-allen",
+      "name": "Jordan Allen",
+      "role": "Co-founder & CEO, BuyWander",
+      "summary": "Serial Spokane founder. Built Stay Alfred past $100M in revenue before its 2020 shutdown, sold the real estate bidding platform Doorsey to Auction.io in 2023, and in 2024 launched BuyWander in Spokane Valley. A Spokane Journal of Business 2026 Person of Influence.",
+      "roles": [
+        "Co-founder and CEO, BuyWander (2024–)",
+        "Founder and CEO, Doorsey (2021–2023)",
+        "Founder and CEO, Stay Alfred (2010–2020)",
+        "Board member, Auction.io"
+      ],
+      "companies": [
+        "buywander"
+      ],
+      "history": [
+        "stay-alfred",
+        "doorsey"
+      ],
+      "links": [
+        {
+          "label": "buywander.com",
+          "url": "https://www.buywander.com"
+        }
+      ],
+      "sources": [
+        "https://www.spokanejournal.com/articles/17906-2026-people-of-influence-jordan-allen-buywander-inc-ceo",
+        "https://www.spokanejournal.com/articles/18645-spokane-founded-buywander-moves-hq-to-kent",
+        "https://www.geekwire.com/2023/auction-hosting-site-auction-io-acquires-home-bidding-platform-doorsey/"
+      ]
+    },
+    {
+      "id": "fred-brown",
+      "name": "Fred Brown",
+      "role": "Founder & CEO, Omniscia AI",
+      "summary": "Spokane AI entrepreneur who founded conversational AI pioneer Next IT in 2002 and sold it to Verint in 2017. Has since launched Omniscia AI, building AI representatives for businesses in regulated industries.",
+      "roles": [
+        "Founder and CEO, Omniscia AI",
+        "Founder and CEO, Next IT (2002–2017)"
+      ],
+      "companies": [],
+      "history": [
+        "next-it"
+      ],
+      "links": [],
+      "sources": [
+        "https://www.spokanejournal.com/articles/16670-omniscia-ai",
+        "https://www.spokanejournal.com/articles/3483-new-york-tech-company-acquires-next-it"
+      ]
+    },
+    {
+      "id": "lisa-shaffer",
+      "name": "Lisa Shaffer",
+      "role": "Founder, Paw Print Genetics",
+      "summary": "Spokane genetics entrepreneur. Co-founded Signature Genomic Laboratories in 2003 and sold it to PerkinElmer for $90M in 2010, then founded Paw Print Genetics in 2012, acquired by Neogen in 2021.",
+      "roles": [
+        "Founder and CEO, Paw Print Genetics (2012–2021)",
+        "Co-founder, Signature Genomic Laboratories (2003–2010)"
+      ],
+      "companies": [],
+      "history": [
+        "signature-genomics",
+        "paw-print-genetics"
+      ],
+      "links": [],
+      "sources": [
+        "https://www.spokanejournal.com/articles/7421-signature-genomics-co-founder-starts-new-venture",
+        "https://www.spokanejournal.com/local-news/paw-print-genetics-acquired-by-neogen/"
+      ]
+    },
+    {
+      "id": "kim-zentz",
+      "name": "Kim Zentz",
+      "role": "Former CEO, Urbanova",
+      "summary": "Spokane technology and civic-innovation leader who helped form the smart-city nonprofit Urbanova in 2016 and led it until 2021, after a career spanning Avista Labs, Innovate Washington, Spokane Transit and WSU's urban-innovation work.",
+      "roles": [
+        "Co-founder and CEO, Urbanova (2016–2021)",
+        "Founding president, Avista Labs",
+        "CEO, Innovate Washington",
+        "Director of urban innovation, Washington State University"
+      ],
+      "companies": [],
+      "history": [],
+      "links": [],
+      "sources": [
+        "https://www.spokanejournal.com/articles/962-parting-thoughts-with-urbanova-s-kim-zentz",
+        "https://www.cantwell.senate.gov/news/press-releases/in-senate-hearing-cantwell-discusses-power-of-5g-technology-highlights-spokanes-cutting-edge-smart-cities-program"
+      ]
+    },
+    {
+      "id": "tyler-lafferty",
+      "name": "Tyler Lafferty",
+      "role": "Co-founder, Seven2 and 14Four",
+      "summary": "Co-founder, with Nick Murto, of the Spokane digital agencies Seven2 and 14Four, which have made work for national clients including Disney, Expedia and AT&T.",
+      "roles": [
+        "Co-founder, Seven2",
+        "Co-founder, 14Four"
+      ],
+      "companies": [
+        "seven2",
+        "14four"
+      ],
+      "history": [],
+      "links": [],
+      "sources": [
+        "https://spokanejournal.com/articles/7186-digital-design-affiliates-seven2-14four-see-faster-growth"
+      ]
+    },
+    {
+      "id": "josh-neblett",
+      "name": "Josh Neblett",
+      "role": "Co-founder, etailz",
+      "summary": "Co-founded etailz in Spokane in 2008 and grew it from a college business plan into a $100M-revenue e-commerce company, sold to Trans World Entertainment for $75M in 2016. Stepped down as CEO in 2019 and has since left Spokane.",
+      "roles": [
+        "Co-founder and CEO, etailz (2008–2019)"
+      ],
+      "companies": [],
+      "history": [
+        "etailz"
+      ],
+      "links": [],
+      "sources": [
+        "https://www.geekwire.com/2015/how-etailz-ceo-josh-neblett-turned-a-college-business-plan-into-a-100m-business/",
+        "https://www.spokanejournal.com/articles/15722-catching-up-with-josh-neblett"
+      ]
+    },
+    {
+      "id": "bernard-daines",
+      "name": "Bernard Daines",
+      "role": "Founder, Packet Engines and World Wide Packets",
+      "summary": "Gigabit Ethernet pioneer who moved from Silicon Valley to Spokane and founded Packet Engines, sold to Alcatel in 1998, and World Wide Packets, sold to Ciena in 2008. He died in 2021.",
+      "roles": [
+        "Founder, World Wide Packets (2000–2008)",
+        "Founder, Packet Engines (sold 1998)"
+      ],
+      "companies": [],
+      "history": [
+        "packet-engines",
+        "world-wide-packets"
+      ],
+      "links": [],
+      "sources": [
+        "https://www.sdxcentral.com/analysis/bernard-daines-networking-innovator-dies-at-69/",
+        "https://www.fierce-network.com/telecom/ethernet-entrepreneur-and-world-wide-packets-founder-bernard-daines-dies-at-69"
+      ]
+    }
+  ]
+}
