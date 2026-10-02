@@ -1,5 +1,5 @@
 {
-  "_about": "Spokane-area tech companies that were acquired (exits) or shut down (the graveyard), researched from public sources 2026-10-02. Every entry carries its sources. A founding year nobody published is null. lng/lat are present only where a street address was sourced. district is the area the company was in, from its sourced city or neighbourhood; an entry without lng/lat is drawn at that area's centre and labelled as approximate.",
+  "_about": "Spokane-area tech companies that were acquired (exits) or shut down (the graveyard), researched from public sources 2026-10-02. Every entry carries its sources. A founding year nobody published is null, and so is an end year nobody published. lng/lat are present only where a street address was sourced. district is the area the company was in, from its sourced city or neighbourhood; an entry without lng/lat is drawn at that area's centre and labelled as approximate.",
   "_excluded": "2nd Watch (Liberty Lake; now part of Ollion) — current structure only sourced from aggregators. Pacinian — Coeur d'Alene, outside the map. Triumph Composite Systems — wind-down year not sourced. Vega Cloud — in receivership in 2026, which is not the same as closed.",
   "companies": [
     {
@@ -171,14 +171,15 @@
       "year": 2017,
       "place": "Liberty Lake",
       "district": "liberty-lake",
-      "what": "Maker of DC power distribution and fiber and copper interconnect products for telecom networks and data centers.",
+      "what": "Maker of DC power distribution and fiber and copper interconnect products for telecom networks and data centers. Founded in Spokane Valley in 1982 by Bill and Judi Williams, it moved to Liberty Lake in 1989 and peaked in 2000 at $265M in revenue and 2,300 employees.",
       "outcome": "Acquired by Amphenol in July 2017; terms undisclosed. Merged with All Systems Broadband in 2019 to form Amphenol Network Solutions, still in Liberty Lake.",
       "acquirer": "Amphenol",
       "successor": "amphenol-network-solutions",
       "people": [],
       "sources": [
         "https://s21.q4cdn.com/564806605/files/doc_financials/2017/Updates-12032020/2017_07_26-PR-2Q-2017-Results.pdf",
-        "https://www.spokanejournal.com/articles/2566-telect-merges-with-sister-company"
+        "https://www.spokanejournal.com/articles/2566-telect-merges-with-sister-company",
+        "https://spokesman.com/stories/2017/jul/26/telect-history"
       ]
     },
     {
@@ -290,6 +291,32 @@
       "sources": [
         "https://www.lightwaveonline.com/network-design/packet-transport/article/16655729/alcatel-paris-entered-into-a-definitive-agreement-to-purchase-packet-engines-inc-spokane-wa",
         "https://www.lightreading.com/cable-technology/alcatel-s-packet-engines-break-down"
+      ]
+    },
+    {
+      "id": "xpenseone",
+      "name": "XpenseOne",
+      "kind": "closed",
+      "founded": 2014,
+      "year": null,
+      "place": "Downtown Spokane",
+      "district": "downtown",
+      "lng": -117.416896,
+      "lat": 47.653442,
+      "what": "Fintech startup, incorporated as Obloco Inc., that built white-label expense reporting and receipt-capture software banks offered to their small-business customers. Washington Trust Bank launched it in 2018.",
+      "outcome": "Raised a seed round led by Big Horn Ventures in December 2017 and was last reported operating in March 2020, in the Falls Fintech accelerator in Sioux Falls. No public record says when or how it ended.",
+      "people": [
+        "victor-yefremov",
+        "jim-schlosser",
+        "adam-parish"
+      ],
+      "sources": [
+        "https://www.spokanejournal.com/articles/4485-expense-reporting-software-company-starts-its-first-test",
+        "https://www.spokanejournal.com/articles/2861-spokane-fintech-startup-launches-expense-software",
+        "https://greaterspokane.org/blog/2015/01/entrepreneur-spotlight-oblocco/",
+        "https://finovate.com/category/obloco/",
+        "https://www.startupsiouxfalls.com/2020/03/falls-fintech-kicks-off-inaugural-accelerator-on-monday-march-9/",
+        "https://atomparish.com/work/xpenseone"
       ]
     }
   ]

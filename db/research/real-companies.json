@@ -175,10 +175,10 @@
       "phone": "(509) 232-5261",
       "founded": 1999, "headcount": null, "stage": null,
       "public_ticker": null,
-      "what": "Cloud-managed video surveillance software and hardware, including AI video analytics. A subsidiary of Alarm.com since 2019.",
+      "what": "Cloud-managed video surveillance software and hardware, including AI video analytics. Founded in 1999 by Rick Sheppard while a Gonzaga student; a subsidiary of Alarm.com since 2019.",
       "note": "Parent trades as ALRM; OpenEye itself is not listed. Hiring through Greenhouse.",
       "ats": {"provider": "greenhouse", "slug": "openeye", "feed": "https://boards-api.greenhouse.io/v1/boards/openeye/jobs"},
-      "sources": ["https://www.openeye.net/contact-us", "https://www.openeye.net/about-us", "https://www.securityinfowatch.com/video-surveillance/hosted-managed-video-surveillance/news/21111288/alarmcom-acquires-openeye-to-bolster-its-capabilities-in-the-commercial-security-market"]
+      "sources": ["https://www.openeye.net/contact-us", "https://www.openeye.net/about-us", "https://spokanejournal.com/articles/575-openeye-experiences-eye-opening-growth", "https://www.securityinfowatch.com/video-surveillance/hosted-managed-video-surveillance/news/21111288/alarmcom-acquires-openeye-to-bolster-its-capabilities-in-the-commercial-security-market"]
     },
     {
       "name": "Wagstaff",

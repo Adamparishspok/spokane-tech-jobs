@@ -167,7 +167,14 @@ export function filterPast(past: PastCompany[], q: Query): PastCompany[] {
     (p) =>
       (q.pastKind === "all" || p.kind === q.pastKind) &&
       match(
-        [p.name, p.what, p.outcome, p.place, p.acquirer ?? "", String(p.year)],
+        [
+          p.name,
+          p.what,
+          p.outcome,
+          p.place,
+          p.acquirer ?? "",
+          String(p.year ?? ""),
+        ],
         q.text,
       ),
   );

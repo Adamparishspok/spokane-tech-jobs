@@ -41,8 +41,8 @@ export type PastCompany = {
   kind: PastKind;
   what: string;
   founded: number | null;
-  /** The year it was acquired or closed. */
-  year: number;
+  /** The year it was acquired or closed — null when nobody published it. */
+  year: number | null;
   outcome: string;
   acquirer?: string;
   /** Where it was, in words. Always present, even without a street address. */
@@ -63,7 +63,13 @@ export const FIGURES = community.people as Figure[];
 /** Newest first: the graveyard reads as a timeline. */
 export const PAST = (history.companies as PastCompany[])
   .slice()
-  .sort((a, b) => b.year - a.year || a.name.localeCompare(b.name));
+  /* An end nobody dated sorts by its founding, so it lands among its peers
+     rather than at either end of the timeline. */
+  .sort(
+    (a, b) =>
+      (b.year ?? b.founded ?? 0) - (a.year ?? a.founded ?? 0) ||
+      a.name.localeCompare(b.name),
+  );
 
 const figureIndex = new Map(FIGURES.map((f) => [f.id, f]));
 const pastIndex = new Map(PAST.map((p) => [p.id, p]));
@@ -93,9 +99,12 @@ export const PAST_KIND_LABEL: Record<PastKind, string> = {
   closed: "Shut down",
 };
 
-/** "2010–2020", or just "2020" when nobody published the founding year. */
+/**
+ * "2010–2020"; just "2020" when nobody published the founding year; "2014–?"
+ * when nobody published the end.
+ */
 export const lifespan = (p: PastCompany) =>
-  p.founded ? `${p.founded}–${p.year}` : `${p.year}`;
+  p.founded ? `${p.founded}–${p.year ?? "?"}` : `${p.year ?? "?"}`;
 
 /** A source URL as its site's name, for a list a person can scan. */
 export const sourceLabel = (url: string) => {

@@ -619,7 +619,7 @@ export function FigureDetail({
       {(companies.length > 0 || built.length > 0) && (
         <section className="mt-5">
           <SectionTitle>In the directory</SectionTitle>
-          <ul className="mt-2 grid gap-1">
+          <ul className="mt-2 grid grid-cols-[minmax(0,1fr)] gap-1">
             {companies.map((c) => (
               <li key={c.id}>
                 <LinkedRecord
@@ -740,7 +740,11 @@ export function PastDetail({
           icon={<Flag />}
           label={past.kind === "exited" ? "Acquired" : "Closed"}
         >
-          <span className="num">{past.year}</span>
+          {past.year !== null ? (
+            <span className="num">{past.year}</span>
+          ) : (
+            "Not on record"
+          )}
           {past.acquirer && <> by {past.acquirer}</>}
         </Fact>
         <Fact icon={<MapPin />} label="Based in">
@@ -756,7 +760,7 @@ export function PastDetail({
       {(successor || people.length > 0) && (
         <section className="mt-5">
           <SectionTitle>Connected</SectionTitle>
-          <ul className="mt-2 grid gap-1">
+          <ul className="mt-2 grid grid-cols-[minmax(0,1fr)] gap-1">
             {successor && (
               <li>
                 <LinkedRecord
@@ -845,7 +849,7 @@ function Sources({ urls, note }: { urls: string[]; note?: string }) {
       {note && (
         <p className="mt-2 text-[0.75rem] leading-relaxed text-ink-4">{note}</p>
       )}
-      <ul className="mt-2 grid gap-1">
+      <ul className="mt-2 grid grid-cols-[minmax(0,1fr)] gap-1">
         {urls.map((url) => (
           <li key={url}>
             <a
