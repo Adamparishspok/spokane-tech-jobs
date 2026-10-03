@@ -2,7 +2,7 @@ import { logoFor } from "../design/brand";
 import { PortalHost } from "@kit/lib/portal-host";
 import { ThemeProvider, useTheme } from "@kit/lib/theme";
 import { TooltipProvider } from "@kit/ui";
-import { Briefcase, Building2, History, Sparkles, Users } from "lucide-react";
+import { Briefcase, Building2, History, Users } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { hueFor, type Company, type Job, type Person } from "../domain";
 import {
@@ -71,7 +71,6 @@ const NAV: RailItem[] = [
   { id: "companies", label: "Companies", icon: <Building2 /> },
   { id: "jobs", label: "Jobs", icon: <Briefcase /> },
   { id: "people", label: "People", icon: <Users /> },
-  { id: "community", label: "Community", icon: <Sparkles /> },
   { id: "history", label: "History", icon: <History /> },
 ];
 
@@ -166,7 +165,10 @@ function Root() {
     () => filterPeople(people, query, (id) => companyOf(id) ?? null),
     [people, query, companyOf],
   );
-  const shownFigures = useMemo(() => filterFigures(FIGURES, query), [query]);
+  const shownFigures = useMemo(
+    () => filterFigures(FIGURES, query, (id) => findCompany(id)),
+    [query, findCompany],
+  );
   const shownPast = useMemo(() => filterPast(PAST, query), [query]);
 
   /**
@@ -211,28 +213,6 @@ function Root() {
       });
     }
 
-    if (tab === "community") {
-      /* A figure has no address of their own; their mark is the company they
-         are part of now, where that company is in the directory. */
-      const byCompany = new Map<string, number>();
-      for (const f of shownFigures)
-        for (const id of f.companies)
-          if (findCompany(id)) byCompany.set(id, (byCompany.get(id) ?? 0) + 1);
-      return [...byCompany].map(([id, count]) => {
-        const c = companyOf(id);
-        return {
-          id: c.id,
-          at: { lng: c.lng, lat: c.lat },
-          label: c.name,
-          logo: c.logo ?? logoFor(c.id),
-          hue: c.hue,
-          count,
-          unit: "person",
-          hiring: false,
-        };
-      });
-    }
-
     if (tab === "history") {
       return shownPast.map((p) => ({
         id: p.id,
@@ -247,6 +227,11 @@ function Root() {
     }
 
     const byCompany = new Map<string, number>();
+    /* A community figure has no address of their own; their mark is the
+       company they are part of now, where that company is in the directory. */
+    for (const f of shownFigures)
+      for (const id of f.companies)
+        if (findCompany(id)) byCompany.set(id, (byCompany.get(id) ?? 0) + 1);
     for (const person of shownPeople)
       if (person.companyId)
         byCompany.set(
@@ -317,10 +302,6 @@ function Root() {
   const select = (id: string) => {
     if (tab === "history" && pastCompany(id))
       return setSelection({ kind: "past", id });
-    if (tab === "community") {
-      if (findFigure(id)) return setSelection({ kind: "figure", id });
-      return setSelection({ kind: "company", id });
-    }
     if (tab === "jobs") {
       const job = jobs.find((j) => j.id === id);
       if (job) return setSelection({ kind: "job", id });
@@ -329,6 +310,7 @@ function Root() {
       return setSelection({ kind: "company", id });
     }
     if (tab === "people") {
+      if (findFigure(id)) return setSelection({ kind: "figure", id });
       const person = people.find((p) => p.id === id);
       if (person) return setSelection({ kind: "person", id });
       return setSelection({ kind: "company", id });

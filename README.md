@@ -34,10 +34,10 @@ all nullable and why the UI leaves out what it does not know.
 
 Open roles live in `db/research/real-jobs.json`: each one was read off the
 employer's own board with its posted pay range, and expires 90 days after it is
-loaded (or on the employer's closing date, if sooner). The Community and History
-tabs — people who shaped the scene, and the companies that were acquired or shut
-down — are editorial and ship with the app from `src/data/`, sourced the same
-way.
+loaded (or on the employer's closing date, if sooner). The people who shaped the
+scene, listed on the People tab, and the History tab's companies that were
+acquired or shut down are editorial and ship with the app from `src/data/`,
+sourced the same way.
 
 **Corrections and additions are the most useful contribution.** A pull request
 that adds a company, or fixes a field, with the public source it came from, is

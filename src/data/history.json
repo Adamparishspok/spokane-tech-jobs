@@ -23,13 +23,13 @@
     {
       "id": "etailz",
       "name": "etailz / Kaspien",
-      "kind": "closed",
+      "kind": "exited",
       "founded": 2008,
-      "year": 2024,
+      "year": 2016,
       "place": "Spokane",
       "district": "downtown",
       "what": "E-commerce company, founded as GreenCupboards, that grew into a platform selling and managing brands on Amazon and other marketplaces.",
-      "outcome": "Sold to Trans World Entertainment for $75M in 2016, renamed Kaspien in 2020, then wound down — operations ceased by May 2024.",
+      "outcome": "Acquired by Trans World Entertainment for $75M in 2016. The business was renamed Kaspien in 2020 and wound down, ceasing operations by May 2024.",
       "people": [
         "josh-neblett",
         "tom-simpson"
@@ -38,7 +38,8 @@
         "https://www.geekwire.com/2016/qa-meet-30-year-old-entrepreneur-just-sold-profitable-e-commerce-company-cool-75m/",
         "https://www.geekwire.com/2020/e-commerce-growth-platform-etailz-changes-name-kaspien/",
         "https://www.sec.gov/Archives/edgar/data/795212/000114036123058191/ef20016853_ex99-1.htm"
-      ]
+      ],
+      "acquirer": "Trans World Entertainment"
     },
     {
       "id": "rohinni",
@@ -298,13 +299,13 @@
       "name": "XpenseOne",
       "kind": "closed",
       "founded": 2014,
-      "year": null,
+      "year": 2020,
       "place": "Downtown Spokane",
       "district": "downtown",
       "lng": -117.416896,
       "lat": 47.653442,
       "what": "Fintech startup, incorporated as Obloco Inc., that built white-label expense reporting and receipt-capture software banks offered to their small-business customers. Washington Trust Bank launched it in 2018.",
-      "outcome": "Raised a seed round led by Big Horn Ventures in December 2017 and was last reported operating in March 2020, in the Falls Fintech accelerator in Sioux Falls. No public record says when or how it ended.",
+      "outcome": "Raised a seed round led by Big Horn Ventures in December 2017 and was still operating in March 2020, in the Falls Fintech accelerator in Sioux Falls. It shut down later in 2020, according to co-founder Adam Parish.",
       "people": [
         "victor-yefremov",
         "jim-schlosser",

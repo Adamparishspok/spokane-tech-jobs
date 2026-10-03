@@ -153,14 +153,50 @@ export function filterPeople(
   });
 }
 
-/* ---- the bar ----------------------------------------------------------- */
-
-/** Community figures answer to the search text and nothing else. */
-export function filterFigures(figures: Figure[], q: Query): Figure[] {
-  return figures.filter((f) =>
-    match([f.name, f.role, f.summary, ...f.roles], q.text),
-  );
+/**
+ * The community figures listed on the People tab, under the same filters as
+ * the profiles beside them. "Open to work" leaves them out — nobody here said
+ * they were looking — and a company filter matches through any directory
+ * company they are part of now.
+ */
+export function filterFigures(
+  figures: Figure[],
+  q: Query,
+  companyOf: (id: string) => Company | null,
+): Figure[] {
+  return figures.filter((f) => {
+    if (q.openToOnly) return false;
+    const companies = f.companies
+      .map(companyOf)
+      .filter((c): c is Company => c !== null);
+    if (
+      q.industries.length &&
+      !companies.some((c) => q.industries.includes(c.industry))
+    )
+      return false;
+    if (
+      q.sizes.length &&
+      !companies.some((c) => {
+        const band = sizeBand(c.headcount);
+        return band !== null && q.sizes.includes(band);
+      })
+    )
+      return false;
+    if (
+      q.workplaces.length &&
+      !companies.some(
+        (c) => c.workplace !== null && q.workplaces.includes(c.workplace),
+      )
+    )
+      return false;
+    return match(
+      [f.name, f.role, f.summary, ...f.roles, ...companies.map((c) => c.name)],
+      q.text,
+    );
+  });
 }
+
+/* ---- the bar ----------------------------------------------------------- */
 
 export function filterPast(past: PastCompany[], q: Query): PastCompany[] {
   return past.filter(

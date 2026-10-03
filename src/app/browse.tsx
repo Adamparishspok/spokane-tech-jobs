@@ -36,11 +36,10 @@ import { EMPTY_QUERY, FilterBar, SearchField, type Query } from "./filters";
  * list.
  */
 
-export type Tab = "companies" | "jobs" | "people" | "community" | "history";
+export type Tab = "companies" | "jobs" | "people" | "history";
 
 /** The two tabs read from the editorial records rather than the database. */
-export const isEditorial = (tab: Tab) =>
-  tab === "community" || tab === "history";
+export const isEditorial = (tab: Tab) => tab === "history";
 
 const TAB_COPY: Record<Tab, { title: string; noun: string; search: string }> = {
   companies: {
@@ -50,11 +49,6 @@ const TAB_COPY: Record<Tab, { title: string; noun: string; search: string }> = {
   },
   jobs: { title: "Jobs", noun: "role", search: "Search roles, companies…" },
   people: { title: "People", noun: "person", search: "Search people, skills…" },
-  community: {
-    title: "Community",
-    noun: "person",
-    search: "Search people, companies…",
-  },
   history: {
     title: "History",
     noun: "company",
@@ -96,7 +90,7 @@ export function BrowsePanel({
   /** No data at all, rather than a filter that matched nothing. */
   firstDay: boolean;
 }) {
-  const { jobsAt } = useDirectory();
+  const { jobsAt, company } = useDirectory();
   const copy = TAB_COPY[tab];
   const editorial = isEditorial(tab);
   /* The editorial tabs ship with the app, so an empty database is not a
@@ -105,21 +99,22 @@ export function BrowsePanel({
   const count = {
     companies: companies.length,
     jobs: jobs.length,
-    people: people.length,
-    community: figures.length,
+    people: figures.length + people.length,
     history: past.length,
   }[tab];
 
   const empty = count === 0;
 
-  /* A person between roles has no company and therefore no place, so the
+  /* A person between roles has no company and therefore no place, and nor
+     does a community figure whose company is not in the directory — so the
      People tab can legitimately show more rows than the map shows marks. That
      is a mismatch a person will notice and distrust, so it is stated rather
      than left to be discovered — and the people it concerns are exactly the
      ones most likely to be looking. */
   const offMap =
     tab === "people"
-      ? people.filter((p) => !p.companyId).length
+      ? people.filter((p) => !p.companyId).length +
+        figures.filter((f) => !f.companies.some((id) => company(id))).length
       : tab === "history"
         ? past.filter((p) => !isExact(p)).length
         : 0;
@@ -190,8 +185,8 @@ export function BrowsePanel({
             ) : (
               <span>
                 <span className="num">{offMap}</span> of these{" "}
-                {offMap === 1 ? "is" : "are"} between roles, so{" "}
-                {offMap === 1 ? "it has" : "they have"} no pin on the map.
+                {offMap === 1 ? "is" : "are"} not at a company in the directory,
+                so {offMap === 1 ? "it has" : "they have"} no pin on the map.
               </span>
             )}
           </p>
@@ -237,18 +232,6 @@ export function BrowsePanel({
                 />
               ))}
             {tab === "people" &&
-              people.map((p) => (
-                <PersonRow
-                  key={p.id}
-                  person={p}
-                  company={p.companyId ? companyOf(p.companyId) : null}
-                  selected={p.id === selectedId}
-                  hovered={p.id === hoveredId}
-                  onSelect={onSelect}
-                  onHover={onHover}
-                />
-              ))}
-            {tab === "community" &&
               figures.map((f) => (
                 <FigureRow
                   key={f.id}
@@ -258,6 +241,18 @@ export function BrowsePanel({
                     f.id === hoveredId ||
                     (hoveredId !== null && f.companies.includes(hoveredId))
                   }
+                  onSelect={onSelect}
+                  onHover={onHover}
+                />
+              ))}
+            {tab === "people" &&
+              people.map((p) => (
+                <PersonRow
+                  key={p.id}
+                  person={p}
+                  company={p.companyId ? companyOf(p.companyId) : null}
+                  selected={p.id === selectedId}
+                  hovered={p.id === hoveredId}
                   onSelect={onSelect}
                   onHover={onHover}
                 />
