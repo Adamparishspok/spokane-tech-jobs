@@ -48,6 +48,7 @@ import {
   PAST_KIND_LABEL,
   orgsOf,
   sourceLabel,
+  splitPerson,
   type Figure,
   type Org,
   type PastCompany,
@@ -905,10 +906,11 @@ export function OrgDetail({
         <section className="mt-5">
           <SectionTitle>People</SectionTitle>
           <ul className="mt-2 grid grid-cols-[minmax(0,1fr)] gap-1">
-            {org.people.map((name) => {
+            {org.people.map((entry) => {
+              const { name, role } = splitPerson(entry);
               const f = figureNamed(name);
               return (
-                <li key={name}>
+                <li key={entry}>
                   {f ? (
                     <LinkedRecord
                       onClick={() => onFigure(f)}
@@ -921,18 +923,27 @@ export function OrgDetail({
                         />
                       }
                       title={f.name}
-                      detail={f.role}
+                      detail={role ?? f.role}
                     />
                   ) : (
-                    <p className="flex items-center gap-3 px-2 py-2 text-sm text-ink-2">
+                    <div className="flex items-center gap-3 px-2 py-2">
                       <Monogram
                         name={name}
                         hue={hueFor(name)}
                         round
                         className="size-8"
                       />
-                      {name}
-                    </p>
+                      <div className="min-w-0 flex-1">
+                        <p className="truncate text-sm font-semibold text-ink">
+                          {name}
+                        </p>
+                        {role && (
+                          <p className="truncate text-[0.8125rem] text-ink-3">
+                            {role}
+                          </p>
+                        )}
+                      </div>
+                    </div>
                   )}
                 </li>
               );

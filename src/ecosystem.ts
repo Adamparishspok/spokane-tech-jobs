@@ -90,7 +90,10 @@ export type Org = {
   cadence: string | null;
   /** For an investor: the stage and sector it says it backs. */
   focus: string | null;
-  /** People who lead it, by name — linked when they are on the People tab. */
+  /**
+   * People who lead it, as "Name (role)" — linked by name when they are on
+   * the People tab.
+   */
   people: string[];
   /** The most recent dated sign that it is still running. */
   lastActive: string | null;
@@ -130,9 +133,15 @@ export const org = (id: string) => orgIndex.get(id) ?? null;
 /** The People-tab entry for a name on an organisation, where there is one. */
 export const figureNamed = (name: string) => figureByName.get(name) ?? null;
 
+/** "Tom Simpson (CEO)" → { name: "Tom Simpson", role: "CEO" }. */
+export const splitPerson = (entry: string) => {
+  const m = entry.match(/^(.*?)\s*\((.*)\)$/);
+  return m ? { name: m[1], role: m[2] } : { name: entry, role: null };
+};
+
 /** The organisations a figure leads. */
 export const orgsOf = (f: Figure) =>
-  ORGS.filter((o) => o.people.includes(f.name));
+  ORGS.filter((o) => o.people.some((p) => splitPerson(p).name === f.name));
 
 export const orgPlace = (o: Org): LngLat | null =>
   o.lng !== undefined && o.lat !== undefined

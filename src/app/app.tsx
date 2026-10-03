@@ -372,10 +372,11 @@ function Root() {
        neighbourhood: close enough to see where the company is, far enough to
        see what it is near. Pinning both limits to one value turns `fit` into
        "recentre, with the panels accounted for", which is the whole job. */
-    /* A History pin often shares its area's centre with others, and they only
-       fan apart past the clustering zoom — so it goes all the way in. */
+    /* A History or Community pin often shares a spot with others — an area's
+       centre, a building several organisations work from — and they only fan
+       apart past the clustering zoom, so it goes all the way in. */
     const zoom =
-      selection?.kind === "past"
+      selection?.kind === "past" || selection?.kind === "org"
         ? 14.4
         : Math.min(Math.max(camera.zoom, 13.4), 14.4);
     const next = fit(
