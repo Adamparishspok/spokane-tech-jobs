@@ -5,14 +5,16 @@ import { useEffect, useRef } from "react";
 import {
   districtLabel,
   payRange,
+  placeKindLabel,
   postedLabel,
   sizeBand,
   type Company,
   type Job,
   type Person,
+  type Place,
 } from "../domain";
 import { useDirectory } from "../db/directory";
-import { Monogram, logoFor } from "../design/brand";
+import { Monogram, PlaceMark, logoFor } from "../design/brand";
 import { FirstDay, NoResults, Panel, PanelHeader, Tag } from "./chrome";
 import { EMPTY_QUERY, FilterBar, SearchField, type Query } from "./filters";
 
@@ -27,7 +29,7 @@ import { EMPTY_QUERY, FilterBar, SearchField, type Query } from "./filters";
  * list.
  */
 
-export type Tab = "companies" | "jobs" | "people";
+export type Tab = "companies" | "jobs" | "people" | "community";
 
 const TAB_COPY: Record<Tab, { title: string; noun: string; search: string }> = {
   companies: {
@@ -37,6 +39,11 @@ const TAB_COPY: Record<Tab, { title: string; noun: string; search: string }> = {
   },
   jobs: { title: "Jobs", noun: "role", search: "Search roles, companies…" },
   people: { title: "People", noun: "person", search: "Search people, skills…" },
+  community: {
+    title: "Community",
+    noun: "place",
+    search: "Search coffee shops, meetups…",
+  },
 };
 
 export function BrowsePanel({
@@ -46,6 +53,7 @@ export function BrowsePanel({
   companies,
   jobs,
   people,
+  places,
   selectedId,
   hoveredId,
   onSelect,
@@ -53,6 +61,7 @@ export function BrowsePanel({
   onAdd,
   companyOf,
   firstDay,
+  loading,
 }: {
   tab: Tab;
   query: Query;
@@ -60,6 +69,7 @@ export function BrowsePanel({
   companies: Company[];
   jobs: Job[];
   people: Person[];
+  places: Place[];
   selectedId: string | null;
   hoveredId: string | null;
   onSelect: (id: string) => void;
@@ -68,6 +78,8 @@ export function BrowsePanel({
   companyOf: (id: string) => Company;
   /** No data at all, rather than a filter that matched nothing. */
   firstDay: boolean;
+  /** The first load has not answered yet. */
+  loading: boolean;
 }) {
   const { jobsAt } = useDirectory();
   const copy = TAB_COPY[tab];
@@ -76,7 +88,9 @@ export function BrowsePanel({
       ? companies.length
       : tab === "jobs"
         ? jobs.length
-        : people.length;
+        : tab === "community"
+          ? places.length
+          : people.length;
 
   const empty = count === 0;
 
@@ -92,22 +106,26 @@ export function BrowsePanel({
     <Panel className="pointer-events-auto w-[23rem] shrink-0">
       <PanelHeader
         title={copy.title}
-        count={count}
+        count={loading ? null : count}
         noun={copy.noun}
         actions={
-          <Button size="sm" variant="accent" onClick={onAdd}>
-            <Plus />
-            {/* On the first day there is nothing to post a job against, so
+          /* Places are researched and sourced rather than submitted, so the
+             Community tab has nothing to add from here. */
+          tab !== "community" && (
+            <Button size="sm" variant="accent" onClick={onAdd}>
+              <Plus />
+              {/* On the first day there is nothing to post a job against, so
                 the header offers the same thing the empty state does rather
                 than contradicting it. */}
-            {firstDay && tab === "jobs"
-              ? "Add"
-              : tab === "jobs"
-                ? "Post a job"
-                : tab === "companies"
-                  ? "Add"
-                  : "Profile"}
-          </Button>
+              {firstDay && tab === "jobs"
+                ? "Add"
+                : tab === "jobs"
+                  ? "Post a job"
+                  : tab === "companies"
+                    ? "Add"
+                    : "Profile"}
+            </Button>
+          )
         }
       >
         <div className="mt-3">
@@ -126,14 +144,19 @@ export function BrowsePanel({
             <MapPinOff className="mt-px size-3.5 shrink-0" />
             <span>
               <span className="num">{offMap}</span> of these{" "}
-              {offMap === 1 ? "is" : "are"} between roles, so{" "}
-              {offMap === 1 ? "it has" : "they have"} no pin on the map.
+              {offMap === 1 ? "isn't" : "aren't"} at a company in the directory,
+              so {offMap === 1 ? "it has" : "they have"} no pin on the map.
             </span>
           </p>
         )}
       </PanelHeader>
 
-      {empty ? (
+      {/* Loading is not empty. Before the first answer the list draws the
+          shape of rows rather than "0 companies" and an empty state, which
+          read as a broken directory for the second it took to arrive. */}
+      {loading ? (
+        <RowsLoading />
+      ) : empty ? (
         firstDay ? (
           <FirstDay tab={tab} onAdd={onAdd} />
         ) : (
@@ -164,6 +187,17 @@ export function BrowsePanel({
                   company={companyOf(j.companyId)}
                   selected={j.id === selectedId}
                   hovered={j.companyId === hoveredId || j.id === hoveredId}
+                  onSelect={onSelect}
+                  onHover={onHover}
+                />
+              ))}
+            {tab === "community" &&
+              places.map((p) => (
+                <PlaceRow
+                  key={p.id}
+                  place={p}
+                  selected={p.id === selectedId}
+                  hovered={p.id === hoveredId}
                   onSelect={onSelect}
                   onHover={onHover}
                 />
@@ -273,7 +307,11 @@ function CompanyRow({
 
   return (
     <Row id={company.id} label={company.name} {...rest}>
-      <Monogram name={company.name} hue={company.hue} logo={company.logo ?? logoFor(company.id)} />
+      <Monogram
+        name={company.name}
+        hue={company.hue}
+        logo={company.logo ?? logoFor(company.id)}
+      />
       <div className="min-w-0 flex-1">
         <div className="flex items-baseline gap-2">
           <h3 className="truncate text-sm font-semibold text-ink">
@@ -319,7 +357,11 @@ function JobRow({
 }) {
   return (
     <Row id={job.id} label={`${job.title} at ${company.name}`} {...rest}>
-      <Monogram name={company.name} hue={company.hue} logo={company.logo ?? logoFor(company.id)} />
+      <Monogram
+        name={company.name}
+        hue={company.hue}
+        logo={company.logo ?? logoFor(company.id)}
+      />
       <div className="min-w-0 flex-1">
         <h3 className="text-sm leading-snug font-semibold text-ink">
           {job.title}
@@ -381,6 +423,39 @@ function PersonRow({
         </p>
         <p className="mt-1 truncate text-[0.75rem] text-ink-4">
           {person.skills.slice(0, 3).join(" · ")}
+        </p>
+      </div>
+    </Row>
+  );
+}
+
+function PlaceRow({
+  place,
+  ...rest
+}: {
+  place: Place;
+  selected: boolean;
+  hovered: boolean;
+  onSelect: (id: string) => void;
+  onHover: (id: string | null) => void;
+}) {
+  return (
+    <Row id={place.id} label={place.name} {...rest}>
+      <PlaceMark id={place.id} name={place.name} kind={place.kind} />
+      <div className="min-w-0 flex-1">
+        <h3 className="truncate text-sm font-semibold text-ink">
+          {place.name}
+        </h3>
+        <p className="line-clamp-2 text-[0.8125rem] text-ink-3">
+          {place.kind === "meetup" && place.schedule
+            ? `${place.schedule}${place.venue ? ` · ${place.venue}` : ""}`
+            : place.why}
+        </p>
+        <p className="mt-1 flex items-center gap-1 truncate text-[0.75rem] text-ink-4">
+          <MapPin className="size-3 shrink-0" />
+          {districtLabel(place.district)}
+          <span aria-hidden>·</span>
+          {placeKindLabel(place.kind)}
         </p>
       </div>
     </Row>
@@ -452,5 +527,30 @@ function StripStat({
       <span className="num font-semibold text-ink">{value}</span>
       <span className="text-ink-3">{label}</span>
     </button>
+  );
+}
+
+/** Placeholder rows for the first load: the list's shape, without content. */
+function RowsLoading() {
+  return (
+    <ul
+      className="min-h-0 flex-1 divide-y divide-line overflow-hidden"
+      aria-busy="true"
+      aria-label="Loading"
+    >
+      {Array.from({ length: 7 }, (_, i) => (
+        <li key={i} className="flex gap-3 px-4 py-3">
+          <span className="size-10 shrink-0 animate-pulse motion-reduce:animate-none rounded-card bg-surface-3" />
+          <span className="grid flex-1 content-start gap-2 pt-1">
+            <span
+              className="h-3 animate-pulse motion-reduce:animate-none rounded bg-surface-3"
+              style={{ width: `${55 + ((i * 17) % 35)}%` }}
+            />
+            <span className="h-2.5 w-[85%] animate-pulse motion-reduce:animate-none rounded bg-surface-2" />
+            <span className="h-2.5 w-[40%] animate-pulse motion-reduce:animate-none rounded bg-surface-2" />
+          </span>
+        </li>
+      ))}
+    </ul>
   );
 }

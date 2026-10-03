@@ -38,7 +38,7 @@ const companies = (await sql`
   select c.id, c.name, c.tagline, c.about, c.headcount, c.founded, c.stage,
          c.workplace, c.address, c.zip, c.lng, c.lat, c.website, c.phone,
          c.logo_url,
-         d.name as district, i.name as industry
+         d.name as district, d.city, d.state, i.name as industry
     from companies c
     join districts d on d.id = c.district_id
     join industries i on i.id = c.industry_id
@@ -70,7 +70,12 @@ const fact = (label: string, value: unknown) =>
     ? ""
     : `      <div><dt>${esc(label)}</dt><dd>${esc(value)}</dd></div>\n`;
 
-const page = (title: string, description: string, body: string, canonical: string) =>
+const page = (
+  title: string,
+  description: string,
+  body: string,
+  canonical: string,
+) =>
   `<!doctype html>
 <html lang="en">
   <head>
@@ -132,15 +137,17 @@ for (const c of companies) {
     "@type": "Organization",
     name: c.name,
     description: c.about || c.tagline,
-    url: c.website ? `https://${String(c.website).replace(/^https?:\/\//, "")}` : undefined,
+    url: c.website
+      ? `https://${String(c.website).replace(/^https?:\/\//, "")}`
+      : undefined,
     telephone: c.phone ?? undefined,
     foundingDate: c.founded ? String(c.founded) : undefined,
     numberOfEmployees: c.headcount ?? undefined,
     address: {
       "@type": "PostalAddress",
       streetAddress: c.address || undefined,
-      addressLocality: "Spokane",
-      addressRegion: "WA",
+      addressLocality: c.city,
+      addressRegion: c.state,
       postalCode: c.zip || undefined,
       addressCountry: "US",
     },
@@ -154,7 +161,7 @@ for (const c of companies) {
     ${c.about && c.about !== c.tagline ? `<p>${esc(c.about)}</p>` : ""}
     <h2>Details</h2>
     <dl>
-${fact("Industry", c.industry)}${fact("District", c.district)}${fact("Address", [c.address, `Spokane, WA ${c.zip ?? ""}`.trim()].filter(Boolean).join(", "))}${fact("Team", c.headcount && `${c.headcount} people`)}${fact("Founded", c.founded)}${fact("Workplace", c.workplace)}${fact("Phone", c.phone)}${fact("Website", c.website)}    </dl>
+${fact("Industry", c.industry)}${fact("District", c.district)}${fact("Address", [c.address, `${c.city}, ${c.state} ${c.zip ?? ""}`.trim()].filter(Boolean).join(", "))}${fact("Team", c.headcount && `${c.headcount} people`)}${fact("Founded", c.founded)}${fact("Workplace", c.workplace)}${fact("Phone", c.phone)}${fact("Website", c.website)}    </dl>
     <h2>Open roles</h2>
     ${
       jd.length
@@ -201,8 +208,14 @@ const meta = {
   generated: new Date().toISOString(),
   note: "Every field is sourced or null. A null is a fact nobody has published, not a zero.",
 };
-writeFileSync(`${out}data/companies.json`, JSON.stringify({ ...meta, companies }, null, 2));
-writeFileSync(`${out}data/jobs.json`, JSON.stringify({ ...meta, jobs }, null, 2));
+writeFileSync(
+  `${out}data/companies.json`,
+  JSON.stringify({ ...meta, companies }, null, 2),
+);
+writeFileSync(
+  `${out}data/jobs.json`,
+  JSON.stringify({ ...meta, jobs }, null, 2),
+);
 
 /* ---- llms.txt ----------------------------------------------------------- */
 
@@ -213,13 +226,16 @@ writeFileSync(
   `${out}llms.txt`,
   `# Spokane Tech Jobs
 
-> A directory and job board for the Spokane, Washington tech ecosystem: the
-> companies, the roles they have open, and the people building here, on one
-> map. Every row is sourced from public records; a fact nobody published is
+> A directory and job board for the tech ecosystem of Spokane, Eastern
+> Washington and North Idaho: the companies, the roles they have open, and the
+> people building here, on one map. Every row is sourced from public records; a fact nobody published is
 > null rather than guessed.
 
 The data is open, ${LICENCE}. Use it, quote it, reuse it — attribution to
 Spokane Tech Jobs is all that is asked.
+
+Employers: adding a company and posting jobs are both free, and listings run
+90 days with a one-click refresh. See ${SITE}/employers/
 
 ## Companies
 
@@ -244,7 +260,12 @@ const full = companies
     const facts = [
       ["Industry", c.industry],
       ["District", c.district],
-      ["Address", c.address ? `${c.address}, Spokane, WA ${c.zip ?? ""}`.trim() : null],
+      [
+        "Address",
+        c.address
+          ? `${c.address}, ${c.city}, ${c.state} ${c.zip ?? ""}`.trim()
+          : null,
+      ],
       ["Team", c.headcount ? `${c.headcount} people` : null],
       ["Founded", c.founded],
       ["Workplace", c.workplace],
@@ -284,6 +305,9 @@ writeFileSync(
 <urlset xmlns="http://www.sitemaps.org/schemas/sitemap/0.9">
   <url><loc>${SITE}/</loc><lastmod>${today}</lastmod><priority>1.0</priority></url>
   <url><loc>${SITE}/companies/</loc><lastmod>${today}</lastmod><priority>0.9</priority></url>
+  <url><loc>${SITE}/employers/</loc><lastmod>${today}</lastmod><priority>0.8</priority></url>
+  <url><loc>${SITE}/terms/</loc><lastmod>${today}</lastmod><priority>0.2</priority></url>
+  <url><loc>${SITE}/privacy/</loc><lastmod>${today}</lastmod><priority>0.2</priority></url>
 ${companies.map((c) => `  <url><loc>${SITE}/companies/${c.id}.html</loc><lastmod>${today}</lastmod><priority>0.8</priority></url>`).join("\n")}
 </urlset>
 `,

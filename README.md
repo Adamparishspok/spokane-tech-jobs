@@ -1,7 +1,7 @@
 # Spokane Tech Jobs
 
-A directory and job board for the Spokane tech ecosystem, with a map as the
-centrepiece. Standalone app on Neon Postgres — the data is real rows behind
+A directory and job board for tech in Spokane, Eastern Washington and North
+Idaho, with a map as the centrepiece. Standalone app on Neon Postgres — the data is real rows behind
 row-level security, not a fixture file.
 
 ```

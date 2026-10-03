@@ -8,9 +8,15 @@ import {
   useRef,
   useState,
 } from "react";
-import { Monogram } from "../design/brand";
+import { Monogram, PlaceMark } from "../design/brand";
+import type { PlaceKind } from "../domain";
 import { Basemap } from "./basemap";
-import { hasMapbox, MapboxBasemap, mapboxProjector, type MapboxMap } from "./mapbox";
+import {
+  hasMapbox,
+  MapboxBasemap,
+  mapboxProjector,
+  type MapboxMap,
+} from "./mapbox";
 import {
   pan as panCamera,
   projector,
@@ -51,6 +57,8 @@ export type Pin = {
   logo?: string | null;
   /** The monogram's hue, used when there is no logo. */
   hue: number;
+  /** Set on the Community tab: the pin is a place, drawn as its kind. */
+  kind?: PlaceKind;
   /** What the mark counts on this tab. */
   count?: number;
   /**
@@ -369,7 +377,9 @@ export function MapView({
           theme={theme}
           /* A move the reader made arms "Search this area"; one this app
              asked for only keeps the camera honest. */
-          onCamera={(next, fromUser) => (fromUser ? move(next) : onCamera(next))}
+          onCamera={(next, fromUser) =>
+            fromUser ? move(next) : onCamera(next)
+          }
           onReady={setMapbox}
         />
       ) : (
@@ -534,73 +544,97 @@ function Marker({
   const active = selected || hovered;
 
   return (
-    <button
-      type="button"
-      className={cn(
-        "pointer-events-auto absolute -translate-x-1/2 -translate-y-1/2 rounded-full transition-[transform,box-shadow] duration-150",
-        active && "z-20 scale-110",
-      )}
+    /* Placed by a compositor transform on a wrapper rather than left/top on
+       the button: no layout per frame, and the button's own scale
+       transition never applies to its position, so a pin cannot trail
+       the tiles under it. */
+    <div
+      className="absolute top-0 left-0"
       style={{
-        left: at.x,
-        top: at.y,
+        transform: `translate3d(${at.x}px, ${at.y}px, 0)`,
         zIndex: active ? 20 : pin.hiring ? 10 : 5,
       }}
-      onClick={() => onSelect(pin.id)}
-      onMouseEnter={() => onHover(pin.id)}
-      onMouseLeave={() => onHover(null)}
-      onFocus={() => onHover(pin.id)}
-      onBlur={() => onHover(null)}
-      aria-label={
-        pin.count
-          ? `${pin.label}, ${pin.count} ${plural(pin.unit, pin.count)}`
-          : pin.label
-      }
     >
-      <span
+      <button
+        type="button"
         className={cn(
-          /* The ring is the marker's edge against the map, and it is what
-             changes when a pin is the selected one — not the logo, which is
-             the company's and not ours to recolour. */
-          "block rounded-full border-2 shadow-[var(--shadow-marker)] transition-colors",
-          selected ? "border-ink" : pin.hiring ? "border-hiring" : "border-solid",
+          "pointer-events-auto absolute -translate-x-1/2 -translate-y-1/2 rounded-full transition-[transform,box-shadow] duration-150",
+          active && "z-20 scale-110",
         )}
+        onClick={() => onSelect(pin.id)}
+        onMouseEnter={() => onHover(pin.id)}
+        onMouseLeave={() => onHover(null)}
+        onFocus={() => onHover(pin.id)}
+        onBlur={() => onHover(null)}
+        aria-label={
+          pin.count
+            ? `${pin.label}, ${pin.count} ${plural(pin.unit, pin.count)}`
+            : pin.label
+        }
       >
-        <Monogram
-          name={pin.label}
-          hue={pin.hue}
-          logo={pin.logo}
-          round
-          className={cn("size-8 bg-solid", !pin.hiring && !active && "opacity-90")}
-        />
-      </span>
-
-      {/* How many roles are open, on the corner. Only where there are any:
-          a badge reading 0 is a label nobody needs and forty of them is
-          noise over the city. */}
-      {pin.hiring && pin.count ? (
         <span
           className={cn(
-            "num absolute -top-1 -right-1 flex h-4.5 min-w-4.5 items-center justify-center rounded-full border-2 px-1 text-[0.6875rem] font-semibold tabular-nums",
+            /* The ring is the marker's edge against the map, and it is what
+               changes when a pin is the selected one — not the logo, which is
+               the company's and not ours to recolour. */
+            "block rounded-full border-2 shadow-[var(--shadow-marker)] transition-colors",
             selected
-              ? "border-solid bg-ink text-ground"
-              : "border-solid bg-hiring text-white",
+              ? "border-ink"
+              : pin.hiring
+                ? "border-hiring"
+                : "border-solid",
           )}
         >
-          {pin.count}
+          {pin.kind ? (
+            <PlaceMark
+              id={pin.id}
+              name={pin.label}
+              kind={pin.kind}
+              round
+              className="size-8 bg-solid"
+            />
+          ) : (
+            <Monogram
+              name={pin.label}
+              hue={pin.hue}
+              logo={pin.logo}
+              round
+              className={cn(
+                "size-8 bg-solid",
+                !pin.hiring && !active && "opacity-90",
+              )}
+            />
+          )}
         </span>
-      ) : null}
 
-      {/* The name arrives on hover and on focus, not permanently: forty
-          labels at once is a map with no map left in it. */}
-      <span
-        className={cn(
-          "pointer-events-none absolute top-full left-1/2 mt-1.5 -translate-x-1/2 rounded-chip border border-line-2 bg-surface px-1.5 py-0.5 text-[0.75rem] font-medium whitespace-nowrap text-ink shadow-[var(--shadow-card)] transition-opacity duration-100",
-          active ? "opacity-100" : "opacity-0",
-        )}
-      >
-        {pin.label}
-      </span>
-    </button>
+        {/* How many roles are open, on the corner. Only where there are any:
+            a badge reading 0 is a label nobody needs and forty of them is
+            noise over the city. */}
+        {pin.hiring && pin.count ? (
+          <span
+            className={cn(
+              "num absolute -top-1 -right-1 flex h-4.5 min-w-4.5 items-center justify-center rounded-full border-2 px-1 text-[0.6875rem] font-semibold tabular-nums",
+              selected
+                ? "border-solid bg-ink text-ground"
+                : "border-solid bg-hiring text-white",
+            )}
+          >
+            {pin.count}
+          </span>
+        ) : null}
+
+        {/* The name arrives on hover and on focus, not permanently: forty
+            labels at once is a map with no map left in it. */}
+        <span
+          className={cn(
+            "pointer-events-none absolute top-full left-1/2 mt-1.5 -translate-x-1/2 rounded-chip border border-line-2 bg-surface px-1.5 py-0.5 text-[0.75rem] font-medium whitespace-nowrap text-ink shadow-[var(--shadow-card)] transition-opacity duration-100",
+            active ? "opacity-100" : "opacity-0",
+          )}
+        >
+          {pin.label}
+        </span>
+      </button>
+    </div>
   );
 }
 
@@ -624,30 +658,36 @@ function ClusterMarker({
   const size = 26 + Math.min(14, Math.log2(cluster.pins.length + 1) * 6);
 
   return (
-    <button
-      type="button"
-      className={cn(
-        "pointer-events-auto absolute grid -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border-2 border-surface font-semibold shadow-[var(--shadow-marker)] transition-transform duration-150 hover:scale-110",
-        hiring ? "bg-hiring text-white" : "bg-ink-3 text-ground",
-        active && "scale-110 ring-2 ring-ink ring-offset-1",
-      )}
+    /* Placed by a compositor transform on a wrapper rather than left/top on
+       the button: no layout per frame, and the button's own scale
+       transition never applies to its position, so a pin cannot trail
+       the tiles under it. */
+    <div
+      className="absolute top-0 left-0"
       style={{
-        left: cluster.at.x,
-        top: cluster.at.y,
-        width: size,
-        height: size,
+        transform: `translate3d(${cluster.at.x}px, ${cluster.at.y}px, 0)`,
         zIndex: 15,
       }}
-      onClick={onZoom}
-      aria-label={`${cluster.pins.length} companies here, ${total} ${plural(
-        unit,
-        total,
-      )}. Zoom in.`}
     >
-      <span className="num text-[0.8125rem] leading-none">
-        {cluster.pins.length}
-      </span>
-    </button>
+      <button
+        type="button"
+        className={cn(
+          "pointer-events-auto absolute grid -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border-2 border-surface font-semibold shadow-[var(--shadow-marker)] transition-transform duration-150 hover:scale-110",
+          hiring ? "bg-hiring text-white" : "bg-ink-3 text-ground",
+          active && "scale-110 ring-2 ring-ink ring-offset-1",
+        )}
+        style={{ width: size, height: size }}
+        onClick={onZoom}
+        aria-label={`${cluster.pins.length} companies here, ${total} ${plural(
+          unit,
+          total,
+        )}. Zoom in.`}
+      >
+        <span className="num text-[0.8125rem] leading-none">
+          {cluster.pins.length}
+        </span>
+      </button>
+    </div>
   );
 }
 

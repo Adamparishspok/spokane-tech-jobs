@@ -69,6 +69,7 @@ const PAINT: { layer: string; prop: string; token: string }[] = [
 
 export type MapboxMap = {
   on: (event: string, fn: () => void) => void;
+  once: (event: string, fn: () => void) => void;
   remove: () => void;
   getCenter: () => { lng: number; lat: number };
   getZoom: () => number;
@@ -80,6 +81,7 @@ export type MapboxMap = {
   }) => void;
   resize: () => void;
   getStyle: () => { layers: { id: string }[] } | undefined;
+  setStyle: (url: string) => void;
   setPaintProperty: (layer: string, prop: string, value: string) => void;
   project: (at: [number, number]) => { x: number; y: number };
   unproject: (at: [number, number]) => { lng: number; lat: number };
@@ -87,7 +89,6 @@ export type MapboxMap = {
 
 export function MapboxBasemap({
   camera,
-  size,
   theme,
   onCamera,
   onReady,
@@ -110,6 +111,17 @@ export function MapboxBasemap({
      user drag would be followed by the app pushing the pre-drag camera back
      down and the map would fight the mouse. */
   const selfMove = useRef(false);
+  /* Every camera this component has reported. When the prop comes back as one
+     of them it is our own report echoed through React, not a request —
+     and pushing it down would ease the map back to where it was a frame ago,
+     cancelling whatever is moving it: the reader's wheel, a fling's inertia,
+     or the app's own easeTo to a selected company.
+
+     A set, not the last one: Mapbox reports several frames before React
+     renders once, so the prop can arrive as a report two or three frames
+     old — the camera from before the move started — and checking it against
+     only the newest report sent the map straight back there. */
+  const reported = useRef(new WeakSet<Camera>());
 
   useEffect(() => {
     if (!host.current || !MAPBOX_TOKEN) return;
@@ -145,11 +157,14 @@ export function MapboxBasemap({
       map.current = instance;
 
       instance.on("style.load", () => retone(instance!));
-      const report = () =>
-        onCamera(
-          { center: instance!.getCenter(), zoom: instance!.getZoom() },
-          !selfMove.current,
-        );
+      const report = () => {
+        const next = {
+          center: instance!.getCenter(),
+          zoom: instance!.getZoom(),
+        };
+        reported.current.add(next);
+        onCamera(next, !selfMove.current);
+      };
       instance.on("move", report);
       instance.on("moveend", report);
 
@@ -178,7 +193,7 @@ export function MapboxBasemap({
   /* Push the app's camera down only when it did not come from Mapbox. */
   useEffect(() => {
     const m = map.current;
-    if (!m) return;
+    if (!m || reported.current.has(camera)) return;
     const here = m.getCenter();
     const moved =
       Math.abs(here.lng - camera.center.lng) > 1e-6 ||
@@ -191,13 +206,27 @@ export function MapboxBasemap({
       zoom: camera.zoom,
       duration: 420,
     });
-    const t = setTimeout(() => (selfMove.current = false), 460);
-    return () => clearTimeout(t);
+    /* Ends with the move rather than on a timer, so an ease that runs long is
+       not relabelled as the reader's own halfway through. */
+    const done = () => (selfMove.current = false);
+    m.once("moveend", done);
   }, [camera]);
 
+  /* The style follows the theme. `style.load` fires again after the swap and
+     `retone` re-applies the palette, so nothing else needs to know. */
+  const styleTheme = useRef(theme);
   useEffect(() => {
-    map.current?.resize();
-  }, [size.width, size.height]);
+    const m = map.current;
+    if (!m || styleTheme.current === theme) return;
+    styleTheme.current = theme;
+    m.setStyle(
+      `mapbox://styles/mapbox/${theme === "dark" ? "dark-v11" : "light-v11"}`,
+    );
+  }, [theme]);
+
+  /* No resize effect: Mapbox watches its own container (`trackResize`), and a
+     second resize from the panel's observer doubled the work on every drag of
+     the window edge. */
 
   /* Two divs rather than one, because Mapbox turns whatever container it is
      given into `.mapboxgl-map`, and its stylesheet sets `position: relative`

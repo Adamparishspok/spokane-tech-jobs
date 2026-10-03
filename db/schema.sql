@@ -60,6 +60,12 @@ create table if not exists districts (
   sort      int  not null default 0
 );
 
+-- The city and state an address in this district is written with. Inside
+-- Spokane that is Spokane; beyond it the district is the town.
+alter table districts add column if not exists city  text not null default 'Spokane';
+alter table districts add column if not exists state text not null default 'WA';
+alter table districts add column if not exists area  text not null default 'Spokane area';
+
 create table if not exists industries (
   id    text primary key,
   name  text not null,
@@ -139,10 +145,13 @@ create table if not exists jobs (
   posted_by        text,
   posted_at        timestamptz not null default now(),
   -- Listings expire. The alternative is a job board whose top result closed
-  -- eighteen months ago, which is how local boards die.
-  expires_at       timestamptz not null default now() + interval '60 days',
+  -- eighteen months ago, which is how local boards die. Ninety days, and the
+  -- poster refreshes it for another ninety — see jobs_guard below.
+  expires_at       timestamptz not null default now() + interval '90 days',
   constraint jobs_pay_range check (pay_high >= pay_low)
 );
+
+alter table jobs alter column expires_at set default now() + interval '90 days';
 
 create index if not exists jobs_company_idx on jobs (company_id);
 create index if not exists jobs_live_idx on jobs (status, expires_at);
@@ -196,6 +205,107 @@ alter table companies alter column stage     drop not null;
 alter table companies alter column workplace drop not null;
 alter table companies add column if not exists logo_url text;
 
+-- ---------------------------------------------------------- community
+-- Where the people in the directory meet: coffee shops people work from and
+-- meet in, coworking spaces, the organisations that fund and convene, and the
+-- meetups that recur. A place is not an employer, so it is not a company row
+-- — it would turn up in the hiring counts and the industry filter as one.
+
+do $$ begin
+  create type place_kind as enum ('coffee', 'coworking', 'organization', 'meetup');
+exception when duplicate_object then null; end $$;
+
+create table if not exists places (
+  id          text primary key,
+  name        text not null,
+  kind        place_kind not null,
+  -- The sourced sentence on why a tech person would go. Not marketing copy.
+  why         text not null default '',
+  -- Meetups only: when it meets, and where, in words.
+  schedule    text,
+  venue       text,
+  website     text,
+  address     text not null default '',
+  zip         text not null default '',
+  district_id text not null references districts(id),
+  lng         double precision not null,
+  lat         double precision not null,
+  sources     text[] not null default '{}',
+  status      review_status not null default 'published',
+  created_at  timestamptz not null default now()
+);
+
+-- Who is at a place: who runs it, organises it, works from it. A link to a
+-- people row and never a name typed in here, so anyone shown on a place is,
+-- by construction, somebody in the People list — and delisting yourself takes
+-- you off every place at once.
+create table if not exists place_people (
+  place_id   text not null references places(id) on delete cascade,
+  person_id  text not null references people(id) on delete cascade,
+  role       text not null default '',
+  primary key (place_id, person_id)
+);
+
+alter table places       enable row level security;
+alter table place_people enable row level security;
+
+drop policy if exists places_read on places;
+create policy places_read on places
+  for select to anonymous, authenticated
+  using (status = 'published');
+
+-- Only links to people who are listed. A person who delists stays linked in
+-- the table, harmlessly, and disappears from every place.
+drop policy if exists place_people_read on place_people;
+create policy place_people_read on place_people
+  for select to anonymous, authenticated
+  using (exists (
+    select 1 from people p where p.id = place_people.person_id and p.listed
+  ));
+
+grant select on places, place_people to anonymous, authenticated;
+
+-- ------------------------------------------------------- person emails
+-- How a profile somebody else listed gets back to the person it describes.
+-- The address lives here rather than on `people` because RLS is per row, not
+-- per column, and `people` is public: this table has RLS on, no policies and
+-- no grants, so nothing outside claim_person() can read it.
+
+create table if not exists person_emails (
+  person_id  text primary key references people(id) on delete cascade,
+  email      text not null
+);
+alter table person_emails enable row level security;
+-- Neon's default privileges grant new tables to the API roles. Not this one.
+revoke all on person_emails from anonymous, authenticated;
+
+-- Taking over a profile. The proof is the sign-in: Neon Auth has verified the
+-- account's address, and it matches the one on file for this profile. Nobody
+-- reviews it and nothing is guessed — no match, no profile.
+create or replace function claim_person(target text) returns text
+language plpgsql security definer set search_path = public as $$
+declare
+  me     text := auth.user_id();
+  mine   text;
+  wanted text;
+  ok     boolean;
+begin
+  if me is null then return 'signed-out'; end if;
+  select lower(u.email), u."emailVerified" into mine, ok
+    from neon_auth."user" u where u.id::text = me;
+  if not coalesce(ok, false) then return 'unverified'; end if;
+  if exists (select 1 from people where user_id = me) then return 'has-profile'; end if;
+  select lower(email) into wanted from person_emails where person_id = target;
+  if wanted is null or wanted <> mine then return 'no-match'; end if;
+  update people set user_id = me where id = target and user_id is null;
+  if not found then return 'taken'; end if;
+  return 'claimed';
+end;
+$$;
+
+revoke all on function claim_person(text) from public;
+grant execute on function claim_person(text) to authenticated;
+
 -- ------------------------------------------------------------ claims
 -- Claiming a listing is a request, not an action. Approving it is the one
 -- thing in this product that cannot be self-serve: the whole point is that
@@ -245,6 +355,31 @@ $$ language plpgsql;
 drop trigger if exists companies_touch on companies;
 create trigger companies_touch before update on companies
   for each row execute function touch_updated_at();
+
+-- What a poster may do to their own job with an update. The update policy
+-- below scopes *which* rows; this scopes *what changes*, which a policy cannot
+-- express column by column:
+--
+-- - The status is not theirs to set. Without this, an edit is a way to
+--   publish yourself past review.
+-- - The expiry is not theirs to choose, only to reset. Any change to it is a
+--   refresh, and a refresh is ninety days from now — not from a date the
+--   client sent, which could be next century.
+create or replace function jobs_guard() returns trigger as $$
+begin
+  if current_user = 'authenticated' then
+    new.status := old.status;
+    if new.expires_at is distinct from old.expires_at then
+      new.expires_at := now() + interval '90 days';
+    end if;
+  end if;
+  return new;
+end;
+$$ language plpgsql;
+
+drop trigger if exists jobs_guard on jobs;
+create trigger jobs_guard before update on jobs
+  for each row execute function jobs_guard();
 
 drop trigger if exists people_touch on people;
 create trigger people_touch before update on people

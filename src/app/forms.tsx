@@ -38,7 +38,7 @@ import {
   saveProfile,
 } from "../db/mutations";
 import { Basemap } from "../map/basemap";
-import { DISTRICTS, type DistrictId } from "../map/spokane";
+import { AREAS, DISTRICTS, type DistrictId } from "../map/spokane";
 import { Monogram } from "../design/brand";
 
 /**
@@ -196,7 +196,7 @@ function useIndustries() {
  * The district picker.
  *
  * A select would have done. This is the screen where a person is deciding
- * whether their company belongs in a Spokane directory at all, and showing
+ * whether their company belongs in this directory at all, and showing
  * them their own pin land on the river is worth more than the twenty lines it
  * costs.
  */
@@ -209,7 +209,12 @@ function DistrictField({
 }) {
   const district = DISTRICTS.find((d) => d.id === value) ?? DISTRICTS[0];
   const camera = useMemo(
-    () => ({ center: district.at, zoom: 13.4 }),
+    /* A neighbourhood is drawn street by street; a town beyond Spokane is a
+       label, so the preview pulls back far enough to show where it sits. */
+    () => ({
+      center: district.at,
+      zoom: district.area === "Spokane area" ? 13.4 : 8.6,
+    }),
     [district],
   );
 
@@ -223,10 +228,14 @@ function DistrictField({
         onChange={(e) => onChange(e.target.value as DistrictId)}
         className="h-[2.125rem] w-full rounded-field border border-line-2 bg-field px-3 text-sm text-ink outline-none focus-visible:border-brand focus-visible:ring-[3px] focus-visible:ring-brand/15"
       >
-        {DISTRICTS.map((d) => (
-          <option key={d.id} value={d.id}>
-            {d.name}
-          </option>
+        {AREAS.map((area) => (
+          <optgroup key={area} label={area}>
+            {DISTRICTS.filter((d) => d.area === area).map((d) => (
+              <option key={d.id} value={d.id}>
+                {d.name}
+              </option>
+            ))}
+          </optgroup>
         ))}
       </select>
 
@@ -855,7 +864,7 @@ export function EditProfile({
   useEffect(() => {
     if (!mine) return;
     setOpenTo(mine.openTo);
-    setDistrict(mine.district);
+    setDistrict(mine.district ?? "downtown");
   }, [mine]);
 
   const submit = (data: FormData) => {

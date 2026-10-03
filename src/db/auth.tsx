@@ -56,7 +56,8 @@ export function useViewer(): Viewer | null {
 
     const id = String(user.id);
     let hue = 0;
-    for (let i = 0; i < id.length; i++) hue = (hue * 31 + id.charCodeAt(i)) % 360;
+    for (let i = 0; i < id.length; i++)
+      hue = (hue * 31 + id.charCodeAt(i)) % 360;
 
     return {
       id,
@@ -79,9 +80,9 @@ type SessionUser = {
    SDK is a beta and this is the only shape the app depends on, so a rename
    downstream shows up as one failing cast instead of a broken build. */
 function useSessionSafe(): { user?: SessionUser } | null {
-  const client = auth as
-    | { useSession?: () => { data?: { user?: SessionUser } | null } }
-    | null;
+  const client = auth as {
+    useSession?: () => { data?: { user?: SessionUser } | null };
+  } | null;
 
   if (!client?.useSession) {
     /* No hook to call, and no hook is called — the branch is decided once at
@@ -118,6 +119,39 @@ export async function signUpWithEmail({ email, password, name }: Credentials) {
     password,
     name: name ?? email.split("@")[0],
   });
+  if (error) throw error;
+}
+
+/* Email verification, by six-digit code. Taking over a profile somebody else
+   listed is gated on a verified address, and this is how an address that was
+   signed up with a password gets verified. */
+type EmailOtp = {
+  emailOtp: {
+    sendVerificationOtp: (input: {
+      email: string;
+      type: "email-verification";
+    }) => Promise<{ error?: unknown }>;
+    verifyEmail: (input: {
+      email: string;
+      otp: string;
+    }) => Promise<{ error?: unknown }>;
+  };
+};
+
+export async function sendVerificationCode(email: string) {
+  const client = auth as EmailOtp | null;
+  if (!client) throw new Error("No authentication configured");
+  const { error } = await client.emailOtp.sendVerificationOtp({
+    email,
+    type: "email-verification",
+  });
+  if (error) throw error;
+}
+
+export async function verifyEmailCode(email: string, otp: string) {
+  const client = auth as EmailOtp | null;
+  if (!client) throw new Error("No authentication configured");
+  const { error } = await client.emailOtp.verifyEmail({ email, otp });
   if (error) throw error;
 }
 

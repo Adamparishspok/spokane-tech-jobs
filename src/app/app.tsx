@@ -2,7 +2,7 @@ import { logoFor } from "../design/brand";
 import { PortalHost } from "@kit/lib/portal-host";
 import { ThemeProvider, useTheme } from "@kit/lib/theme";
 import { TooltipProvider } from "@kit/ui";
-import { Briefcase, Building2, Users } from "lucide-react";
+import { Briefcase, Building2, Coffee, Users } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { type Company, type Job, type Person } from "../domain";
 import { signOut, useViewer } from "../db/auth";
@@ -14,13 +14,20 @@ import { HOME } from "../map/spokane";
 import { AuthDialog, Unreachable } from "./auth";
 import { BrowsePanel, EcosystemStrip, type Tab } from "./browse";
 import { Rail, Shell, type RailItem } from "./chrome";
-import { CompanyDetail, DetailPanel, JobDetail, PersonDetail } from "./detail";
+import {
+  CompanyDetail,
+  DetailPanel,
+  JobDetail,
+  PersonDetail,
+  PlaceDetail,
+} from "./detail";
 import { AddCompany, EditProfile, PostJob } from "./forms";
 import {
   EMPTY_QUERY,
   filterCompanies,
   filterJobs,
   filterPeople,
+  filterPlaces,
   type Query,
 } from "./filters";
 
@@ -36,7 +43,9 @@ import {
  *
  * Routes, for anyone reading or shooting this:
  *
- * | `#specimen` | every token and primitive on one page   |
+ * | `#specimen`    | every token and primitive on one page   |
+ * | `#add-company` | opens the add-company form (sign-in first) |
+ * | `#post-job`    | opens the post-a-job form (sign-in first)  |
  *
  * The rows come from Postgres through `useDirectory`. That was the one change
  * this file needed when the prototype became an application: the fixture
@@ -48,6 +57,7 @@ const NAV: RailItem[] = [
   { id: "companies", label: "Companies", icon: <Building2 /> },
   { id: "jobs", label: "Jobs", icon: <Briefcase /> },
   { id: "people", label: "People", icon: <Users /> },
+  { id: "community", label: "Community", icon: <Coffee /> },
 ];
 
 /** What the detail column is showing. */
@@ -55,6 +65,7 @@ type Selection =
   | { kind: "company"; id: string }
   | { kind: "job"; id: string }
   | { kind: "person"; id: string }
+  | { kind: "place"; id: string }
   | null;
 
 /* The panels' footprint, so `fit` and the map controls stay clear of them.
@@ -108,6 +119,25 @@ function Root() {
     setForm(which);
   };
 
+  /* Deep links from the employers page. A signed-out visitor gets sign-in
+     first; the effect runs again when the session arrives and opens the form
+     they came for, so the link survives the detour. */
+  useEffect(() => {
+    const which =
+      location.hash === "#add-company"
+        ? "company"
+        : location.hash === "#post-job"
+          ? "job"
+          : null;
+    if (!which) return;
+    if (!viewer) {
+      setAuthOpen(true);
+      return;
+    }
+    history.replaceState(null, "", location.pathname + location.search);
+    setForm(which);
+  }, [viewer]);
+
   /* The map's real box, reported by `MapView` once it has measured itself.
      Seeded with something plausible so the first `fit` before layout is not
      nonsense; every one after it is measured. */
@@ -115,7 +145,7 @@ function Root() {
 
   /* `[]` written inline would be a new array every render, which would make
      every filter below re-run on every keystroke elsewhere in the app. */
-  const { companies, jobs, people } = directory;
+  const { companies, jobs, people, places } = directory;
 
   /* The detail column and the rows want a company, not a maybe-company. A
      missing id here means a job whose company was filtered out from under it,
@@ -139,6 +169,10 @@ function Root() {
     () => filterPeople(people, query, (id) => companyOf(id) ?? null),
     [people, query, companyOf],
   );
+  const shownPlaces = useMemo(
+    () => filterPlaces(places, query),
+    [places, query],
+  );
 
   /**
    * Pins.
@@ -150,6 +184,20 @@ function Root() {
    * the same thing would be decoration.
    */
   const pins: Pin[] = useMemo(() => {
+    /* The one tab whose marks are not companies. A place has no roles and no
+       people count worth a badge, so the mark is its kind and nothing more. */
+    if (tab === "community") {
+      return shownPlaces.map((p) => ({
+        id: p.id,
+        at: { lng: p.lng, lat: p.lat },
+        label: p.name,
+        hue: 0,
+        kind: p.kind,
+        unit: "place",
+        hiring: false,
+      }));
+    }
+
     if (tab === "companies") {
       return shownCompanies.map((c) => ({
         id: c.id,
@@ -204,7 +252,7 @@ function Root() {
         hiring: false,
       };
     });
-  }, [tab, shownCompanies, shownJobs, shownPeople, companyOf]);
+  }, [tab, shownCompanies, shownJobs, shownPeople, shownPlaces, companyOf]);
 
   /**
    * What the map and the list agree is highlighted.
@@ -213,6 +261,7 @@ function Root() {
    * knows is not always the id the list knows. Resolving it here is what keeps
    * the two in sync without either of them knowing about the other.
    */
+  const selectedPlaceId = selection?.kind === "place" ? selection.id : null;
   const selectedCompanyId =
     selection?.kind === "company"
       ? selection.id
@@ -224,16 +273,17 @@ function Root() {
 
   const hoveredCompanyId = useMemo(() => {
     if (!hovered) return null;
-    if (findCompany(hovered)) return hovered;
+    if (findCompany(hovered) || directory.place(hovered)) return hovered;
     const job = jobs.find((j) => j.id === hovered);
     if (job) return job.companyId;
     const person = people.find((p) => p.id === hovered);
     return person?.companyId ?? null;
-  }, [hovered, findCompany, jobs, people]);
+  }, [hovered, findCompany, directory, jobs, people]);
 
   /* ---- selection ------------------------------------------------------- */
 
   const select = (id: string) => {
+    if (tab === "community") return setSelection({ kind: "place", id });
     if (tab === "jobs") {
       const job = jobs.find((j) => j.id === id);
       if (job) return setSelection({ kind: "job", id });
@@ -256,9 +306,10 @@ function Root() {
    * the map — reliably including the pin that had just been clicked. Here the
    * camera eases so the selected pin lands in the gap between the two panels.
    */
+  const selectedPinId = selectedPlaceId ?? selectedCompanyId;
   useEffect(() => {
-    if (!selectedCompanyId) return;
-    const c = findCompany(selectedCompanyId);
+    if (!selectedPinId) return;
+    const c = findCompany(selectedPinId) ?? directory.place(selectedPinId);
     if (!c) return;
     /* A single point has no extent, so `fit` would take it to the top of the
        zoom range and land on a street corner. What is wanted is the
@@ -273,9 +324,9 @@ function Root() {
       [zoom, zoom],
     );
     if (next) setCamera(next);
-    // Only when the selected company changes — not when the camera does.
+    // Only when the selected pin changes — not when the camera does.
     // eslint-disable-next-line react-hooks/exhaustive-deps
-  }, [selectedCompanyId]);
+  }, [selectedPinId]);
 
   /* Changing tab keeps the query but drops a selection that no longer has a
      row to sit next to. */
@@ -352,7 +403,7 @@ function Root() {
                      still armed is describing somewhere else. */
                   if (query.area) setQuery((q) => ({ ...q, area: null }));
                 }}
-                selectedId={selectedCompanyId}
+                selectedId={selectedPinId}
                 hoveredId={hoveredCompanyId}
                 onSelect={select}
                 onHover={setHovered}
@@ -374,6 +425,7 @@ function Root() {
                   companies={shownCompanies}
                   jobs={shownJobs}
                   people={shownPeople}
+                  places={shownPlaces}
                   selectedId={
                     selection?.kind === "company"
                       ? selection.id
@@ -396,10 +448,11 @@ function Root() {
                   }
                   companyOf={companyOf}
                   firstDay={empty}
+                  loading={loading}
                 />
 
                 <div className="flex flex-1 flex-col items-center">
-                  {!empty && (
+                  {!empty && !loading && (
                     <EcosystemStrip
                       companies={companies}
                       jobs={jobs}
@@ -443,12 +496,23 @@ function Root() {
                         }
                       />
                     )}
+                    {selected.kind === "place" && (
+                      <PlaceDetail
+                        place={selected.place}
+                        onPerson={(person: Person) =>
+                          setSelection({ kind: "person", id: person.id })
+                        }
+                      />
+                    )}
                     {selected.kind === "person" && (
                       <PersonDetail
                         person={selected.person}
                         company={selected.company}
                         onCompany={(c: Company) =>
                           setSelection({ kind: "company", id: c.id })
+                        }
+                        onPlace={(p) =>
+                          setSelection({ kind: "place", id: p.id })
                         }
                       />
                     )}
@@ -497,6 +561,11 @@ function resolve(selection: Selection, d: Directory) {
     const company = job && d.company(job.companyId);
     if (!job || !company) return null;
     return { kind: "job", job, company } as const;
+  }
+
+  if (selection.kind === "place") {
+    const place = d.place(selection.id);
+    return place ? ({ kind: "place", place } as const) : null;
   }
 
   const person = d.people.find((p) => p.id === selection.id);

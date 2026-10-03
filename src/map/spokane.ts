@@ -1,5 +1,6 @@
 /**
- * Spokane, as much of it as a basemap needs.
+ * Spokane, as much of it as a basemap needs — and the towns of the region it
+ * anchors, as much of them as a label needs.
  *
  * Coordinates, not an image. The original comps used a Google satellite
  * capture, which meant the map could not be themed, could not be zoomed, and
@@ -24,7 +25,24 @@ export const SPOKANE: LngLat = { lng: -117.424, lat: 47.6555 };
 /** Opening camera: downtown and the near valley, with the falls above centre. */
 export const HOME = { center: SPOKANE, zoom: 11.6 };
 
-export const ZOOM_LIMITS: [number, number] = [9.5, 16];
+/**
+ * Out far enough to see the whole region the directory covers, from Yakima to
+ * Bonners Ferry. Spokane is drawn street by street; everywhere else is a
+ * labelled point until Mapbox tiles come up underneath.
+ */
+export const ZOOM_LIMITS: [number, number] = [7.2, 16];
+
+/** The city's own label, for zooms where its neighbourhoods would be noise. */
+export const HUB = { name: "Spokane", at: SPOKANE, maxZoom: 10.2 };
+
+/**
+ * The Washington–Idaho line, Canada to the Clearwater. Straight because it is:
+ * a meridian survey north of Lewiston, which is all of it this map shows.
+ */
+export const STATE_LINE: Line = [
+  [-117.0392, 49.0],
+  [-117.0392, 46.4258],
+];
 
 type Line = [number, number][]; // [lng, lat]
 
@@ -267,7 +285,17 @@ export const BLOCKS: { w: number; s: number; e: number; n: number }[] = [
  * Districts. These are the labels on the map and the values in the district
  * filter — the same list, because a place you can see is a place you should be
  * able to filter by, and two lists would drift.
+ *
+ * Inside Spokane a district is a neighbourhood; beyond it, a whole town. Both
+ * carry the city and state an address is written with, which is why Liberty
+ * Lake is its own entry rather than a part of the valley.
  */
+export const AREAS = [
+  "Spokane area",
+  "Eastern Washington",
+  "North Idaho",
+] as const;
+export type Area = (typeof AREAS)[number];
 export type DistrictId =
   | "downtown"
   | "kendall-yards"
@@ -285,7 +313,27 @@ export type DistrictId =
   | "valley"
   | "liberty-lake"
   | "airway-heights"
-  | "cheney";
+  | "cheney"
+  | "deer-park"
+  | "colville"
+  | "moses-lake"
+  | "wenatchee"
+  | "ellensburg"
+  | "yakima"
+  | "richland"
+  | "kennewick"
+  | "pasco"
+  | "walla-walla"
+  | "pullman"
+  | "clarkston"
+  | "coeur-dalene"
+  | "post-falls"
+  | "hayden"
+  | "rathdrum"
+  | "sandpoint"
+  | "bonners-ferry"
+  | "moscow"
+  | "lewiston";
 
 export const DISTRICTS: {
   id: DistrictId;
@@ -293,110 +341,362 @@ export const DISTRICTS: {
   at: LngLat;
   /** Below this zoom the label is noise; above it, orientation. */
   minZoom: number;
+  city: string;
+  state: "WA" | "ID";
+  area: Area;
 }[] = [
   {
     id: "downtown",
     name: "Downtown",
     at: { lng: -117.4225, lat: 47.6555 },
     minZoom: 10.5,
+    city: "Spokane",
+    state: "WA",
+    area: "Spokane area",
   },
   {
     id: "kendall-yards",
     name: "Kendall Yards",
     at: { lng: -117.4344, lat: 47.6636 },
     minZoom: 12.6,
+    city: "Spokane",
+    state: "WA",
+    area: "Spokane area",
   },
   {
     id: "university",
     name: "University District",
     at: { lng: -117.4022, lat: 47.6562 },
     minZoom: 12.2,
+    city: "Spokane",
+    state: "WA",
+    area: "Spokane area",
   },
   {
     id: "logan",
     name: "Logan",
     at: { lng: -117.4028, lat: 47.6688 },
     minZoom: 12.8,
+    city: "Spokane",
+    state: "WA",
+    area: "Spokane area",
   },
   {
     id: "browne",
     name: "Browne's Addition",
     at: { lng: -117.4392, lat: 47.6528 },
     minZoom: 12.8,
+    city: "Spokane",
+    state: "WA",
+    area: "Spokane area",
   },
   {
     id: "perry",
     name: "Perry District",
     at: { lng: -117.3906, lat: 47.6452 },
     minZoom: 12.4,
+    city: "Spokane",
+    state: "WA",
+    area: "Spokane area",
   },
   {
     id: "south-hill",
     name: "South Hill",
     at: { lng: -117.4092, lat: 47.6322 },
     minZoom: 11.4,
+    city: "Spokane",
+    state: "WA",
+    area: "Spokane area",
   },
   {
     id: "garland",
     name: "Garland",
     at: { lng: -117.4265, lat: 47.6884 },
     minZoom: 12.4,
+    city: "Spokane",
+    state: "WA",
+    area: "Spokane area",
   },
   {
     id: "north-monroe",
     name: "North Monroe",
     at: { lng: -117.4272, lat: 47.6752 },
     minZoom: 12.8,
+    city: "Spokane",
+    state: "WA",
+    area: "Spokane area",
   },
   {
     id: "shadle",
     name: "Shadle",
     at: { lng: -117.4495, lat: 47.6888 },
     minZoom: 12.2,
+    city: "Spokane",
+    state: "WA",
+    area: "Spokane area",
   },
   {
     id: "hillyard",
     name: "Hillyard",
     at: { lng: -117.3838, lat: 47.7005 },
     minZoom: 12.2,
+    city: "Spokane",
+    state: "WA",
+    area: "Spokane area",
   },
   {
     id: "east-central",
     name: "East Central",
     at: { lng: -117.3835, lat: 47.6522 },
     minZoom: 12.6,
+    city: "Spokane",
+    state: "WA",
+    area: "Spokane area",
   },
   {
     id: "millwood",
     name: "Millwood",
     at: { lng: -117.2822, lat: 47.6812 },
     minZoom: 12.2,
+    city: "Millwood",
+    state: "WA",
+    area: "Spokane area",
   },
   {
     id: "valley",
     name: "Spokane Valley",
     at: { lng: -117.2395, lat: 47.6568 },
     minZoom: 10.5,
+    city: "Spokane Valley",
+    state: "WA",
+    area: "Spokane area",
   },
   {
     id: "liberty-lake",
     name: "Liberty Lake",
     at: { lng: -117.1012, lat: 47.6742 },
     minZoom: 10.8,
+    city: "Liberty Lake",
+    state: "WA",
+    area: "Spokane area",
   },
   {
     id: "airway-heights",
     name: "Airway Heights",
     at: { lng: -117.5932, lat: 47.6448 },
     minZoom: 10.8,
+    city: "Airway Heights",
+    state: "WA",
+    area: "Spokane area",
   },
   {
     id: "cheney",
     name: "Cheney",
     at: { lng: -117.5758, lat: 47.4875 },
     minZoom: 10.2,
+    city: "Cheney",
+    state: "WA",
+    area: "Spokane area",
+  },
+  /* Beyond Spokane, one entry per town. Twin towns a few miles apart —
+     Kennewick and Pasco beside Richland, Moscow beside Pullman, Clarkston
+     across the Snake from Lewiston — arrive a zoom later than the larger of
+     the pair, so the regional view is legible before it is complete. */
+  {
+    id: "deer-park",
+    name: "Deer Park",
+    at: { lng: -117.4769, lat: 47.9543 },
+    minZoom: 8.6,
+    city: "Deer Park",
+    state: "WA",
+    area: "Spokane area",
+  },
+  {
+    id: "colville",
+    name: "Colville",
+    at: { lng: -117.9055, lat: 48.5466 },
+    minZoom: 7.4,
+    city: "Colville",
+    state: "WA",
+    area: "Eastern Washington",
+  },
+  {
+    id: "moses-lake",
+    name: "Moses Lake",
+    at: { lng: -119.2781, lat: 47.1301 },
+    minZoom: 7.2,
+    city: "Moses Lake",
+    state: "WA",
+    area: "Eastern Washington",
+  },
+  {
+    id: "wenatchee",
+    name: "Wenatchee",
+    at: { lng: -120.3103, lat: 47.4235 },
+    minZoom: 6.5,
+    city: "Wenatchee",
+    state: "WA",
+    area: "Eastern Washington",
+  },
+  {
+    id: "ellensburg",
+    name: "Ellensburg",
+    at: { lng: -120.5478, lat: 46.9965 },
+    minZoom: 7.2,
+    city: "Ellensburg",
+    state: "WA",
+    area: "Eastern Washington",
+  },
+  {
+    id: "yakima",
+    name: "Yakima",
+    at: { lng: -120.5059, lat: 46.6021 },
+    minZoom: 6.5,
+    city: "Yakima",
+    state: "WA",
+    area: "Eastern Washington",
+  },
+  {
+    id: "richland",
+    name: "Richland",
+    at: { lng: -119.2845, lat: 46.2856 },
+    minZoom: 6.5,
+    city: "Richland",
+    state: "WA",
+    area: "Eastern Washington",
+  },
+  {
+    id: "kennewick",
+    name: "Kennewick",
+    at: { lng: -119.1372, lat: 46.2112 },
+    minZoom: 8.4,
+    city: "Kennewick",
+    state: "WA",
+    area: "Eastern Washington",
+  },
+  {
+    id: "pasco",
+    name: "Pasco",
+    at: { lng: -119.1006, lat: 46.2396 },
+    minZoom: 8.4,
+    city: "Pasco",
+    state: "WA",
+    area: "Eastern Washington",
+  },
+  {
+    id: "walla-walla",
+    name: "Walla Walla",
+    at: { lng: -118.343, lat: 46.0646 },
+    minZoom: 6.5,
+    city: "Walla Walla",
+    state: "WA",
+    area: "Eastern Washington",
+  },
+  {
+    id: "pullman",
+    name: "Pullman",
+    at: { lng: -117.1817, lat: 46.7313 },
+    minZoom: 6.5,
+    city: "Pullman",
+    state: "WA",
+    area: "Eastern Washington",
+  },
+  {
+    id: "clarkston",
+    name: "Clarkston",
+    at: { lng: -117.0446, lat: 46.4163 },
+    minZoom: 8.8,
+    city: "Clarkston",
+    state: "WA",
+    area: "Eastern Washington",
+  },
+  {
+    id: "coeur-dalene",
+    name: "Coeur d'Alene",
+    at: { lng: -116.7805, lat: 47.6777 },
+    minZoom: 6.5,
+    city: "Coeur d'Alene",
+    state: "ID",
+    area: "North Idaho",
+  },
+  {
+    id: "post-falls",
+    name: "Post Falls",
+    at: { lng: -116.9516, lat: 47.718 },
+    minZoom: 8.4,
+    city: "Post Falls",
+    state: "ID",
+    area: "North Idaho",
+  },
+  {
+    id: "hayden",
+    name: "Hayden",
+    at: { lng: -116.7866, lat: 47.766 },
+    minZoom: 9,
+    city: "Hayden",
+    state: "ID",
+    area: "North Idaho",
+  },
+  {
+    id: "rathdrum",
+    name: "Rathdrum",
+    at: { lng: -116.8963, lat: 47.8124 },
+    minZoom: 9.2,
+    city: "Rathdrum",
+    state: "ID",
+    area: "North Idaho",
+  },
+  {
+    id: "sandpoint",
+    name: "Sandpoint",
+    at: { lng: -116.5533, lat: 48.2766 },
+    minZoom: 6.8,
+    city: "Sandpoint",
+    state: "ID",
+    area: "North Idaho",
+  },
+  {
+    id: "bonners-ferry",
+    name: "Bonners Ferry",
+    at: { lng: -116.3165, lat: 48.6913 },
+    minZoom: 7.4,
+    city: "Bonners Ferry",
+    state: "ID",
+    area: "North Idaho",
+  },
+  {
+    id: "moscow",
+    name: "Moscow",
+    at: { lng: -117.0002, lat: 46.7324 },
+    minZoom: 7.6,
+    city: "Moscow",
+    state: "ID",
+    area: "North Idaho",
+  },
+  {
+    id: "lewiston",
+    name: "Lewiston",
+    at: { lng: -117.0177, lat: 46.4165 },
+    minZoom: 6.8,
+    city: "Lewiston",
+    state: "ID",
+    area: "North Idaho",
   },
 ];
 
 export const districtName = (id: DistrictId) =>
   DISTRICTS.find((d) => d.id === id)?.name ?? id;
+
+/** "Spokane, WA" — the city line of an address in this district. */
+export const districtPlace = (id: DistrictId) => {
+  const d = DISTRICTS.find((d) => d.id === id);
+  return d ? `${d.city}, ${d.state}` : "Spokane, WA";
+};
+
+/** "Logan, Spokane, WA" — or just "Pullman, WA" where the district is the town. */
+export const districtFull = (id: DistrictId) => {
+  const d = DISTRICTS.find((d) => d.id === id);
+  return !d || d.name === d.city
+    ? districtPlace(id)
+    : `${d.name}, ${districtPlace(id)}`;
+};

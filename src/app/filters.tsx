@@ -5,6 +5,7 @@ import { useMemo } from "react";
 import {
   DISCIPLINES,
   INDUSTRIES,
+  PLACE_KINDS,
   SIZE_BANDS,
   WORKPLACES,
   sizeBand,
@@ -13,6 +14,8 @@ import {
   type Industry,
   type Job,
   type Person,
+  type Place,
+  type PlaceKind,
   type SizeBand,
   type Workplace,
 } from "../domain";
@@ -41,6 +44,8 @@ export type Query = {
   hiringOnly: boolean;
   /** People only: listed *and* looking. */
   openToOnly: boolean;
+  /** Community only: which kinds of place. Empty means all of them. */
+  kinds: PlaceKind[];
   /**
    * The map viewport, when the person has asked for it. Null means the whole
    * region — panning the map does not silently drop results, it offers to.
@@ -56,6 +61,7 @@ export const EMPTY_QUERY: Query = {
   disciplines: [],
   hiringOnly: false,
   openToOnly: false,
+  kinds: [],
   area: null,
 };
 
@@ -67,6 +73,7 @@ export const isFiltered = (q: Query) =>
   q.disciplines.length > 0 ||
   q.hiringOnly ||
   q.openToOnly ||
+  q.kinds.length > 0 ||
   q.area !== null;
 
 const match = (haystack: string[], text: string) => {
@@ -121,6 +128,17 @@ export function filterJobs(
       return false;
     if (q.area && !within(q.area, { lng: c.lng, lat: c.lat })) return false;
     return match([j.title, j.summary, c.name, j.discipline, j.level], q.text);
+  });
+}
+
+/* Places have no industry, size or workplace, so only the filters that mean
+   something for a coffee shop or a meetup apply: the kind, the map area and
+   the text. */
+export function filterPlaces(places: Place[], q: Query): Place[] {
+  return places.filter((p) => {
+    if (q.kinds.length && !q.kinds.includes(p.kind)) return false;
+    if (q.area && !within(q.area, { lng: p.lng, lat: p.lat })) return false;
+    return match([p.name, p.why, p.venue ?? "", p.schedule ?? ""], q.text);
   });
 }
 
@@ -326,7 +344,7 @@ export function FilterBar({
   query,
   onQuery,
 }: {
-  tab: "companies" | "jobs" | "people";
+  tab: "companies" | "jobs" | "people" | "community";
   query: Query;
   onQuery: (next: Query) => void;
 }) {
@@ -346,26 +364,49 @@ export function FilterBar({
         />
       )}
 
-      <MultiFilter
-        label="Industry"
-        options={INDUSTRIES}
-        value={query.industries}
-        onChange={(v) => set("industries", v)}
-      />
+      {/* Four kinds, so four pills rather than a dropdown: each is one tap
+          and all of them are visible at once. */}
+      {tab === "community" &&
+        PLACE_KINDS.map((k) => (
+          <TogglePill
+            key={k.id}
+            label={k.plural}
+            active={query.kinds.includes(k.id)}
+            onChange={(on) =>
+              set(
+                "kinds",
+                on
+                  ? [...query.kinds, k.id]
+                  : query.kinds.filter((x) => x !== k.id),
+              )
+            }
+          />
+        ))}
 
-      <MultiFilter
-        label="Size"
-        options={SIZE_BANDS}
-        value={query.sizes}
-        onChange={(v) => set("sizes", v)}
-      />
+      {tab !== "community" && (
+        <>
+          <MultiFilter
+            label="Industry"
+            options={INDUSTRIES}
+            value={query.industries}
+            onChange={(v) => set("industries", v)}
+          />
 
-      <MultiFilter
-        label="Workplace"
-        options={WORKPLACES}
-        value={query.workplaces}
-        onChange={(v) => set("workplaces", v)}
-      />
+          <MultiFilter
+            label="Size"
+            options={SIZE_BANDS}
+            value={query.sizes}
+            onChange={(v) => set("sizes", v)}
+          />
+
+          <MultiFilter
+            label="Workplace"
+            options={WORKPLACES}
+            value={query.workplaces}
+            onChange={(v) => set("workplaces", v)}
+          />
+        </>
+      )}
 
       {tab === "companies" && (
         <TogglePill

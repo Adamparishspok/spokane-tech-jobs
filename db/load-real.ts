@@ -20,10 +20,11 @@
  * note is the rule: "a field that could not be sourced is null, and null is
  * the correct value to ship rather than a plausible guess."
  */
-import { readFileSync } from "node:fs";
+import { readFileSync, readdirSync } from "node:fs";
 import { neon } from "@neondatabase/serverless";
 import { COMPANIES as SEED } from "../src/seed-data";
 import { INDUSTRIES } from "../src/domain";
+import { DISTRICTS } from "../src/map/spokane";
 
 const url = process.env.DATABASE_URL;
 if (!url) {
@@ -48,9 +49,58 @@ type Researched = {
   sources: string[];
 };
 
-const file = JSON.parse(
-  readFileSync(new URL("./research/real-companies.json", import.meta.url), "utf8"),
-) as { companies: Researched[] };
+const { industries: CSV_INDUSTRY, held_out: HELD_OUT = {} } = JSON.parse(
+  readFileSync(
+    new URL("./research/csv-industries.json", import.meta.url),
+    "utf8",
+  ),
+) as {
+  industries: Record<string, string>;
+  /* Real and in the region, but not tech employers: a law firm, a bakery.
+     Skipped rather than forced into an industry that would mislabel them. */
+  held_out?: Record<string, string>;
+};
+
+const read = (name: string) =>
+  JSON.parse(
+    readFileSync(new URL(`./research/${name}`, import.meta.url), "utf8"),
+  ) as { companies: Researched[] };
+
+/* The agencies are researched to the same rules in their own file, and every
+   one of them is the same industry — so the industry comes with the file
+   rather than being listed name by name below. */
+const file = {
+  companies: [
+    ...read("real-companies.json").companies,
+    ...read("agencies.json").companies.map((c) => ({
+      ...c,
+      industry: "Marketing & design",
+    })),
+    /* The user's regional list, researched in batches. Their industries are
+       chosen per company in csv-industries.json, for the same reason as the
+       INDUSTRY map below: classification is written out to be argued with. */
+    ...readdirSync(new URL("./research/", import.meta.url))
+      .filter((f) => /^(csv-batch-\d+|user-added)\.json$/.test(f))
+      .sort()
+      .flatMap((f) =>
+        read(f)
+          .companies.filter((c) => !(c.name in HELD_OUT))
+          .map((c) => {
+            const industry = CSV_INDUSTRY[c.name];
+            if (!industry) throw new Error(`No industry chosen for ${c.name}`);
+            return { ...c, industry };
+          }),
+      ),
+    /* Regional sweeps whose rows choose their own industry from the list,
+       so there is no name-by-name map to keep in step. */
+    ...readdirSync(new URL("./research/", import.meta.url))
+      .filter((f) => /^north-idaho-[a-z-]+\.json$/.test(f))
+      .sort()
+      .flatMap(
+        (f) => read(f).companies as (Researched & { industry?: string })[],
+      ),
+  ] as (Researched & { industry?: string })[],
+};
 
 /** Chosen from each company's sourced description — see the header. */
 const INDUSTRY: Record<string, string> = {
@@ -103,8 +153,21 @@ for (const [i, name] of INDUSTRIES.entries()) {
   `;
 }
 
+/* A company that publishes no street address still has a town. It sits at
+   that district's centre, which is what the add-company form does too until
+   somebody geocodes the address. */
+const centre = Object.fromEntries(
+  DISTRICTS.map((d) => [d.id, d.at] as const),
+) as Record<string, { lng: number; lat: number }>;
+
 for (const c of file.companies) {
-  const industry = INDUSTRY[c.name];
+  if (c.lng == null || c.lat == null) {
+    const at = centre[c.district];
+    if (!at) throw new Error(`Unknown district ${c.district} for ${c.name}`);
+    c.lng = at.lng;
+    c.lat = at.lat;
+  }
+  const industry = c.industry ?? INDUSTRY[c.name];
   if (!industry) throw new Error(`No industry chosen for ${c.name}`);
   await sql`
     insert into companies (
@@ -143,11 +206,17 @@ console.log(`  companies  ${file.companies.length} sourced`);
  * that never existed, so claims go with it.
  */
 const seedIds = SEED.map((c) => c.id);
-const jobs = await sql`delete from jobs where company_id = any(${seedIds}) returning id`;
-const people = await sql`delete from people where company_id = any(${seedIds}) returning id`;
-const claims = await sql`delete from claims where company_id = any(${seedIds}) returning id`;
-const gone = await sql`delete from companies where id = any(${seedIds}) returning id`;
-console.log(`  removed    ${gone.length} companies, ${jobs.length} jobs, ${people.length} people, ${claims.length} claims`);
+const jobs =
+  await sql`delete from jobs where company_id = any(${seedIds}) returning id`;
+const people =
+  await sql`delete from people where company_id = any(${seedIds}) returning id`;
+const claims =
+  await sql`delete from claims where company_id = any(${seedIds}) returning id`;
+const gone =
+  await sql`delete from companies where id = any(${seedIds}) returning id`;
+console.log(
+  `  removed    ${gone.length} companies, ${jobs.length} jobs, ${people.length} people, ${claims.length} claims`,
+);
 
 const [{ count }] = await sql`select count(*)::int as count from companies`;
 console.log(`  directory  ${count} companies`);

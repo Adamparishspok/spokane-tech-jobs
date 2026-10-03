@@ -1,7 +1,9 @@
 import { useState } from "react";
 import { cn } from "@kit/lib/cn";
-import { initials } from "../domain";
+import { CalendarDays, Coffee, Landmark, Laptop } from "lucide-react";
+import { initials, type PlaceKind } from "../domain";
 import LOGOS from "../generated/logos.json";
+import PLACE_LOGOS from "../generated/place-logos.json";
 
 /**
  * The company's logo, or null.
@@ -14,6 +16,10 @@ import LOGOS from "../generated/logos.json";
  */
 export const logoFor = (id: string): string | null =>
   (LOGOS as Record<string, string>)[id] ?? null;
+
+/** A Community place's logo, from its own manifest — see db/fetch-logos.ts. */
+export const placeLogoFor = (id: string): string | null =>
+  (PLACE_LOGOS as Record<string, string>)[id] ?? null;
 
 /**
  * The mark.
@@ -133,6 +139,71 @@ export function Monogram({
       aria-hidden="true"
     >
       {initials(name)}
+    </span>
+  );
+}
+
+const PLACE_ICON = {
+  coffee: Coffee,
+  coworking: Laptop,
+  meetup: CalendarDays,
+  organization: Landmark,
+} satisfies Record<PlaceKind, unknown>;
+
+/* Hues for the monogram ramp, one per kind, so a coffee shop and a meetup are
+   told apart at a glance on the map before anyone reads a label. */
+const PLACE_HUE: Record<PlaceKind, number> = {
+  coffee: 28,
+  coworking: 200,
+  meetup: 280,
+  organization: 150,
+};
+
+/**
+ * A place's mark. Places have no logos worth fetching — a coffee shop's
+ * favicon is a cup, at best — so the mark is what kind of place it is, which
+ * is the thing a reader scanning the map actually wants to know.
+ */
+export function PlaceMark({
+  id,
+  name,
+  kind,
+  className,
+  round,
+}: {
+  id: string;
+  name: string;
+  kind: PlaceKind;
+  className?: string;
+  round?: boolean;
+}) {
+  /* The place's own logo when logo.dev or its site has one: Indaba's mark is
+     how people recognise Indaba. The kind icon is the fallback, and a better
+     one than initials would be. */
+  const logo = placeLogoFor(id);
+  if (logo)
+    return (
+      <Monogram
+        name={name}
+        hue={PLACE_HUE[kind]}
+        logo={logo}
+        round={round}
+        className={className}
+      />
+    );
+  const Icon = PLACE_ICON[kind];
+  return (
+    <span
+      className={cn(
+        "monogram grid shrink-0 place-items-center select-none",
+        round ? "rounded-full" : "rounded-card",
+        "size-10",
+        className,
+      )}
+      style={{ ["--mono-h" as string]: PLACE_HUE[kind] }}
+      aria-hidden="true"
+    >
+      <Icon className="size-[45%]" strokeWidth={2} />
     </span>
   );
 }

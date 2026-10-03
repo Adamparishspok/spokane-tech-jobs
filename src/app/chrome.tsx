@@ -12,7 +12,7 @@ import {
   TooltipTrigger,
   MenuTrigger,
 } from "@kit/ui";
-import { LogIn, Monitor, Moon, Sun } from "lucide-react";
+import { Info, LogIn, Monitor, Moon, Sun } from "lucide-react";
 import type { ReactNode } from "react";
 import type { Viewer } from "../db/auth";
 import { Monogram, Pine } from "../design/brand";
@@ -114,6 +114,7 @@ export function Rail({
 
       <div className="flex-1" />
 
+      <SiteMenu />
       <ThemeToggle />
 
       {viewer ? (
@@ -157,6 +158,32 @@ export function Rail({
         </Tooltip>
       )}
     </nav>
+  );
+}
+
+/* The static pages, reachable from inside the app. Plain links: they are
+   separate documents, and opening one should be an ordinary navigation. */
+function SiteMenu() {
+  return (
+    <Menu>
+      <MenuTrigger asChild>
+        <Button variant="ghost" size="icon" aria-label="About this site">
+          <Info />
+        </Button>
+      </MenuTrigger>
+      <MenuContent side="right" align="end">
+        <MenuItem asChild>
+          <a href="/employers/">For employers</a>
+        </MenuItem>
+        <MenuSeparator />
+        <MenuItem asChild>
+          <a href="/terms/">Terms of Use</a>
+        </MenuItem>
+        <MenuItem asChild>
+          <a href="/privacy/">Privacy Policy</a>
+        </MenuItem>
+      </MenuContent>
+    </Menu>
   );
 }
 
@@ -233,7 +260,8 @@ export function PanelHeader({
   children,
 }: {
   title: string;
-  count: number;
+  /** Null while loading: no number beats a wrong one. */
+  count: number | null;
   /** Singular; pluralised here so two screens cannot disagree. */
   noun: string;
   actions?: ReactNode;
@@ -247,9 +275,11 @@ export function PanelHeader({
         </h1>
         {/* The count is derived, every time. The comps printed "11 Results"
             over eight identical rows. */}
-        <span className="num text-[0.8125rem] text-ink-3">
-          {count} {plural(noun, count)}
-        </span>
+        {count !== null && (
+          <span className="num text-[0.8125rem] text-ink-3">
+            {count} {plural(noun, count)}
+          </span>
+        )}
         <div className="flex-1" />
         {actions}
       </div>
@@ -320,7 +350,7 @@ export function NoResults({
   return (
     <Blank
       title={`No ${plural(noun, 0)} match these filters`}
-      body="Spokane is not a large market. Widening one filter usually finds something."
+      body="This is not a large market. Widening one filter usually finds something."
       action={
         <Button size="sm" onClick={onClear}>
           Clear filters
@@ -344,7 +374,7 @@ export function FirstDay({
   tab,
   onAdd,
 }: {
-  tab: "companies" | "jobs" | "people";
+  tab: "companies" | "jobs" | "people" | "community";
   onAdd: () => void;
 }) {
   const copy = {
@@ -361,6 +391,11 @@ export function FirstDay({
     people: {
       title: "Nobody here yet",
       body: "People show up once they add a profile. Yours is the obvious place to start.",
+      action: "Set up your profile",
+    },
+    community: {
+      title: "No places yet",
+      body: "Coffee shops, coworking spaces and meetups appear here as they are researched and sourced.",
       action: "Set up your profile",
     },
   }[tab];

@@ -6,9 +6,11 @@ import {
   GRID_LAT,
   GRID_LNG,
   HIGHWAYS,
+  HUB,
   LATAH,
   PARKS,
   RIVER,
+  STATE_LINE,
   STREETS,
   URBAN,
 } from "./spokane";
@@ -72,7 +74,6 @@ export function Basemap({ camera, size }: { camera: Camera; size: Size }) {
      and arrive later, heavier, on top of it. */
   const minor = z >= 10.8;
   const arterials = z >= 11.4;
-  const labels = z >= 10.4;
 
   /* The half-mile grid, generated inside the urban envelope rather than
      listed. Built once per camera; a few hundred short segments. */
@@ -207,6 +208,17 @@ export function Basemap({ camera, size }: { camera: Camera; size: Size }) {
         ))}
       </g>
 
+      {/* The state line, dashed the way every atlas draws one: it is a fact
+          about jurisdiction rather than a thing on the ground. */}
+      <path
+        d={path(STATE_LINE, p)}
+        fill="none"
+        stroke="var(--color-map-ink)"
+        strokeOpacity={0.35}
+        strokeWidth={1.25}
+        strokeDasharray="6 4"
+      />
+
       {/* The river last, and heaviest. It is what people orient on. */}
       <g fill="none" strokeLinecap="round" strokeLinejoin="round">
         <path
@@ -221,7 +233,7 @@ export function Basemap({ camera, size }: { camera: Camera; size: Size }) {
         />
       </g>
 
-      {labels && (
+      {
         /* Painted stroke-under-fill rather than a drop shadow: a label on a
            map has to survive whatever is beneath it, and a halo the colour of
            the land is the only thing that works on both a park and a road. */
@@ -251,8 +263,18 @@ export function Basemap({ camera, size }: { camera: Camera; size: Size }) {
               </text>
             );
           })}
+          {/* Zoomed out to the region, Spokane is one place, not seventeen. */}
+          {z < HUB.maxZoom &&
+            (() => {
+              const { x, y } = p.project(HUB.at);
+              return (
+                <text x={x} y={y} fontSize={13} fontWeight={700}>
+                  {HUB.name}
+                </text>
+              );
+            })()}
         </g>
-      )}
+      }
 
       {/* The river's own label, set along it rather than across it.
           The path is reversed first: RIVER is stored east to west, which is

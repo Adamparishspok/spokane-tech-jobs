@@ -16,6 +16,8 @@ import {
   type Job,
   type Level,
   type Person,
+  type Place,
+  type PlaceKind,
   type Stage,
   type Workplace,
 } from "../domain";
@@ -93,6 +95,8 @@ type JobRow = {
   requirements: string[];
   apply_url: string | null;
   posted_at: string;
+  expires_at: string;
+  posted_by: string | null;
 };
 
 type PersonRow = {
@@ -152,6 +156,8 @@ const toJob = (row: JobRow): Job => ({
      rather than in the three places that format it. */
   posted: daysSince(row.posted_at),
   postedAt: row.posted_at,
+  expiresAt: row.expires_at,
+  postedBy: row.posted_by,
   summary: row.summary,
   responsibilities: row.responsibilities,
   requirements: row.requirements,
@@ -165,11 +171,45 @@ const toPerson = (row: PersonRow): Person => ({
   hue: row.hue,
   role: row.role,
   companyId: row.company_id,
-  district: (row.district_id ?? "downtown") as DistrictId,
+  district: row.district_id,
   openTo: row.open_to,
   skills: row.skills,
   bio: row.bio,
   years: row.years,
+});
+
+type PlaceRow = {
+  id: string;
+  name: string;
+  kind: PlaceKind;
+  why: string;
+  schedule: string | null;
+  venue: string | null;
+  website: string | null;
+  address: string;
+  zip: string;
+  district_id: DistrictId;
+  lng: number;
+  lat: number;
+  sources: string[];
+};
+
+type PlacePersonRow = { place_id: string; person_id: string; role: string };
+
+const toPlace = (row: PlaceRow): Place => ({
+  id: row.id,
+  name: row.name,
+  kind: row.kind,
+  why: row.why,
+  schedule: row.schedule,
+  venue: row.venue,
+  website: row.website ?? "",
+  address: row.address,
+  zip: row.zip,
+  district: row.district_id,
+  lng: row.lng,
+  lat: row.lat,
+  sources: row.sources,
 });
 
 /* ---- the context -------------------------------------------------------- */
@@ -178,6 +218,7 @@ export type Directory = {
   companies: Company[];
   jobs: Job[];
   people: Person[];
+  places: Place[];
   loading: boolean;
   /** Null when everything is fine, a sentence when it is not. */
   error: string | null;
@@ -186,16 +227,22 @@ export type Directory = {
   company: (id: string) => Company | null;
   jobsAt: (companyId: string) => Job[];
   peopleAt: (companyId: string) => Person[];
+  place: (id: string) => Place | null;
+  /** The listed people linked to a place, with what they do there. */
+  peopleAtPlace: (placeId: string) => { person: Person; role: string }[];
+  /** The other direction: the places a person is linked to. */
+  placesOf: (personId: string) => { place: Place; role: string }[];
   isHiring: (companyId: string) => boolean;
 };
 
 const DirectoryCtx = createContext<Directory | null>(null);
 
-
 export function DirectoryProvider({ children }: { children: ReactNode }) {
   const [companies, setCompanies] = useState<Company[]>([]);
   const [jobs, setJobs] = useState<Job[]>([]);
   const [people, setPeople] = useState<Person[]>([]);
+  const [places, setPlaces] = useState<Place[]>([]);
+  const [placePeople, setPlacePeople] = useState<PlacePersonRow[]>([]);
   const [loading, setLoading] = useState(hasBackend);
   const [error, setError] = useState<string | null>(null);
   const [nonce, setNonce] = useState(0);
@@ -220,7 +267,7 @@ export function DirectoryProvider({ children }: { children: ReactNode }) {
          the row rather than as twenty-one extra requests. `live_jobs` is the
          view that applies expiry, so a closed listing leaves the board without
          anybody having to sweep it. */
-      const [c, j, p] = await Promise.all([
+      const [c, j, p, pl, pp] = await Promise.all([
         client.from("companies").select("*,industries(name)").order("name"),
         client
           .from("live_jobs")
@@ -232,10 +279,17 @@ export function DirectoryProvider({ children }: { children: ReactNode }) {
           .eq("listed", true)
           .order("open_to", { ascending: false })
           .order("name"),
+        client.from("places").select("*").order("name"),
+        client.from("place_people").select("*"),
       ]);
 
       if (!live) return;
 
+      /* The core three decide whether the directory loaded. Places are a
+         tab, not the directory: if the API has not seen the table yet (its
+         schema cache lags a migration) the Community tab is empty and every
+         other screen still works, rather than the whole app reporting the
+         database unreachable. */
       const failure = c.error ?? j.error ?? p.error;
       if (failure) {
         setError(explain(failure));
@@ -246,6 +300,9 @@ export function DirectoryProvider({ children }: { children: ReactNode }) {
       setCompanies((c.data as CompanyRow[]).map(toCompany));
       setJobs((j.data as JobRow[]).map(toJob));
       setPeople((p.data as PersonRow[]).map(toPerson));
+      if (pl.error) console.warn("places:", explain(pl.error));
+      setPlaces(((pl.data ?? []) as PlaceRow[]).map(toPlace));
+      setPlacePeople((pp.data ?? []) as PlacePersonRow[]);
       setError(null);
       setLoading(false);
     })();
@@ -273,23 +330,55 @@ export function DirectoryProvider({ children }: { children: ReactNode }) {
       else peopleIndex.set(person.companyId, [person]);
     }
     const companyIndex = new Map(companies.map((c) => [c.id, c]));
-    return { jobsIndex, peopleIndex, companyIndex };
-  }, [companies, jobs, people]);
+    const placeIndex = new Map(places.map((p) => [p.id, p]));
+    /* Only links to people in the list. The policy already hides delisted
+       people's links; this also drops a link whose person failed to load, so
+       a place never shows somebody the People tab does not. */
+    const personIndex = new Map(people.map((p) => [p.id, p]));
+    const atPlace = new Map<string, { person: Person; role: string }[]>();
+    for (const link of placePeople) {
+      const person = personIndex.get(link.person_id);
+      if (!person) continue;
+      const list = atPlace.get(link.place_id) ?? [];
+      list.push({ person, role: link.role });
+      atPlace.set(link.place_id, list);
+    }
+    const ofPerson = new Map<string, { place: Place; role: string }[]>();
+    for (const link of placePeople) {
+      const place = placeIndex.get(link.place_id);
+      if (!place || !personIndex.has(link.person_id)) continue;
+      const list = ofPerson.get(link.person_id) ?? [];
+      list.push({ place, role: link.role });
+      ofPerson.set(link.person_id, list);
+    }
+    return {
+      jobsIndex,
+      peopleIndex,
+      companyIndex,
+      placeIndex,
+      atPlace,
+      ofPerson,
+    };
+  }, [companies, jobs, people, places, placePeople]);
 
   const value = useMemo<Directory>(
     () => ({
       companies,
       jobs,
       people,
+      places,
       loading,
       error,
       refresh,
+      place: (id) => byCompany.placeIndex.get(id) ?? null,
+      peopleAtPlace: (id) => byCompany.atPlace.get(id) ?? EMPTY_AT_PLACE,
+      placesOf: (id) => byCompany.ofPerson.get(id) ?? EMPTY_OF_PERSON,
       company: (id) => byCompany.companyIndex.get(id) ?? null,
       jobsAt: (id) => byCompany.jobsIndex.get(id) ?? EMPTY_JOBS,
       peopleAt: (id) => byCompany.peopleIndex.get(id) ?? EMPTY_PEOPLE,
       isHiring: (id) => (byCompany.jobsIndex.get(id)?.length ?? 0) > 0,
     }),
-    [companies, jobs, people, loading, error, refresh, byCompany],
+    [companies, jobs, people, places, loading, error, refresh, byCompany],
   );
 
   return (
@@ -301,6 +390,8 @@ export function DirectoryProvider({ children }: { children: ReactNode }) {
    every render and invalidate every memo downstream of it. */
 const EMPTY_JOBS: Job[] = [];
 const EMPTY_PEOPLE: Person[] = [];
+const EMPTY_AT_PLACE: { person: Person; role: string }[] = [];
+const EMPTY_OF_PERSON: { place: Place; role: string }[] = [];
 
 export function useDirectory(): Directory {
   const ctx = useContext(DirectoryCtx);

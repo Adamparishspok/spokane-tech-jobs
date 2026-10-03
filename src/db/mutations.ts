@@ -118,6 +118,34 @@ export async function postJob(input: NewJob, viewerId: string) {
   if (error) throw error;
 }
 
+/**
+ * Another ninety days on the board. The date sent here is a placeholder: the
+ * jobs_guard trigger turns any change to `expires_at` into now + 90 days on
+ * the server's clock, so a client cannot pick its own expiry.
+ */
+export async function refreshJob(jobId: string) {
+  const { error } = await db()
+    .from("jobs")
+    .update({ expires_at: new Date().toISOString() })
+    .eq("id", jobId);
+  if (error) throw error;
+}
+
+export type ClaimResult =
+  | "claimed"
+  | "unverified"
+  | "no-match"
+  | "has-profile"
+  | "taken"
+  | "signed-out";
+
+/** Take over a listed profile. See claim_person() in schema.sql for the rules. */
+export async function claimPerson(personId: string): Promise<ClaimResult> {
+  const { data, error } = await db().rpc("claim_person", { target: personId });
+  if (error) throw error;
+  return data as ClaimResult;
+}
+
 export type ProfileInput = {
   name: string;
   role: string;

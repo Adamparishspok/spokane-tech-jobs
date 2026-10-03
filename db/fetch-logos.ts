@@ -9,7 +9,10 @@
  * looking at. Fetching once and committing the file costs a few kilobytes and
  * owes nobody anything.
  *
- * Three sources, in order of how good the result is:
+ * logo.dev first: it serves the company's actual mark at 256px, where every
+ * other source serves a favicon. Asked with `fallback=404`, it answers a domain
+ * it does not know with a 404 rather than a generated monogram, and then the
+ * older sources below get their turn, in order of how good the result is:
  *
  * 1. The company's own page, read for `<link rel="apple-touch-icon">` and
  *    friends, largest declared size first. This is the only one that reliably
@@ -32,6 +35,9 @@ if (!url) {
   process.exit(1);
 }
 const sql = neon(url);
+const logoDev = process.env.LOGO_DEV_TOKEN;
+if (!logoDev)
+  console.warn("LOGO_DEV_TOKEN is not set; falling back to favicons.");
 const out = new URL("../public/logos/", import.meta.url).pathname;
 mkdirSync(out, { recursive: true });
 
@@ -49,7 +55,10 @@ const rows = (await sql`
 `) as { id: string; name: string; website: string }[];
 
 const domainOf = (website: string) =>
-  website.replace(/^https?:\/\//, "").replace(/\/.*$/, "").replace(/^www\./, "");
+  website
+    .replace(/^https?:\/\//, "")
+    .replace(/\/.*$/, "")
+    .replace(/^www\./, "");
 
 /** Icons a page declares, biggest first. */
 async function declared(domain: string): Promise<string[]> {
@@ -62,7 +71,12 @@ async function declared(domain: string): Promise<string[]> {
       const icons: { href: string; size: number }[] = [];
       for (const tag of links) {
         const rel = /rel=["']?([^"'>]+)/i.exec(tag)?.[1]?.toLowerCase() ?? "";
-        if (!/(^|\s)(apple-touch-icon|icon|shortcut icon|mask-icon)(\s|$)/.test(rel)) continue;
+        if (
+          !/(^|\s)(apple-touch-icon|icon|shortcut icon|mask-icon)(\s|$)/.test(
+            rel,
+          )
+        )
+          continue;
         const href = /href=["']?([^"'>\s]+)/i.exec(tag)?.[1];
         if (!href) continue;
         const sizes = /sizes=["']?(\d+)x/i.exec(tag)?.[1];
@@ -88,10 +102,40 @@ async function declared(domain: string): Promise<string[]> {
  * favicon and a 256px apple-touch-icon are two orders of magnitude apart, and
  * the small one looks like a smudge in a 32px circle.
  */
+/* Domains logo.dev answers with somebody else's mark. Checked by eye — a wrong
+   logo is worse than a monogram, because it is confidently wrong — and each
+   one falls through to the company's own page. */
+const LOGO_DEV_WRONG = new Set([
+  "seven2.com", // serves SBSK's mark
+]);
+
+async function fromLogoDev(domain: string) {
+  if (!logoDev || LOGO_DEV_WRONG.has(domain)) return null;
+  try {
+    const res = await fetch(
+      `https://img.logo.dev/${domain}?token=${logoDev}&size=256&format=png&fallback=404`,
+    );
+    if (!res.ok) return null;
+    return {
+      ext: "png",
+      bytes: new Uint8Array(await res.arrayBuffer()),
+      from: "logo.dev",
+    };
+  } catch {
+    return null;
+  }
+}
+
 async function grab(domain: string) {
+  const dev = await fromLogoDev(domain);
+  if (dev) return dev;
+
   const candidates: { url: string; own: boolean }[] = [
     ...(await declared(domain)).map((url) => ({ url, own: true })),
-    { url: `https://www.google.com/s2/favicons?sz=256&domain=${domain}`, own: false },
+    {
+      url: `https://www.google.com/s2/favicons?sz=256&domain=${domain}`,
+      own: false,
+    },
     { url: `https://icons.duckduckgo.com/ip3/${domain}.ico`, own: false },
   ];
 
@@ -124,9 +168,13 @@ async function grab(domain: string) {
   return best;
 }
 
+/* `--places` does only the Community tab's places, so adding a coffee shop
+   does not mean re-fetching eighty company logos. */
+const placesOnly = process.argv.includes("--places");
+
 const manifest: Record<string, string> = {};
 let found = 0;
-for (const c of rows) {
+for (const c of placesOnly ? [] : rows) {
   const domain = domainOf(c.website);
   const got = await grab(domain);
   if (!got) {
@@ -139,7 +187,9 @@ for (const c of rows) {
   manifest[c.id] = `/logos/${file}`;
   await sql`update companies set logo_url = ${`/logos/${file}`} where id = ${c.id}`;
   found++;
-  console.log(`  ${c.name.padEnd(22)} ${file} (${got.bytes.byteLength} bytes)`);
+  console.log(
+    `  ${c.name.padEnd(22)} ${file} (${got.bytes.byteLength} bytes, ${got.from})`,
+  );
 }
 
 /* The app reads the manifest, not the column.
@@ -150,9 +200,39 @@ for (const c of rows) {
  * back to a monogram. The manifest is a static file compiled into the bundle,
  * so a logo shows up the moment it is committed, and the column stays right
  * for anyone reading the data. */
-writeFileSync(
-  new URL("../src/generated/logos.json", import.meta.url).pathname,
-  JSON.stringify(manifest, null, 2) + "\n",
-);
+if (!placesOnly) {
+  writeFileSync(
+    new URL("../src/generated/logos.json", import.meta.url).pathname,
+    JSON.stringify(manifest, null, 2) + "\n",
+  );
+  console.log(`${found} of ${rows.length} companies have a logo`);
+}
 
-console.log(`${found} of ${rows.length} companies have a logo`);
+/* The Community tab's places, by the same route. Manifest only, no column:
+   a place without a logo draws its kind's icon, which is a good mark for a
+   coffee shop in a way a monogram is not for a company, so nothing reading
+   the data needs to know which places have one. */
+const placeRows = (await sql`
+  select id, name, website from places where website is not null order by name
+`) as { id: string; name: string; website: string }[];
+const placeOut = out + "places/";
+mkdirSync(placeOut, { recursive: true });
+const placeManifest: Record<string, string> = {};
+for (const p of placeRows) {
+  const got = await grab(domainOf(p.website));
+  if (!got) {
+    console.log(`  ${p.name.padEnd(30)} none — kind icon`);
+    continue;
+  }
+  const file = `${p.id}.${got.ext}`;
+  writeFileSync(placeOut + file, got.bytes);
+  placeManifest[p.id] = `/logos/places/${file}`;
+  console.log(`  ${p.name.padEnd(30)} ${file} (${got.from})`);
+}
+writeFileSync(
+  new URL("../src/generated/place-logos.json", import.meta.url).pathname,
+  JSON.stringify(placeManifest, null, 2) + "\n",
+);
+console.log(
+  `${Object.keys(placeManifest).length} of ${placeRows.length} places have a logo`,
+);

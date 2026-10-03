@@ -1,6 +1,7 @@
 import { cn } from "@kit/lib/cn";
 import {
   Button,
+  Input,
   Separator,
   Tabs,
   TabsContent,
@@ -26,17 +27,22 @@ import {
 import { useState } from "react";
 import {
   districtLabel,
+  districtPlace,
+  districtFull,
   payRange,
   postedLabel,
   sizeBand,
   type Company,
   type Job,
   type Person,
+  type Place,
+  placeKindLabel,
 } from "../domain";
-import { useViewer } from "../db/auth";
+import { sendVerificationCode, useViewer, verifyEmailCode } from "../db/auth";
 import { useDirectory } from "../db/directory";
 import { useMine } from "../db/mine";
-import { Monogram, logoFor } from "../design/brand";
+import { claimPerson, refreshJob, type ClaimResult } from "../db/mutations";
+import { Monogram, PlaceMark, logoFor } from "../design/brand";
 import { Fact, Panel, Tag } from "./chrome";
 import { ClaimListing } from "./forms";
 
@@ -184,7 +190,8 @@ export function CompanyDetail({
             <Fact icon={<MapPin />} label={districtLabel(company.district)}>
               {company.address}
               <br />
-              Spokane, WA <span className="num">{company.zip}</span>
+              {districtPlace(company.district)}{" "}
+              <span className="num">{company.zip}</span>
             </Fact>
             <Fact icon={<Globe />} label="Website">
               <a
@@ -398,6 +405,8 @@ export function JobDetail({
         </p>
       )}
 
+      {viewer && job.postedBy === viewer.id && <Expiry job={job} />}
+
       <p className="mt-5 text-sm leading-relaxed text-ink-2">{job.summary}</p>
 
       <Section title="What you would do" items={job.responsibilities} />
@@ -465,11 +474,20 @@ export function PersonDetail({
   person,
   company,
   onCompany,
+  onPlace,
 }: {
   person: Person;
   company: Company | null;
   onCompany: (company: Company) => void;
+  onPlace: (place: Place) => void;
 }) {
+  const { placesOf } = useDirectory();
+  const places = placesOf(person.id);
+  /* A profile somebody else listed says only what was sourced: no years
+     defaulted to zero, no "between roles" read into a missing company, no
+     neighbourhood. Those are the person's to say once they claim it. */
+  const own = Boolean(person.userId);
+
   return (
     <article className="px-5 py-4">
       <header className="flex items-start gap-3">
@@ -488,13 +506,17 @@ export function PersonDetail({
         {person.openTo && <Tag tone="hiring">Open to work</Tag>}
       </header>
 
-      <p className="mt-4 text-sm leading-relaxed text-ink-2">{person.bio}</p>
+      {person.bio && (
+        <p className="mt-4 text-sm leading-relaxed text-ink-2">{person.bio}</p>
+      )}
 
       {/* A person's facts, not a company's. */}
       <dl className="mt-5 grid gap-4">
-        <Fact icon={<Briefcase />} label="Experience">
-          <span className="num">{person.years}</span> years
-        </Fact>
+        {person.years > 0 && (
+          <Fact icon={<Briefcase />} label="Experience">
+            <span className="num">{person.years}</span> years
+          </Fact>
+        )}
         {company ? (
           <Fact icon={<Building2 />} label="Works at">
             <button
@@ -505,35 +527,82 @@ export function PersonDetail({
               {company.name}
             </button>
           </Fact>
-        ) : (
+        ) : own ? (
           <Fact icon={<Building2 />} label="Currently">
             Between roles
           </Fact>
+        ) : null}
+        {person.district && (
+          <Fact icon={<MapPin />} label="Based in">
+            {districtFull(person.district)}
+          </Fact>
         )}
-        <Fact icon={<MapPin />} label="Based in">
-          {districtLabel(person.district)}, Spokane
-        </Fact>
       </dl>
 
-      <section className="mt-5">
-        <h3 className="text-[0.6875rem] font-medium tracking-wide text-ink-4 uppercase">
-          Skills
-        </h3>
-        <div className="mt-2 flex flex-wrap gap-1">
-          {person.skills.map((skill) => (
-            <Tag key={skill}>{skill}</Tag>
-          ))}
-        </div>
-      </section>
+      {places.length > 0 && (
+        <section className="mt-5">
+          <h3 className="text-[0.6875rem] font-medium tracking-wide text-ink-4 uppercase">
+            Around the community
+          </h3>
+          <ul className="mt-2 grid gap-1">
+            {places.map(({ place, role }) => (
+              <li key={place.id}>
+                <button
+                  type="button"
+                  onClick={() => onPlace(place)}
+                  className="flex w-full items-center gap-3 rounded-card px-2 py-1.5 text-left hover:bg-surface-2"
+                >
+                  <PlaceMark
+                    id={place.id}
+                    name={place.name}
+                    kind={place.kind}
+                    className="size-8"
+                  />
+                  <span className="min-w-0">
+                    <span className="block truncate text-sm font-medium text-ink">
+                      {place.name}
+                    </span>
+                    <span className="block truncate text-[0.75rem] text-ink-3">
+                      {role || placeKindLabel(place.kind)}
+                    </span>
+                  </span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
 
-      <Button variant="accent" block className="mt-6">
-        <Mail />
-        Get in touch
-      </Button>
-      <p className="mt-2 text-center text-[0.75rem] text-ink-4">
-        Introductions go through Spokane Tech Jobs. {person.name.split(" ")[0]}{" "}
-        sees your message before you see their address.
-      </p>
+      {person.skills.length > 0 && (
+        <section className="mt-5">
+          <h3 className="text-[0.6875rem] font-medium tracking-wide text-ink-4 uppercase">
+            Skills
+          </h3>
+          <div className="mt-2 flex flex-wrap gap-1">
+            {person.skills.map((skill) => (
+              <Tag key={skill}>{skill}</Tag>
+            ))}
+          </div>
+        </section>
+      )}
+
+      {/* Only somebody who is here can be introduced. An unclaimed profile
+          has nobody behind it to read the message. */}
+      {own && (
+        <>
+          <Button variant="accent" block className="mt-6">
+            <Mail />
+            Get in touch
+          </Button>
+          <p className="mt-2 text-center text-[0.75rem] text-ink-4">
+            Introductions go through Spokane Tech Jobs.{" "}
+            {person.name.split(" ")[0]} sees your message before you see their
+            address.
+          </p>
+        </>
+      )}
+
+      {!person.userId && <ClaimProfile person={person} />}
     </article>
   );
 }
@@ -548,5 +617,322 @@ export function DetailHint({ className }: { className?: string }) {
       )}
       aria-hidden
     />
+  );
+}
+
+/**
+ * The poster's own view of a listing's clock. Listings run ninety days; the
+ * person who posted one sees how many are left and can put it back to ninety.
+ * Nobody else sees this — to a reader the expiry is noise.
+ */
+function Expiry({ job }: { job: Job }) {
+  const { refresh } = useDirectory();
+  const [busy, setBusy] = useState(false);
+  const [failed, setFailed] = useState<string | null>(null);
+  const left = job.expiresAt
+    ? Math.max(
+        0,
+        Math.ceil((Date.parse(job.expiresAt) - Date.now()) / 86_400_000),
+      )
+    : null;
+
+  return (
+    <div className="mt-3 flex items-center gap-3 rounded-card border border-line-2 px-3 py-2 text-[0.8125rem]">
+      <span className="text-ink-3">
+        Your listing ·{" "}
+        <span className="num text-ink-2">
+          {left === null
+            ? "expiry unknown"
+            : `${left} ${left === 1 ? "day" : "days"} left`}
+        </span>
+      </span>
+      <Button
+        size="sm"
+        variant="outline"
+        className="ml-auto"
+        disabled={busy}
+        onClick={async () => {
+          setBusy(true);
+          setFailed(null);
+          try {
+            await refreshJob(job.id);
+            refresh();
+          } catch (e) {
+            setFailed(e instanceof Error ? e.message : "Could not refresh");
+          } finally {
+            setBusy(false);
+          }
+        }}
+      >
+        {busy ? "Refreshing…" : "Refresh for 90 days"}
+      </Button>
+      {failed && (
+        <span role="alert" className="text-danger">
+          {failed}
+        </span>
+      )}
+    </div>
+  );
+}
+
+const CLAIM_SAYS: Record<
+  Exclude<ClaimResult, "claimed" | "unverified">,
+  string
+> = {
+  "no-match":
+    "Your account's email doesn't match the one we have for this profile. Sign in with that address to claim it.",
+  "has-profile": "Your account already has a profile.",
+  taken: "Somebody has already claimed this profile.",
+  "signed-out": "Sign in first.",
+};
+
+/**
+ * "Is this you?" on a profile nobody has claimed.
+ *
+ * The proof is an email address: the profile has one on file, privately, and
+ * an account whose verified address matches it takes the profile over. An
+ * account signed up with a password has not verified anything yet, so the
+ * first attempt may ask for a six-digit code — after which the same button
+ * works.
+ */
+function ClaimProfile({ person }: { person: Person }) {
+  const viewer = useViewer();
+  const { refresh } = useDirectory();
+  const [step, setStep] = useState<"ask" | "code">("ask");
+  const [code, setCode] = useState("");
+  const [busy, setBusy] = useState(false);
+  const [note, setNote] = useState<string | null>(null);
+
+  const first = person.name.split(" ")[0];
+
+  if (!viewer)
+    return (
+      <p className="mt-6 border-t border-line pt-4 text-[0.8125rem] text-ink-3">
+        Are you {first}? Sign in with the email address this profile was listed
+        under to take it over.
+      </p>
+    );
+
+  const run = async (fn: () => Promise<void>) => {
+    setBusy(true);
+    setNote(null);
+    try {
+      await fn();
+    } catch (e) {
+      setNote(e instanceof Error ? e.message : "Something went wrong");
+    } finally {
+      setBusy(false);
+    }
+  };
+
+  const claim = () =>
+    run(async () => {
+      const result = await claimPerson(person.id);
+      if (result === "claimed") return refresh();
+      if (result === "unverified") {
+        await sendVerificationCode(viewer.email);
+        setStep("code");
+        setNote(`We sent a six-digit code to ${viewer.email}.`);
+        return;
+      }
+      setNote(CLAIM_SAYS[result]);
+    });
+
+  const verify = () =>
+    run(async () => {
+      await verifyEmailCode(viewer.email, code.trim());
+      setStep("ask");
+      setCode("");
+      const result = await claimPerson(person.id);
+      if (result === "claimed") return refresh();
+      setNote(
+        result === "unverified"
+          ? "That code didn't verify your email. Try sending a new one."
+          : CLAIM_SAYS[result],
+      );
+    });
+
+  return (
+    <section className="mt-6 border-t border-line pt-4">
+      <h3 className="text-sm font-semibold text-ink">Is this you?</h3>
+      <p className="mt-1 text-[0.8125rem] text-ink-3">
+        If your account's email matches the one this profile was listed under,
+        you can take it over and edit it.
+      </p>
+      {step === "ask" ? (
+        <Button
+          variant="outline"
+          size="sm"
+          className="mt-3"
+          disabled={busy}
+          onClick={claim}
+        >
+          <ShieldCheck />
+          {busy ? "Checking…" : `Claim ${first}'s profile`}
+        </Button>
+      ) : (
+        <form
+          className="mt-3 flex gap-2"
+          onSubmit={(e) => {
+            e.preventDefault();
+            verify();
+          }}
+        >
+          <Input
+            aria-label="Verification code"
+            inputMode="numeric"
+            autoComplete="one-time-code"
+            maxLength={6}
+            value={code}
+            onChange={(e) => setCode(e.target.value)}
+            className="w-32"
+          />
+          <Button
+            type="submit"
+            size="sm"
+            disabled={busy || code.trim().length < 6}
+          >
+            {busy ? "Verifying…" : "Verify and claim"}
+          </Button>
+        </form>
+      )}
+      {note && (
+        <p role="status" className="mt-2 text-[0.8125rem] text-ink-3">
+          {note}
+        </p>
+      )}
+    </section>
+  );
+}
+
+/**
+ * A place in the community: why a tech person would go, when (for a meetup),
+ * where, and who from the People list is there. Every line of it is sourced,
+ * and the sources are shown — a recommendation nobody can check is just an
+ * advert.
+ */
+export function PlaceDetail({
+  place,
+  onPerson,
+}: {
+  place: Place;
+  onPerson: (person: Person) => void;
+}) {
+  const { peopleAtPlace } = useDirectory();
+  const people = peopleAtPlace(place.id);
+  const where = [
+    place.address,
+    `${districtPlace(place.district)} ${place.zip}`.trim(),
+  ]
+    .filter(Boolean)
+    .join(", ");
+
+  return (
+    <article className="px-5 py-4">
+      <header className="flex items-start gap-3">
+        <PlaceMark
+          id={place.id}
+          name={place.name}
+          kind={place.kind}
+          className="size-12"
+        />
+        <div className="min-w-0">
+          <h2 className="text-lg leading-tight font-semibold tracking-tight text-ink">
+            {place.name}
+          </h2>
+          <p className="mt-0.5 text-[0.8125rem] text-ink-3">
+            {placeKindLabel(place.kind)} · {districtLabel(place.district)}
+          </p>
+        </div>
+      </header>
+
+      {place.why && (
+        <p className="mt-4 text-sm leading-relaxed text-ink-2">{place.why}</p>
+      )}
+
+      <dl className="mt-4 grid gap-3">
+        {place.schedule && (
+          <Fact icon={<CalendarDays />} label="When">
+            {place.schedule}
+          </Fact>
+        )}
+        {place.venue && (
+          <Fact icon={<Building2 />} label="Venue">
+            {place.venue}
+          </Fact>
+        )}
+        <Fact icon={<MapPin />} label="Where">
+          {where || districtFull(place.district)}
+        </Fact>
+        {place.website && (
+          <Fact icon={<Globe />} label="Website">
+            <a
+              href={`https://${place.website}`}
+              target="_blank"
+              rel="noreferrer"
+              className="text-brand-2 underline-offset-2 hover:underline"
+            >
+              {place.website}
+            </a>
+          </Fact>
+        )}
+      </dl>
+
+      {people.length > 0 && (
+        <section className="mt-5">
+          <h3 className="text-[0.75rem] font-medium tracking-wide text-ink-4 uppercase">
+            People here
+          </h3>
+          <ul className="mt-2 grid gap-1">
+            {people.map(({ person, role }) => (
+              <li key={person.id}>
+                <button
+                  type="button"
+                  onClick={() => onPerson(person)}
+                  className="flex w-full items-center gap-3 rounded-card px-2 py-1.5 text-left hover:bg-surface-2"
+                >
+                  <Monogram
+                    name={person.name}
+                    hue={person.hue}
+                    round
+                    className="size-8"
+                  />
+                  <span className="min-w-0">
+                    <span className="block truncate text-sm font-medium text-ink">
+                      {person.name}
+                    </span>
+                    <span className="block truncate text-[0.75rem] text-ink-3">
+                      {role || person.role}
+                    </span>
+                  </span>
+                </button>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {place.sources.length > 0 && (
+        <section className="mt-6 border-t border-line pt-4">
+          <h3 className="text-[0.75rem] font-medium tracking-wide text-ink-4 uppercase">
+            Sources
+          </h3>
+          <ul className="mt-2 grid gap-1 text-[0.75rem]">
+            {place.sources.map((url) => (
+              <li key={url} className="truncate">
+                <a
+                  href={url}
+                  target="_blank"
+                  rel="noreferrer"
+                  className="text-ink-3 underline-offset-2 hover:text-ink hover:underline"
+                >
+                  {url.replace(/^https?:\/\/(www\.)?/, "")}
+                </a>
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+    </article>
   );
 }

@@ -75,8 +75,7 @@ export function explain(error: unknown): string {
     return "You are not allowed to do that. If you just signed in, try again.";
   if (e.code === "23505")
     return "That already exists. Check whether it is on the map already.";
-  if (e.code === "23514")
-    return "Some of those values are out of range.";
+  if (e.code === "23514") return "Some of those values are out of range.";
   if (e.message) return e.details ? `${e.message} — ${e.details}` : e.message;
   return "Something went wrong.";
 }

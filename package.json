@@ -12,11 +12,14 @@
     "db:seed": "bun --env-file=.env.local run db/seed.ts",
     "db:load-real": "bun --env-file=.env.local run db/load-real.ts",
     "db:export": "bun --env-file=.env.local run db/export-open-data.ts",
+    "db:districts": "bun --env-file=.env.local run db/districts.ts",
+    "db:community": "bun --env-file=.env.local run db/load-community.ts",
+    "db:people": "bun --env-file=.env.local run db/load-people.ts",
     "db:logos": "bun --env-file=.env.local run db/fetch-logos.ts"
   },
   "dependencies": {
     "@neondatabase/neon-js": "^0.7.0-beta",
-    "@neondatabase/serverless": "^1.0.2",
+    "@neondatabase/serverless": "^1.2.0",
     "@radix-ui/react-avatar": "^1.2.6",
     "@radix-ui/react-checkbox": "^1.3.11",
     "@radix-ui/react-dialog": "^1.1.23",
@@ -34,12 +37,12 @@
     "class-variance-authority": "^0.7.1",
     "clsx": "^2.1.1",
     "cmdk": "^1.1.1",
-    "lucide-react": "^1.43.0",
-    "mapbox-gl": "^3.18.0",
-    "motion": "^13.2.0",
+    "lucide-react": "^1.51.0",
+    "mapbox-gl": "^3.32.0",
+    "motion": "^13.5.1",
     "react": "^19.3.0",
     "react-dom": "^19.3.0",
-    "tailwind-merge": "^3.6.0"
+    "tailwind-merge": "^3.7.0"
   },
   "devDependencies": {
     "@tailwindcss/vite": "^4.3.3",
@@ -47,10 +50,10 @@
     "@types/react-dom": "^19.3.0",
     "@vitejs/plugin-react": "^4.7.0",
     "playwright": "^1.63.0",
-    "prettier": "^3.6.2",
+    "prettier": "^3.9.9",
     "tailwindcss": "^4.3.3",
     "typescript": "~5.9.3",
     "vite": "^7.3.6",
-    "@types/node": "^22.10.2"
+    "@types/node": "^22.20.5"
   }
 }

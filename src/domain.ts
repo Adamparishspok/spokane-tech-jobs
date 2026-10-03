@@ -33,7 +33,11 @@ export type Industry =
   | "E-commerce"
   | "Design studio"
   | "Business software"
-  | "IT services";
+  | "IT services"
+  | "Marketing & design"
+  | "Life sciences"
+  | "Legal & IP"
+  | "Food & beverage";
 
 export type Stage =
   | "Bootstrapped"
@@ -136,6 +140,10 @@ export type Job = {
    */
   posted: number;
   postedAt?: string;
+  /** When the listing drops off the board unless its poster refreshes it. */
+  expiresAt?: string;
+  /** Who posted it — the one person who can refresh it. */
+  postedBy?: string | null;
   applyUrl?: string | null;
   summary: string;
   responsibilities: string[];
@@ -151,14 +159,14 @@ export type Person = {
   role: string;
   /** Where they work now. `null` is between things, which is a real state. */
   companyId: string | null;
-  district: DistrictId;
+  /** Null when nobody has said — never a guess. */
+  district: DistrictId | null;
   /** Looking, or listed but not looking. The comps had no such distinction. */
   openTo: boolean;
   skills: string[];
   bio: string;
   years: number;
 };
-
 
 /* ---- vocabularies -------------------------------------------------------
  *
@@ -191,6 +199,18 @@ export const INDUSTRIES: Industry[] = [
      fit the prototype's fifteen categories would mislabel them. */
   "Business software",
   "IT services",
+  /* Agencies hire the same designers, developers and marketers the product
+     companies do, and a directory of where that work happens here is short a
+     whole sector without them. */
+  "Marketing & design",
+  /* Diagnostics labs, pharma manufacturing and proteomics. "Health tech" is
+     software and devices; a clinical genetics lab is neither. */
+  "Life sciences",
+  /* The directory takes startups in any sector, and the firms that serve
+     tech companies — a patent practice is part of the ecosystem even though
+     it writes no code. */
+  "Legal & IP",
+  "Food & beverage",
 ];
 
 export const STAGES: Stage[] = [
@@ -223,7 +243,11 @@ export const EMPLOYMENTS: Employment[] = [
 
 export const LEVELS: Level[] = ["Junior", "Mid", "Senior", "Staff", "Lead"];
 
-export { districtName as districtLabel } from "./map/spokane";
+export {
+  districtName as districtLabel,
+  districtPlace,
+  districtFull,
+} from "./map/spokane";
 
 /* ---- formatting ---------------------------------------------------------
  *
@@ -252,10 +276,7 @@ export function postedLabel(days: number): string {
 
 /** Whole days between a timestamp and now, which is what `postedLabel` reads. */
 export const daysSince = (at: string | Date) =>
-  Math.max(
-    0,
-    Math.floor((Date.now() - new Date(at).getTime()) / 86_400_000),
-  );
+  Math.max(0, Math.floor((Date.now() - new Date(at).getTime()) / 86_400_000));
 
 /** Initials for a monogram tile. Two letters, and never more. */
 export function initials(name: string): string {
@@ -275,3 +296,39 @@ export function hueFor(name: string): number {
   for (let i = 0; i < name.length; i++) h = (h * 31 + name.charCodeAt(i)) % 360;
   return h;
 }
+
+/* ---- community ---------------------------------------------------------- */
+
+export type PlaceKind = "coffee" | "coworking" | "organization" | "meetup";
+
+/** Display names, in the order the filter offers them. */
+export const PLACE_KINDS: { id: PlaceKind; label: string; plural: string }[] = [
+  { id: "coffee", label: "Coffee shop", plural: "Coffee shops" },
+  { id: "coworking", label: "Coworking", plural: "Coworking" },
+  { id: "meetup", label: "Meetup", plural: "Meetups" },
+  { id: "organization", label: "Organization", plural: "Organizations" },
+];
+
+export const placeKindLabel = (kind: PlaceKind) =>
+  PLACE_KINDS.find((k) => k.id === kind)?.label ?? kind;
+
+/**
+ * A place the community meets: where people work from, convene, or get
+ * funded. Not an employer — it has no jobs and no headcount, and putting it
+ * in `Company` would count it in both.
+ */
+export type Place = {
+  id: string;
+  name: string;
+  kind: PlaceKind;
+  why: string;
+  schedule: string | null;
+  venue: string | null;
+  website: string;
+  address: string;
+  zip: string;
+  district: DistrictId;
+  lng: number;
+  lat: number;
+  sources: string[];
+};

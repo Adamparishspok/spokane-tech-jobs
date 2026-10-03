@@ -20,7 +20,7 @@ import {
   PEOPLE,
   type Industry,
 } from "../src/seed-data";
-import { DISTRICTS } from "../src/map/spokane";
+import { upsertDistricts } from "./districts";
 
 const url = process.env.DATABASE_URL;
 if (!url) {
@@ -42,19 +42,7 @@ console.log(`seeding → ${new URL(url).host}`);
 
 /* --- reference ---------------------------------------------------------- */
 
-for (const [i, d] of DISTRICTS.entries()) {
-  await sql`
-    insert into districts (id, name, lng, lat, min_zoom, sort)
-    values (${d.id}, ${d.name}, ${d.at.lng}, ${d.at.lat}, ${d.minZoom}, ${i})
-    on conflict (id) do update set
-      name = excluded.name,
-      lng = excluded.lng,
-      lat = excluded.lat,
-      min_zoom = excluded.min_zoom,
-      sort = excluded.sort
-  `;
-}
-console.log(`  districts  ${DISTRICTS.length}`);
+await upsertDistricts(sql);
 
 for (const [i, name] of INDUSTRIES.entries()) {
   await sql`

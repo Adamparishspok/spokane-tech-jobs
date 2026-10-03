@@ -173,6 +173,27 @@ export function AuthDialog({
                 ? "Sign in"
                 : "Create account"}
           </Button>
+          {screen === "signup" && (
+            <p className="text-center text-[0.75rem] text-ink-4">
+              By creating an account you agree to the{" "}
+              <a
+                href="/terms/"
+                target="_blank"
+                className="underline underline-offset-2 hover:text-ink-2"
+              >
+                Terms of Use
+              </a>{" "}
+              and{" "}
+              <a
+                href="/privacy/"
+                target="_blank"
+                className="underline underline-offset-2 hover:text-ink-2"
+              >
+                Privacy Policy
+              </a>
+              .
+            </p>
+          )}
         </form>
 
         <p className="mt-4 text-center text-[0.8125rem] text-ink-3">
