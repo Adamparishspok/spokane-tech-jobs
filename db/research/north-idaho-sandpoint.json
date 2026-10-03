@@ -1,0 +1,464 @@
+{
+  "_about": "North Idaho companies, focused on Sandpoint, Ponderay, Sagle and Bonners Ferry, plus Priest River, Moscow and Lewiston, researched from public sources 2026-10-03. Found through the Greater Sandpoint Chamber member directory, Bonner County Daily Bee, Sandpoint Reader, Spokane Journal of Business and the companies' own sites. Every row carries the URLs it was taken from. Nothing is inferred: a field that could not be sourced is null. founded and headcount come only from the company's own site, its chamber listing, or local press, never an aggregator. Only positive or neutral sources are used. Coordinates come from the Mapbox Geocoding API applied to the sourced street address, and are null where no street address could be sourced. district is the nearest of sandpoint, bonners-ferry, moscow and lewiston (Ponderay, Sagle and Priest River map to sandpoint).",
+  "companies": [
+    {
+      "name": "Gierd",
+      "website": "gierd.com",
+      "address": "120 East Lake Street, Suite 401",
+      "city": "Sandpoint",
+      "state": "ID",
+      "zip": "83864",
+      "district": "sandpoint",
+      "lng": -116.546319,
+      "lat": 48.271891,
+      "phone": null,
+      "founded": 2022,
+      "headcount": 80,
+      "industry": "E-commerce",
+      "what": "Software that helps brands scale sales on online marketplaces such as Amazon, eBay and Walmart, with tools for pricing, demand forecasting, fraud protection and sales reconciliation. Headquartered in the Old Power House building near Sandpoint's docks.",
+      "sources": [
+        "https://gierd.com",
+        "https://www.spokanejournal.com/articles/17002-sandpoint-company-raises-8m-in-series-a-funding"
+      ]
+    },
+    {
+      "name": "Daher Aircraft (Kodiak)",
+      "website": "kodiak.aero",
+      "address": "1200 Turbine Drive",
+      "city": "Sandpoint",
+      "state": "ID",
+      "zip": "83864",
+      "district": "sandpoint",
+      "lng": -116.56476,
+      "lat": 48.29829,
+      "phone": "(208) 263-1111",
+      "founded": null,
+      "headcount": null,
+      "industry": "Aerospace",
+      "what": "Designs and builds the Kodiak, a 10-seat short takeoff and landing utility aircraft, in Sandpoint.",
+      "sources": [
+        "https://members.sandpointchamber.org/list/member/kodiak-aircraft-company-810",
+        "https://www.kodiak.aero/en/about/find-us"
+      ]
+    },
+    {
+      "name": "Litehouse Foods",
+      "website": "litehousefoods.com",
+      "address": null,
+      "city": "Sandpoint",
+      "state": "ID",
+      "zip": null,
+      "district": "sandpoint",
+      "lng": null,
+      "lat": null,
+      "phone": "1-800-669-3169",
+      "founded": 1963,
+      "headcount": null,
+      "industry": "Food & beverage",
+      "what": "Employee-owned maker of salad dressings, sauces, condiments, cheese and dips, with brands including Litehouse, Organicville, Veggiecraft and Sky Valley. Sandpoint-based, with a plant in Sandpoint.",
+      "sources": [
+        "https://www.litehousefoods.com/about",
+        "https://www.litehousefoods.com/contact",
+        "https://bonnercountydailybee.com/news/2026/feb/20/litehouse-foods-announces-new-name-corporate-identity/"
+      ]
+    },
+    {
+      "name": "Encoder Products Company",
+      "website": "encoder.com",
+      "address": "464276 Highway 95 South",
+      "city": "Sagle",
+      "state": "ID",
+      "zip": "83860",
+      "district": "sandpoint",
+      "lng": -116.60235,
+      "lat": 48.147945,
+      "phone": "208-263-8541",
+      "founded": 1969,
+      "headcount": null,
+      "industry": "Advanced manufacturing",
+      "what": "Designs and manufactures incremental and absolute rotary encoders for motion control, from its Sagle headquarters.",
+      "sources": [
+        "https://www.encoder.com/contact-us",
+        "https://www.encoder.com/about-us"
+      ]
+    },
+    {
+      "name": "Diedrich Roasters",
+      "website": "diedrichroasters.com",
+      "address": "850 Hawthorne Ave.",
+      "city": "Ponderay",
+      "state": "ID",
+      "zip": "83852",
+      "district": "sandpoint",
+      "lng": -116.526355,
+      "lat": 48.308281,
+      "phone": "+1.844.343.3742",
+      "founded": null,
+      "headcount": null,
+      "industry": "Advanced manufacturing",
+      "what": "Builds handcrafted coffee roasting machines, from boutique specialty roasters to large commercial systems, plus roasters for cacao, with consulting, training and support.",
+      "sources": [
+        "https://www.diedrichroasters.com/contact",
+        "https://www.diedrichroasters.com/about"
+      ]
+    },
+    {
+      "name": "Timberline Helicopters",
+      "website": "timberlinehelicopters.com",
+      "address": null,
+      "city": "Sandpoint",
+      "state": "ID",
+      "zip": null,
+      "district": "sandpoint",
+      "lng": null,
+      "lat": null,
+      "phone": null,
+      "founded": null,
+      "headcount": null,
+      "industry": "Aerospace",
+      "what": "Heavy-lift helicopter services, aerial firefighting and external-load work with a fleet of Black Hawk and K-MAX helicopters, plus a repair station. Building a $13 million, 50,000-square-foot facility near Sandpoint Airport.",
+      "sources": [
+        "https://www.timberlinehelicopters.com/",
+        "https://sandpointreader.com/timberline-helicopters-announces-expansion-of-sandpoint-operations/",
+        "https://bonnercountydailybee.com/news/2025/may/22/timberline-kicks-off-13m-expansion-project/"
+      ]
+    },
+    {
+      "name": "Granite Aviation",
+      "website": "granite-aviation.com",
+      "address": "1101 Airport Way",
+      "city": "Sandpoint",
+      "state": "ID",
+      "zip": "83864",
+      "district": "sandpoint",
+      "lng": -116.562842,
+      "lat": 48.293825,
+      "phone": "(208) 263-9102",
+      "founded": null,
+      "headcount": null,
+      "industry": "Aerospace",
+      "what": "Sandpoint Airport's fixed base operator, offering aircraft maintenance, flight training, aircraft rental and deicing.",
+      "sources": [
+        "https://www.granite-aviation.com",
+        "https://members.sandpointchamber.org/list/member/granite-aviation-1746"
+      ]
+    },
+    {
+      "name": "Sandpoint Computers",
+      "website": "sandpointcomputers.com",
+      "address": "212 N First Ave, Suite G101",
+      "city": "Sandpoint",
+      "state": "ID",
+      "zip": "83864",
+      "district": "sandpoint",
+      "lng": -116.547347,
+      "lat": 48.274315,
+      "phone": "(208) 265-1608",
+      "founded": 1997,
+      "headcount": null,
+      "industry": "IT services",
+      "what": "Locally owned computer shop repairing Apple, Windows and Linux machines, with business network consulting, outsourced IT and network management.",
+      "sources": [
+        "http://www.sandpointcomputers.com",
+        "https://members.sandpointchamber.org/list/member/sandpoint-computers-inc-617"
+      ]
+    },
+    {
+      "name": "Like Media",
+      "website": "like-media.com",
+      "address": null,
+      "city": "Sandpoint",
+      "state": "ID",
+      "zip": "83864",
+      "district": "sandpoint",
+      "lng": null,
+      "lat": null,
+      "phone": "(208) 946-0901",
+      "founded": null,
+      "headcount": null,
+      "industry": "Marketing & design",
+      "what": "Print and digital marketing agency offering SEO, web development, social media and branding, and publisher of Living Local magazines for Sandpoint, Bonners Ferry, Coeur d'Alene and Gig Harbor.",
+      "sources": [
+        "https://like-media.com",
+        "https://members.sandpointchamber.org/list/member/like-media-1982"
+      ]
+    },
+    {
+      "name": "Survey Noodle",
+      "website": "surveynoodle.com",
+      "address": null,
+      "city": "Sandpoint",
+      "state": "ID",
+      "zip": null,
+      "district": "sandpoint",
+      "lng": null,
+      "lat": null,
+      "phone": null,
+      "founded": null,
+      "headcount": null,
+      "industry": "Business software",
+      "what": "AI-assisted survey platform that writes survey questions, follows up with respondents and summarizes the results. Started by Sandpoint entrepreneur Mike Peck.",
+      "sources": [
+        "https://surveynoodle.com",
+        "https://sandpointreader.com/online-survey-business-leverages-a-i-to-learn-customers-needs/"
+      ]
+    },
+    {
+      "name": "Matchwood Brewing Company",
+      "website": "matchwoodbrewing.com",
+      "address": "513 Oak Street",
+      "city": "Sandpoint",
+      "state": "ID",
+      "zip": "83864",
+      "district": "sandpoint",
+      "lng": -116.55457,
+      "lat": 48.274715,
+      "phone": "(208) 718-2739",
+      "founded": null,
+      "headcount": null,
+      "industry": "Food & beverage",
+      "what": "Sandpoint's neighborhood brewery and eatery, making handcrafted beer.",
+      "sources": [
+        "https://www.matchwoodbrewing.com",
+        "https://members.sandpointchamber.org/list/member/matchwood-brewing-company-sandpoint-3182"
+      ]
+    },
+    {
+      "name": "Pend d'Oreille Winery",
+      "website": "powine.com",
+      "address": "301 Cedar St., Suite 101",
+      "city": "Sandpoint",
+      "state": "ID",
+      "zip": "83864",
+      "district": "sandpoint",
+      "lng": -116.550661,
+      "lat": 48.275865,
+      "phone": "(208) 265-8545",
+      "founded": null,
+      "headcount": null,
+      "industry": "Food & beverage",
+      "what": "Makes award-winning wines, with a downtown Sandpoint tasting room and bistro.",
+      "sources": [
+        "https://powine.com",
+        "https://members.sandpointchamber.org/list/member/pend-d-oreille-winery-540"
+      ]
+    },
+    {
+      "name": "Sprig Herbals",
+      "website": "sprigherbals.com",
+      "address": "723 Pine St",
+      "city": "Sandpoint",
+      "state": "ID",
+      "zip": "83864",
+      "district": "sandpoint",
+      "lng": -116.5585,
+      "lat": 48.27284,
+      "phone": "(986) 285-8388",
+      "founded": null,
+      "headcount": null,
+      "industry": "Food & beverage",
+      "what": "Produces whole-plant herbal extracts as flavor-forward formulas for food and drinks.",
+      "sources": [
+        "https://members.sandpointchamber.org/list/member/sprig-herbals-llc-3253",
+        "https://sprigherbals.com"
+      ]
+    },
+    {
+      "name": "Monarch Mountain Coffee",
+      "website": "monarchmountaincoffee.com",
+      "address": "119 North 1st Avenue",
+      "city": "Sandpoint",
+      "state": "ID",
+      "zip": "83864",
+      "district": "sandpoint",
+      "lng": -116.548178,
+      "lat": 48.273824,
+      "phone": null,
+      "founded": null,
+      "headcount": null,
+      "industry": "Food & beverage",
+      "what": "Sandpoint coffee company selling its own blends, such as Cafe' Magnific and Espresso Trifecta, online.",
+      "sources": [
+        "https://monarchmountaincoffee.com/",
+        "https://monarchmountaincoffee.com/policies/contact-information"
+      ]
+    },
+    {
+      "name": "Sno Trac",
+      "website": "sno-trac.com",
+      "address": null,
+      "city": "Bonners Ferry",
+      "state": "ID",
+      "zip": null,
+      "district": "bonners-ferry",
+      "lng": null,
+      "lat": null,
+      "phone": null,
+      "founded": null,
+      "headcount": null,
+      "industry": "Advanced manufacturing",
+      "what": "Small-batch manufacturer that re-engineered the 1950s Swedish Snow Trac into a modern, American-made tracked snow vehicle, designed, fabricated and assembled in Bonners Ferry.",
+      "sources": [
+        "https://bonnercountydailybee.com/news/2026/feb/11/n-idaho-company-revives-legendary-snow-vehicle/",
+        "https://sno-trac.com"
+      ]
+    },
+    {
+      "name": "Überleben",
+      "website": "uberleben.com",
+      "address": null,
+      "city": "Bonners Ferry",
+      "state": "ID",
+      "zip": null,
+      "district": "bonners-ferry",
+      "lng": null,
+      "lat": null,
+      "phone": null,
+      "founded": null,
+      "headcount": null,
+      "industry": "E-commerce",
+      "what": "Outdoor and bushcraft gear brand known for ferrocerium fire starters, sold online from its Bonners Ferry base.",
+      "sources": [
+        "https://uberleben.com"
+      ]
+    },
+    {
+      "name": "Aerocet",
+      "website": "aerocet.com",
+      "address": "265 Shannon Ln.",
+      "city": "Priest River",
+      "state": "ID",
+      "zip": "83856",
+      "district": "sandpoint",
+      "lng": -116.932325,
+      "lat": 48.18943,
+      "phone": "208.448.0400",
+      "founded": null,
+      "headcount": null,
+      "industry": "Aerospace",
+      "what": "Builds aircraft floats, including the 1500 Amphib, 2200 and 3400 Amphib models, in Priest River.",
+      "sources": [
+        "https://www.aerocet.com/contact"
+      ]
+    },
+    {
+      "name": "Lightcast",
+      "website": "lightcast.io",
+      "address": "232 N Almon St",
+      "city": "Moscow",
+      "state": "ID",
+      "zip": "83843",
+      "district": "moscow",
+      "lng": -117.00358,
+      "lat": 46.73568,
+      "phone": "(208) 883-3500",
+      "founded": null,
+      "headcount": null,
+      "industry": "Data & analytics",
+      "what": "Labor market data and analytics for employers, education and the public sector.",
+      "sources": [
+        "https://lightcast.io/locations",
+        "https://lightcast.io/about"
+      ]
+    },
+    {
+      "name": "NRS",
+      "website": "nrs.com",
+      "address": "1638 South Blaine Street",
+      "city": "Moscow",
+      "state": "ID",
+      "zip": "83843",
+      "district": "moscow",
+      "lng": -116.985832,
+      "lat": 46.719592,
+      "phone": "877.677.4327",
+      "founded": 1972,
+      "headcount": null,
+      "industry": "E-commerce",
+      "what": "Designs paddling and river gear in-house in Moscow, including rafts, frames, life jackets and dry bags, sold through its catalog, website and Moscow flagship store.",
+      "sources": [
+        "https://www.nrs.com/about/",
+        "https://www.nrs.com/customer-service/"
+      ]
+    },
+    {
+      "name": "BioTracking",
+      "website": "biotracking.com",
+      "address": null,
+      "city": "Moscow",
+      "state": "ID",
+      "zip": "83843",
+      "district": "moscow",
+      "lng": null,
+      "lat": null,
+      "phone": "(208) 882-9736",
+      "founded": 1992,
+      "headcount": null,
+      "industry": "Agtech",
+      "what": "Developed and markets BioPRYN, an early blood-based pregnancy test for cattle and other ruminants, based on research at the University of Idaho.",
+      "sources": [
+        "https://www.biotracking.com/about-biotracking/",
+        "https://www.biotracking.com/contact"
+      ]
+    },
+    {
+      "name": "Alturas Analytics",
+      "website": "alturasanalytics.com",
+      "address": "1324 Alturas Drive",
+      "city": "Moscow",
+      "state": "ID",
+      "zip": "83843",
+      "district": "moscow",
+      "lng": -116.981644,
+      "lat": 46.71916,
+      "phone": "208-883-3400",
+      "founded": 2000,
+      "headcount": null,
+      "industry": "Life sciences",
+      "what": "Contract research lab providing LC-MS/MS and GC-MS/MS bioanalytical services for drug discovery and development.",
+      "sources": [
+        "https://www.alturasanalytics.com",
+        "https://www.alturasanalytics.com/contact"
+      ]
+    },
+    {
+      "name": "Anatek Labs",
+      "website": "anateklabs.com",
+      "address": "1282 Alturas Drive",
+      "city": "Moscow",
+      "state": "ID",
+      "zip": "83843",
+      "district": "moscow",
+      "lng": -116.98208,
+      "lat": 46.71928,
+      "phone": "208-883-2839",
+      "founded": 1992,
+      "headcount": null,
+      "industry": "Life sciences",
+      "what": "Accredited analytical lab testing drinking water and wastewater, including PFAS, with labs in Moscow and Spokane.",
+      "sources": [
+        "https://www.anateklabs.com",
+        "https://www.anateklabs.com/contact"
+      ]
+    },
+    {
+      "name": "Hillcrest Aircraft Company",
+      "website": "hillcrestaircraft.com",
+      "address": "540 O'Connor Road",
+      "city": "Lewiston",
+      "state": "ID",
+      "zip": "83501",
+      "district": "lewiston",
+      "lng": -117.020073,
+      "lat": 46.376191,
+      "phone": "208-746-8271",
+      "founded": null,
+      "headcount": null,
+      "industry": "Aerospace",
+      "what": "Aviation services at Lewiston's airport: fixed base operator, aircraft maintenance, avionics and flight training.",
+      "sources": [
+        "https://www.hillcrestaircraft.com"
+      ]
+    }
+  ]
+}

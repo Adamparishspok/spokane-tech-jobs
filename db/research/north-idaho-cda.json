@@ -1,0 +1,591 @@
+{
+  "_about": "North Idaho (Coeur d'Alene, Post Falls, Hayden, Rathdrum) startups, tech firms and advanced manufacturers, researched from public sources 2026-10-03. Same rules as real-companies.json: every row carries the source URLs it was taken from; nothing is inferred or invented, and a field that could not be sourced is null. Addresses, phones and founding years come from the company's own site or regional business journalism (Spokane Journal of Business, Coeur d'Alene Press, Idaho Business Review, CdAEDC); no headcount or founding year comes from aggregators. Headcount is set only where a 2025-26 article states it. Coordinates come from the Mapbox Geocoding API (v6) applied to the sourced street address; rows with no sourced street address have null lng/lat and their district is taken from the sourced city. District is the nearest of coeur-dalene, post-falls, hayden, rathdrum. Friendly-site rule: only positive or neutral sources are cited.",
+  "companies": [
+    {
+      "name": "ATC Manufacturing",
+      "website": "atcmanufacturing.com",
+      "address": "1224 N Lean St",
+      "city": "Post Falls",
+      "state": "ID",
+      "zip": "83854",
+      "district": "post-falls",
+      "lng": -116.974733,
+      "lat": 47.718847,
+      "phone": "(509) 893-4100",
+      "founded": null,
+      "headcount": null,
+      "industry": "Aerospace",
+      "what": "Thermoplastic composite parts for aerospace and defense: brackets, clips and beams today, and large stamp-formed aircraft structures under an Air Force Research Laboratory program.",
+      "sources": [
+        "https://atcmanufacturing.com/",
+        "https://www.spokanejournal.com/articles/18175-post-falls-manufacturer-snags-air-force-contract",
+        "https://cdapress.com/news/2026/sep/27/atc-manufacturing-expanding-its-post-falls-facility/"
+      ]
+    },
+    {
+      "name": "Chief Architect",
+      "website": "chiefarchitect.com",
+      "address": "6500 N Mineral Dr",
+      "city": "Coeur d'Alene",
+      "state": "ID",
+      "zip": "83815",
+      "district": "coeur-dalene",
+      "lng": -116.794475,
+      "lat": 47.731819,
+      "phone": "(208) 292-3400",
+      "founded": null,
+      "headcount": null,
+      "industry": "Business software",
+      "what": "3D architectural home design software for builders, remodelers, kitchen and bath designers, and DIY home enthusiasts (Home Designer).",
+      "sources": [
+        "https://www.chiefarchitect.com/company/contact.html",
+        "https://www.chiefarchitect.com/company/aboutchief.html"
+      ]
+    },
+    {
+      "name": "Unitech Composites",
+      "website": "apexsds.com",
+      "address": "10413 N Aero Dr",
+      "city": "Hayden",
+      "state": "ID",
+      "zip": "83835",
+      "district": "hayden",
+      "lng": -116.825105,
+      "lat": 47.767152,
+      "phone": "(208) 772-0533",
+      "founded": 1979,
+      "headcount": null,
+      "industry": "Aerospace",
+      "what": "Aerospace composite structures, a business unit of Apex Space & Defense Systems; formed to supply composite products to NASA's Space Shuttle program.",
+      "sources": [
+        "https://www.apexsds.com/facilities/unitech",
+        "https://www.apexsds.com/facilities/contact-us"
+      ]
+    },
+    {
+      "name": "Space Screw",
+      "website": "spacescrew.com",
+      "address": "6720 W Boekel Rd",
+      "city": "Rathdrum",
+      "state": "ID",
+      "zip": "83858",
+      "district": "rathdrum",
+      "lng": -116.876818,
+      "lat": 47.802269,
+      "phone": "(208) 687-9364",
+      "founded": 1964,
+      "headcount": null,
+      "industry": "Aerospace",
+      "what": "Precision screw-machining shop founded to serve the aerospace industry; its threaded fittings end up on Boeing and Airbus aircraft.",
+      "sources": [
+        "https://spacescrew.com/contact-us/",
+        "https://spacescrew.com/about-us/"
+      ]
+    },
+    {
+      "name": "Flame Innovation",
+      "website": "flameinnovation.com",
+      "address": "6512 W Seltice Way",
+      "city": "Post Falls",
+      "state": "ID",
+      "zip": "83854",
+      "district": "post-falls",
+      "lng": -117.03365,
+      "lat": 47.705945,
+      "phone": "(208) 660-3109",
+      "founded": null,
+      "headcount": null,
+      "industry": "Advanced manufacturing",
+      "what": "Family-owned maker of wood stoves and the patented Revolve smokeless fire pit, whose airfoil design spins the flame for cleaner combustion.",
+      "sources": [
+        "https://flameinnovation.com/contact-2/",
+        "https://www.spokanejournal.com/articles/15289-post-falls-manufacturer-develops-smokeless-fire-pit"
+      ]
+    },
+    {
+      "name": "Northwest Swiss",
+      "website": "nwswiss.com",
+      "address": "433 W Lacey Ave",
+      "city": "Hayden",
+      "state": "ID",
+      "zip": "83835",
+      "district": "hayden",
+      "lng": -116.79232,
+      "lat": 47.77044,
+      "phone": "(208) 772-4011",
+      "founded": null,
+      "headcount": null,
+      "industry": "Advanced manufacturing",
+      "what": "Swiss-style precision machining of small parts for high-tech industries.",
+      "sources": [
+        "https://nwswiss.com/contact/",
+        "https://www.spokanejournal.com/articles/5908-niche-machine-shop-in-north-idaho-eyes-further-expansion"
+      ]
+    },
+    {
+      "name": "Kuma Stoves",
+      "website": "kumastoves.com",
+      "address": "50145 N Old Hwy 95",
+      "city": "Rathdrum",
+      "state": "ID",
+      "zip": "83858",
+      "district": "rathdrum",
+      "lng": -116.783465,
+      "lat": 47.8279,
+      "phone": "(208) 762-8002",
+      "founded": 1981,
+      "headcount": null,
+      "industry": "Advanced manufacturing",
+      "what": "American-made wood stoves, inserts and oil stoves, built from U.S.-sourced materials.",
+      "sources": [
+        "https://www.kumastoves.com/contact",
+        "https://www.kumastoves.com/about"
+      ]
+    },
+    {
+      "name": "StanCraft Boats",
+      "website": "stancraftboats.com",
+      "address": "2936 W Dakota Ave",
+      "city": "Hayden",
+      "state": "ID",
+      "zip": "83835",
+      "district": "hayden",
+      "lng": -116.826272,
+      "lat": 47.762145,
+      "phone": "(208) 457-8000",
+      "founded": 1933,
+      "headcount": null,
+      "industry": "Advanced manufacturing",
+      "what": "Four-generation builder of handmade luxury wooden boats on a 9-acre Hayden campus.",
+      "sources": [
+        "https://stancraftboats.com/contact/",
+        "https://www.spokanejournal.com/articles/433-stancraft-boat-diversifies-sees-strong-growth"
+      ]
+    },
+    {
+      "name": "Buck Knives",
+      "website": "buckknives.com",
+      "address": "660 S Lochsa St",
+      "city": "Post Falls",
+      "state": "ID",
+      "zip": "83854",
+      "district": "post-falls",
+      "lng": -117.006255,
+      "lat": 47.701148,
+      "phone": null,
+      "founded": 1902,
+      "headcount": null,
+      "industry": "Advanced manufacturing",
+      "what": "Knife maker since 1902, headquartered and manufacturing in Post Falls since 2005; every knife carries its Forever Warranty.",
+      "sources": [
+        "https://www.buckknives.com/about/behind-the-blade/bucks-forever-warranty/",
+        "https://www.cdaedc.org/post/business-spotlight-buck-knives"
+      ]
+    },
+    {
+      "name": "Ground Force Worldwide",
+      "website": "gfworldwide.com",
+      "address": "6001 E Seltice Way",
+      "city": "Post Falls",
+      "state": "ID",
+      "zip": "83854",
+      "district": "post-falls",
+      "lng": -116.868441,
+      "lat": 47.705896,
+      "phone": "(208) 664-9291",
+      "founded": null,
+      "headcount": null,
+      "industry": "Advanced manufacturing",
+      "what": "Engineers mining support equipment, including water trucks, fuel and lube bodies, dump bodies and cable-handling systems, from an 80,000 sq ft Post Falls factory.",
+      "sources": [
+        "https://gfworldwide.com/contactus/",
+        "https://gfworldwide.com/about-us/"
+      ]
+    },
+    {
+      "name": "Empire Airlines",
+      "website": "empireairlines.com",
+      "address": "11559 N Atlas Rd",
+      "city": "Hayden",
+      "state": "ID",
+      "zip": "83835",
+      "district": "hayden",
+      "lng": -116.830235,
+      "lat": 47.777275,
+      "phone": "(208) 292-3850",
+      "founded": 1977,
+      "headcount": null,
+      "industry": "Aerospace",
+      "what": "Regional airline and heavy aircraft maintenance operation at Coeur d'Alene Airport, which has also developed agricultural drone operations.",
+      "sources": [
+        "https://www.empireairlines.com/contact/",
+        "https://www.cdaedc.org/post/empire-airlines-named-idaho-s-small-business-of-the-month"
+      ]
+    },
+    {
+      "name": "Ednetics",
+      "website": "ednetics.com",
+      "address": "971 S Clearwater Loop",
+      "city": "Post Falls",
+      "state": "ID",
+      "zip": "83854",
+      "district": "post-falls",
+      "lng": -117.005799,
+      "lat": 47.696216,
+      "phone": null,
+      "founded": null,
+      "headcount": null,
+      "industry": "IT services",
+      "what": "IT solutions provider for public-sector customers across the Western U.S., now part of MGT.",
+      "sources": [
+        "https://www.ednetics.com/contact-us/",
+        "https://www.ednetics.com/"
+      ]
+    },
+    {
+      "name": "Intermax Networks",
+      "website": "intermaxnetworks.com",
+      "address": "7400 N Mineral Dr, Suite 110",
+      "city": "Coeur d'Alene",
+      "state": "ID",
+      "zip": "83815",
+      "district": "coeur-dalene",
+      "lng": -116.794202,
+      "lat": 47.738959,
+      "phone": "(208) 762-8065",
+      "founded": 2001,
+      "headcount": null,
+      "industry": "IT services",
+      "what": "Locally owned provider of fiber and fixed-wireless internet, hosted voice and managed IT services across the Inland Pacific Northwest.",
+      "sources": [
+        "https://intermaxnetworks.com/contact-us/",
+        "https://intermaxnetworks.com/about-us/"
+      ]
+    },
+    {
+      "name": "Genius Gourmet",
+      "website": "geniusgourmet.com",
+      "address": "111 N 7th St, #338",
+      "city": "Coeur d'Alene",
+      "state": "ID",
+      "zip": "83814",
+      "district": "coeur-dalene",
+      "lng": -116.777399,
+      "lat": 47.674051,
+      "phone": null,
+      "founded": null,
+      "headcount": null,
+      "industry": "Food & beverage",
+      "what": "Low-sugar, low-carb protein snacks and drinks.",
+      "sources": [
+        "https://www.geniusgourmet.com/pages/contact-us",
+        "https://www.geniusgourmet.com/"
+      ]
+    },
+    {
+      "name": "Cōpow Foods",
+      "website": "copow-foods.com",
+      "address": "3500 N Government Way, Ste. 108",
+      "city": "Coeur d'Alene",
+      "state": "ID",
+      "zip": "83815",
+      "district": "coeur-dalene",
+      "lng": -116.785646,
+      "lat": 47.707835,
+      "phone": null,
+      "founded": null,
+      "headcount": null,
+      "industry": "Food & beverage",
+      "what": "Organic prepared-meal company with cafés in Coeur d'Alene.",
+      "sources": [
+        "https://copow-foods.com/pages/locations",
+        "https://copow-foods.com/pages/contact"
+      ]
+    },
+    {
+      "name": "Historik",
+      "website": "historik.com",
+      "address": null,
+      "city": "Coeur d'Alene",
+      "state": "ID",
+      "zip": null,
+      "district": "coeur-dalene",
+      "lng": null,
+      "lat": null,
+      "phone": null,
+      "founded": null,
+      "headcount": null,
+      "industry": "Education",
+      "what": "Mobile app and CMS platform that brings local history to life where it happened, now focused on Coeur d'Alene.",
+      "sources": [
+        "https://historik.com/"
+      ]
+    },
+    {
+      "name": "Selkirk Sport",
+      "website": "selkirk.com",
+      "address": "745 W Hanley Ave",
+      "city": "Coeur d'Alene",
+      "state": "ID",
+      "zip": "83815",
+      "district": "coeur-dalene",
+      "lng": -116.798027,
+      "lat": 47.731328,
+      "phone": null,
+      "founded": 2014,
+      "headcount": 200,
+      "industry": "Advanced manufacturing",
+      "what": "Family-founded pickleball paddle and equipment maker; co-developed Tesla's Plaid pickleball paddle.",
+      "sources": [
+        "https://www.spokanejournal.com/articles/17987-selkirk-sport-receives-30m-growth-equity-investment",
+        "https://www.spokanejournal.com/articles/17153-catching-up-with-selkirk-sports",
+        "https://cdapress.com/news/2025/dec/24/tesla-product-has-cda-connection/",
+        "https://www.selkirk.com/pages/about-us"
+      ]
+    },
+    {
+      "name": "Bay Shore Systems",
+      "website": "bayshoresystems.com",
+      "address": "14206 N Ohio St",
+      "city": "Rathdrum",
+      "state": "ID",
+      "zip": "83858",
+      "district": "rathdrum",
+      "lng": -116.890476,
+      "lat": 47.801075,
+      "phone": null,
+      "founded": 1978,
+      "headcount": 125,
+      "industry": "Advanced manufacturing",
+      "what": "U.S.-made foundation drilling rigs (LoDril excavator- and truck-mounted rigs) used for powerline tower and building foundations.",
+      "sources": [
+        "https://www.bayshoresystems.com/",
+        "https://www.spokanejournal.com/articles/2498-bay-shore-s-big-goals",
+        "https://cdapress.com/news/2025/nov/06/rathdrums-bayshore-systems-shares-success-story/"
+      ]
+    },
+    {
+      "name": "Rocky Mountain Construction",
+      "website": "rockymtnconstruction.com",
+      "address": null,
+      "city": "Hayden",
+      "state": "ID",
+      "zip": null,
+      "district": "hayden",
+      "lng": null,
+      "lat": null,
+      "phone": null,
+      "founded": 2001,
+      "headcount": null,
+      "industry": "Advanced manufacturing",
+      "what": "Designs, builds and services roller coasters, including its patented I-Box steel track used to convert wooden coasters into steel hybrids.",
+      "sources": [
+        "https://rockymtnconstruction.com/about-us",
+        "https://www.spokanejournal.com/articles/8370-north-idaho-roller-coaster-maker-expands-to-accommodate-innovations",
+        "https://www.cdaedc.org/post/business-spotlight-rocky-mountain-construction"
+      ]
+    },
+    {
+      "name": "Advanced Input Systems",
+      "website": "advancedinput.com",
+      "address": "600 W Wilbur Ave",
+      "city": "Coeur d'Alene",
+      "state": "ID",
+      "zip": "83815",
+      "district": "coeur-dalene",
+      "lng": -116.796212,
+      "lat": 47.735816,
+      "phone": null,
+      "founded": 1978,
+      "headcount": null,
+      "industry": "Advanced manufacturing",
+      "what": "Human-machine interface hardware: keyboards, embedded computers and custom-designed input technologies.",
+      "sources": [
+        "https://www.advancedinput.com/contact",
+        "https://www.advancedinput.com/about"
+      ]
+    },
+    {
+      "name": "Global Navigation Sciences",
+      "website": "gns-av.com",
+      "address": "11100 N Airport Dr",
+      "city": "Hayden",
+      "state": "ID",
+      "zip": "83835",
+      "district": "hayden",
+      "lng": -116.810705,
+      "lat": 47.772433,
+      "phone": "(877) 208-2042",
+      "founded": null,
+      "headcount": null,
+      "industry": "Aerospace",
+      "what": "USB power and LED lighting products for commercial and military aircraft, including retrofit light-and-USB units.",
+      "sources": [
+        "https://gns-av.com/",
+        "https://www.spokanejournal.com/articles/401-global-navigation-sciences-opens-north-idaho-office"
+      ]
+    },
+    {
+      "name": "DOMA Coffee Roasting Company",
+      "website": "domacoffee.com",
+      "address": "6240 E Seltice Way, Unit A",
+      "city": "Post Falls",
+      "state": "ID",
+      "zip": "83854",
+      "district": "post-falls",
+      "lng": -116.865427,
+      "lat": 47.70453,
+      "phone": "(208) 667-1267",
+      "founded": null,
+      "headcount": null,
+      "industry": "Food & beverage",
+      "what": "Wholesale specialty coffee roaster with a training Coffee Lab at its Post Falls headquarters and the Doma Café on the Spokane River.",
+      "sources": [
+        "https://www.domacoffee.com/",
+        "https://www.spokanejournal.com/articles/16252-doma-coffee-steps-into-retail"
+      ]
+    },
+    {
+      "name": "Coffee Crafters",
+      "website": "coffeecrafters.com",
+      "address": "708 S Clearwater Loop, Suite 105",
+      "city": "Post Falls",
+      "state": "ID",
+      "zip": "83854",
+      "district": "post-falls",
+      "lng": -117.012155,
+      "lat": 47.700075,
+      "phone": "(509) 228-6916",
+      "founded": null,
+      "headcount": null,
+      "industry": "Advanced manufacturing",
+      "what": "Fluid-bed coffee roasters, accessories and resources for starting or growing a roasting business.",
+      "sources": [
+        "https://coffeecrafters.com/contact/",
+        "https://coffeecrafters.com/"
+      ]
+    },
+    {
+      "name": "Cascadia Custom Molding",
+      "website": "cascadiacustommolding.com",
+      "address": "3474 W Industrial Loop",
+      "city": "Coeur d'Alene",
+      "state": "ID",
+      "zip": "83815",
+      "district": "coeur-dalene",
+      "lng": -116.836748,
+      "lat": 47.723612,
+      "phone": null,
+      "founded": null,
+      "headcount": null,
+      "industry": "Advanced manufacturing",
+      "what": "Thermoplastic injection molding, mold construction and prototyping for aerospace, medical and electronics OEMs; part of VRC Engineered Solutions.",
+      "sources": [
+        "https://www.spokanejournal.com/articles/1245-midwest-private-equity-firm-acquires-cascadia-custom-molding",
+        "https://www.vrc-es.com/locations"
+      ]
+    },
+    {
+      "name": "ALK Source Materials",
+      "website": "alk.net",
+      "address": "448 S Lochsa St",
+      "city": "Post Falls",
+      "state": "ID",
+      "zip": "83854",
+      "district": "post-falls",
+      "lng": -117.004275,
+      "lat": 47.702798,
+      "phone": "(208) 457-9900",
+      "founded": 1976,
+      "headcount": null,
+      "industry": "Life sciences",
+      "what": "ALK-Abello's source-materials laboratory, supplying pollens, mites, insect venoms and other allergen materials used in allergy immunotherapy and diagnostics.",
+      "sources": [
+        "https://www.alk.net/us/contact-us",
+        "https://www.alk.net/us/allergen-extracts/alk-source-materials-facilities",
+        "https://www.cdaedc.org/post/world-s-largest-allergen-supplier-says-north-idaho-walks-the-talk"
+      ]
+    },
+    {
+      "name": "FMI-EPS",
+      "website": "fmi-eps.com",
+      "address": "9456 N McGuire Rd",
+      "city": "Post Falls",
+      "state": "ID",
+      "zip": "83854",
+      "district": "post-falls",
+      "lng": -116.979301,
+      "lat": 47.758142,
+      "phone": "(208) 777-8485",
+      "founded": null,
+      "headcount": null,
+      "industry": "Advanced manufacturing",
+      "what": "Expanded-polystyrene foam molding for insulation and packaging products.",
+      "sources": [
+        "https://fmi-eps.com/contact",
+        "https://www.spokanejournal.com/articles/11714-plastic-foam-maker-expands-facilities-north-of-post-falls"
+      ]
+    },
+    {
+      "name": "HardTarget",
+      "website": "hardtarget.ai",
+      "address": null,
+      "city": "Coeur d'Alene",
+      "state": "ID",
+      "zip": null,
+      "district": "coeur-dalene",
+      "lng": null,
+      "lat": null,
+      "phone": null,
+      "founded": null,
+      "headcount": null,
+      "industry": "Cybersecurity",
+      "what": "Cybersecurity governance for pro athletes, entertainers, high-net-worth families and family offices, taught through gamified learning.",
+      "sources": [
+        "https://www.hardtarget.ai/",
+        "https://www.spokanejournal.com/articles/16739-hardtarget-gamifies-cybersecurity-for-wealthy-families"
+      ]
+    },
+    {
+      "name": "Dragon Jacket Insulation",
+      "website": "dragonjacket.com",
+      "address": "215 Moyie St, Suite 101",
+      "city": "Post Falls",
+      "state": "ID",
+      "zip": "83854",
+      "district": "post-falls",
+      "lng": -117.0062,
+      "lat": 47.704403,
+      "phone": "(208) 772-8640",
+      "founded": null,
+      "headcount": null,
+      "industry": "Advanced manufacturing",
+      "what": "Waterproof, reusable industrial pipe insulation, first developed for oilfield environments.",
+      "sources": [
+        "https://www.dragonjacket.com/about-our-company/",
+        "https://idahobusinessreview.com/2019/06/19/innovation-den-spawns-coeur-dalene-startup-culture/"
+      ]
+    },
+    {
+      "name": "Tractor Beverage Co.",
+      "website": "drinktractor.com",
+      "address": null,
+      "city": "Coeur d'Alene",
+      "state": "ID",
+      "zip": null,
+      "district": "coeur-dalene",
+      "lng": null,
+      "lat": null,
+      "phone": null,
+      "founded": 2014,
+      "headcount": null,
+      "industry": "Food & beverage",
+      "what": "Organic craft soft drinks, sustainably sourced, with an organic impact tracker that measures the environmental footprint of its ingredients.",
+      "sources": [
+        "https://drinktractor.com/",
+        "https://www.spokanejournal.com/articles/15268-tractor-beverage-tracks-sustainability-as-it-grows",
+        "https://www.spokanejournal.com/articles/16322-seven-inw-companies-make-inc-magazines-fastest-growing-list"
+      ]
+    }
+  ]
+}

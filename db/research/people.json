@@ -50,6 +50,32 @@
         "https://www.linkedin.com/in/nicksmoot",
         "https://cdapress.com/news/2026/may/27/aerospace-legend-to-speak-in-coeur-dalene/"
       ]
+    },
+    {
+      "id": "scott-weiner",
+      "name": "Scott Weiner",
+      "role": "Co-founder, Atomic",
+      "bio": "",
+      "district": null,
+      "company": "atomic",
+      "places": [],
+      "email": null,
+      "sources": [
+        "Added by the directory's owner, 2026-10-03"
+      ]
+    },
+    {
+      "id": "mclean-reiter",
+      "name": "McLean Reiter",
+      "role": "Founder, Carrot",
+      "bio": "Founder of the startup Carrot, and previously a manager at MØDE Cowork in Liberty Lake.",
+      "district": null,
+      "company": null,
+      "places": [],
+      "email": null,
+      "sources": [
+        "Added by the directory's owner, 2026-10-03"
+      ]
     }
   ]
 }

@@ -43,6 +43,26 @@
         "https://www.buildcities.com",
         "https://cdapress.com/news/2026/jul/28/nibj-leadership-nick-smoot-shares-leadership-principles-innovation-insights/"
       ]
+    },
+    {
+      "name": "Atomic",
+      "website": "atomicfi.com",
+      "address": null,
+      "city": "Spokane",
+      "state": "WA",
+      "zip": null,
+      "district": "downtown",
+      "lng": null,
+      "lat": null,
+      "phone": null,
+      "founded": null,
+      "headcount": null,
+      "what": "Fintech whose APIs connect apps to people's payroll accounts, for direct deposit switching and income verification; one of its co-founders is based in Spokane.",
+      "note": "Headquartered in Salt Lake City with a distributed team (its careers page). Listed because co-founder Scott Weiner lives in Spokane, per the directory's owner; the pin is Spokane's centre, not an office.",
+      "sources": [
+        "https://www.atomicfi.com/careers",
+        "Directory owner, 2026-10-03: co-founder Scott Weiner lives in Spokane"
+      ]
     }
   ]
 }

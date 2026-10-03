@@ -3,7 +3,7 @@
 Source: https://spokanetechjobs.com
 Licence: CC BY 4.0, attribution to Spokane Tech Jobs
 Generated: 2026-10-03
-Companies: 87. Open roles: 0.
+Companies: 140. Open roles: 0.
 
 Every field here is sourced from public records. A field that could not be
 sourced is absent rather than estimated.
@@ -31,6 +31,33 @@ Website: 14four.com
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/14four.html
 
+## ALK Source Materials
+
+ALK-Abello's source-materials laboratory, supplying pollens, mites, insect venoms and other allergen materials used in allergy immunotherapy and diagnostics.
+
+Industry: Life sciences
+District: Post Falls
+Address: 448 S Lochsa St, Post Falls, ID 83854
+Founded: 1976
+Website: alk.net
+Phone: (208) 457-9900
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/alk-source-materials.html
+
+## ATC Manufacturing
+
+Thermoplastic composite parts for aerospace and defense: brackets, clips and beams today, and large stamp-formed aircraft structures under an Air Force Research Laboratory program.
+
+Industry: Aerospace
+District: Post Falls
+Address: 1224 N Lean St, Post Falls, ID 83854
+Website: atcmanufacturing.com
+Phone: (509) 893-4100
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/atc-manufacturing.html
+
 ## Absco Solutions
 
 Designs, installs and services fire, life-safety and security systems for facilities; this is its Spokane office.
@@ -43,6 +70,19 @@ Phone: (509) 321-1190
 
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/absco-solutions.html
+
+## Advanced Input Systems
+
+Human-machine interface hardware: keyboards, embedded computers and custom-designed input technologies.
+
+Industry: Advanced manufacturing
+District: Coeur d'Alene
+Address: 600 W Wilbur Ave, Coeur d'Alene, ID 83815
+Founded: 1978
+Website: advancedinput.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/advanced-input-systems.html
 
 ## Advantage Advertising
 
@@ -57,6 +97,19 @@ Phone: (208) 743-0633
 
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/advantage-advertising.html
+
+## Aerocet
+
+Builds aircraft floats, including the 1500 Amphib, 2200 and 3400 Amphib models, in Priest River.
+
+Industry: Aerospace
+District: Sandpoint
+Address: 265 Shannon Ln., Sandpoint, ID 83856
+Website: aerocet.com
+Phone: 208.448.0400
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/aerocet.html
 
 ## Allele Diagnostics
 
@@ -82,6 +135,20 @@ Website: alphyco.com
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/alphy.html
 
+## Alturas Analytics
+
+Contract research lab providing LC-MS/MS and GC-MS/MS bioanalytical services for drug discovery and development.
+
+Industry: Life sciences
+District: Moscow
+Address: 1324 Alturas Drive, Moscow, ID 83843
+Founded: 2000
+Website: alturasanalytics.com
+Phone: 208-883-3400
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/alturas-analytics.html
+
 ## AmpliFi Advertising
 
 Advertising agency doing brand and digital strategy, logo, graphic and website design, TV/video and media strategy.
@@ -95,6 +162,31 @@ Phone: (509) 456-8640
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/amplifi-advertising.html
 
+## Anatek Labs
+
+Accredited analytical lab testing drinking water and wastewater, including PFAS, with labs in Moscow and Spokane.
+
+Industry: Life sciences
+District: Moscow
+Address: 1282 Alturas Drive, Moscow, ID 83843
+Founded: 1992
+Website: anateklabs.com
+Phone: 208-883-2839
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/anatek-labs.html
+
+## Atomic
+
+Fintech whose APIs connect apps to people's payroll accounts, for direct deposit switching and income verification; one of its co-founders is based in Spokane.
+
+Industry: Fintech
+District: Downtown
+Website: atomicfi.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/atomic.html
+
 ## Avista
 
 Investor-owned energy utility; runs a substantial in-house engineering and grid-technology organisation.
@@ -107,6 +199,46 @@ Website: myavista.com
 
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/avista.html
+
+## Bay Shore Systems
+
+U.S.-made foundation drilling rigs (LoDril excavator- and truck-mounted rigs) used for powerline tower and building foundations.
+
+Industry: Advanced manufacturing
+District: Rathdrum
+Address: 14206 N Ohio St, Rathdrum, ID 83858
+Team: 125 people
+Founded: 1978
+Website: bayshoresystems.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/bay-shore-systems.html
+
+## BioTracking
+
+Developed and markets BioPRYN, an early blood-based pregnancy test for cattle and other ruminants, based on research at the University of Idaho.
+
+Industry: Agtech
+District: Moscow
+Founded: 1992
+Website: biotracking.com
+Phone: (208) 882-9736
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/biotracking.html
+
+## Buck Knives
+
+Knife maker since 1902, headquartered and manufacturing in Post Falls since 2005; every knife carries its Forever Warranty.
+
+Industry: Advanced manufacturing
+District: Post Falls
+Address: 660 S Lochsa St, Post Falls, ID 83854
+Founded: 1902
+Website: buckknives.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/buck-knives.html
 
 ## CDL PowerSuite
 
@@ -133,6 +265,18 @@ Website: caavadesign.com
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/caava-design.html
 
+## Cascadia Custom Molding
+
+Thermoplastic injection molding, mold construction and prototyping for aerospace, medical and electronics OEMs; part of VRC Engineered Solutions.
+
+Industry: Advanced manufacturing
+District: Coeur d'Alene
+Address: 3474 W Industrial Loop, Coeur d'Alene, ID 83815
+Website: cascadiacustommolding.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/cascadia-custom-molding.html
+
 ## Cerium Networks
 
 Managed IT services provider offering networking, communications, cybersecurity, data center and AI solutions.
@@ -145,6 +289,32 @@ Phone: (800) 217-0933
 
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/cerium-networks.html
+
+## Chief Architect
+
+3D architectural home design software for builders, remodelers, kitchen and bath designers, and DIY home enthusiasts (Home Designer).
+
+Industry: Business software
+District: Coeur d'Alene
+Address: 6500 N Mineral Dr, Coeur d'Alene, ID 83815
+Website: chiefarchitect.com
+Phone: (208) 292-3400
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/chief-architect.html
+
+## Coffee Crafters
+
+Fluid-bed coffee roasters, accessories and resources for starting or growing a roasting business.
+
+Industry: Advanced manufacturing
+District: Post Falls
+Address: 708 S Clearwater Loop, Suite 105, Post Falls, ID 83854
+Website: coffeecrafters.com
+Phone: (509) 228-6916
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/coffee-crafters.html
 
 ## Commerce Architects
 
@@ -239,6 +409,44 @@ Phone: (307) 224-2517
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/cyberinsider.html
 
+## Cōpow Foods
+
+Organic prepared-meal company with cafés in Coeur d'Alene.
+
+Industry: Food & beverage
+District: Coeur d'Alene
+Address: 3500 N Government Way, Ste. 108, Coeur d'Alene, ID 83815
+Website: copow-foods.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/c-pow-foods.html
+
+## DOMA Coffee Roasting Company
+
+Wholesale specialty coffee roaster with a training Coffee Lab at its Post Falls headquarters and the Doma Café on the Spokane River.
+
+Industry: Food & beverage
+District: Post Falls
+Address: 6240 E Seltice Way, Unit A, Post Falls, ID 83854
+Website: domacoffee.com
+Phone: (208) 667-1267
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/doma-coffee-roasting-company.html
+
+## Daher Aircraft (Kodiak)
+
+Designs and builds the Kodiak, a 10-seat short takeoff and landing utility aircraft, in Sandpoint.
+
+Industry: Aerospace
+District: Sandpoint
+Address: 1200 Turbine Drive, Sandpoint, ID 83864
+Website: kodiak.aero
+Phone: (208) 263-1111
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/daher-aircraft-kodiak.html
+
 ## Dice Throne
 
 Designs and publishes Dice Throne, a strategic dice-and-card dueling tabletop game.
@@ -251,6 +459,32 @@ Phone: (509) 255-3135
 
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/dice-throne.html
+
+## Diedrich Roasters
+
+Builds handcrafted coffee roasting machines, from boutique specialty roasters to large commercial systems, plus roasters for cacao, with consulting, training and support.
+
+Industry: Advanced manufacturing
+District: Sandpoint
+Address: 850 Hawthorne Ave., Sandpoint, ID 83852
+Website: diedrichroasters.com
+Phone: +1.844.343.3742
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/diedrich-roasters.html
+
+## Dragon Jacket Insulation
+
+Waterproof, reusable industrial pipe insulation, first developed for oilfield environments.
+
+Industry: Advanced manufacturing
+District: Post Falls
+Address: 215 Moyie St, Suite 101, Post Falls, ID 83854
+Website: dragonjacket.com
+Phone: (208) 772-8640
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/dragon-jacket-insulation.html
 
 ## Drip7
 
@@ -276,6 +510,46 @@ Website: engieimpact.com
 
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/engie-impact.html
+
+## Ednetics
+
+IT solutions provider for public-sector customers across the Western U.S., now part of MGT.
+
+Industry: IT services
+District: Post Falls
+Address: 971 S Clearwater Loop, Post Falls, ID 83854
+Website: ednetics.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/ednetics.html
+
+## Empire Airlines
+
+Regional airline and heavy aircraft maintenance operation at Coeur d'Alene Airport, which has also developed agricultural drone operations.
+
+Industry: Aerospace
+District: Hayden
+Address: 11559 N Atlas Rd, Hayden, ID 83835
+Founded: 1977
+Website: empireairlines.com
+Phone: (208) 292-3850
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/empire-airlines.html
+
+## Encoder Products Company
+
+Designs and manufactures incremental and absolute rotary encoders for motion control, from its Sagle headquarters.
+
+Industry: Advanced manufacturing
+District: Sandpoint
+Address: 464276 Highway 95 South, Sandpoint, ID 83860
+Founded: 1969
+Website: encoder.com
+Phone: 208-263-8541
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/encoder-products-company.html
 
 ## Enleaf
 
@@ -319,6 +593,19 @@ Phone: (509) 343-3500
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/f5.html
 
+## FMI-EPS
+
+Expanded-polystyrene foam molding for insulation and packaging products.
+
+Industry: Advanced manufacturing
+District: Post Falls
+Address: 9456 N McGuire Rd, Post Falls, ID 83854
+Website: fmi-eps.com
+Phone: (208) 777-8485
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/fmi-eps.html
+
 ## Fatbeam
 
 Fiber-optic internet provider offering dedicated internet, dark fiber and network services to businesses and institutions across the western U.S.
@@ -345,6 +632,19 @@ Phone: (509) 922-4600
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/fisher-s-technology.html
 
+## Flame Innovation
+
+Family-owned maker of wood stoves and the patented Revolve smokeless fire pit, whose airfoil design spins the flame for cleaner combustion.
+
+Industry: Advanced manufacturing
+District: Post Falls
+Address: 6512 W Seltice Way, Post Falls, ID 83854
+Website: flameinnovation.com
+Phone: (208) 660-3109
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/flame-innovation.html
+
 ## Free Rein Marketing
 
 Boutique advertising, marketing and public relations agency serving the Tri-Cities.
@@ -358,6 +658,18 @@ Phone: (509) 521-2863
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/free-rein-marketing.html
 
+## Genius Gourmet
+
+Low-sugar, low-carb protein snacks and drinks.
+
+Industry: Food & beverage
+District: Coeur d'Alene
+Address: 111 N 7th St, #338, Coeur d'Alene, ID 83814
+Website: geniusgourmet.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/genius-gourmet.html
+
 ## Gestalt Diagnostics
 
 Digital pathology software, including the PathFlow platform and AI tools for reviewing pathology samples.
@@ -370,6 +682,33 @@ Phone: (509) 492-4912
 
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/gestalt-diagnostics.html
+
+## Gierd
+
+Software that helps brands scale sales on online marketplaces such as Amazon, eBay and Walmart, with tools for pricing, demand forecasting, fraud protection and sales reconciliation. Headquartered in the Old Power House building near Sandpoint's docks.
+
+Industry: E-commerce
+District: Sandpoint
+Address: 120 East Lake Street, Suite 401, Sandpoint, ID 83864
+Team: 80 people
+Founded: 2022
+Website: gierd.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/gierd.html
+
+## Global Navigation Sciences
+
+USB power and LED lighting products for commercial and military aircraft, including retrofit light-and-USB units.
+
+Industry: Aerospace
+District: Hayden
+Address: 11100 N Airport Dr, Hayden, ID 83835
+Website: gns-av.com
+Phone: (877) 208-2042
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/global-navigation-sciences.html
 
 ## GoToTags
 
@@ -385,6 +724,19 @@ Phone: (844) 632-8247
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/gototags.html
 
+## Granite Aviation
+
+Sandpoint Airport's fixed base operator, offering aircraft maintenance, flight training, aircraft rental and deicing.
+
+Industry: Aerospace
+District: Sandpoint
+Address: 1101 Airport Way, Sandpoint, ID 83864
+Website: granite-aviation.com
+Phone: (208) 263-9102
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/granite-aviation.html
+
 ## Gravity Jack
 
 Augmented and virtual reality studio that builds AR/VR experiences, mobile apps and websites for clients.
@@ -397,6 +749,19 @@ Phone: (509) 795-0043
 
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/gravity-jack.html
+
+## Ground Force Worldwide
+
+Engineers mining support equipment, including water trucks, fuel and lube bodies, dump bodies and cable-handling systems, from an 80,000 sq ft Post Falls factory.
+
+Industry: Advanced manufacturing
+District: Post Falls
+Address: 6001 E Seltice Way, Post Falls, ID 83854
+Website: gfworldwide.com
+Phone: (208) 664-9291
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/ground-force-worldwide.html
 
 ## H-Source
 
@@ -411,6 +776,17 @@ Phone: (888) 900-4549
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/h-source.html
 
+## HardTarget
+
+Cybersecurity governance for pro athletes, entertainers, high-net-worth families and family offices, taught through gamified learning.
+
+Industry: Cybersecurity
+District: Coeur d'Alene
+Website: hardtarget.ai
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/hardtarget.html
+
 ## Hatch Advertising
 
 Advertising agency doing traditional and digital advertising, graphic and website design, and event marketing.
@@ -424,6 +800,30 @@ Phone: (509) 228-0654
 
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/hatch-advertising.html
+
+## Hillcrest Aircraft Company
+
+Aviation services at Lewiston's airport: fixed base operator, aircraft maintenance, avionics and flight training.
+
+Industry: Aerospace
+District: Lewiston
+Address: 540 O'Connor Road, Lewiston, ID 83501
+Website: hillcrestaircraft.com
+Phone: 208-746-8271
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/hillcrest-aircraft-company.html
+
+## Historik
+
+Mobile app and CMS platform that brings local history to life where it happened, now focused on Coeur d'Alene.
+
+Industry: Education
+District: Coeur d'Alene
+Website: historik.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/historik.html
 
 ## Impact Laboratories
 
@@ -472,6 +872,20 @@ Phone: (509) 315-3400
 
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/intellitect.html
+
+## Intermax Networks
+
+Locally owned provider of fiber and fixed-wireless internet, hosted voice and managed IT services across the Inland Pacific Northwest.
+
+Industry: IT services
+District: Coeur d'Alene
+Address: 7400 N Mineral Dr, Suite 110, Coeur d'Alene, ID 83815
+Founded: 2001
+Website: intermaxnetworks.com
+Phone: (208) 762-8065
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/intermax-networks.html
 
 ## Itron
 
@@ -539,6 +953,20 @@ Website: krambu.com
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/krambu.html
 
+## Kuma Stoves
+
+American-made wood stoves, inserts and oil stoves, built from U.S.-sourced materials.
+
+Industry: Advanced manufacturing
+District: Rathdrum
+Address: 50145 N Old Hwy 95, Rathdrum, ID 83858
+Founded: 1981
+Website: kumastoves.com
+Phone: (208) 762-8002
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/kuma-stoves.html
+
 ## Lee & Hayes
 
 Intellectual property law firm headquartered in Spokane, with offices in other U.S. cities.
@@ -552,6 +980,31 @@ Phone: (509) 324-9256
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/lee-and-hayes.html
 
+## Lightcast
+
+Labor market data and analytics for employers, education and the public sector.
+
+Industry: Data & analytics
+District: Moscow
+Address: 232 N Almon St, Moscow, ID 83843
+Website: lightcast.io
+Phone: (208) 883-3500
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/lightcast.html
+
+## Like Media
+
+Print and digital marketing agency offering SEO, web development, social media and branding, and publisher of Living Local magazines for Sandpoint, Bonners Ferry, Coeur d'Alene and Gig Harbor.
+
+Industry: Marketing & design
+District: Sandpoint
+Website: like-media.com
+Phone: (208) 946-0901
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/like-media.html
+
 ## Limelyte Technology Group
 
 Custom software development agency building enterprise, AI, title-industry and mobile applications.
@@ -564,6 +1017,19 @@ Phone: (509) 241-0138
 
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/limelyte-technology-group.html
+
+## Litehouse Foods
+
+Employee-owned maker of salad dressings, sauces, condiments, cheese and dips, with brands including Litehouse, Organicville, Veggiecraft and Sky Valley. Sandpoint-based, with a plant in Sandpoint.
+
+Industry: Food & beverage
+District: Sandpoint
+Founded: 1963
+Website: litehousefoods.com
+Phone: 1-800-669-3169
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/litehouse-foods.html
 
 ## Litehouse Health
 
@@ -605,6 +1071,19 @@ Phone: (509) 934-0513
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/maker-made.html
 
+## Matchwood Brewing Company
+
+Sandpoint's neighborhood brewery and eatery, making handcrafted beer.
+
+Industry: Food & beverage
+District: Sandpoint
+Address: 513 Oak Street, Sandpoint, ID 83864
+Website: matchwoodbrewing.com
+Phone: (208) 718-2739
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/matchwood-brewing-company.html
+
 ## Medcurity
 
 HIPAA compliance software and services, including security risk analysis, penetration testing and staff training for healthcare organizations.
@@ -643,6 +1122,32 @@ Website: moatmetrics.com
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/moat-metrics.html
 
+## Monarch Mountain Coffee
+
+Sandpoint coffee company selling its own blends, such as Cafe' Magnific and Espresso Trifecta, online.
+
+Industry: Food & beverage
+District: Sandpoint
+Address: 119 North 1st Avenue, Sandpoint, ID 83864
+Website: monarchmountaincoffee.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/monarch-mountain-coffee.html
+
+## NRS
+
+Designs paddling and river gear in-house in Moscow, including rafts, frames, life jackets and dry bags, sold through its catalog, website and Moscow flagship store.
+
+Industry: E-commerce
+District: Moscow
+Address: 1638 South Blaine Street, Moscow, ID 83843
+Founded: 1972
+Website: nrs.com
+Phone: 877.677.4327
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/nrs.html
+
 ## North by Northwest
 
 Full-service film and video production studio.
@@ -655,6 +1160,19 @@ Phone: (509) 324-2949
 
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/north-by-northwest.html
+
+## Northwest Swiss
+
+Swiss-style precision machining of small parts for high-tech industries.
+
+Industry: Advanced manufacturing
+District: Hayden
+Address: 433 W Lacey Ave, Hayden, ID 83835
+Website: nwswiss.com
+Phone: (208) 772-4011
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/northwest-swiss.html
 
 ## Nuvodia
 
@@ -705,6 +1223,19 @@ Phone: (888) 806-6545
 
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/paytrace.html
+
+## Pend d'Oreille Winery
+
+Makes award-winning wines, with a downtown Sandpoint tasting room and bistro.
+
+Industry: Food & beverage
+District: Sandpoint
+Address: 301 Cedar St., Suite 101, Sandpoint, ID 83864
+Website: powine.com
+Phone: (208) 265-8545
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/pend-d-oreille-winery.html
 
 ## Precision Quantomics
 
@@ -822,6 +1353,18 @@ Phone: (509) 903-6937
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/revival-tea-company.html
 
+## Rocky Mountain Construction
+
+Designs, builds and services roller coasters, including its patented I-Box steel track used to convert wooden coasters into steel hybrids.
+
+Industry: Advanced manufacturing
+District: Hayden
+Founded: 2001
+Website: rockymtnconstruction.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/rocky-mountain-construction.html
+
 ## SEVEN2
 
 Digital creative agency producing online advertising, social content, video, voice skills and websites.
@@ -848,6 +1391,20 @@ Phone: (208) 773-9263
 
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/safeguard-equipment.html
+
+## Sandpoint Computers
+
+Locally owned computer shop repairing Apple, Windows and Linux machines, with business network consulting, outsourced IT and network management.
+
+Industry: IT services
+District: Sandpoint
+Address: 212 N First Ave, Suite G101, Sandpoint, ID 83864
+Founded: 1997
+Website: sandpointcomputers.com
+Phone: (208) 265-1608
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/sandpoint-computers.html
 
 ## Schweitzer Engineering Laboratories
 
@@ -876,6 +1433,20 @@ Phone: (208) 551-3878
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/scout-discoveries.html
 
+## Selkirk Sport
+
+Family-founded pickleball paddle and equipment maker; co-developed Tesla's Plaid pickleball paddle.
+
+Industry: Advanced manufacturing
+District: Coeur d'Alene
+Address: 745 W Hanley Ave, Coeur d'Alene, ID 83815
+Team: 200 people
+Founded: 2014
+Website: selkirk.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/selkirk-sport.html
+
 ## Slate Dental
 
 Makes the Slate electric flosser, a sonic flossing device with reusable floss heads.
@@ -889,6 +1460,31 @@ Website: slateflosser.com
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/slate-dental.html
 
+## Sno Trac
+
+Small-batch manufacturer that re-engineered the 1950s Swedish Snow Trac into a modern, American-made tracked snow vehicle, designed, fabricated and assembled in Bonners Ferry.
+
+Industry: Advanced manufacturing
+District: Bonners Ferry
+Website: sno-trac.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/sno-trac.html
+
+## Space Screw
+
+Precision screw-machining shop founded to serve the aerospace industry; its threaded fittings end up on Boeing and Airbus aircraft.
+
+Industry: Aerospace
+District: Rathdrum
+Address: 6720 W Boekel Rd, Rathdrum, ID 83858
+Founded: 1964
+Website: spacescrew.com
+Phone: (208) 687-9364
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/space-screw.html
+
 ## Spiceology
 
 Direct-to-consumer spice company built on its own ecommerce stack.
@@ -900,6 +1496,19 @@ Website: spiceology.com
 
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/spiceology.html
+
+## Sprig Herbals
+
+Produces whole-plant herbal extracts as flavor-forward formulas for food and drinks.
+
+Industry: Food & beverage
+District: Sandpoint
+Address: 723 Pine St, Sandpoint, ID 83864
+Website: sprigherbals.com
+Phone: (986) 285-8388
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/sprig-herbals.html
 
 ## StaffReady
 
@@ -914,6 +1523,31 @@ Phone: 1-877-229-5230
 
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/staffready.html
+
+## StanCraft Boats
+
+Four-generation builder of handmade luxury wooden boats on a 9-acre Hayden campus.
+
+Industry: Advanced manufacturing
+District: Hayden
+Address: 2936 W Dakota Ave, Hayden, ID 83835
+Founded: 1933
+Website: stancraftboats.com
+Phone: (208) 457-8000
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/stancraft-boats.html
+
+## Survey Noodle
+
+AI-assisted survey platform that writes survey questions, follows up with respondents and summarizes the results. Started by Sandpoint entrepreneur Mike Peck.
+
+Industry: Business software
+District: Sandpoint
+Website: surveynoodle.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/survey-noodle.html
 
 ## Sweetbox Delivery
 
@@ -955,6 +1589,29 @@ Phone: (509) 413-2082
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/the-woodshop.html
 
+## Timberline Helicopters
+
+Heavy-lift helicopter services, aerial firefighting and external-load work with a fleet of Black Hawk and K-MAX helicopters, plus a repair station. Building a $13 million, 50,000-square-foot facility near Sandpoint Airport.
+
+Industry: Aerospace
+District: Sandpoint
+Website: timberlinehelicopters.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/timberline-helicopters.html
+
+## Tractor Beverage Co.
+
+Organic craft soft drinks, sustainably sourced, with an organic impact tracker that measures the environmental footprint of its ingredients.
+
+Industry: Food & beverage
+District: Coeur d'Alene
+Founded: 2014
+Website: drinktractor.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/tractor-beverage-co.html
+
 ## Treasury4
 
 Treasury management software that unifies cash, payments, debt and banking data for corporate finance teams.
@@ -980,6 +1637,20 @@ Website: wearetreatment.com
 
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/treatment-creative.html
+
+## Unitech Composites
+
+Aerospace composite structures, a business unit of Apex Space & Defense Systems; formed to supply composite products to NASA's Space Shuttle program.
+
+Industry: Aerospace
+District: Hayden
+Address: 10413 N Aero Dr, Hayden, ID 83835
+Founded: 1979
+Website: apexsds.com
+Phone: (208) 772-0533
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/unitech-composites.html
 
 ## Univision Computers
 
@@ -1136,3 +1807,14 @@ Phone: (208) 635-5336
 
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/xcraft.html
+
+## Überleben
+
+Outdoor and bushcraft gear brand known for ferrocerium fire starters, sold online from its Bonners Ferry base.
+
+Industry: E-commerce
+District: Bonners Ferry
+Website: uberleben.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/berleben.html
