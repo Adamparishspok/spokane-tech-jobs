@@ -1,0 +1,235 @@
+{
+  "_about": "Batch 2 of the user's CSV of regional tech companies, researched from public sources 2026-10-03. Same rules as real-companies.json: every row carries the sources it was taken from; nothing is inferred or invented; a field that could not be sourced is null. CSV notes were treated as leads only. Headcount and founded never come from aggregators. Coordinates come from the Mapbox Geocoding API applied to the sourced street address; rows without a sourced street address have null coordinates and a district taken from the sourced city.",
+  "companies": [
+    {
+      "name": "GoToTags",
+      "website": "gototags.com",
+      "address": "6402 N Helena St, Unit B",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99217",
+      "district": "hillyard",
+      "lng": -117.387008,
+      "lat": 47.716158,
+      "phone": "(844) 632-8247",
+      "founded": 2011,
+      "headcount": null,
+      "what": "Makes NFC, UHF RFID and barcode software, hardware and encoded tags that link physical objects to digital identities.",
+      "sources": [
+        "https://gototags.com/contact",
+        "https://gototags.com/about"
+      ]
+    },
+    {
+      "name": "CDL PowerSuite",
+      "website": "cdlpowersuite.com",
+      "address": "3620 N Eden Rd",
+      "city": "Spokane Valley",
+      "state": "WA",
+      "zip": "99216",
+      "district": "valley",
+      "lng": -117.16195,
+      "lat": 47.69023,
+      "phone": "(509) 931-1112",
+      "founded": null,
+      "headcount": null,
+      "what": "FMCSA-compliance software for CDL schools, motor carriers, fleets and government agencies: driver training records, qualification files and audit readiness.",
+      "sources": [
+        "https://www.cdlpowersuite.com/"
+      ]
+    },
+    {
+      "name": "Litehouse Health",
+      "website": "litehousehealth.com",
+      "address": null,
+      "city": "Spokane",
+      "state": "WA",
+      "zip": null,
+      "district": "downtown",
+      "lng": null,
+      "lat": null,
+      "phone": null,
+      "founded": 2023,
+      "headcount": null,
+      "what": "Healthcare workforce platform that supplies hospitals with on-demand local nurses and staffing-management software.",
+      "sources": [
+        "https://litehousehealth.com/",
+        "https://litehousehealth.com/about-us",
+        "https://www.spokanejournal.com/articles/15542-spokane-startup-litehouse-health-aims-to-address-nursing-shortage",
+        "https://spokanejournal.com/articles/16806-litehouse-health-establishes-chicago-presence"
+      ]
+    },
+    {
+      "name": "Credential Network",
+      "website": "credentialnetwork.com",
+      "address": null,
+      "city": "Spokane",
+      "state": "WA",
+      "zip": null,
+      "district": "downtown",
+      "lng": null,
+      "lat": null,
+      "phone": null,
+      "founded": 2023,
+      "headcount": null,
+      "what": "Software that centralizes and automates credential verification for healthcare professionals and the organizations that employ them.",
+      "sources": [
+        "https://credentialnetwork.com/",
+        "https://www.spokanejournal.com/articles/17272-credential-network-builds-tool-to-streamline-health-care"
+      ]
+    },
+    {
+      "name": "CredHub",
+      "website": "credhub.com",
+      "address": "8615 N Division St",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99208",
+      "district": "hillyard",
+      "lng": -117.412053,
+      "lat": 47.73635,
+      "phone": "(833) 888-2733",
+      "founded": null,
+      "headcount": null,
+      "what": "Reports residents' rent payments to the major credit bureaus on behalf of property managers.",
+      "sources": [
+        "https://credhub.com/",
+        "https://credhub.com/privacy-policy"
+      ]
+    },
+    {
+      "name": "REtokens",
+      "website": "retokens.com",
+      "address": "12904 E Nora Ave, Ste C",
+      "city": "Spokane Valley",
+      "state": "WA",
+      "zip": "99216",
+      "district": "valley",
+      "lng": -117.231292,
+      "lat": 47.673486,
+      "phone": null,
+      "founded": null,
+      "headcount": null,
+      "what": "Tokenizes real estate into digital securities and runs a marketplace for them through its FINRA-member broker-dealer, REtokens Capital.",
+      "sources": [
+        "https://retokens.com/",
+        "https://retokens.com/contact-us/",
+        "https://retokens.com/terms-of-service/"
+      ]
+    },
+    {
+      "name": "Precision Quantomics",
+      "website": "precisionquantomics.com",
+      "address": null,
+      "city": "Spokane",
+      "state": "WA",
+      "zip": null,
+      "district": "downtown",
+      "lng": null,
+      "lat": null,
+      "phone": null,
+      "founded": null,
+      "headcount": null,
+      "what": "Develops proteomics-based assay kits, reference standards and services for drug metabolism, transport and toxicity research.",
+      "sources": [
+        "https://precisionquantomics.com/",
+        "https://precisionquantomics.com/news-and-announcements/"
+      ]
+    },
+    {
+      "name": "Slate Dental",
+      "website": "slateflosser.com",
+      "address": "3010 S Southeast Blvd, Suite E",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99223",
+      "district": "perry",
+      "lng": -117.375997,
+      "lat": 47.626476,
+      "phone": null,
+      "founded": 2021,
+      "headcount": null,
+      "what": "Makes the Slate electric flosser, a sonic flossing device with reusable floss heads.",
+      "sources": [
+        "https://slateflosser.com/policies/terms-of-service",
+        "https://www.spokanejournal.com/articles/16120-slate-dental-sees-strong-growth-under-spotlight"
+      ]
+    },
+    {
+      "name": "VATA7",
+      "website": "vata7.com",
+      "address": null,
+      "city": "Spokane",
+      "state": "WA",
+      "zip": null,
+      "district": "downtown",
+      "lng": null,
+      "lat": null,
+      "phone": null,
+      "founded": null,
+      "headcount": null,
+      "what": "Makes app-controlled smart LED visibility gear, including helmets and visors, for outdoor and road use.",
+      "sources": [
+        "https://shop.vata7.com/",
+        "https://shop.vata7.com/pages/about-us"
+      ]
+    },
+    {
+      "name": "Dice Throne",
+      "website": "dicethrone.com",
+      "address": "816 W Francis Ave",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99205",
+      "district": "garland",
+      "lng": -117.423922,
+      "lat": 47.716088,
+      "phone": "(509) 255-3135",
+      "founded": null,
+      "headcount": null,
+      "what": "Designs and publishes Dice Throne, a strategic dice-and-card dueling tabletop game.",
+      "sources": [
+        "https://dicethrone.com/",
+        "https://inlander.com/Bloglander/archives/2017/02/10/local-tabletop-game-makers-find-fast-success-for-crowd-funded-project-dice-throne"
+      ]
+    },
+    {
+      "name": "Mivation",
+      "website": "mivation.com",
+      "address": "1312 N Monroe St, Suite 257",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99201",
+      "district": "north-monroe",
+      "lng": -117.4263,
+      "lat": 47.66969,
+      "phone": null,
+      "founded": null,
+      "headcount": null,
+      "what": "Makes Racing Snail, software that automates producer commissions and tracks sales performance for insurance agencies.",
+      "sources": [
+        "https://www.mivation.com/",
+        "https://www.mivation.com/terms-of-service"
+      ]
+    },
+    {
+      "name": "Safeguard Equipment",
+      "website": "safeguardequipment.com",
+      "address": "4202 W Riverbend Ave",
+      "city": "Post Falls",
+      "state": "ID",
+      "zip": "83854",
+      "district": "post-falls",
+      "lng": -117.005259,
+      "lat": 47.707119,
+      "phone": "(208) 773-9263",
+      "founded": 2016,
+      "headcount": null,
+      "what": "Makes hard-hat-mounted hazard detectors that warn utility and field workers of electrocution risk, falls and impacts.",
+      "sources": [
+        "https://www.safeguardequipment.com/",
+        "https://www.spokanejournal.com/articles/15489-whats-happening-with-safeguard-equipment-inc"
+      ]
+    }
+  ]
+}

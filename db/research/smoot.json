@@ -1,0 +1,101 @@
+{
+  "_about": "Nick Smoot of Coeur d'Alene, with the ventures and spaces he founded or leads, researched from public sources 2026-10-03. Every row carries the URLs it was taken from, and each `what`/`why`/`bio` restates claims those sources make. Nothing is inferred or invented: a field that could not be sourced is null. Companies are included only when a 2025 or 2026 source shows them operating and based in Eastern Washington or North Idaho. Places follow the community.json rules. Coordinates come from the Mapbox Geocoding API applied to the sourced street address and are null where no street address could be sourced. Innovation Collective's street address is not given on its own site, which names only Coeur d'Alene as its headquarters, so the company row has null coordinates. The place row 'Innovation Collective (Innovation Den)' corrects the row of that name in community.json. The investment group Smoot launched in April 2025 with Clint Schroeder and Helo Hancock still has no published name, website or address, and is left out. Build_ (Build Cities and UdayOS) is folded into the Innovation Collective row because innovationcollective.co calls it 'Our AI System' and buildcities.com names no operator or base. The Oddie District and Build Nevada are in Sparks, Nevada, outside the region, and are left out.",
+  "person": {
+    "id": "nick-smoot",
+    "name": "Nick Smoot",
+    "role": "CEO, Innovation Collective",
+    "bio": "Nick Smoot grew up in Coeur d'Alene and founded Innovation Collective there in 2013. Under it he turned the former Elks building into the 34,000 sq ft Innovation Den, and he wrote BETTER: How to Build Creative Communities That Transform the World. Before that he was founder and CEO of the business-travel networking app Here On Biz, and he says he started and sold three tech companies.",
+    "district": "coeur-dalene",
+    "company": "Innovation Collective",
+    "sources": [
+      "https://cdapress.com/news/2026/jul/28/nibj-leadership-nick-smoot-shares-leadership-principles-innovation-insights/",
+      "https://cdapress.com/news/2026/feb/08/from-the-white-house-to-north-idaho/",
+      "https://innovationcollective.co/about/",
+      "https://www.spokanejournal.com/articles/3980-innovation-collective-brings-coeur-d-alene-edifice-to-life",
+      "https://cdapress.com/news/2014/nov/23/nick-smoot-starting-his-own-tech-tribe-5/",
+      "https://www.linkedin.com/in/nicksmoot"
+    ]
+  },
+  "companies": [
+    {
+      "name": "Innovation Collective",
+      "website": "innovationcollective.co",
+      "address": null,
+      "city": "Coeur d'Alene",
+      "state": "ID",
+      "zip": null,
+      "district": "coeur-dalene",
+      "lng": null,
+      "lat": null,
+      "phone": null,
+      "founded": 2013,
+      "headcount": null,
+      "what": "Builds innovation economies for cities. It works across economic development, community development, and real estate and place (innovation districts, downtown revitalization), and runs Build_, its AI community operating system. Build_ has two parts: Build Cities, a live map of a city's projects, events and people, and UdayOS, an AI guide trained on each city's own data. Build_ says it is active in 62 cities on six continents. Coeur d'Alene is the headquarters and the model city.",
+      "role": "Founder and CEO",
+      "sources": [
+        "https://innovationcollective.co/",
+        "https://innovationcollective.co/about/",
+        "https://innovationcollective.co/build/",
+        "https://innovationcollective.co/contact/",
+        "https://www.buildcities.com",
+        "https://cdapress.com/news/2026/jul/28/nibj-leadership-nick-smoot-shares-leadership-principles-innovation-insights/"
+      ]
+    }
+  ],
+  "places": [
+    {
+      "name": "Innovation Collective (Innovation Den)",
+      "kind": "organization",
+      "website": "innovationcollective.co",
+      "address": "418 E Lakeside Ave",
+      "city": "Coeur d'Alene",
+      "state": "ID",
+      "zip": "83814",
+      "district": "coeur-dalene",
+      "lng": -116.78014,
+      "lat": 47.674096,
+      "why": "Innovation Collective's Innovation Den fills a former Elks building with 34,000 sq ft of \"startups, coffee, and collisions\". It has housed 50+ companies and hosted 1,000+ entrepreneur events in 13 years of meeting twice a month. Current events are posted on Innovation Collective's Build_ platform (Build Cities). The 2017 conversion added offices, monthly coworking, a public coffee shop and an event hall seating about 170.",
+      "schedule": "Entrepreneur events twice a month, per Innovation Collective; dates are listed on Build Cities.",
+      "venue": null,
+      "role": "Founder and CEO of Innovation Collective; he and two partners bought the Elks building in 2016",
+      "sources": [
+        "https://innovationcollective.co/",
+        "https://innovationcollective.co/about/",
+        "https://www.spokanejournal.com/articles/3980-innovation-collective-brings-coeur-d-alene-edifice-to-life",
+        "https://cdapress.com/news/2026/jul/28/nibj-leadership-nick-smoot-shares-leadership-principles-innovation-insights/"
+      ]
+    }
+  ],
+  "past": [
+    {
+      "name": "Here On Biz",
+      "what": "A smartphone app for business travellers to find other professionals nearby, which partnered with Virgin America and Gogo. Smoot was founder and CEO. Its domain, hereonbiz.com, is now for sale.",
+      "sources": [
+        "https://cdapress.com/news/2014/nov/23/nick-smoot-starting-his-own-tech-tribe-5/",
+        "https://www.linkedin.com/in/nicksmoot"
+      ]
+    },
+    {
+      "name": "Brewsaders",
+      "what": "A Washington brewery app built on the same platform as Here On Biz, released in 2014.",
+      "sources": [
+        "https://cdapress.com/news/2014/nov/23/nick-smoot-starting-his-own-tech-tribe-5/"
+      ]
+    },
+    {
+      "name": "Inspire Idaho",
+      "what": "Innovation Collective's statewide program, launched in 2018 with the University of Idaho and Apple's curriculum. No current source shows it operating.",
+      "sources": [
+        "https://innovationcollective.co/about/"
+      ]
+    },
+    {
+      "name": "Think Big Festival",
+      "what": "Innovation Collective's festival of ideas and invention, first held at North Idaho College in 2014; the 2018 edition brought aerospace pioneer Burt Rutan and bionic-arm recipient Johnny Matheny to Coeur d'Alene.",
+      "sources": [
+        "https://innovationcollective.co/about/",
+        "https://cdapress.com/news/2026/may/27/aerospace-legend-to-speak-in-coeur-dalene/"
+      ]
+    }
+  ]
+}

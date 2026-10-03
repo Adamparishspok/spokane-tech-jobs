@@ -1,0 +1,395 @@
+{
+  "_about": "Coffee shops across Spokane, Eastern Washington and North Idaho that suit tech and remote workers for meeting or working, researched from public sources 2026-10-03. Every row carries the URLs it was taken from, and each `why` restates a claim one of those sources makes (a meetup it hosts, wifi, seating, a study or conference room). Nothing here is inferred or invented: a field that could not be sourced is null. Coordinates come from the Mapbox Geocoding API applied to the sourced street address, and are null where no street address could be sourced.",
+  "places": [
+    {
+      "name": "Indaba Coffee (Broadway)",
+      "website": "indabacoffee.com",
+      "address": "1425 W Broadway Ave",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99201",
+      "district": "kendall-yards",
+      "lng": -117.43352,
+      "lat": 47.6642,
+      "phone": "(509) 443-3566",
+      "why": "Hosts the Spokane Python User Group's Coffee & Code every first Monday at 7am.",
+      "sources": [
+        "https://www.meetup.com/python-spokane/",
+        "https://www.indabacoffee.com/broadway"
+      ]
+    },
+    {
+      "name": "Indaba Coffee (Summit)",
+      "website": "indabacoffee.com",
+      "address": "1315 W Summit Pkwy",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99201",
+      "district": "kendall-yards",
+      "lng": -117.431494,
+      "lat": 47.661625,
+      "phone": "(509) 385-2040",
+      "why": "Indaba describes its Kendall Yards location as being about \"Farmer's Markets, local meet ups, and casual hang outs.\"",
+      "sources": [
+        "https://www.indabacoffee.com/summit"
+      ]
+    },
+    {
+      "name": "New Love Coffee (Kendall Yards)",
+      "website": "newlovecoffee.com",
+      "address": "1102 W Summit Pkwy, Suite 102",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99201",
+      "district": "kendall-yards",
+      "lng": -117.42867,
+      "lat": 47.66206,
+      "phone": null,
+      "why": "Hosted the Spokane ACX Meetups Everywhere spring 2025 meetup.",
+      "sources": [
+        "https://www.lesswrong.com/events/vwzYGpZ4GqoLt9Azd/spokane-acx-meetups-everywhere-spring-2025",
+        "https://www.newlovecoffee.com/pages/locations"
+      ]
+    },
+    {
+      "name": "New Love Coffee (Francis Ave)",
+      "website": "newlovecoffee.com",
+      "address": "1212 W Francis Ave",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99205",
+      "district": "north-monroe",
+      "lng": -117.429241,
+      "lat": 47.715693,
+      "phone": null,
+      "why": "Has a conference room that can be reserved in person, first come, first served.",
+      "sources": [
+        "https://www.newlovecoffee.com/pages/locations"
+      ]
+    },
+    {
+      "name": "New Love Coffee (Liberty Lake)",
+      "website": "newlovecoffee.com",
+      "address": "21802 E Indiana Ave, Suite 102",
+      "city": "Liberty Lake",
+      "state": "WA",
+      "zip": "99019",
+      "district": "liberty-lake",
+      "lng": -117.1122,
+      "lat": 47.6784,
+      "phone": null,
+      "why": "Has a reservable conference room and upstairs seating overlooking the river.",
+      "sources": [
+        "https://www.newlovecoffee.com/pages/locations",
+        "https://www.spokanejournal.com/articles/751-new-love-coffee-to-serve-liberty-lake-s-noll-area"
+      ]
+    },
+    {
+      "name": "Atticus Coffee & Gifts",
+      "website": null,
+      "address": "222 N Howard St",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99201",
+      "district": "downtown",
+      "lng": -117.420806,
+      "lat": 47.659796,
+      "phone": "(509) 747-0336",
+      "why": "Downtown Spokane Partnership recommends it as a study spot for individuals or small groups of 4-5.",
+      "sources": [
+        "https://downtownspokane.org/the-best-study-spots-in-downtown-spokane/",
+        "https://www.visitspokane.com/directory/atticus-coffee-gifts/"
+      ]
+    },
+    {
+      "name": "Jupiter's Eye Book Cafe",
+      "website": "jupiterseyebookcafe.com",
+      "address": "411 W 1st Ave, Suite 101",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99201",
+      "district": "downtown",
+      "lng": -117.418696,
+      "lat": 47.656409,
+      "phone": null,
+      "why": "Downtown Spokane Partnership recommends it as a study spot for individuals or small groups of 3-4.",
+      "sources": [
+        "https://downtownspokane.org/the-best-study-spots-in-downtown-spokane/",
+        "https://www.visitspokane.com/directory/jupiters-eye-book-cafe/",
+        "https://www.jupiterseyebookcafe.com/"
+      ]
+    },
+    {
+      "name": "First Avenue Coffee",
+      "website": "firstavenuecoffee.com",
+      "address": "1011 W 1st Ave, Suite A",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99201",
+      "district": "downtown",
+      "lng": -117.427203,
+      "lat": 47.656323,
+      "phone": "(509) 970-8185",
+      "why": "Downtown Spokane Partnership recommends it as a study spot for small to larger groups of 5-6.",
+      "sources": [
+        "https://downtownspokane.org/the-best-study-spots-in-downtown-spokane/",
+        "https://www.firstavenuecoffee.com/"
+      ]
+    },
+    {
+      "name": "Brews Bros Coffee Bar",
+      "website": null,
+      "address": "734 W Sprague Ave",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99201",
+      "district": "downtown",
+      "lng": -117.423311,
+      "lat": 47.657382,
+      "phone": "(509) 456-5858",
+      "why": "Downtown Spokane Partnership recommends it as a study spot for individuals or small groups of 3-4.",
+      "sources": [
+        "https://downtownspokane.org/the-best-study-spots-in-downtown-spokane/",
+        "https://www.visitspokane.com/directory/brews-bros-espresso-lounge/"
+      ]
+    },
+    {
+      "name": "Cedar Coffee",
+      "website": null,
+      "address": "701 N Monroe St",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99201",
+      "district": "kendall-yards",
+      "lng": -117.42695,
+      "lat": 47.6636,
+      "phone": "(509) 315-9321",
+      "why": "Visit Spokane noted its large back room where you can work or bring friends to study.",
+      "sources": [
+        "http://web.archive.org/web/20250802060135/https://www.visitspokane.com/blog/off-campus-study-spots-around-spokane/",
+        "https://www.visitspokane.com/directory/cedar-coffee/"
+      ]
+    },
+    {
+      "name": "Arctos Coffee (Hamilton)",
+      "website": "arctoscoffee.com",
+      "address": "1923 N Hamilton St",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99207",
+      "district": "logan",
+      "lng": -117.396842,
+      "lat": 47.675521,
+      "phone": "(509) 413-2362",
+      "why": "Visit Spokane listed it as an off-campus study spot about a half-mile walk from Gonzaga.",
+      "sources": [
+        "http://web.archive.org/web/20250802060135/https://www.visitspokane.com/blog/off-campus-study-spots-around-spokane/",
+        "https://www.arctoscoffee.com/pages/visit"
+      ]
+    },
+    {
+      "name": "Little Garden Cafe (Waikiki)",
+      "website": "littlegardencafe.com",
+      "address": "9918 N Waikiki Rd",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99218",
+      "district": "north-monroe",
+      "lng": -117.42154,
+      "lat": 47.74786,
+      "phone": "(509) 309-2609",
+      "why": "Visit Spokane listed it as an off-campus study spot within walking distance of Whitworth University.",
+      "sources": [
+        "http://web.archive.org/web/20250802060135/https://www.visitspokane.com/blog/off-campus-study-spots-around-spokane/",
+        "https://www.littlegardencafe.com/"
+      ]
+    },
+    {
+      "name": "Eastern Coffee Roasters",
+      "website": "easterncoffeeroasters.com",
+      "address": "15 Union St",
+      "city": "Cheney",
+      "state": "WA",
+      "zip": "99004",
+      "district": "cheney",
+      "lng": -117.578615,
+      "lat": 47.484187,
+      "phone": null,
+      "why": "Its West Plains Chamber listing shows wifi; the cafe is in the historic Cheney train depot.",
+      "sources": [
+        "https://mms.westplainschamber.org/wpchamber/mem_easternroasters",
+        "https://easterncoffeeroasters.com"
+      ]
+    },
+    {
+      "name": "Evans Brothers Coffee",
+      "website": "evansbrotherscoffee.com",
+      "address": "504 E Sherman Ave",
+      "city": "Coeur d'Alene",
+      "state": "ID",
+      "zip": "83814",
+      "district": "coeur-dalene",
+      "lng": -116.779542,
+      "lat": 47.673173,
+      "phone": "(208) 930-4065",
+      "why": "Offers wifi and plenty of seating for studying.",
+      "sources": [
+        "https://evansbrotherscoffee.com",
+        "https://isucceedvhs.net/2021/11/01/five-study-spots-in-idaho/"
+      ]
+    },
+    {
+      "name": "Evans Brothers Coffee (Sandpoint Cafe + Roastery)",
+      "website": "evansbrotherscoffee.com",
+      "address": "524 Church St",
+      "city": "Sandpoint",
+      "state": "ID",
+      "zip": "83864",
+      "district": "sandpoint",
+      "lng": -116.555309,
+      "lat": 48.27433,
+      "phone": "(208) 265-5553",
+      "why": "Named one of the six best study spots in Sandpoint, for its comfortable seating.",
+      "sources": [
+        "https://evansbrotherscoffee.com",
+        "https://shscedarpost.com/6640/showcase/6-best-study-spots-in-sandpoint-winter-edition/"
+      ]
+    },
+    {
+      "name": "One World Cafe",
+      "website": "owc-moscow.com",
+      "address": "533 S Main St",
+      "city": "Moscow",
+      "state": "ID",
+      "zip": "83843",
+      "district": "moscow",
+      "lng": -117.001702,
+      "lat": 46.730227,
+      "phone": "(208) 883-3537",
+      "why": "Says its indoor and outdoor spaces are for people to work, study and socialize.",
+      "sources": [
+        "https://www.owc-moscow.com/",
+        "https://idahosbdc.org/one-world-cafe/"
+      ]
+    },
+    {
+      "name": "Neill's Coffee and Ice Cream",
+      "website": null,
+      "address": null,
+      "city": "Pullman",
+      "state": "WA",
+      "zip": null,
+      "district": "pullman",
+      "lng": null,
+      "lat": null,
+      "phone": null,
+      "why": "The owner calls it a place to use the wifi and get work done, and the Daily Evergreen says it has plenty of room for studying.",
+      "sources": [
+        "https://dailyevergreen.com/120199/life/coffee-corner-hot-drinks-and-cold-scoops/",
+        "https://dailyevergreen.com/187511/life/column-a-comprehensive-guide-to-the-pullman-caffeine-scene/"
+      ]
+    },
+    {
+      "name": "Thomas Hammer Coffee Roasters (Pullman)",
+      "website": null,
+      "address": "400 E Main St",
+      "city": "Pullman",
+      "state": "WA",
+      "zip": null,
+      "district": "pullman",
+      "lng": -117.178585,
+      "lat": 46.729783,
+      "phone": null,
+      "why": "Has big tables for groups who want to study and smaller tables for individuals.",
+      "sources": [
+        "https://dailyevergreen.com/118815/life/coffee-corner-thomas-hammer-offers-smiles-and-signature-drinks/",
+        "https://dailyevergreen.com/187511/life/column-a-comprehensive-guide-to-the-pullman-caffeine-scene/"
+      ]
+    },
+    {
+      "name": "Mela Coffee Roasting Company",
+      "website": "melacoffee.com",
+      "address": "17 N Wenatchee Ave",
+      "city": "Wenatchee",
+      "state": "WA",
+      "zip": "98801",
+      "district": "wenatchee",
+      "lng": -120.31161,
+      "lat": 47.425326,
+      "phone": "(509) 888-0374",
+      "why": "Described by local radio as having the perfect vibe to take your homework to.",
+      "sources": [
+        "https://visitwenatchee.org/listing/mela-coffee-roasting-company",
+        "https://kpq.com/coffee-shops-wenatchee/"
+      ]
+    },
+    {
+      "name": "North Town Coffeehouse",
+      "website": null,
+      "address": "32 N Front St",
+      "city": "Yakima",
+      "state": "WA",
+      "zip": null,
+      "district": "yakima",
+      "lng": -120.508521,
+      "lat": 46.603228,
+      "phone": null,
+      "why": "Noted for great espresso, ambience and wifi in Yakima's historic train depot.",
+      "sources": [
+        "https://nwpb.org/2019/02/14/a-whole-latte-love-at-this-yakima-train-station-turned-coffeehouse",
+        "https://www.yakimaherald.com/news/local/north-town-coffeehouse-to-reopen-in-yakima-after-fire-last-year/article_523b24ed-6fcf-4bf3-b399-1e0adb84ccf8.html"
+      ]
+    },
+    {
+      "name": "Carte Coffee",
+      "website": "cartecoffee.com",
+      "address": "8 N Colville St",
+      "city": "Walla Walla",
+      "state": "WA",
+      "zip": "99362",
+      "district": "walla-walla",
+      "lng": -118.337602,
+      "lat": 46.068324,
+      "phone": "(509) 593-9999",
+      "why": "Visit Walla Walla calls it a great shop to camp out in, with outlets at every table and wifi.",
+      "sources": [
+        "https://wallawalla.org/keep-caffeinated-at-these-seven-walla-walla-coffee-shops/",
+        "https://wallawalla.org/dining-drinks/coffee-shops/carte-coffee"
+      ]
+    },
+    {
+      "name": "Coffee Perk",
+      "website": null,
+      "address": "4 S 1st Ave",
+      "city": "Walla Walla",
+      "state": "WA",
+      "zip": "99362",
+      "district": "walla-walla",
+      "lng": -118.338028,
+      "lat": 46.066832,
+      "phone": null,
+      "why": "Has solo and group study tables with outlets under each.",
+      "sources": [
+        "https://whitman.edu/admission-and-aid/student-voices/sipping-studying-and-soaking-in-walla-walla-study-spots",
+        "https://wallawalla.org/keep-caffeinated-at-these-seven-walla-walla-coffee-shops/"
+      ]
+    },
+    {
+      "name": "Novel Coffee Co.",
+      "website": "novelcoffee.co",
+      "address": "950 George Washington Way",
+      "city": "Richland",
+      "state": "WA",
+      "zip": "99352",
+      "district": "richland",
+      "lng": -119.27345,
+      "lat": 46.27996,
+      "phone": "(509) 420-4094",
+      "why": "Visit Tri-Cities describes it as perfect for studying or reading a good book.",
+      "sources": [
+        "https://www.visittri-cities.com/directory/novel-coffee-co/",
+        "https://novelcoffee.co"
+      ]
+    }
+  ]
+}

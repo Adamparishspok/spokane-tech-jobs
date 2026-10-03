@@ -1,0 +1,365 @@
+{
+  "_about": "Marketing, branding, digital and design agencies in Spokane, Eastern Washington and North Idaho, researched from public sources 2026-10-03. Every row carries the URLs it was taken from. Nothing here is inferred or invented: a field that could not be sourced is null. founded and headcount are filled only where the agency's own site or local press states them, never from an aggregator. Coordinates come from the Mapbox Geocoding API applied to the sourced street address, and are null where no street address could be sourced. Where no street address was sourced, district is the city's default (downtown for Spokane).",
+  "companies": [
+    {
+      "name": "14Four",
+      "website": "14four.com",
+      "address": "1722 E Sprague Ave, Suite 130",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99202",
+      "district": "east-central",
+      "lng": -117.38453,
+      "lat": 47.65706,
+      "phone": null,
+      "founded": null,
+      "headcount": null,
+      "what": "Digital studio building games, AR experiences, 3D animation, websites and campaign work for national brands.",
+      "sources": [
+        "https://www.14four.com/",
+        "https://www.14four.com/about"
+      ]
+    },
+    {
+      "name": "SEVEN2",
+      "website": "seven2.com",
+      "address": "1722 E Sprague Ave, Suite 130",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99202",
+      "district": "east-central",
+      "lng": -117.38453,
+      "lat": 47.65706,
+      "phone": "(509) 624-1222",
+      "founded": null,
+      "headcount": null,
+      "what": "Digital creative agency producing online advertising, social content, video, voice skills and websites.",
+      "note": "Shares its street address with 14Four.",
+      "sources": [
+        "https://seven2.com/",
+        "https://seven2.com/about"
+      ]
+    },
+    {
+      "name": "helveticka",
+      "website": "helveticka.com",
+      "address": "121 W Pacific Ave, Suite 100",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99201",
+      "district": "downtown",
+      "lng": -117.41455,
+      "lat": 47.655269,
+      "phone": "(509) 624-4029",
+      "founded": null,
+      "headcount": null,
+      "what": "Branding and design studio doing identity systems, logos, copywriting and annual reports.",
+      "sources": [
+        "https://helveticka.com/"
+      ]
+    },
+    {
+      "name": "Propaganda Creative",
+      "website": "propagandacreative.com",
+      "address": "123 S Wall St",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99201",
+      "district": "downtown",
+      "lng": -117.421797,
+      "lat": 47.655855,
+      "phone": "(509) 413-1719",
+      "founded": null,
+      "headcount": null,
+      "what": "Full-service design agency doing brand identity, websites and digital advertising campaigns.",
+      "sources": [
+        "https://propagandacreative.com/about",
+        "https://propagandacreative.com/contact"
+      ]
+    },
+    {
+      "name": "Maker + Made",
+      "website": "maker--made.com",
+      "address": "304 W Pacific Ave, #290",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99201",
+      "district": "downtown",
+      "lng": -117.41675,
+      "lat": 47.655302,
+      "phone": "(509) 934-0513",
+      "founded": 2019,
+      "headcount": null,
+      "what": "Creative agency for branding, websites, packaging design and organic social strategy.",
+      "sources": [
+        "https://maker--made.com/"
+      ]
+    },
+    {
+      "name": "The Woodshop",
+      "website": "thewoodshopnw.com",
+      "address": "122 S Monroe St, Suite 203",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99201",
+      "district": "downtown",
+      "lng": -117.42684,
+      "lat": 47.655814,
+      "phone": "(509) 413-2082",
+      "founded": null,
+      "headcount": null,
+      "what": "Creative agency doing branding, web design, social media management and digital marketing.",
+      "sources": [
+        "https://thewoodshopnw.com/",
+        "https://thewoodshopnw.com/contact/"
+      ]
+    },
+    {
+      "name": "116 & West",
+      "website": "116andwest.com",
+      "address": null,
+      "city": "Spokane",
+      "state": "WA",
+      "zip": null,
+      "district": "downtown",
+      "lng": null,
+      "lat": null,
+      "phone": null,
+      "founded": null,
+      "headcount": null,
+      "what": "Full-service creative and advertising agency with offices in Boise and Spokane.",
+      "note": "Acquired Spokane agency Klündt Hosmer in 2022. Its site names a Spokane office and lead but no street address.",
+      "sources": [
+        "https://116andwest.com/who-we-are/",
+        "https://boisedev.com/news/2022/09/21/boise-advertising-agency-116-west-acquires-klundt-hosmer/"
+      ]
+    },
+    {
+      "name": "Quisenberry",
+      "website": "quisenberry.net",
+      "address": null,
+      "city": "Spokane",
+      "state": "WA",
+      "zip": null,
+      "district": "downtown",
+      "lng": null,
+      "lat": null,
+      "phone": "(509) 325-0701",
+      "founded": null,
+      "headcount": null,
+      "what": "Spokane advertising agency.",
+      "sources": [
+        "https://quisenberry.net/",
+        "https://quisenberry.net/contact"
+      ]
+    },
+    {
+      "name": "Treatment Creative",
+      "website": "wearetreatment.com",
+      "address": null,
+      "city": "Spokane",
+      "state": "WA",
+      "zip": null,
+      "district": "downtown",
+      "lng": null,
+      "lat": null,
+      "phone": null,
+      "founded": 2015,
+      "headcount": null,
+      "what": "Worker-owned creative agency doing brand, design and creative strategy, a member of the Spokane Workers Cooperative.",
+      "sources": [
+        "https://wearetreatment.com/",
+        "https://wearetreatment.com/who-we-are"
+      ]
+    },
+    {
+      "name": "AmpliFi Advertising",
+      "website": "amplifiads.com",
+      "address": "1003 E Trent Ave, Suite 140",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99202",
+      "district": "university",
+      "lng": -117.394874,
+      "lat": 47.662139,
+      "phone": "(509) 456-8640",
+      "founded": null,
+      "headcount": null,
+      "what": "Advertising agency doing brand and digital strategy, logo, graphic and website design, TV/video and media strategy.",
+      "sources": [
+        "https://amplifiads.com/"
+      ]
+    },
+    {
+      "name": "QUINN",
+      "website": "quinn.agency",
+      "address": "727 W Garland Ave",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99205",
+      "district": "garland",
+      "lng": -117.422638,
+      "lat": 47.693274,
+      "phone": "(509) 327-6688",
+      "founded": 1969,
+      "headcount": null,
+      "what": "Full-service advertising agency.",
+      "sources": [
+        "https://quinn.agency/"
+      ]
+    },
+    {
+      "name": "Enleaf",
+      "website": "enleaf.com",
+      "address": "4249 E Pratt Ave, Suite B",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99202",
+      "district": "east-central",
+      "lng": -117.3473,
+      "lat": 47.64684,
+      "phone": "(509) 416-6221",
+      "founded": 2009,
+      "headcount": null,
+      "what": "Digital marketing agency doing SEO, PPC and web design.",
+      "sources": [
+        "https://www.enleaf.com/contact/"
+      ]
+    },
+    {
+      "name": "Hatch Advertising",
+      "website": "hatchadvertising.com",
+      "address": "15413 E Valleyway Ave, #205A",
+      "city": "Spokane Valley",
+      "state": "WA",
+      "zip": null,
+      "district": "valley",
+      "lng": -117.198029,
+      "lat": 47.660807,
+      "phone": "(509) 228-0654",
+      "founded": 1954,
+      "headcount": null,
+      "what": "Advertising agency doing traditional and digital advertising, graphic and website design, and event marketing.",
+      "sources": [
+        "https://www.hatchadvertising.com/",
+        "https://www.hatchadvertising.com/our-history",
+        "https://www.hatchadvertising.com/contact-us"
+      ]
+    },
+    {
+      "name": "Caava Design",
+      "website": "caavadesign.com",
+      "address": "1324 E Sherman Ave",
+      "city": "Coeur d'Alene",
+      "state": "ID",
+      "zip": "83814",
+      "district": "coeur-dalene",
+      "lng": -116.766494,
+      "lat": 47.673102,
+      "phone": null,
+      "founded": null,
+      "headcount": null,
+      "what": "Branding and packaging design agency.",
+      "sources": [
+        "https://caavadesign.com/",
+        "https://caavadesign.com/contact"
+      ]
+    },
+    {
+      "name": "Free Rein Marketing",
+      "website": "freereinmarketing.com",
+      "address": "7903 W Grandridge Blvd, Suite R",
+      "city": "Kennewick",
+      "state": "WA",
+      "zip": "99336",
+      "district": "kennewick",
+      "lng": -119.22679,
+      "lat": 46.21772,
+      "phone": "(509) 521-2863",
+      "founded": null,
+      "headcount": null,
+      "what": "Boutique advertising, marketing and public relations agency serving the Tri-Cities.",
+      "sources": [
+        "https://www.freereinmarketing.com/"
+      ]
+    },
+    {
+      "name": "YB Marketing (Yakima Branding)",
+      "website": "yakimabranding.com",
+      "address": null,
+      "city": "Yakima",
+      "state": "WA",
+      "zip": null,
+      "district": "yakima",
+      "lng": null,
+      "lat": null,
+      "phone": "(509) 901-9735",
+      "founded": null,
+      "headcount": null,
+      "what": "Branding and digital marketing agency doing web design, SEO, Google Ads and social media.",
+      "sources": [
+        "https://yakimabranding.com/",
+        "https://yakimabranding.com/about"
+      ]
+    },
+    {
+      "name": "Pullman Marketing",
+      "website": "pullmanmarketing.com",
+      "address": "1205 SE Professional Mall Blvd, Suite 113",
+      "city": "Pullman",
+      "state": "WA",
+      "zip": "99163",
+      "district": "pullman",
+      "lng": -117.165543,
+      "lat": 46.718776,
+      "phone": "(509) 240-9735",
+      "founded": null,
+      "headcount": null,
+      "what": "Outsourced marketing department for businesses, with a focus on financial advisors: strategy, web design and digital marketing.",
+      "sources": [
+        "https://pullmanmarketing.com/",
+        "https://pullmanmarketing.com/about"
+      ]
+    },
+    {
+      "name": "Wonderboy Creative",
+      "website": "wonderboycreative.com",
+      "address": "213 S 2nd Ave",
+      "city": "Walla Walla",
+      "state": "WA",
+      "zip": "99362",
+      "district": "walla-walla",
+      "lng": -118.337352,
+      "lat": 46.064521,
+      "phone": "(509) 676-6268",
+      "founded": null,
+      "headcount": null,
+      "what": "Small owner-led web design, development and SEO shop, with wine and winery marketing among its focus areas.",
+      "note": "Its own about page says two people work on most projects; small, but not a solo freelancer.",
+      "sources": [
+        "https://wonderboycreative.com/",
+        "https://wonderboycreative.com/about",
+        "https://wonderboycreative.com/contact"
+      ]
+    },
+    {
+      "name": "Advantage Advertising",
+      "website": "advantageadvertising.com",
+      "address": "313 D St, #100",
+      "city": "Lewiston",
+      "state": "ID",
+      "zip": "83501",
+      "district": "lewiston",
+      "lng": -117.028637,
+      "lat": 46.422156,
+      "phone": "(208) 743-0633",
+      "founded": 1986,
+      "headcount": null,
+      "what": "Full-service advertising agency doing video, digital and social marketing, web design and public relations.",
+      "sources": [
+        "https://www.advantageadvertising.com/",
+        "https://www.advantageadvertising.com/contact"
+      ]
+    }
+  ]
+}

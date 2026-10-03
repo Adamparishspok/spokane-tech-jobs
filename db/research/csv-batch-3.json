@@ -1,0 +1,322 @@
+{
+  "_about": "CSV batch 3: rows from the user's regional tech-company CSV, each verified against public sources 2026-10-03. Same rules as real-companies.json: every row carries the sources it was taken from, nothing is inferred or invented, and a field that could not be sourced is null. Headcount and founded never come from aggregators. Coordinates come from the Mapbox Geocoding API applied to the sourced street address; rows without a sourced street address have null coordinates and a district taken from the sourced city.",
+  "companies": [
+    {
+      "name": "Allele Diagnostics",
+      "website": "allelediagnostics.com",
+      "address": "120 N Pine St, Ste 152",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99202",
+      "district": "university",
+      "lng": -117.40761,
+      "lat": 47.65879,
+      "phone": "(844) 255-3532",
+      "founded": null,
+      "headcount": null,
+      "what": "Clinical genetics laboratory providing microarray, karyotyping and FISH testing for neonatal, pediatric and prenatal patients.",
+      "sources": [
+        "https://www.allelediagnostics.com/",
+        "https://www.ncbi.nlm.nih.gov/gtr/labs/505455/",
+        "https://www.spokanejournal.com/articles/4366-genetics-testing-lab-here-set-to-relocate"
+      ]
+    },
+    {
+      "name": "VMRD",
+      "website": "vmrd.com",
+      "address": "425 NW Albion Dr",
+      "city": "Pullman",
+      "state": "WA",
+      "zip": "99163",
+      "district": "pullman",
+      "lng": -117.178227,
+      "lat": 46.757528,
+      "phone": "(509) 334-5815",
+      "founded": 1981,
+      "headcount": null,
+      "what": "Develops and manufactures veterinary diagnostic test kits and reagents, and provides biologics testing services.",
+      "sources": [
+        "https://www.vmrd.com/contact-us",
+        "https://www.vmrd.com/about-vmrd"
+      ]
+    },
+    {
+      "name": "H-Source",
+      "website": "h-source.com",
+      "address": null,
+      "city": "Spokane",
+      "state": "WA",
+      "zip": null,
+      "district": "downtown",
+      "lng": null,
+      "lat": null,
+      "phone": "(888) 900-4549",
+      "founded": 2012,
+      "headcount": null,
+      "what": "Runs an online marketplace where hospitals and surgery centers buy and sell surplus medical supplies, devices and equipment with each other.",
+      "sources": [
+        "https://h-source.com/",
+        "https://h-source.com/about/",
+        "https://www.spokanejournal.com/articles/3104-h-source-s-revenues-rise-as-hospital-margins-fall"
+      ]
+    },
+    {
+      "name": "Gravity Jack",
+      "website": "gravityjack.com",
+      "address": null,
+      "city": "Spokane",
+      "state": "WA",
+      "zip": null,
+      "district": "downtown",
+      "lng": null,
+      "lat": null,
+      "phone": "(509) 795-0043",
+      "founded": 2009,
+      "headcount": null,
+      "what": "Augmented and virtual reality studio that builds AR/VR experiences, mobile apps and websites for clients.",
+      "sources": [
+        "https://www.gravityjack.com/"
+      ]
+    },
+    {
+      "name": "Limelyte Technology Group",
+      "website": "limelyte.com",
+      "address": "28 W 3rd Ave, Ste 100",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99201",
+      "district": "downtown",
+      "lng": -117.412497,
+      "lat": 47.653763,
+      "phone": "(509) 241-0138",
+      "founded": null,
+      "headcount": null,
+      "what": "Custom software development agency building enterprise, AI, title-industry and mobile applications.",
+      "sources": [
+        "https://www.limelyte.com/"
+      ]
+    },
+    {
+      "name": "Executech",
+      "website": "executech.com",
+      "address": "3808 N Sullivan Rd N-15, Ste 109",
+      "city": "Spokane Valley",
+      "state": "WA",
+      "zip": "99216",
+      "district": "valley",
+      "lng": -117.196158,
+      "lat": 47.690577,
+      "phone": "(509) 326-4500",
+      "founded": null,
+      "headcount": null,
+      "what": "Managed IT services and IT support provider; this is its Spokane office.",
+      "sources": [
+        "https://www.executech.com/locations"
+      ]
+    },
+    {
+      "name": "Cerium Networks",
+      "website": "ceriumnetworks.com",
+      "address": "1636 W 1st Ave",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99201",
+      "district": "browne",
+      "lng": -117.437321,
+      "lat": 47.656557,
+      "phone": "(800) 217-0933",
+      "founded": null,
+      "headcount": null,
+      "what": "Managed IT services provider offering networking, communications, cybersecurity, data center and AI solutions.",
+      "sources": [
+        "https://www.ceriumnetworks.com/",
+        "https://www.ceriumnetworks.com/contact-us/"
+      ]
+    },
+    {
+      "name": "Univision Computers",
+      "website": "univisioncomputers.com",
+      "address": "23403 E Mission Ave, Ste 211",
+      "city": "Liberty Lake",
+      "state": "WA",
+      "zip": "99019",
+      "district": "liberty-lake",
+      "lng": -117.091212,
+      "lat": 47.671866,
+      "phone": "(509) 606-8876",
+      "founded": 1989,
+      "headcount": null,
+      "what": "Managed IT services, cybersecurity, VoIP and business automation provider; this is its Liberty Lake office.",
+      "sources": [
+        "https://univisioncomputers.com/managed-it-services-liberty-lake-wa/",
+        "https://univisioncomputers.com/"
+      ]
+    },
+    {
+      "name": "Fisher's Technology",
+      "website": "fisherstech.com",
+      "address": "7322 E Broadway Ave",
+      "city": "Spokane Valley",
+      "state": "WA",
+      "zip": "99212",
+      "district": "millwood",
+      "lng": -117.30581,
+      "lat": 47.6637,
+      "phone": "(509) 922-4600",
+      "founded": null,
+      "headcount": null,
+      "what": "Office technology dealer providing copiers, printers, document management and managed IT services; this is its Spokane-area branch.",
+      "sources": [
+        "https://fisherstech.com/locations"
+      ]
+    },
+    {
+      "name": "Absco Solutions",
+      "website": "abscosolutions.com",
+      "address": "1821 W 5th Ave, Ste 106",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99201",
+      "district": "browne",
+      "lng": -117.43946,
+      "lat": 47.651257,
+      "phone": "(509) 321-1190",
+      "founded": null,
+      "headcount": null,
+      "what": "Designs, installs and services fire, life-safety and security systems for facilities; this is its Spokane office.",
+      "sources": [
+        "https://abscosolutions.com/"
+      ]
+    },
+    {
+      "name": "North by Northwest",
+      "website": "nxnw.net",
+      "address": "2614 N Monroe St",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99205",
+      "district": "garland",
+      "lng": -117.426362,
+      "lat": 47.681812,
+      "phone": "(509) 324-2949",
+      "founded": null,
+      "headcount": null,
+      "what": "Full-service film and video production studio.",
+      "sources": [
+        "https://nxnw.net/"
+      ]
+    },
+    {
+      "name": "Wipliance",
+      "website": "wipliance.com",
+      "address": "12410 E Mirabeau Pkwy, Ste 100",
+      "city": "Spokane Valley",
+      "state": "WA",
+      "zip": "99216",
+      "district": "valley",
+      "lng": -117.238139,
+      "lat": 47.685617,
+      "phone": "(509) 893-5588",
+      "founded": null,
+      "headcount": null,
+      "what": "Home automation, audio-video and lighting-control integrator with a Spokane Valley showroom.",
+      "sources": [
+        "https://wipliance.com/locations/spokane"
+      ]
+    },
+    {
+      "name": "Alphy",
+      "website": "alphyco.com",
+      "address": null,
+      "city": "Coeur d'Alene",
+      "state": "ID",
+      "zip": null,
+      "district": "coeur-dalene",
+      "lng": null,
+      "lat": null,
+      "phone": null,
+      "founded": null,
+      "headcount": null,
+      "what": "Makes HarmCheck, AI communication-compliance software that flags harmful or non-compliant messages before they are sent.",
+      "sources": [
+        "https://alphyco.com/"
+      ]
+    },
+    {
+      "name": "Krambu",
+      "website": "krambu.com",
+      "address": "7560 N Government Way #2",
+      "city": "Dalton Gardens",
+      "state": "ID",
+      "zip": "83815",
+      "district": "hayden",
+      "lng": -116.786296,
+      "lat": 47.740513,
+      "phone": null,
+      "founded": null,
+      "headcount": null,
+      "what": "AI infrastructure company providing GPU clusters, colocation, cloud compute and dedicated servers from its own AI data centers.",
+      "sources": [
+        "https://krambu.com/",
+        "https://krambu.com/contact/"
+      ]
+    },
+    {
+      "name": "Incluud",
+      "website": "incluud.com",
+      "address": null,
+      "city": "Coeur d'Alene",
+      "state": "ID",
+      "zip": "83816",
+      "district": "coeur-dalene",
+      "lng": null,
+      "lat": null,
+      "phone": null,
+      "founded": null,
+      "headcount": null,
+      "what": "AI decision-intelligence platform with products for regulatory compliance, contract management and NCAA athletic departments.",
+      "sources": [
+        "https://incluud.com/",
+        "https://incluud.com/contact/"
+      ]
+    },
+    {
+      "name": "Cyan",
+      "website": "cyan.com",
+      "address": "14617 N Newport Hwy",
+      "city": "Mead",
+      "state": "WA",
+      "zip": "99021",
+      "district": "hillyard",
+      "lng": -117.35415,
+      "lat": 47.79085,
+      "phone": null,
+      "founded": 1987,
+      "headcount": null,
+      "what": "Independent video game developer and publisher of the Myst series of adventure games.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Cyan_Worlds",
+        "https://www.spokanejournal.com/local-news/cyan-inc-will-double-its-work-force-office-space/"
+      ]
+    },
+    {
+      "name": "Vaagen Timbers",
+      "website": "vaagentimbers.com",
+      "address": "1245 N Highway",
+      "city": "Colville",
+      "state": "WA",
+      "zip": "99114",
+      "district": "colville",
+      "lng": -117.921836,
+      "lat": 48.554703,
+      "phone": null,
+      "founded": null,
+      "headcount": null,
+      "what": "Manufactures cross-laminated timber and glue-laminated mass timber products.",
+      "sources": [
+        "https://vaagentimbers.com/",
+        "https://vaagentimbers.com/contact/"
+      ]
+    }
+  ]
+}

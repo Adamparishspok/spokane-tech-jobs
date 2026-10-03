@@ -1,0 +1,278 @@
+{
+  "_about": "Batch 1 of the user's regional tech-company CSV, researched from public sources 2026-10-03 under the same rules as real-companies.json. The CSV's notes were treated as leads only; every field here comes from the listed sources. Nothing is inferred or invented: a field that could not be sourced is null. Headcount and founded never come from aggregators. Coordinates come from the Mapbox Geocoding API applied to the sourced street address; rows without a street address have null coordinates and a district taken from the sourced city.",
+  "companies": [
+    {
+      "name": "F5",
+      "website": "f5.com",
+      "address": "12520 E Pinecroft Way",
+      "city": "Spokane Valley",
+      "state": "WA",
+      "zip": "99216",
+      "district": "valley",
+      "lng": -117.23598,
+      "lat": 47.68779,
+      "phone": "(509) 343-3500",
+      "founded": 1996,
+      "headcount": 6578,
+      "public_ticker": "FFIV",
+      "what": "Application delivery and security: load balancing, API security, fraud prevention and zero-trust access for multicloud applications.",
+      "sources": [
+        "https://www.f5.com/company/contact/regional-offices",
+        "https://www.f5.com/company/careers/locations/spokane",
+        "https://en.wikipedia.org/wiki/F5,_Inc.",
+        "https://www.spokanejournal.com/articles/17313-pinecroft-breaks-ground-on-12-million-buit-to-suit-building"
+      ]
+    },
+    {
+      "name": "Schweitzer Engineering Laboratories",
+      "website": "selinc.com",
+      "address": "2350 NE Hopkins Ct",
+      "city": "Pullman",
+      "state": "WA",
+      "zip": "99163",
+      "district": "pullman",
+      "lng": -117.166859,
+      "lat": 46.750257,
+      "phone": "(509) 332-1890",
+      "founded": 1982,
+      "headcount": null,
+      "what": "Designs and manufactures equipment for the protection, monitoring, control, automation and metering of electric power systems.",
+      "sources": [
+        "https://selinc.com/company/contact/",
+        "https://en.wikipedia.org/wiki/Schweitzer_Engineering_Laboratories"
+      ]
+    },
+    {
+      "name": "METER Group",
+      "website": "metergroup.com",
+      "address": "2365 NE Hopkins Ct",
+      "city": "Pullman",
+      "state": "WA",
+      "zip": "99163",
+      "district": "pullman",
+      "lng": -117.166129,
+      "lat": 46.75126,
+      "phone": "(509) 332-2756",
+      "founded": 1983,
+      "headcount": null,
+      "what": "Makes soil, plant and weather sensors and instruments for environmental and food science research.",
+      "sources": [
+        "https://library.metergroup.com/Manual%20Covers/10042_General_Back.pdf",
+        "https://en.wikipedia.org/wiki/METER_Group"
+      ]
+    },
+    {
+      "name": "Jubilant HollisterStier",
+      "website": "jublhs.com",
+      "address": "3525 N Regal St",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99207",
+      "district": "hillyard",
+      "lng": -117.369018,
+      "lat": 47.690446,
+      "phone": "(509) 489-5656",
+      "founded": null,
+      "headcount": null,
+      "what": "Contract manufacturer of sterile injectable pharmaceuticals, providing fill-finish and lyophilization services.",
+      "sources": [
+        "https://www.jublhs.com/",
+        "https://www.spokanejournal.com/local-news/jubilant-hollisterstier-plans-70-million-expansion/"
+      ]
+    },
+    {
+      "name": "Pyrotek",
+      "website": "pyrotek.com",
+      "address": "705 W 1st Ave",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99201",
+      "district": "downtown",
+      "lng": -117.422425,
+      "lat": 47.656358,
+      "phone": "(509) 926-6212",
+      "founded": 1956,
+      "headcount": null,
+      "what": "Engineered materials and process equipment for aluminium and other high-temperature metal industries.",
+      "sources": [
+        "https://www.pyrotek.com/",
+        "https://www.pyrotek.com/company-info/history"
+      ]
+    },
+    {
+      "name": "Wagstaff",
+      "website": "wagstaff.com",
+      "address": "3910 N Flora Rd",
+      "city": "Spokane Valley",
+      "state": "WA",
+      "zip": "99216",
+      "district": "valley",
+      "lng": -117.173607,
+      "lat": 47.692336,
+      "phone": "(509) 922-1404",
+      "founded": 1946,
+      "headcount": null,
+      "what": "Builds direct-chill casting machinery, automation and technology for aluminium billet and ingot production.",
+      "sources": [
+        "https://www.wagstaff.com/contact",
+        "https://www.wagstaff.com/Wagstaff/About.htm"
+      ]
+    },
+    {
+      "name": "Fatbeam",
+      "website": "fatbeamfiber.com",
+      "address": "2065 W Riverstone Dr, Suite 202",
+      "city": "Coeur d'Alene",
+      "state": "ID",
+      "zip": "83814",
+      "district": "coeur-dalene",
+      "lng": -116.812237,
+      "lat": 47.698077,
+      "phone": null,
+      "founded": 2010,
+      "headcount": null,
+      "what": "Fiber-optic internet provider offering dedicated internet, dark fiber and network services to businesses and institutions across the western U.S.",
+      "sources": [
+        "https://www.fatbeamfiber.com/contact-us",
+        "https://www.fatbeamfiber.com/",
+        "https://www.spokanejournal.com/articles/7212-post-falls-based-fatbeam-secures-new-contracts-in-tacoma-butte-mont"
+      ]
+    },
+    {
+      "name": "PayTrace",
+      "website": "paytrace.net",
+      "address": "12709 E Mirabeau Pkwy, Building A, Suite 100",
+      "city": "Spokane Valley",
+      "state": "WA",
+      "zip": "99216",
+      "district": "valley",
+      "lng": -117.235197,
+      "lat": 47.686843,
+      "phone": "(888) 806-6545",
+      "founded": 2004,
+      "headcount": null,
+      "what": "Payment gateway and B2B payment automation software for merchants, including credit card processing and accounts-receivable tools.",
+      "sources": [
+        "https://paytrace.net/blog/paytrace-moves-hq-to-new-office-5-8-2017",
+        "https://paytrace.net/contact",
+        "https://paytrace.net/",
+        "https://www.spokanejournal.com/articles/2572-paytrace-puts-its-focus-on-business-merchants"
+      ]
+    },
+    {
+      "name": "Kochava",
+      "website": "kochava.com",
+      "address": null,
+      "city": "Sandpoint",
+      "state": "ID",
+      "zip": null,
+      "district": "sandpoint",
+      "lng": null,
+      "lat": null,
+      "phone": null,
+      "founded": 2011,
+      "headcount": null,
+      "what": "Mobile attribution and marketing analytics platform for advertisers and publishers.",
+      "sources": [
+        "https://en.wikipedia.org/wiki/Kochava",
+        "https://www.kochava.com/"
+      ]
+    },
+    {
+      "name": "Continuous Composites",
+      "website": "continuouscomposites.com",
+      "address": "3875 N Schreiber Way",
+      "city": "Coeur d'Alene",
+      "state": "ID",
+      "zip": "83815",
+      "district": "coeur-dalene",
+      "lng": -116.801866,
+      "lat": 47.712974,
+      "phone": "(888) 508-1085",
+      "founded": 2012,
+      "headcount": 30,
+      "what": "Makes continuous-fiber 3D printing machines (CF3D) and composite parts for aerospace and defense.",
+      "sources": [
+        "https://www.continuouscomposites.com/contact",
+        "https://www.spokanejournal.com/articles/18180-continuous-composites-moves-house-expands"
+      ]
+    },
+    {
+      "name": "Gestalt Diagnostics",
+      "website": "gestaltdiagnostics.com",
+      "address": "801 S Stevens St",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99204",
+      "district": "downtown",
+      "lng": -117.41838,
+      "lat": 47.648135,
+      "phone": "(509) 492-4912",
+      "founded": null,
+      "headcount": null,
+      "what": "Digital pathology software, including the PathFlow platform and AI tools for reviewing pathology samples.",
+      "sources": [
+        "https://www.gestaltdiagnostics.com/contact",
+        "https://www.spokanejournal.com/articles/17892-2026-people-of-influence-dan-roark-gestalt-diagnostics-inc-ceo"
+      ]
+    },
+    {
+      "name": "Treasury4",
+      "website": "treasury4.com",
+      "address": "835 N Post St",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99201",
+      "district": "kendall-yards",
+      "lng": -117.424257,
+      "lat": 47.664792,
+      "phone": null,
+      "founded": 2020,
+      "headcount": 52,
+      "what": "Treasury management software that unifies cash, payments, debt and banking data for corporate finance teams.",
+      "sources": [
+        "https://www.spokanejournal.com/articles/15924-treasury4-is-moving-on-up",
+        "https://www.treasury4.com/legal/privacy/",
+        "https://www.treasury4.com/contact"
+      ]
+    },
+    {
+      "name": "Medcurity",
+      "website": "medcurity.com",
+      "address": "157 S Howard St, Suite 603",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99201",
+      "district": "downtown",
+      "lng": -117.420723,
+      "lat": 47.6553,
+      "phone": "(509) 867-3645",
+      "founded": 2018,
+      "headcount": null,
+      "what": "HIPAA compliance software and services, including security risk analysis, penetration testing and staff training for healthcare organizations.",
+      "sources": [
+        "https://www.medcurity.com/contact",
+        "https://www.spokanejournal.com/articles/1817-medcurity-plans-to-add-staff-move"
+      ]
+    },
+    {
+      "name": "Vega Cloud",
+      "website": "vegacloud.io",
+      "address": "2780 N Eagle Ln",
+      "city": "Liberty Lake",
+      "state": "WA",
+      "zip": "99019",
+      "district": "liberty-lake",
+      "lng": -117.081732,
+      "lat": 47.68139,
+      "phone": "(855) 701-8342",
+      "founded": null,
+      "headcount": null,
+      "what": "Cloud cost optimization and automation software for multi-cloud environments.",
+      "sources": [
+        "https://www.vegacloud.io/",
+        "https://www.spokanejournal.com/articles/16696-2025-people-of-influence-vega-cloud-ceo-kris-bliesner"
+      ]
+    }
+  ]
+}

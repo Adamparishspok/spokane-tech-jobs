@@ -1,0 +1,55 @@
+{
+  "_about": "People listed in the directory by someone other than themselves. Each says only what is sourced; everything else is theirs to add once they claim the profile by verifying the email on file (see claim_person in schema.sql). `email` is optional, private, and never exported.",
+  "people": [
+    {
+      "id": "dan-watt",
+      "name": "Dan Watt",
+      "role": "Formerly at XpenseOne",
+      "bio": "",
+      "district": null,
+      "company": null,
+      "places": [],
+      "email": null,
+      "sources": [
+        "Added by the directory's owner, a fellow XpenseOne team member, 2026-10-03"
+      ]
+    },
+    {
+      "id": "sam-fleming",
+      "name": "Sam Fleming",
+      "role": "Formerly at XpenseOne",
+      "bio": "",
+      "district": null,
+      "company": null,
+      "places": [],
+      "email": null,
+      "sources": [
+        "Added by the directory's owner, a fellow XpenseOne team member, 2026-10-03"
+      ]
+    },
+    {
+      "id": "nick-smoot",
+      "name": "Nick Smoot",
+      "role": "CEO, Innovation Collective",
+      "bio": "Nick Smoot grew up in Coeur d'Alene and founded Innovation Collective there in 2013. Under it he turned the former Elks building into the 34,000 sq ft Innovation Den, and he wrote BETTER: How to Build Creative Communities That Transform the World. Its Think Big festival, first held at North Idaho College in 2014, brought aerospace pioneer Burt Rutan to Coeur d'Alene in 2018. Before that he was founder and CEO of the business-travel networking app Here On Biz, and he says he started and sold three tech companies.",
+      "district": "coeur-dalene",
+      "company": "innovation-collective",
+      "places": [
+        {
+          "place": "innovation-collective-innovation-den",
+          "role": "Founder"
+        }
+      ],
+      "email": null,
+      "sources": [
+        "https://cdapress.com/news/2026/jul/28/nibj-leadership-nick-smoot-shares-leadership-principles-innovation-insights/",
+        "https://cdapress.com/news/2026/feb/08/from-the-white-house-to-north-idaho/",
+        "https://innovationcollective.co/about/",
+        "https://www.spokanejournal.com/articles/3980-innovation-collective-brings-coeur-d-alene-edifice-to-life",
+        "https://cdapress.com/news/2014/nov/23/nick-smoot-starting-his-own-tech-tribe-5/",
+        "https://www.linkedin.com/in/nicksmoot",
+        "https://cdapress.com/news/2026/may/27/aerospace-legend-to-speak-in-coeur-dalene/"
+      ]
+    }
+  ]
+}

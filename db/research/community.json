@@ -1,0 +1,397 @@
+{
+  "_about": "Community places for tech people across Spokane, Eastern Washington and North Idaho: ecosystem organisations (funders, incubators, innovation hubs), coworking spaces, and recurring tech meetups with a physical venue, researched from public sources 2026-10-03. Coffee shops are in coffee-shops.json and are not repeated here. Every row carries the URLs it was taken from, and each `why` restates claims those sources make. Nothing is inferred or invented: a field that could not be sourced is null. Organisations and coworking spaces are included only where a 2025 or 2026 source or a live official site shows them operating; meetups only where a 2025 or 2026 event listing shows them still meeting in person. For meetups, `address` is the venue's address and `schedule` restates the cadence the group states or the 2026 event dates show. Coordinates come from the Mapbox Geocoding API applied to the sourced street address and are null where no street address could be sourced; a zip missing from the sources was taken from that same geocoding result (Evergreen Bioscience, Innovation Collective, SpaceShare CDA). `district` is the nearest district centroid to those coordinates, or null where there are no coordinates and the town is not itself a district.",
+  "places": [
+    {
+      "name": "Ignite Northwest",
+      "kind": "organization",
+      "website": "ignitenorthwest.com",
+      "address": "518 W Riverside Ave",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99201",
+      "district": "downtown",
+      "lng": -117.420493,
+      "lat": 47.658225,
+      "why": "Ignite \"funds, mentors and accelerates\" startups in the Spokane, Coeur d'Alene and Sandpoint region through its Technology Growth and Emerging Growth loan funds and the Kick-Start Angel Fund, and gives access to the Spokane Angel Alliance, which meets five times a year to review pitches and held SAA Talks at the Ignite Loft on Sept. 30, 2026.",
+      "schedule": null,
+      "venue": null,
+      "sources": [
+        "https://ignitenorthwest.com/",
+        "https://www.ignitenorthwest.com/funds",
+        "https://spokanetech.org/techgroups/34/",
+        "https://spokanetech.org/techgroups/16/"
+      ]
+    },
+    {
+      "name": "InnovateINW (LaunchPad INW)",
+      "kind": "organization",
+      "website": "innovateinw.com",
+      "address": null,
+      "city": "Spokane",
+      "state": "WA",
+      "zip": null,
+      "district": "downtown",
+      "lng": null,
+      "lat": null,
+      "why": "LaunchPad Inland Northwest runs the InnovateINW Initiative and its Springboard founder program, and hosts regional innovation events such as the InnovateINW Pitch Jam at Hagadone Technologies in Coeur d'Alene on Oct. 8, 2026, where founders share a short pitch and get feedback.",
+      "schedule": null,
+      "venue": null,
+      "sources": [
+        "https://innovateinw.com/",
+        "https://innovateinw.com/events",
+        "https://www.spokanejournal.com/articles/17743-launchpad-inw-to-kick-off-initiative-inspired-by-momentum-87",
+        "https://spokanetech.org/techgroups/18/"
+      ],
+      "note": " No office address sourced; placed at the Spokane default (downtown)."
+    },
+    {
+      "name": "Evergreen Bioscience Innovation Cluster",
+      "kind": "organization",
+      "website": null,
+      "address": "10220 N Nevada St",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99218",
+      "district": "hillyard",
+      "lng": -117.394242,
+      "lat": 47.750549,
+      "why": "Runs a 5,000-square-foot bioscience incubator with office and wet-lab space for early-stage life-science companies, opened in 2025, and hosts Founders, Funders & Friends, a bioscience startup pitch and networking event held Oct. 6, 2026.",
+      "schedule": null,
+      "venue": null,
+      "sources": [
+        "https://www.spokanejournal.com/articles/17552-evergreen-bioscience-lands-first-tenant-community-backing",
+        "https://www.eventbrite.com/e/founders-funders-friends-where-bioscience-innovation-meets-acceleration-tickets-1993854949828",
+        "https://spokanetech.org/techgroups/33/"
+      ]
+    },
+    {
+      "name": "Riverside Biotech Hub",
+      "kind": "organization",
+      "website": "riversidebiotechhub.com",
+      "address": "502 W Riverside Ave, Suite 101B",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99201",
+      "district": "downtown",
+      "lng": -117.419813,
+      "lat": 47.658217,
+      "why": "A life-science incubator opened in 2025 below Numerica's downtown branch, renting shared wet-lab and office space with equipment, mentorship and investor connections to early-stage biotech founders on 3- to 36-month terms.",
+      "schedule": null,
+      "venue": null,
+      "sources": [
+        "https://www.riversidebiotechhub.com/",
+        "https://www.spokanejournal.com/articles/17598-life-sciences-industry-gets-another-boost"
+      ]
+    },
+    {
+      "name": "Health Sciences & Services Authority of Spokane County (HSSA)",
+      "kind": "organization",
+      "website": null,
+      "address": "850 E Spokane Falls Blvd",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99202",
+      "district": "university",
+      "lng": -117.397513,
+      "lat": 47.660789,
+      "why": "A public authority that invests in Spokane County's health-sciences cluster; in March 2025 it awarded $4.1 million in matching grants to 10 bioscience and health-tech companies, and its board meets monthly on the third Wednesday at 3 p.m.",
+      "schedule": null,
+      "venue": null,
+      "sources": [
+        "https://www.spokanecounty.gov/5693/Health-Sciences-Services-Authority-of-Sp",
+        "https://spokaneudistrict.org/news/2768/hssa-awards-over-4m-for-healthcare-and-bioscience-economic-development",
+        "https://www.spokaneudistrict.org/news/2876/hssa-awards-over-900k-to-address-regions-health-needs"
+      ]
+    },
+    {
+      "name": "Innovation Collective (Innovation Den)",
+      "kind": "organization",
+      "website": "innovationcollective.co",
+      "address": "418 E Lakeside Ave",
+      "city": "Coeur d'Alene",
+      "state": "ID",
+      "zip": "83814",
+      "district": "coeur-dalene",
+      "lng": -116.78014,
+      "lat": 47.674096,
+      "why": "Innovation Collective's Innovation Den fills a former Elks building with 34,000 sq ft of \"startups, coffee, and collisions\". It has housed 50+ companies and hosted 1,000+ entrepreneur events in 13 years of meeting twice a month. Current events are posted on Innovation Collective's Build_ platform (Build Cities). The 2017 conversion added offices, monthly coworking, a public coffee shop and an event hall seating about 170.",
+      "schedule": "Entrepreneur events twice a month, per Innovation Collective; dates are listed on Build Cities.",
+      "venue": null,
+      "sources": [
+        "https://innovationcollective.co/",
+        "https://innovationcollective.co/about/",
+        "https://www.spokanejournal.com/articles/3980-innovation-collective-brings-coeur-d-alene-edifice-to-life",
+        "https://cdapress.com/news/2026/jul/28/nibj-leadership-nick-smoot-shares-leadership-principles-innovation-insights/"
+      ]
+    },
+    {
+      "name": "FUEL Coworking",
+      "kind": "coworking",
+      "website": "fuelcoworking.com",
+      "address": "809 W Main Ave, Suite 212",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99201",
+      "district": "downtown",
+      "lng": -117.424353,
+      "lat": 47.658737,
+      "why": "Cowles Ventures' downtown coworking space with hot desks, permanent desks and private offices; it hosts member events such as Innovation On Tap (Oct. 28, 2026) and has hosted Spokane Python and Go user-group meetups and InnovateINW events.",
+      "schedule": null,
+      "venue": null,
+      "sources": [
+        "https://www.fuelcoworking.com/",
+        "https://www.cowlesventures.com/",
+        "https://spokanetech.org/techgroups/29/",
+        "https://www.meetup.com/python-spokane/events/",
+        "https://spokanetech.org/techgroups/18/"
+      ]
+    },
+    {
+      "name": "Fellow Coworking",
+      "kind": "coworking",
+      "website": "workatfellow.com",
+      "address": "304 W Pacific Ave, Suite 210",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99201",
+      "district": "downtown",
+      "lng": -117.41675,
+      "lat": 47.655302,
+      "why": "Downtown coworking with drop-in days, hot desks, permanent desks and private suites for small teams.",
+      "schedule": null,
+      "venue": null,
+      "sources": [
+        "https://www.workatfellow.com/"
+      ]
+    },
+    {
+      "name": "StartUp Spokane",
+      "kind": "coworking",
+      "website": "startupspokane.com",
+      "address": "906 W Main Ave",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99201",
+      "district": "downtown",
+      "lng": -117.425329,
+      "lat": 47.659317,
+      "why": "A Spokane Public Library and Spokane County Library District service with a co-working space in the Central Library, free 1-on-1 business help, and a regional calendar of startup and tech events.",
+      "schedule": null,
+      "venue": null,
+      "sources": [
+        "https://startupspokane.com/",
+        "https://startupspokane.com/events/"
+      ]
+    },
+    {
+      "name": "Burbity Workspaces (Sprague)",
+      "kind": "coworking",
+      "website": "burbity.com",
+      "address": "1722 E Sprague Ave, Suite 200",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99202",
+      "district": "east-central",
+      "lng": -117.38444,
+      "lat": 47.65707,
+      "why": "Burbity's U-District location offering coworking and private office space.",
+      "schedule": null,
+      "venue": null,
+      "sources": [
+        "https://burbity.com/sprague/"
+      ]
+    },
+    {
+      "name": "Burbity Workspaces (Sullivan Valley Commons)",
+      "kind": "coworking",
+      "website": "burbity.com",
+      "address": "2818 N Sullivan Rd, Suite 100",
+      "city": "Spokane Valley",
+      "state": "WA",
+      "zip": "99216",
+      "district": "valley",
+      "lng": -117.19422,
+      "lat": 47.683146,
+      "why": "Spokane Valley coworking with event space; it hosted InnovateINW: Building the Region's AI Ecosystem in July 2026.",
+      "schedule": null,
+      "venue": null,
+      "sources": [
+        "https://burbity.com/sullivan/",
+        "https://spokanetech.org/techgroups/18/"
+      ]
+    },
+    {
+      "name": "Burbity Workspaces (Liberty Lake Coworking)",
+      "kind": "coworking",
+      "website": "burbity.com",
+      "address": "23505 E Appleway Ave, Suite 200",
+      "city": "Liberty Lake",
+      "state": "WA",
+      "zip": "99019",
+      "district": "liberty-lake",
+      "lng": -117.089051,
+      "lat": 47.677822,
+      "why": "Coworking hot desks, dedicated desks, private offices and meeting rooms between Spokane and Coeur d'Alene, five minutes from I-90.",
+      "schedule": null,
+      "venue": null,
+      "sources": [
+        "https://burbity.com/liberty-lake/"
+      ]
+    },
+    {
+      "name": "SpaceShare CDA",
+      "kind": "coworking",
+      "website": "spacesharecda.com",
+      "address": "409 Coeur d'Alene Ave",
+      "city": "Coeur d'Alene",
+      "state": "ID",
+      "zip": "83814",
+      "district": "coeur-dalene",
+      "lng": -116.780773,
+      "lat": 47.6753,
+      "why": "Coeur d'Alene coworking desk memberships with 24/7 access, private offices, and bookable conference rooms for 6 or 12 people.",
+      "schedule": null,
+      "venue": null,
+      "sources": [
+        "https://www.spacesharecda.com/",
+        "https://inwp.org/2019/05/31/inland-northwest-coworking-spaces-curate-strong-communities/"
+      ]
+    },
+    {
+      "name": "MosCoWork",
+      "kind": "coworking",
+      "website": "moscowork.com",
+      "address": "120 E 3rd St",
+      "city": "Moscow",
+      "state": "ID",
+      "zip": "83843",
+      "district": "moscow",
+      "lng": -117.000367,
+      "lat": 46.732545,
+      "why": "Moscow's open-plan coworking space with 24/7 access, desks and private booths, fiber internet and a conference room, rented month to month.",
+      "schedule": null,
+      "venue": null,
+      "sources": [
+        "https://moscowork.com/"
+      ]
+    },
+    {
+      "name": "The Plaza Downtown",
+      "kind": "coworking",
+      "website": "theplazadowntown.com",
+      "address": "7177 Main St",
+      "city": "Bonners Ferry",
+      "state": "ID",
+      "zip": "83805",
+      "district": "bonners-ferry",
+      "lng": -116.31154,
+      "lat": 48.69661,
+      "why": "Bonners Ferry flexible workspace offering shared desks and private offices with high-speed internet and meeting rooms.",
+      "schedule": null,
+      "venue": null,
+      "sources": [
+        "https://theplazadowntown.com/",
+        "https://inwp.org/2019/05/31/inland-northwest-coworking-spaces-curate-strong-communities/"
+      ]
+    },
+    {
+      "name": "Mercantile at Ellis-Forde",
+      "kind": "coworking",
+      "website": "mercantilewenatchee.com",
+      "address": "14 N Wenatchee Ave",
+      "city": "Wenatchee",
+      "state": "WA",
+      "zip": "98801",
+      "district": "wenatchee",
+      "lng": -120.31228,
+      "lat": 47.425035,
+      "why": "Mercantile's flagship downtown Wenatchee coworking space, with day and flex passes, fixed desks with 24/7 access, office suites, conference rooms and event space.",
+      "schedule": null,
+      "venue": null,
+      "sources": [
+        "https://www.mercantilewenatchee.com/"
+      ]
+    },
+    {
+      "name": "Spokane Python User Group (Coffee & Code)",
+      "kind": "meetup",
+      "website": "spokanepython.com",
+      "address": "1425 W Broadway Ave",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99201",
+      "district": "kendall-yards",
+      "lng": -117.43352,
+      "lat": 47.6642,
+      "why": "SPUG meets every first Monday for a casual Coffee & Code at Indaba Coffee (bring a project or a question), and around the third Tuesday of each month for presentations and workshops at rotating venues.",
+      "schedule": "first Monday monthly, 7am",
+      "venue": "Indaba Coffee (Broadway)",
+      "sources": [
+        "https://www.meetup.com/python-spokane/",
+        "https://www.meetup.com/python-spokane/events/",
+        "https://startupspokane.com/events/",
+        "https://spokanetech.org/techgroups/10/"
+      ]
+    },
+    {
+      "name": "Spokane .NET Users Group",
+      "kind": "meetup",
+      "website": null,
+      "address": "1720 W 4th Ave, Unit B",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99201",
+      "district": "browne",
+      "lng": -117.43832,
+      "lat": 47.652757,
+      "why": "Sponsored by IntelliTect, the group meets to share .NET knowledge with talks such as \"Kepler: Welcome to the Age of Agentic Development\" on Oct. 6, 2026, held in person at IntelliTect and online.",
+      "schedule": "first Tuesday monthly",
+      "venue": "IntelliTect",
+      "sources": [
+        "https://www.meetup.com/spokane-net-user-group/",
+        "https://www.meetup.com/spokane-net-user-group/events/",
+        "https://spokanetech.org/techgroups/8/"
+      ]
+    },
+    {
+      "name": "DC509",
+      "kind": "meetup",
+      "website": null,
+      "address": "835 N Post St",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99201",
+      "district": "kendall-yards",
+      "lng": -117.424257,
+      "lat": 47.664792,
+      "why": "Spokane's DEF CON group for hacking, network security, hardware hacks and secure coding; 2026 talks included firmware extraction, Android reverse engineering and data brokers, most at the Wonder Building.",
+      "schedule": "Thursday evenings, monthly in 2026 (the fourth Thursday of each month with a meetup)",
+      "venue": "Wonder Building",
+      "sources": [
+        "https://www.meetup.com/dc-509/",
+        "https://www.meetup.com/dc-509/events/?type=past",
+        "https://spokanetech.org/techgroups/20/"
+      ]
+    },
+    {
+      "name": "What is Crypto Currency (Crypto, Conspiracy Theories and Emerging Technologies)",
+      "kind": "meetup",
+      "website": null,
+      "address": null,
+      "city": "Post Falls",
+      "state": "ID",
+      "zip": null,
+      "district": "post-falls",
+      "lng": null,
+      "lat": null,
+      "why": "A weekly round-table on blockchain, cryptocurrencies and emerging technologies, \"Crypto Chatter\" from 8 to 10am; no RSVP needed, and a core group attends every week.",
+      "schedule": "weekly, Saturdays 8-10am",
+      "venue": "Kindred & Co.",
+      "sources": [
+        "https://www.meetup.com/what-is-crypto-currency/",
+        "https://spokanetech.org/techgroups/23/",
+        "https://startupspokane.com/events/sSjkxJogppcgRMOgWACq/"
+      ]
+    }
+  ]
+}

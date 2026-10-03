@@ -1,0 +1,285 @@
+{
+  "_about": "Rows from the user's CSV of regional tech companies (batch 4), researched from public sources 2026-10-03. The CSV's notes were treated as leads only: every field here comes from the URLs in that row's sources, and a field that could not be sourced is null. founded and headcount come only from the company's own site or local press, never an aggregator. Coordinates come from the Mapbox Geocoding API applied to the sourced street address, and are null where no street address could be sourced. Where there is no street address, district is the city's default (downtown for Spokane), or the nearest district for a town without one.",
+  "companies": [
+    {
+      "name": "Revival Tea Company",
+      "website": "revivalteacompany.com",
+      "address": "415 W Main Ave, Suite 100",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99201",
+      "district": "downtown",
+      "lng": -117.41878,
+      "lat": 47.65883,
+      "phone": "(509) 903-6937",
+      "founded": 2018,
+      "headcount": 25,
+      "what": "Spokane craft tea company that blends and sells specialty teas online and through its tasting rooms and cafes.",
+      "note": "Headcount is the 25 employees across three locations reported by the Journal in October 2025. Also runs a shop at 201 N. First in Coeur d'Alene.",
+      "sources": [
+        "https://revivalteacompany.com/",
+        "https://www.spokanejournal.com/articles/17581-catching-up-with-andrew-henry-ceo-of-revival-tea-co"
+      ]
+    },
+    {
+      "name": "Impact Laboratories",
+      "website": "impactlaboratories.com",
+      "address": null,
+      "city": "Spokane",
+      "state": "WA",
+      "zip": null,
+      "district": "downtown",
+      "lng": null,
+      "lat": null,
+      "phone": null,
+      "founded": 2024,
+      "headcount": null,
+      "what": "For-profit arm of the nonprofit My Green Lab that verifies My Green Lab Certification and provides software for measuring sustainability in science labs.",
+      "note": "As of March 2025 it had no physical headquarters yet and planned one in Spokane. In September 2025 the Journal reported 32 staff across My Green Lab and Impact Laboratories, 8 of them in Spokane.",
+      "sources": [
+        "https://impactlaboratories.com/",
+        "https://www.spokanejournal.com/articles/16897-impact-laboratories-secures-495m-in-series-a-round",
+        "https://www.spokanejournal.com/articles/17495-2025-rising-stars-james-connelly"
+      ]
+    },
+    {
+      "name": "Omniscia AI",
+      "website": "omnisciahealth.com",
+      "address": null,
+      "city": "Colbert",
+      "state": "WA",
+      "zip": null,
+      "district": "hillyard",
+      "lng": null,
+      "lat": null,
+      "phone": null,
+      "founded": 2020,
+      "headcount": null,
+      "what": "Builds AI agents that act as digital representatives for regulated organizations in healthcare, finance, sports and education.",
+      "note": "Legal name Omniscia Health Inc. Headquartered in Colbert per the Journal (March 2026); no street address published. omniscia.ai is a parked domain; the live site is omnisciahealth.com.",
+      "sources": [
+        "https://www.spokanejournal.com/articles/18099-2026-small-business-of-the-year-finalist-omniscia-ai",
+        "https://www.omnisciahealth.com/"
+      ]
+    },
+    {
+      "name": "Drip7",
+      "website": "drip7.com",
+      "address": null,
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99212",
+      "district": "downtown",
+      "lng": null,
+      "lat": null,
+      "phone": "(509) 703-5400",
+      "founded": 2021,
+      "headcount": null,
+      "what": "Security awareness and compliance training platform that delivers daily microlearning lessons and phishing simulations.",
+      "note": "The contact page lists Spokane, WA 99212 with no street, alongside a Charlotte, NC office. The 2021 Journal address (400 S. Jefferson) is not used because the current site gives a different ZIP. Founded is the 2021 incorporation.",
+      "sources": [
+        "https://drip7.com/contact",
+        "https://www.spokanejournal.com/local-news/stronger-international-spins-off-cybersecurity-training-company"
+      ]
+    },
+    {
+      "name": "Scout Discoveries",
+      "website": "scoutdiscoveries.com",
+      "address": "520 Coeur d'Alene Ave",
+      "city": "Coeur d'Alene",
+      "state": "ID",
+      "zip": "83814",
+      "district": "coeur-dalene",
+      "lng": -116.778473,
+      "lat": 47.67485,
+      "phone": "(208) 551-3878",
+      "founded": null,
+      "headcount": null,
+      "what": "Mineral exploration company that drills and defines precious and base metal targets in Idaho.",
+      "sources": [
+        "https://scoutdiscoveries.com/",
+        "https://www.spokanejournal.com/articles/18233-inw-companies-raise-14m-since-january"
+      ],
+      "note": "Mapbox matched the address to 520 E Coeur d'Alene Ave with medium confidence; the site gives no street direction."
+    },
+    {
+      "name": "Moat Metrics",
+      "website": "moatmetrics.com",
+      "address": null,
+      "city": "Spokane",
+      "state": "WA",
+      "zip": null,
+      "district": "downtown",
+      "lng": null,
+      "lat": null,
+      "phone": null,
+      "founded": 2024,
+      "headcount": null,
+      "what": "Competitive intelligence software, built on the Innovation Alpha AI platform bought from Aon, that analyzes companies' products, innovation and patent coverage.",
+      "note": "At launch in July 2024 it had 28 employees, 21 of them in Spokane, all remote with no office.",
+      "sources": [
+        "https://spokanejournal.com/articles/16152-former-lee-and-hayes-execs-launch-moat-metrics",
+        "https://www.businesswire.com/news/home/20240620445705/en/Moat-Metrics-Acquires-IP-Platform-Assets-from-Aon/",
+        "https://www.moatmetrics.com/"
+      ]
+    },
+    {
+      "name": "Lee & Hayes",
+      "website": "leehayes.com",
+      "address": "601 W Riverside Ave, Suite 1400",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99201",
+      "district": "downtown",
+      "lng": -117.421586,
+      "lat": 47.657551,
+      "phone": "(509) 324-9256",
+      "founded": null,
+      "headcount": null,
+      "what": "Intellectual property law firm headquartered in Spokane, with offices in other U.S. cities.",
+      "note": "A law firm, not a software company. Listed because the patent analytics firm 601West started as one of its business units.",
+      "sources": [
+        "https://www.leehayes.com/contact"
+      ]
+    },
+    {
+      "name": "xCraft",
+      "website": "xcraft.io",
+      "address": "3661 W Daugharty Loop",
+      "city": "Hayden",
+      "state": "ID",
+      "zip": "83835",
+      "district": "hayden",
+      "lng": -116.83412,
+      "lat": 47.76431,
+      "phone": "(208) 635-5336",
+      "founded": 2013,
+      "headcount": null,
+      "what": "Designs and builds drones for public safety, security, mapping, energy, light shows and defense.",
+      "note": "xcraft.com is now a domain for sale; the live site is xcraft.io. Founded in Sandpoint in 2013. The Journal reported just under 10 staff in September 2025.",
+      "sources": [
+        "https://xcraft.io/contact",
+        "https://www.spokanejournal.com/articles/17549-xcraft-enterprises-lands-1m-best-buy-order-eyes-defense-market"
+      ]
+    },
+    {
+      "name": "Tamarack Aerospace Group",
+      "website": "tamarackaero.com",
+      "address": "2021 Industrial Drive",
+      "city": "Sandpoint",
+      "state": "ID",
+      "zip": "83864",
+      "district": "sandpoint",
+      "lng": -116.562825,
+      "lat": 48.292994,
+      "phone": "(208) 255-4400",
+      "founded": null,
+      "headcount": null,
+      "what": "Designs, certifies and installs Active Winglets and other aircraft modifications at Sandpoint Airport.",
+      "note": "Went through Chapter 11 reorganization in 2019 and kept operating.",
+      "sources": [
+        "https://www.tamarackaero.com/contact",
+        "https://www.spokanejournal.com/articles/2432-tamarack-aerospace-files-for-bankruptcy-reorganization"
+      ]
+    },
+    {
+      "name": "CyberInsider",
+      "website": "cyberinsider.com",
+      "address": "217 Cedar St #73",
+      "city": "Sandpoint",
+      "state": "ID",
+      "zip": "83864",
+      "district": "sandpoint",
+      "lng": -116.549853,
+      "lat": 48.275944,
+      "phone": "(307) 224-2517",
+      "founded": null,
+      "headcount": null,
+      "what": "Independent cybersecurity and digital privacy news site that publishes guides, tutorials and reviews.",
+      "note": "The published address has a box number and may be a mailbox rather than an office.",
+      "sources": [
+        "https://cyberinsider.com/about/"
+      ]
+    },
+    {
+      "name": "Qualterra",
+      "website": null,
+      "address": null,
+      "city": "Pullman",
+      "state": "WA",
+      "zip": null,
+      "district": "pullman",
+      "lng": null,
+      "lat": null,
+      "phone": null,
+      "founded": 2010,
+      "headcount": 38,
+      "what": "Agtech company doing plant propagation, plant disease testing, biomass processing and biochar production.",
+      "note": "HQ in Pullman per the Journal (March 2025), with a production campus in Mabton, a biomass site near Cheney (29128 S. Wells Road, per 2022) and an admin office at Fuel Coworking downtown. Headcount is 38, as of March 2025. qualterra.com did not resolve on 2026-10-03.",
+      "sources": [
+        "https://www.spokanejournal.com/articles/16892-qualterra-grows-production-workforce-product-lines",
+        "https://www.spokanejournal.com/articles/266-innovation-on-the-horizon-ag-tech-company-qualterra-expands-its-operations-into-spokane-county"
+      ]
+    },
+    {
+      "name": "Uptic Studios",
+      "website": "upticstudios.com",
+      "address": "402 E Sprague Ave",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99202",
+      "district": "university",
+      "lng": -117.404895,
+      "lat": 47.657019,
+      "phone": "(509) 808-4006",
+      "founded": null,
+      "headcount": null,
+      "what": "Spokane architecture and interior design firm doing residential, commercial and hospitality projects.",
+      "note": "An architecture studio, not a digital studio.",
+      "sources": [
+        "https://www.upticstudios.com/",
+        "https://www.spokanejournal.com/local-news/uptic-studios-launches-interior-design-company/"
+      ]
+    },
+    {
+      "name": "OrganicNearby",
+      "website": "organicnearby.com",
+      "address": null,
+      "city": "Spokane",
+      "state": "WA",
+      "zip": null,
+      "district": "downtown",
+      "lng": null,
+      "lat": null,
+      "phone": null,
+      "founded": null,
+      "headcount": null,
+      "what": "Online marketplace where local farms, bakers and makers sell to customers who pick up their orders weekly at a set place and time.",
+      "note": "Its site says it is based in Spokane but names no founders and gives no street address.",
+      "sources": [
+        "https://organicnearby.com/about"
+      ]
+    },
+    {
+      "name": "Sweetbox Delivery",
+      "website": "sweetboxdelivery.com",
+      "address": "221 W 1st Ave, Suite D",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": null,
+      "district": "downtown",
+      "lng": -117.415467,
+      "lat": 47.656445,
+      "phone": "(509) 821-8100",
+      "founded": 2014,
+      "headcount": null,
+      "what": "Spokane bakery that delivers and ships stuffed bagels and sweets to homes and wholesale customers.",
+      "note": "A bakery, not a tech company. Founded is November 2014, per the Spokesman-Review.",
+      "sources": [
+        "https://www.sweetboxdelivery.com/",
+        "https://www.spokesman.com/stories/2016/mar/08/fresh-sheet-treats-at-your-fingertips/",
+        "https://www.spokanejournal.com/articles/3996-sweetbox-delivery-bakery-to-doorstep"
+      ]
+    }
+  ]
+}
