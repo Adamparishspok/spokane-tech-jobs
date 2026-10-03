@@ -14,6 +14,9 @@ import PLACE_LOGOS from "../generated/place-logos.json";
  * A company with no entry gets its monogram, which is the normal case for a
  * listing somebody added by hand.
  */
+/** Logo URLs that failed to load this page view. See `Monogram`. */
+const FAILED = new Set<string>();
+
 export const logoFor = (id: string): string | null =>
   (LOGOS as Record<string, string>)[id] ?? null;
 
@@ -99,8 +102,13 @@ export function Monogram({
 }) {
   /* A favicon that fails to load leaves a broken-image glyph, which is worse
      than the monogram it replaced. Failing back in state means the fallback is
-     the same component, not a second styling of it. */
-  const [failed, setFailed] = useState(false);
+     the same component, not a second styling of it.
+
+     Failures are also remembered for the whole page. A marker that remounts
+     — a cluster forming, a row scrolling back in — would otherwise retry the
+     same missing file, show its initials while it waits, and fail again:
+     a flicker for every logo that is not there. */
+  const [failed, setFailed] = useState(() => !!logo && FAILED.has(logo));
 
   if (logo && !failed) {
     return (
@@ -121,7 +129,10 @@ export function Monogram({
           loading="lazy"
           decoding="async"
           className="size-full object-contain p-1"
-          onError={() => setFailed(true)}
+          onError={() => {
+            FAILED.add(logo);
+            setFailed(true);
+          }}
         />
       </span>
     );

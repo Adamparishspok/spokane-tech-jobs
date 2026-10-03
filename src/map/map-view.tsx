@@ -117,9 +117,11 @@ function cluster(
     )
       continue;
 
-    const key = clustering
-      ? `${Math.round(at.x / CLUSTER_PX)}:${Math.round(at.y / CLUSTER_PX)}`
-      : pin.id;
+    /* Bucketed in world pixels at a whole zoom level, not screen pixels.
+       Screen buckets slide under the pins as the map pans, so groups split
+       and merge mid-drag and their markers are torn down and rebuilt — the
+       flicker. World buckets only change when the zoom crosses a whole level. */
+    const key = clustering ? bucketOf(pin.at, zoom) : pin.id;
     const found = buckets.get(key);
     if (found) {
       found.pins.push(pin);
@@ -135,9 +137,30 @@ function cluster(
     }
   }
 
+  /* A marker's identity is who is in it, not where it is. A lone pin keeps
+     its company's id and a cluster the ids of its members, so React keeps
+     the same node — and its loaded logo — for as long as that is true. */
+  for (const c of buckets.values())
+    c.key =
+      c.pins.length === 1
+        ? c.pins[0].id
+        : `cluster:${c.pins
+            .map((p) => p.id)
+            .sort()
+            .join("|")}`;
+
   /* Southernmost last, so a marker lower on the screen overlaps the one above
      it — the same depth cue a physical map gets for free. */
   return [...buckets.values()].sort((a, b) => a.at.y - b.at.y);
+}
+
+/** The world-pixel cell a point falls in at the current whole zoom level. */
+function bucketOf(at: LngLat, zoom: number) {
+  const scale = 256 * Math.pow(2, Math.floor(zoom));
+  const x = ((at.lng + 180) / 360) * scale;
+  const s = Math.sin((at.lat * Math.PI) / 180);
+  const y = (0.5 - Math.log((1 + s) / (1 - s)) / (4 * Math.PI)) * scale;
+  return `${Math.floor(x / CLUSTER_PX)}:${Math.floor(y / CLUSTER_PX)}`;
 }
 
 export function MapView({
