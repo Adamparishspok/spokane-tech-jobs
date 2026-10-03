@@ -2,11 +2,98 @@
 
 Source: https://spokanetechjobs.com
 Licence: CC BY 4.0, attribution to Spokane Tech Jobs
-Generated: 2026-09-17
-Companies: 9. Open roles: 0.
+Generated: 2026-10-03
+Companies: 87. Open roles: 0.
 
 Every field here is sourced from public records. A field that could not be
 sourced is absent rather than estimated.
+
+## 116 & West
+
+Full-service creative and advertising agency with offices in Boise and Spokane.
+
+Industry: Marketing & design
+District: Downtown
+Website: 116andwest.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/116-and-west.html
+
+## 14Four
+
+Digital studio building games, AR experiences, 3D animation, websites and campaign work for national brands.
+
+Industry: Marketing & design
+District: East Central
+Address: 1722 E Sprague Ave, Suite 130, Spokane, WA 99202
+Website: 14four.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/14four.html
+
+## Absco Solutions
+
+Designs, installs and services fire, life-safety and security systems for facilities; this is its Spokane office.
+
+Industry: IT services
+District: Browne's Addition
+Address: 1821 W 5th Ave, Ste 106, Spokane, WA 99201
+Website: abscosolutions.com
+Phone: (509) 321-1190
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/absco-solutions.html
+
+## Advantage Advertising
+
+Full-service advertising agency doing video, digital and social marketing, web design and public relations.
+
+Industry: Marketing & design
+District: Lewiston
+Address: 313 D St, #100, Lewiston, ID 83501
+Founded: 1986
+Website: advantageadvertising.com
+Phone: (208) 743-0633
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/advantage-advertising.html
+
+## Allele Diagnostics
+
+Clinical genetics laboratory providing microarray, karyotyping and FISH testing for neonatal, pediatric and prenatal patients.
+
+Industry: Life sciences
+District: University District
+Address: 120 N Pine St, Ste 152, Spokane, WA 99202
+Website: allelediagnostics.com
+Phone: (844) 255-3532
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/allele-diagnostics.html
+
+## Alphy
+
+Makes HarmCheck, AI communication-compliance software that flags harmful or non-compliant messages before they are sent.
+
+Industry: Business software
+District: Coeur d'Alene
+Website: alphyco.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/alphy.html
+
+## AmpliFi Advertising
+
+Advertising agency doing brand and digital strategy, logo, graphic and website design, TV/video and media strategy.
+
+Industry: Marketing & design
+District: University District
+Address: 1003 E Trent Ave, Suite 140, Spokane, WA 99202
+Website: amplifiads.com
+Phone: (509) 456-8640
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/amplifi-advertising.html
 
 ## Avista
 
@@ -21,6 +108,44 @@ Website: myavista.com
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/avista.html
 
+## CDL PowerSuite
+
+FMCSA-compliance software for CDL schools, motor carriers, fleets and government agencies: driver training records, qualification files and audit readiness.
+
+Industry: Business software
+District: Spokane Valley
+Address: 3620 N Eden Rd, Spokane Valley, WA 99216
+Website: cdlpowersuite.com
+Phone: (509) 931-1112
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/cdl-powersuite.html
+
+## Caava Design
+
+Branding and packaging design agency.
+
+Industry: Marketing & design
+District: Coeur d'Alene
+Address: 1324 E Sherman Ave, Coeur d'Alene, ID 83814
+Website: caavadesign.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/caava-design.html
+
+## Cerium Networks
+
+Managed IT services provider offering networking, communications, cybersecurity, data center and AI solutions.
+
+Industry: IT services
+District: Browne's Addition
+Address: 1636 W 1st Ave, Spokane, WA 99201
+Website: ceriumnetworks.com
+Phone: (800) 217-0933
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/cerium-networks.html
+
 ## Commerce Architects
 
 Ecommerce software development: application development, cloud modernisation and commerce platform work. B Corp.
@@ -33,6 +158,21 @@ Website: commerce-architects.com
 
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/commerce-architects.html
+
+## Continuous Composites
+
+Makes continuous-fiber 3D printing machines (CF3D) and composite parts for aerospace and defense.
+
+Industry: Advanced manufacturing
+District: Coeur d'Alene
+Address: 3875 N Schreiber Way, Coeur d'Alene, ID 83815
+Team: 30 people
+Founded: 2012
+Website: continuouscomposites.com
+Phone: (888) 508-1085
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/continuous-composites.html
 
 ## Corporate Tools
 
@@ -48,6 +188,83 @@ Website: corporatetools.com
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/corporate-tools.html
 
+## CredHub
+
+Reports residents' rent payments to the major credit bureaus on behalf of property managers.
+
+Industry: Fintech
+District: Hillyard
+Address: 8615 N Division St, Spokane, WA 99208
+Website: credhub.com
+Phone: (833) 888-2733
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/credhub.html
+
+## Credential Network
+
+Software that centralizes and automates credential verification for healthcare professionals and the organizations that employ them.
+
+Industry: Health tech
+District: Downtown
+Founded: 2023
+Website: credentialnetwork.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/credential-network.html
+
+## Cyan
+
+Independent video game developer and publisher of the Myst series of adventure games.
+
+Industry: Games
+District: Hillyard
+Address: 14617 N Newport Hwy, Spokane, WA 99021
+Founded: 1987
+Website: cyan.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/cyan.html
+
+## CyberInsider
+
+Independent cybersecurity and digital privacy news site that publishes guides, tutorials and reviews.
+
+Industry: Cybersecurity
+District: Sandpoint
+Address: 217 Cedar St #73, Sandpoint, ID 83864
+Website: cyberinsider.com
+Phone: (307) 224-2517
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/cyberinsider.html
+
+## Dice Throne
+
+Designs and publishes Dice Throne, a strategic dice-and-card dueling tabletop game.
+
+Industry: Games
+District: Garland
+Address: 816 W Francis Ave, Spokane, WA 99205
+Website: dicethrone.com
+Phone: (509) 255-3135
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/dice-throne.html
+
+## Drip7
+
+Security awareness and compliance training platform that delivers daily microlearning lessons and phishing simulations.
+
+Industry: Cybersecurity
+District: Downtown
+Founded: 2021
+Website: drip7.com
+Phone: (509) 703-5400
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/drip7.html
+
 ## ENGIE Impact
 
 Sustainability and energy-spend analytics for large enterprises. Formerly Ecova.
@@ -59,6 +276,189 @@ Website: engieimpact.com
 
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/engie-impact.html
+
+## Enleaf
+
+Digital marketing agency doing SEO, PPC and web design.
+
+Industry: Marketing & design
+District: East Central
+Address: 4249 E Pratt Ave, Suite B, Spokane, WA 99202
+Founded: 2009
+Website: enleaf.com
+Phone: (509) 416-6221
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/enleaf.html
+
+## Executech
+
+Managed IT services and IT support provider; this is its Spokane office.
+
+Industry: IT services
+District: Spokane Valley
+Address: 3808 N Sullivan Rd N-15, Ste 109, Spokane Valley, WA 99216
+Website: executech.com
+Phone: (509) 326-4500
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/executech.html
+
+## F5
+
+Application delivery and security: load balancing, API security, fraud prevention and zero-trust access for multicloud applications.
+
+Industry: Cybersecurity
+District: Spokane Valley
+Address: 12520 E Pinecroft Way, Spokane Valley, WA 99216
+Team: 6578 people
+Founded: 1996
+Website: f5.com
+Phone: (509) 343-3500
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/f5.html
+
+## Fatbeam
+
+Fiber-optic internet provider offering dedicated internet, dark fiber and network services to businesses and institutions across the western U.S.
+
+Industry: IT services
+District: Coeur d'Alene
+Address: 2065 W Riverstone Dr, Suite 202, Coeur d'Alene, ID 83814
+Founded: 2010
+Website: fatbeamfiber.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/fatbeam.html
+
+## Fisher's Technology
+
+Office technology dealer providing copiers, printers, document management and managed IT services; this is its Spokane-area branch.
+
+Industry: IT services
+District: Millwood
+Address: 7322 E Broadway Ave, Millwood, WA 99212
+Website: fisherstech.com
+Phone: (509) 922-4600
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/fisher-s-technology.html
+
+## Free Rein Marketing
+
+Boutique advertising, marketing and public relations agency serving the Tri-Cities.
+
+Industry: Marketing & design
+District: Kennewick
+Address: 7903 W Grandridge Blvd, Suite R, Kennewick, WA 99336
+Website: freereinmarketing.com
+Phone: (509) 521-2863
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/free-rein-marketing.html
+
+## Gestalt Diagnostics
+
+Digital pathology software, including the PathFlow platform and AI tools for reviewing pathology samples.
+
+Industry: Health tech
+District: Downtown
+Address: 801 S Stevens St, Spokane, WA 99204
+Website: gestaltdiagnostics.com
+Phone: (509) 492-4912
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/gestalt-diagnostics.html
+
+## GoToTags
+
+Makes NFC, UHF RFID and barcode software, hardware and encoded tags that link physical objects to digital identities.
+
+Industry: Developer tools
+District: Hillyard
+Address: 6402 N Helena St, Unit B, Spokane, WA 99217
+Founded: 2011
+Website: gototags.com
+Phone: (844) 632-8247
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/gototags.html
+
+## Gravity Jack
+
+Augmented and virtual reality studio that builds AR/VR experiences, mobile apps and websites for clients.
+
+Industry: Design studio
+District: Downtown
+Founded: 2009
+Website: gravityjack.com
+Phone: (509) 795-0043
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/gravity-jack.html
+
+## H-Source
+
+Runs an online marketplace where hospitals and surgery centers buy and sell surplus medical supplies, devices and equipment with each other.
+
+Industry: Health tech
+District: Downtown
+Founded: 2012
+Website: h-source.com
+Phone: (888) 900-4549
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/h-source.html
+
+## Hatch Advertising
+
+Advertising agency doing traditional and digital advertising, graphic and website design, and event marketing.
+
+Industry: Marketing & design
+District: Spokane Valley
+Address: 15413 E Valleyway Ave, #205A, Spokane Valley, WA
+Founded: 1954
+Website: hatchadvertising.com
+Phone: (509) 228-0654
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/hatch-advertising.html
+
+## Impact Laboratories
+
+For-profit arm of the nonprofit My Green Lab that verifies My Green Lab Certification and provides software for measuring sustainability in science labs.
+
+Industry: Life sciences
+District: Downtown
+Founded: 2024
+Website: impactlaboratories.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/impact-laboratories.html
+
+## Incluud
+
+AI decision-intelligence platform with products for regulatory compliance, contract management and NCAA athletic departments.
+
+Industry: Business software
+District: Coeur d'Alene
+Website: incluud.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/incluud.html
+
+## Innovation Collective
+
+Builds innovation economies for cities. It works across economic development, community development, and real estate and place (innovation districts, downtown revitalization), and runs Build_, its AI community operating system. Build_ has two parts: Build Cities, a live map of a city's projects, events and people, and UdayOS, an AI guide trained on each city's own data. Build_ says it is active in 62 cities on six continents. Coeur d'Alene is the headquarters and the model city.
+
+Industry: Business software
+District: Coeur d'Alene
+Founded: 2013
+Website: innovationcollective.co
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/innovation-collective.html
 
 ## IntelliTect
 
@@ -79,7 +479,7 @@ Utility and city resource measurement: electricity, gas and water metering, the 
 
 Industry: Cleantech
 District: Liberty Lake
-Address: 2111 N Molter Rd, Spokane, WA 99019
+Address: 2111 N Molter Rd, Liberty Lake, WA 99019
 Team: 5635 people
 Founded: 1977
 Website: itron.com
@@ -88,19 +488,173 @@ Phone: (509) 924-9900
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/itron.html
 
+## Jubilant HollisterStier
+
+Contract manufacturer of sterile injectable pharmaceuticals, providing fill-finish and lyophilization services.
+
+Industry: Life sciences
+District: Hillyard
+Address: 3525 N Regal St, Spokane, WA 99207
+Website: jublhs.com
+Phone: (509) 489-5656
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/jubilant-hollisterstier.html
+
 ## Key Tronic
 
 Electronic manufacturing services and computer peripherals.
 
 Industry: Advanced manufacturing
 District: Spokane Valley
-Address: 4424 N Sullivan Rd, Spokane, WA 99216
+Address: 4424 N Sullivan Rd, Spokane Valley, WA 99216
 Team: 5447 people
 Founded: 1969
 Website: keytronic.com
 
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/key-tronic.html
+
+## Kochava
+
+Mobile attribution and marketing analytics platform for advertisers and publishers.
+
+Industry: Data & analytics
+District: Sandpoint
+Founded: 2011
+Website: kochava.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/kochava.html
+
+## Krambu
+
+AI infrastructure company providing GPU clusters, colocation, cloud compute and dedicated servers from its own AI data centers.
+
+Industry: Developer tools
+District: Hayden
+Address: 7560 N Government Way #2, Hayden, ID 83815
+Website: krambu.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/krambu.html
+
+## Lee & Hayes
+
+Intellectual property law firm headquartered in Spokane, with offices in other U.S. cities.
+
+Industry: Legal & IP
+District: Downtown
+Address: 601 W Riverside Ave, Suite 1400, Spokane, WA 99201
+Website: leehayes.com
+Phone: (509) 324-9256
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/lee-and-hayes.html
+
+## Limelyte Technology Group
+
+Custom software development agency building enterprise, AI, title-industry and mobile applications.
+
+Industry: IT services
+District: Downtown
+Address: 28 W 3rd Ave, Ste 100, Spokane, WA 99201
+Website: limelyte.com
+Phone: (509) 241-0138
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/limelyte-technology-group.html
+
+## Litehouse Health
+
+Healthcare workforce platform that supplies hospitals with on-demand local nurses and staffing-management software.
+
+Industry: Health tech
+District: Downtown
+Founded: 2023
+Website: litehousehealth.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/litehouse-health.html
+
+## METER Group
+
+Makes soil, plant and weather sensors and instruments for environmental and food science research.
+
+Industry: Agtech
+District: Pullman
+Address: 2365 NE Hopkins Ct, Pullman, WA 99163
+Founded: 1983
+Website: metergroup.com
+Phone: (509) 332-2756
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/meter-group.html
+
+## Maker + Made
+
+Creative agency for branding, websites, packaging design and organic social strategy.
+
+Industry: Marketing & design
+District: Downtown
+Address: 304 W Pacific Ave, #290, Spokane, WA 99201
+Founded: 2019
+Website: maker--made.com
+Phone: (509) 934-0513
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/maker-made.html
+
+## Medcurity
+
+HIPAA compliance software and services, including security risk analysis, penetration testing and staff training for healthcare organizations.
+
+Industry: Cybersecurity
+District: Downtown
+Address: 157 S Howard St, Suite 603, Spokane, WA 99201
+Founded: 2018
+Website: medcurity.com
+Phone: (509) 867-3645
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/medcurity.html
+
+## Mivation
+
+Makes Racing Snail, software that automates producer commissions and tracks sales performance for insurance agencies.
+
+Industry: Business software
+District: North Monroe
+Address: 1312 N Monroe St, Suite 257, Spokane, WA 99201
+Website: mivation.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/mivation.html
+
+## Moat Metrics
+
+Competitive intelligence software, built on the Innovation Alpha AI platform bought from Aon, that analyzes companies' products, innovation and patent coverage.
+
+Industry: Data & analytics
+District: Downtown
+Founded: 2024
+Website: moatmetrics.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/moat-metrics.html
+
+## North by Northwest
+
+Full-service film and video production studio.
+
+Industry: Marketing & design
+District: Garland
+Address: 2614 N Monroe St, Spokane, WA 99205
+Website: nxnw.net
+Phone: (509) 324-2949
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/north-by-northwest.html
 
 ## Nuvodia
 
@@ -115,6 +669,226 @@ Phone: (509) 461-2596
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/nuvodia.html
 
+## Omniscia AI
+
+Builds AI agents that act as digital representatives for regulated organizations in healthcare, finance, sports and education.
+
+Industry: Health tech
+District: Hillyard
+Founded: 2020
+Website: omnisciahealth.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/omniscia-ai.html
+
+## OrganicNearby
+
+Online marketplace where local farms, bakers and makers sell to customers who pick up their orders weekly at a set place and time.
+
+Industry: E-commerce
+District: Downtown
+Website: organicnearby.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/organicnearby.html
+
+## PayTrace
+
+Payment gateway and B2B payment automation software for merchants, including credit card processing and accounts-receivable tools.
+
+Industry: Fintech
+District: Spokane Valley
+Address: 12709 E Mirabeau Pkwy, Building A, Suite 100, Spokane Valley, WA 99216
+Founded: 2004
+Website: paytrace.net
+Phone: (888) 806-6545
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/paytrace.html
+
+## Precision Quantomics
+
+Develops proteomics-based assay kits, reference standards and services for drug metabolism, transport and toxicity research.
+
+Industry: Life sciences
+District: Downtown
+Website: precisionquantomics.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/precision-quantomics.html
+
+## Propaganda Creative
+
+Full-service design agency doing brand identity, websites and digital advertising campaigns.
+
+Industry: Marketing & design
+District: Downtown
+Address: 123 S Wall St, Spokane, WA 99201
+Website: propagandacreative.com
+Phone: (509) 413-1719
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/propaganda-creative.html
+
+## Pullman Marketing
+
+Outsourced marketing department for businesses, with a focus on financial advisors: strategy, web design and digital marketing.
+
+Industry: Marketing & design
+District: Pullman
+Address: 1205 SE Professional Mall Blvd, Suite 113, Pullman, WA 99163
+Website: pullmanmarketing.com
+Phone: (509) 240-9735
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/pullman-marketing.html
+
+## Pyrotek
+
+Engineered materials and process equipment for aluminium and other high-temperature metal industries.
+
+Industry: Advanced manufacturing
+District: Downtown
+Address: 705 W 1st Ave, Spokane, WA 99201
+Founded: 1956
+Website: pyrotek.com
+Phone: (509) 926-6212
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/pyrotek.html
+
+## QUINN
+
+Full-service advertising agency.
+
+Industry: Marketing & design
+District: Garland
+Address: 727 W Garland Ave, Spokane, WA 99205
+Founded: 1969
+Website: quinn.agency
+Phone: (509) 327-6688
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/quinn.html
+
+## Qualterra
+
+Agtech company doing plant propagation, plant disease testing, biomass processing and biochar production.
+
+Industry: Agtech
+District: Pullman
+Team: 38 people
+Founded: 2010
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/qualterra.html
+
+## Quisenberry
+
+Spokane advertising agency.
+
+Industry: Marketing & design
+District: Downtown
+Website: quisenberry.net
+Phone: (509) 325-0701
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/quisenberry.html
+
+## REtokens
+
+Tokenizes real estate into digital securities and runs a marketplace for them through its FINRA-member broker-dealer, REtokens Capital.
+
+Industry: Fintech
+District: Spokane Valley
+Address: 12904 E Nora Ave, Ste C, Spokane Valley, WA 99216
+Website: retokens.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/retokens.html
+
+## Revival Tea Company
+
+Spokane craft tea company that blends and sells specialty teas online and through its tasting rooms and cafes.
+
+Industry: Food & beverage
+District: Downtown
+Address: 415 W Main Ave, Suite 100, Spokane, WA 99201
+Team: 25 people
+Founded: 2018
+Website: revivalteacompany.com
+Phone: (509) 903-6937
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/revival-tea-company.html
+
+## SEVEN2
+
+Digital creative agency producing online advertising, social content, video, voice skills and websites.
+
+Industry: Marketing & design
+District: East Central
+Address: 1722 E Sprague Ave, Suite 130, Spokane, WA 99202
+Website: seven2.com
+Phone: (509) 624-1222
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/seven2.html
+
+## Safeguard Equipment
+
+Makes hard-hat-mounted hazard detectors that warn utility and field workers of electrocution risk, falls and impacts.
+
+Industry: Advanced manufacturing
+District: Post Falls
+Address: 4202 W Riverbend Ave, Post Falls, ID 83854
+Founded: 2016
+Website: safeguardequipment.com
+Phone: (208) 773-9263
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/safeguard-equipment.html
+
+## Schweitzer Engineering Laboratories
+
+Designs and manufactures equipment for the protection, monitoring, control, automation and metering of electric power systems.
+
+Industry: Cleantech
+District: Pullman
+Address: 2350 NE Hopkins Ct, Pullman, WA 99163
+Founded: 1982
+Website: selinc.com
+Phone: (509) 332-1890
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/schweitzer-engineering-laboratories.html
+
+## Scout Discoveries
+
+Mineral exploration company that drills and defines precious and base metal targets in Idaho.
+
+Industry: Life sciences
+District: Coeur d'Alene
+Address: 520 Coeur d'Alene Ave, Coeur d'Alene, ID 83814
+Website: scoutdiscoveries.com
+Phone: (208) 551-3878
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/scout-discoveries.html
+
+## Slate Dental
+
+Makes the Slate electric flosser, a sonic flossing device with reusable floss heads.
+
+Industry: Health tech
+District: Perry District
+Address: 3010 S Southeast Blvd, Suite E, Spokane, WA 99223
+Founded: 2021
+Website: slateflosser.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/slate-dental.html
+
 ## Spiceology
 
 Direct-to-consumer spice company built on its own ecommerce stack.
@@ -126,3 +900,239 @@ Website: spiceology.com
 
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/spiceology.html
+
+## StaffReady
+
+Cloud-based clinical workforce management software for hospital departments, built by the Spokane company that began as Maplewood Software.
+
+Industry: Health tech
+District: Downtown
+Address: 421 W Main Ave #201, Spokane, WA 99201
+Founded: 1995
+Website: staffready.com
+Phone: 1-877-229-5230
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/staffready.html
+
+## Sweetbox Delivery
+
+Spokane bakery that delivers and ships stuffed bagels and sweets to homes and wholesale customers.
+
+Industry: Food & beverage
+District: Downtown
+Address: 221 W 1st Ave, Suite D, Spokane, WA
+Founded: 2014
+Website: sweetboxdelivery.com
+Phone: (509) 821-8100
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/sweetbox-delivery.html
+
+## Tamarack Aerospace Group
+
+Designs, certifies and installs Active Winglets and other aircraft modifications at Sandpoint Airport.
+
+Industry: Aerospace
+District: Sandpoint
+Address: 2021 Industrial Drive, Sandpoint, ID 83864
+Website: tamarackaero.com
+Phone: (208) 255-4400
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/tamarack-aerospace-group.html
+
+## The Woodshop
+
+Creative agency doing branding, web design, social media management and digital marketing.
+
+Industry: Marketing & design
+District: Downtown
+Address: 122 S Monroe St, Suite 203, Spokane, WA 99201
+Website: thewoodshopnw.com
+Phone: (509) 413-2082
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/the-woodshop.html
+
+## Treasury4
+
+Treasury management software that unifies cash, payments, debt and banking data for corporate finance teams.
+
+Industry: Fintech
+District: Kendall Yards
+Address: 835 N Post St, Spokane, WA 99201
+Team: 52 people
+Founded: 2020
+Website: treasury4.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/treasury4.html
+
+## Treatment Creative
+
+Worker-owned creative agency doing brand, design and creative strategy, a member of the Spokane Workers Cooperative.
+
+Industry: Marketing & design
+District: Downtown
+Founded: 2015
+Website: wearetreatment.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/treatment-creative.html
+
+## Univision Computers
+
+Managed IT services, cybersecurity, VoIP and business automation provider; this is its Liberty Lake office.
+
+Industry: IT services
+District: Liberty Lake
+Address: 23403 E Mission Ave, Ste 211, Liberty Lake, WA 99019
+Founded: 1989
+Website: univisioncomputers.com
+Phone: (509) 606-8876
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/univision-computers.html
+
+## Uptic Studios
+
+Spokane architecture and interior design firm doing residential, commercial and hospitality projects.
+
+Industry: Design studio
+District: University District
+Address: 402 E Sprague Ave, Spokane, WA 99202
+Website: upticstudios.com
+Phone: (509) 808-4006
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/uptic-studios.html
+
+## VATA7
+
+Makes app-controlled smart LED visibility gear, including helmets and visors, for outdoor and road use.
+
+Industry: Advanced manufacturing
+District: Downtown
+Website: vata7.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/vata7.html
+
+## VMRD
+
+Develops and manufactures veterinary diagnostic test kits and reagents, and provides biologics testing services.
+
+Industry: Life sciences
+District: Pullman
+Address: 425 NW Albion Dr, Pullman, WA 99163
+Founded: 1981
+Website: vmrd.com
+Phone: (509) 334-5815
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/vmrd.html
+
+## Vaagen Timbers
+
+Manufactures cross-laminated timber and glue-laminated mass timber products.
+
+Industry: Advanced manufacturing
+District: Colville
+Address: 1245 N Highway, Colville, WA 99114
+Website: vaagentimbers.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/vaagen-timbers.html
+
+## Vega Cloud
+
+Cloud cost optimization and automation software for multi-cloud environments.
+
+Industry: Developer tools
+District: Liberty Lake
+Address: 2780 N Eagle Ln, Liberty Lake, WA 99019
+Website: vegacloud.io
+Phone: (855) 701-8342
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/vega-cloud.html
+
+## Wagstaff
+
+Builds direct-chill casting machinery, automation and technology for aluminium billet and ingot production.
+
+Industry: Advanced manufacturing
+District: Spokane Valley
+Address: 3910 N Flora Rd, Spokane Valley, WA 99216
+Founded: 1946
+Website: wagstaff.com
+Phone: (509) 922-1404
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/wagstaff.html
+
+## Wipliance
+
+Home automation, audio-video and lighting-control integrator with a Spokane Valley showroom.
+
+Industry: IT services
+District: Spokane Valley
+Address: 12410 E Mirabeau Pkwy, Ste 100, Spokane Valley, WA 99216
+Website: wipliance.com
+Phone: (509) 893-5588
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/wipliance.html
+
+## Wonderboy Creative
+
+Small owner-led web design, development and SEO shop, with wine and winery marketing among its focus areas.
+
+Industry: Marketing & design
+District: Walla Walla
+Address: 213 S 2nd Ave, Walla Walla, WA 99362
+Website: wonderboycreative.com
+Phone: (509) 676-6268
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/wonderboy-creative.html
+
+## YB Marketing (Yakima Branding)
+
+Branding and digital marketing agency doing web design, SEO, Google Ads and social media.
+
+Industry: Marketing & design
+District: Yakima
+Website: yakimabranding.com
+Phone: (509) 901-9735
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/yb-marketing-yakima-branding.html
+
+## helveticka
+
+Branding and design studio doing identity systems, logos, copywriting and annual reports.
+
+Industry: Marketing & design
+District: Downtown
+Address: 121 W Pacific Ave, Suite 100, Spokane, WA 99201
+Website: helveticka.com
+Phone: (509) 624-4029
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/helveticka.html
+
+## xCraft
+
+Designs and builds drones for public safety, security, mapping, energy, light shows and defense.
+
+Industry: Aerospace
+District: Hayden
+Address: 3661 W Daugharty Loop, Hayden, ID 83835
+Founded: 2013
+Website: xcraft.io
+Phone: (208) 635-5336
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/xcraft.html
