@@ -16,7 +16,7 @@ import {
   type SizeBand,
   type Workplace,
 } from "../domain";
-import type { Figure, PastCompany, PastKind } from "../ecosystem";
+import type { Figure, Org, OrgKind, PastCompany, PastKind } from "../ecosystem";
 import { within, type Bounds } from "../map/projection";
 
 /**
@@ -44,6 +44,8 @@ export type Query = {
   openToOnly: boolean;
   /** History only: exits, the graveyard, or both. */
   pastKind: PastKind | "all";
+  /** Community only: investors, coworking, groups and the rest. */
+  orgKinds: OrgKind[];
   /**
    * The map viewport, when the person has asked for it. Null means the whole
    * region — panning the map does not silently drop results, it offers to.
@@ -60,6 +62,7 @@ export const EMPTY_QUERY: Query = {
   hiringOnly: false,
   openToOnly: false,
   pastKind: "all",
+  orgKinds: [],
   area: null,
 };
 
@@ -72,6 +75,7 @@ export const isFiltered = (q: Query) =>
   q.hiringOnly ||
   q.openToOnly ||
   q.pastKind !== "all" ||
+  q.orgKinds.length > 0 ||
   q.area !== null;
 
 const match = (haystack: string[], text: string) => {
@@ -197,6 +201,25 @@ export function filterFigures(
 }
 
 /* ---- the bar ----------------------------------------------------------- */
+
+export function filterOrgs(orgs: Org[], q: Query): Org[] {
+  return orgs.filter(
+    (o) =>
+      (q.orgKinds.length === 0 || q.orgKinds.includes(o.kind)) &&
+      match(
+        [
+          o.name,
+          o.kind,
+          o.what,
+          o.focus ?? "",
+          o.cadence ?? "",
+          o.city ?? "",
+          ...o.people,
+        ],
+        q.text,
+      ),
+  );
+}
 
 export function filterPast(past: PastCompany[], q: Query): PastCompany[] {
   return past.filter(

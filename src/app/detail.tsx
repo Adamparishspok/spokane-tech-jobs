@@ -41,12 +41,16 @@ import { useViewer } from "../db/auth";
 import { useDirectory } from "../db/directory";
 import {
   figure as findFigure,
+  figureNamed,
   isExact,
   lifespan,
   pastCompany,
   PAST_KIND_LABEL,
+  orgsOf,
   sourceLabel,
+  splitPerson,
   type Figure,
+  type Org,
   type PastCompany,
 } from "../ecosystem";
 import { useMine } from "../db/mine";
@@ -567,11 +571,14 @@ export function FigureDetail({
   figure,
   onCompany,
   onPast,
+  onOrg,
 }: {
   figure: Figure;
   onCompany: (company: Company) => void;
   onPast: (past: PastCompany) => void;
+  onOrg: (org: Org) => void;
 }) {
+  const orgs = orgsOf(figure);
   const { company } = useDirectory();
   const companies = figure.companies
     .map((id) => company(id))
@@ -650,6 +657,30 @@ export function FigureDetail({
                   }
                   title={p.name}
                   detail={`${PAST_KIND_LABEL[p.kind]} · ${lifespan(p)}`}
+                />
+              </li>
+            ))}
+          </ul>
+        </section>
+      )}
+
+      {orgs.length > 0 && (
+        <section className="mt-5">
+          <SectionTitle>In the community</SectionTitle>
+          <ul className="mt-2 grid grid-cols-[minmax(0,1fr)] gap-1">
+            {orgs.map((o) => (
+              <li key={o.id}>
+                <LinkedRecord
+                  onClick={() => onOrg(o)}
+                  mark={
+                    <Monogram
+                      name={o.name}
+                      hue={hueFor(o.name)}
+                      className="size-8"
+                    />
+                  }
+                  title={o.name}
+                  detail={o.kind}
                 />
               </li>
             ))}
@@ -800,6 +831,133 @@ export function PastDetail({
       )}
 
       <Sources urls={past.sources} />
+    </article>
+  );
+}
+
+/**
+ * A piece of the scene that is not an employer: a fund, a space, a meetup.
+ * What it does, when and where to find it, and who runs it.
+ */
+export function OrgDetail({
+  org,
+  onFigure,
+}: {
+  org: Org;
+  onFigure: (figure: Figure) => void;
+}) {
+  const site = org.website?.replace(/^https?:\/\//, "").replace(/\/$/, "");
+  return (
+    <article className="px-5 py-4">
+      <header className="flex items-start gap-3">
+        <Monogram
+          name={org.name}
+          hue={hueFor(org.name)}
+          className="size-12 text-base"
+        />
+        <div className="min-w-0 flex-1">
+          <h2 className="text-lg leading-tight font-semibold tracking-tight text-ink">
+            {org.name}
+          </h2>
+          <p className="text-[0.8125rem] text-ink-3">{org.kind}</p>
+        </div>
+      </header>
+
+      <p className="mt-4 text-sm leading-relaxed text-ink-2">{org.what}</p>
+
+      <dl className="mt-5 grid gap-4">
+        {org.cadence && (
+          <Fact icon={<CalendarDays />} label="When">
+            {org.cadence}
+          </Fact>
+        )}
+        {org.focus && (
+          <Fact icon={<Briefcase />} label="Focus">
+            {org.focus}
+          </Fact>
+        )}
+        {(org.address || org.city) && (
+          <Fact icon={<MapPin />} label="Where">
+            {org.address && (
+              <>
+                {org.address}
+                <br />
+              </>
+            )}
+            {org.city ?? "Spokane"}, WA
+          </Fact>
+        )}
+        {site && (
+          <Fact icon={<Globe />} label="Website">
+            <a
+              href={`https://${site}`}
+              className="inline-flex items-center gap-0.5 font-medium text-brand-2 underline-offset-2 hover:underline"
+              target="_blank"
+              rel="noreferrer noopener"
+            >
+              {site}
+              <ArrowUpRight className="size-3.5" />
+            </a>
+          </Fact>
+        )}
+      </dl>
+
+      {org.people.length > 0 && (
+        <section className="mt-5">
+          <SectionTitle>People</SectionTitle>
+          <ul className="mt-2 grid grid-cols-[minmax(0,1fr)] gap-1">
+            {org.people.map((entry) => {
+              const { name, role } = splitPerson(entry);
+              const f = figureNamed(name);
+              return (
+                <li key={entry}>
+                  {f ? (
+                    <LinkedRecord
+                      onClick={() => onFigure(f)}
+                      mark={
+                        <Monogram
+                          name={f.name}
+                          hue={hueFor(f.name)}
+                          round
+                          className="size-8"
+                        />
+                      }
+                      title={f.name}
+                      detail={role ?? f.role}
+                    />
+                  ) : (
+                    <div className="flex items-center gap-3 px-2 py-2">
+                      <Monogram
+                        name={name}
+                        hue={hueFor(name)}
+                        round
+                        className="size-8"
+                      />
+                      <div className="min-w-0 flex-1">
+                        <p className="truncate text-sm font-semibold text-ink">
+                          {name}
+                        </p>
+                        {role && (
+                          <p className="truncate text-[0.8125rem] text-ink-3">
+                            {role}
+                          </p>
+                        )}
+                      </div>
+                    </div>
+                  )}
+                </li>
+              );
+            })}
+          </ul>
+        </section>
+      )}
+
+      <Sources
+        urls={org.sources}
+        note={
+          org.lastActive ? `Last seen active: ${org.lastActive}.` : undefined
+        }
+      />
     </article>
   );
 }

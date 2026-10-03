@@ -1,0 +1,761 @@
+{
+  "_about": "Organisations that make up the Spokane-area tech and startup scene — investors, accelerators, coworking spaces, groups, events and spaces — researched from public sources 2026-10-03. Every entry carries its sources and the most recent dated sign it is still running. lng/lat are present only where the organisation has a sourced street address; a meetup or a fund without one has no pin.",
+  "_excluded": "Researched and left out: Barton Ventures and Tacoma Venture Fund (out-of-area investors, one Spokane deal each); SEEN (not tech-focused); Innovator Connect (no session since January 2025); Urbanova and INTENT (merged into Novara); SP3NW (defunct); Founders Live Spokane (no event since February 2024); Women Who Code (dissolved 2024); Spokane Linux User Group and Agile and Lean Spokane (inactive); Coeur d'Alene groups and events (outside the map).",
+  "organisations": [
+    {
+      "id": "spokane-angel-alliance",
+      "name": "Spokane Angel Alliance",
+      "kind": "Investor",
+      "what": "Angel network of more than 100 individual and institutional members, managed by Ignite Northwest, investing in emerging companies across Eastern Washington, Idaho and Montana. Startups that pitched to it raised a combined $26.4M in 2025.",
+      "website": "ignitenorthwest.com/funds",
+      "address": "518 W Riverside Ave",
+      "city": "Spokane",
+      "lng": -117.419881,
+      "lat": 47.658004,
+      "cadence": "Meets five times a year",
+      "focus": "Emerging companies in Eastern Washington, Idaho and Montana",
+      "people": [
+        "Tom Simpson (president)"
+      ],
+      "lastActive": "SAA Talks event, 30 September 2026",
+      "sources": [
+        "https://ignitenorthwest.com/funds",
+        "https://www.spokanejournal.com/articles/17940-startups-presenting-to-the-spokane-angel-alliance-raise-264m-in-2025",
+        "https://www.eventbrite.com/e/saa-talks-with-wayne-williams-tickets-2001000372981"
+      ]
+    },
+    {
+      "id": "kick-start-seed-funds",
+      "name": "Kick-Start Seed Funds",
+      "kind": "Investor",
+      "what": "Series of regional angel and venture funds managed by Ignite Northwest. Kick-Start V closed at $3.8M in 2023, and the funds have put $11M into 51 companies through 2025.",
+      "website": "ignitenorthwest.com/funds",
+      "address": "518 W Riverside Ave",
+      "city": "Spokane",
+      "lng": -117.419881,
+      "lat": 47.658004,
+      "cadence": null,
+      "focus": "$100K–$500K in equity or convertible notes; mostly Spokane, Coeur d'Alene and Sandpoint",
+      "people": [
+        "Tom Simpson"
+      ],
+      "lastActive": "Co-invested in Gestalt Diagnostics' Series A, April 2025",
+      "sources": [
+        "https://ignitenorthwest.com/funds",
+        "https://www.spokanejournal.com/articles/25-kick-start-v-venture-capital-fund-generates-3-8m",
+        "https://pathologyinpractice.com/story/48102/gestalt-raises-7-5-million-to-develop-ai-pathology"
+      ]
+    },
+    {
+      "id": "ignite-northwest",
+      "name": "Ignite Northwest",
+      "kind": "Investor",
+      "what": "Spokane nonprofit that funds, mentors and accelerates fast-growing regional companies. It runs loan funds — $12M across 33 companies through 2025 — manages Kick-Start and the Spokane Angel Alliance, and publishes the annual 25+5 list.",
+      "website": "ignitenorthwest.com",
+      "address": "518 W Riverside Ave",
+      "city": "Spokane",
+      "lng": -117.419881,
+      "lat": 47.658004,
+      "cadence": null,
+      "focus": "Loans of $100K–$500K for startups that cannot get bank credit",
+      "people": [
+        "Tom Simpson (CEO)",
+        "April Stoltz (CFO)",
+        "Richard Denenny (board chair)"
+      ],
+      "lastActive": "Ignite Loft events through 30 September 2026",
+      "sources": [
+        "https://ignitenorthwest.com/",
+        "https://ignitenorthwest.com/leadership",
+        "https://www.spokanejournal.com/articles/17989-spokanes-future-depends-on-success-of-startup-ecosystem"
+      ]
+    },
+    {
+      "id": "cowles-ventures",
+      "name": "Cowles Ventures",
+      "kind": "Investor",
+      "what": "Venture arm of Spokane's Cowles Co., investing directly in startups and through managed funds. It developed and runs FUEL Coworking downtown.",
+      "website": "cowlesventures.com",
+      "address": null,
+      "city": "Spokane",
+      "cadence": null,
+      "focus": null,
+      "people": [
+        "Skye Henderson (VP of venture investments)"
+      ],
+      "lastActive": "Led Gestalt Diagnostics' $7.5M Series A, April 2025",
+      "sources": [
+        "https://cowlesventures.com/",
+        "https://cowlesventures.com/our-leadership-team",
+        "https://pathologyinpractice.com/story/48102/gestalt-raises-7-5-million-to-develop-ai-pathology"
+      ]
+    },
+    {
+      "id": "avista-development",
+      "name": "Avista Development",
+      "kind": "Investor",
+      "what": "Subsidiary of Avista Corp. investing in early-stage companies with energy-industry products, such as the wildfire-defence startup Blaze Barrier.",
+      "website": null,
+      "address": null,
+      "city": "Spokane",
+      "cadence": null,
+      "focus": "Early-stage, including pre-seed; energy-industry technology",
+      "people": [
+        "Doug Forkner (strategic investment)"
+      ],
+      "lastActive": "Invested in Blaze Barrier's seed round, reported April 2026",
+      "sources": [
+        "https://www.spokanejournal.com/articles/16342-2024-rising-stars-doug-forkner",
+        "https://www.spokanejournal.com/articles/18181-hssa-awards-five-spokane-startups-325m"
+      ]
+    },
+    {
+      "id": "big-horn-ventures",
+      "name": "Big Horn Ventures",
+      "kind": "Investor",
+      "what": "Investor that led XpenseOne's seed round in December 2017.",
+      "website": null,
+      "address": null,
+      "city": null,
+      "cadence": null,
+      "focus": null,
+      "people": [],
+      "lastActive": "Led XpenseOne's seed round, December 2017 — no later Spokane deal found",
+      "sources": [
+        "https://www.spokanejournal.com/articles/4485-expense-reporting-software-company-starts-its-first-test"
+      ]
+    },
+    {
+      "id": "innovateinw",
+      "name": "InnovateINW",
+      "kind": "Accelerator",
+      "what": "The regional innovation initiative of LaunchPad Inland Northwest (launchpadinw.com now redirects here). Runs the Springboard founder-coaching programme, Springboard Scale, an AI & Cyber Network and regular ecosystem events.",
+      "website": "innovateinw.com",
+      "address": null,
+      "city": "Spokane",
+      "cadence": null,
+      "focus": "Clean tech, AI and robotics, cybersecurity, advanced manufacturing, bio and health sciences",
+      "people": [
+        "Bill Kalivas (executive director)",
+        "Allen Battle (co-founder)",
+        "Tim Krauss (Springboard director)"
+      ],
+      "lastActive": "AI ecosystem event, 23 July 2026; Pitch Jam, 8 October 2026",
+      "sources": [
+        "https://innovateinw.com/",
+        "https://innovateinw.com/about/",
+        "https://innovateinw.com/events/",
+        "https://www.spokanejournal.com/articles/17743-launchpad-inw-to-kick-off-initiative-inspired-by-momentum-87"
+      ]
+    },
+    {
+      "id": "health-sciences-and-services-authority-hssa",
+      "name": "Health Sciences & Services Authority (HSSA)",
+      "kind": "Accelerator",
+      "what": "Spokane County public development authority giving grants for bioscience-based economic development and access to care, through programmes including RD&C Spokane and Spokane Early Stage.",
+      "website": "hssaspokane.org",
+      "address": null,
+      "city": "Spokane",
+      "cadence": null,
+      "focus": "Bioscience and health startups; Level II matching grants up to $750K",
+      "people": [
+        "Erin Williams Hueter (executive director)"
+      ],
+      "lastActive": "$3.25M in Level II grants to five startups, April 2026",
+      "sources": [
+        "https://www.hssaspokane.org/",
+        "https://www.spokanejournal.com/articles/18181-hssa-awards-five-spokane-startups-325m"
+      ]
+    },
+    {
+      "id": "evergreen-bioscience-innovation-cluster",
+      "name": "Evergreen Bioscience Innovation Cluster",
+      "kind": "Accelerator",
+      "what": "Nonprofit life-science cluster, formed with Greater Spokane Inc., running a 5,000 sq ft incubator with wet-lab and office space in a former Neogen facility.",
+      "website": null,
+      "address": "10220 N Nevada St",
+      "city": "Spokane",
+      "lng": -117.395143,
+      "lat": 47.749802,
+      "cadence": null,
+      "focus": "Early-stage bioscience companies",
+      "people": [
+        "Michaele Armstrong (executive director)"
+      ],
+      "lastActive": "Founders, Funders & Friends event, 6 October 2026",
+      "sources": [
+        "https://www.spokanejournal.com/articles/17552-evergreen-bioscience-lands-first-tenant-community-backing",
+        "https://www.spokanejournal.com/articles/17217-two-spokane-innovation-clusters-land-state-funds"
+      ]
+    },
+    {
+      "id": "riverside-biotech-hub",
+      "name": "Riverside Biotech Hub",
+      "kind": "Accelerator",
+      "what": "Downtown life-science incubator opened in 2025, with shared wet lab, offices, coworking and equipment access for early-stage biotech startups.",
+      "website": "riversidebiotechhub.com",
+      "address": "502 W Riverside Ave, Suite 101B",
+      "city": "Spokane",
+      "lng": -117.419661,
+      "lat": 47.658001,
+      "cadence": null,
+      "focus": "Life-science startups and researchers",
+      "people": [
+        "Chandima Bandaranayaka (founder)",
+        "Kevin Lewis (co-founder)"
+      ],
+      "lastActive": "Cited as active by the Spokane Journal, May 2026",
+      "sources": [
+        "https://riversidebiotechhub.com/",
+        "https://www.spokanejournal.com/articles/17598-life-sciences-industry-gets-another-boost",
+        "https://www.spokanejournal.com/articles/18277-spokane-is-a-rising-star-in-states-life-science-sector"
+      ]
+    },
+    {
+      "id": "startup-spokane",
+      "name": "StartUp Spokane",
+      "kind": "Accelerator",
+      "what": "Free business-resource hub from Spokane Public Library and Spokane County Library District: business-librarian consultations, mentors, and premium research databases and planning tools.",
+      "website": "startupspokane.com",
+      "address": "906 W Main Ave (Central Library)",
+      "city": "Spokane",
+      "lng": -117.425151,
+      "lat": 47.659079,
+      "cadence": null,
+      "focus": null,
+      "people": [],
+      "lastActive": "Business Brew event, 3 October 2025",
+      "sources": [
+        "https://startupspokane.com/",
+        "https://www.spokanejournal.com/articles/17989-spokanes-future-depends-on-success-of-startup-ecosystem"
+      ]
+    },
+    {
+      "id": "gonzaga-hogan-entrepreneurial-leadership-program",
+      "name": "Gonzaga Hogan Entrepreneurial Leadership Program",
+      "kind": "Accelerator",
+      "what": "Gonzaga's honours entrepreneurship programme, founded in 2000, including the student-run New Venture Lab that consults for local entrepreneurs.",
+      "website": "gonzaga.edu/school-of-business-administration/undergraduate/hogan-entrepreneurial-leadership-program",
+      "address": null,
+      "city": "Spokane",
+      "cadence": null,
+      "focus": null,
+      "people": [
+        "Dan Stewart (director)"
+      ],
+      "lastActive": "Partner in a Spokane entrepreneur programme launched September 2025",
+      "sources": [
+        "https://www.spokanejournal.com/articles/17418-from-startups-to-ceos-spokane-invests-in-growth",
+        "https://www-td.gonzaga.edu/school-of-business-administration/hogan-leadership-program/new-venture-lab"
+      ]
+    },
+    {
+      "id": "novara-energy-alliance",
+      "name": "Novara Energy Alliance",
+      "kind": "Accelerator",
+      "what": "Energy-innovation nonprofit formed in 2026 from the merger of Urbanova and INTENT, backed by Avista, Itron and McKinstry, bringing industry, researchers, founders and investors together on energy and water problems.",
+      "website": "novaraenergyalliance.org",
+      "address": null,
+      "city": "Spokane",
+      "cadence": null,
+      "focus": "Grid modernisation, energy resilience, clean energy",
+      "people": [
+        "Kim Pearman-Gillman (interim CEO)",
+        "Latisha Hill (board chair)"
+      ],
+      "lastActive": "Inaugural Novara Energy Summit, 7 October 2026",
+      "sources": [
+        "https://novaraenergyalliance.org/",
+        "https://www.spokesman.com/stories/2026/may/21/avista-backed-novara-energy-alliance-to-promote-co/"
+      ]
+    },
+    {
+      "id": "fuel-coworking",
+      "name": "FUEL Coworking",
+      "kind": "Coworking",
+      "what": "Downtown coworking for startups, freelancers and remote teams, developed by Cowles Ventures: hot desks, dedicated desks, private offices and event space. Hosts many of the scene's events.",
+      "website": "fuelcoworking.com",
+      "address": "809 W Main Ave, Suite 212",
+      "city": "Spokane",
+      "lng": -117.423703,
+      "lat": 47.658971,
+      "cadence": null,
+      "focus": null,
+      "people": [
+        "Skye Henderson (Cowles Ventures)"
+      ],
+      "lastActive": "Remote Workers Mixer, 8 October 2026",
+      "sources": [
+        "https://www.fuelcoworking.com/",
+        "https://spokanejournal.com/articles/16421-coworking-envisioned-at-old-downtown-muv-fitness"
+      ]
+    },
+    {
+      "id": "burbity-workspaces",
+      "name": "Burbity Workspaces",
+      "kind": "Coworking",
+      "what": "Locally owned coworking with four locations — Liberty Lake, Sprague/University District, Sullivan Valley Commons and South Hill — offering desks, offices, meeting rooms and event space.",
+      "website": "burbity.com",
+      "address": "2818 N Sullivan Rd, Suite 100",
+      "city": "Spokane Valley",
+      "lng": -117.196669,
+      "lat": 47.682784,
+      "cadence": null,
+      "focus": null,
+      "people": [],
+      "lastActive": "Hosted an InnovateINW event, 23 July 2026",
+      "sources": [
+        "https://www.burbity.com/",
+        "https://www.eventbrite.com/e/innovateinw-building-the-regions-ai-ecosystem-tickets-1992582948237"
+      ]
+    },
+    {
+      "id": "fellow-coworking",
+      "name": "Fellow Coworking",
+      "kind": "Coworking",
+      "what": "Downtown shared office and coworking space in the Washington Cracker Co. building, open since 2013, with drop-in, hot-desk, permanent-desk and virtual memberships.",
+      "website": "workatfellow.com",
+      "address": "304 W Pacific Ave, Suite 210",
+      "city": "Spokane",
+      "lng": -117.416612,
+      "lat": 47.655161,
+      "cadence": null,
+      "focus": null,
+      "people": [],
+      "lastActive": "Hosted Business Brew, 3 October 2025",
+      "sources": [
+        "https://workatfellow.com/",
+        "https://www.spokanejournal.com/articles/2387-fellow-coworking-expands-in-washington-cracker-building"
+      ]
+    },
+    {
+      "id": "m-de-cowork",
+      "name": "MØDE Cowork",
+      "kind": "Coworking",
+      "what": "Coworking space at the Meadowwood Technology Campus in Liberty Lake; LaunchPad INW moved its headquarters there in 2024.",
+      "website": null,
+      "address": "2110 N Molter Rd",
+      "city": "Liberty Lake",
+      "lng": -117.089584,
+      "lat": 47.674506,
+      "cadence": null,
+      "focus": null,
+      "people": [
+        "Luke Kjar (founder)"
+      ],
+      "lastActive": "Hosted a Spokane Tech Community meetup, 31 July 2025",
+      "sources": [
+        "https://spokanejournal.com/articles/16146-launchpad-inw-moves-headquarters-to-liberty-lake",
+        "https://www.meetup.com/meetup-group-sdeepfce/events/309679518/"
+      ]
+    },
+    {
+      "id": "spokane-python-user-group",
+      "name": "Spokane Python User Group",
+      "kind": "Group",
+      "what": "Spokane's Python user group, covering Python, web development and open source, hosted by IntelliTect.",
+      "website": "spokanepython.com",
+      "address": null,
+      "city": "Spokane",
+      "cadence": "Talks around the third Tuesday monthly; Coffee & Code on the first Monday at 7am",
+      "focus": null,
+      "people": [],
+      "lastActive": "Coffee & Code, 5 October 2026",
+      "sources": [
+        "https://www.meetup.com/python-spokane/",
+        "https://intellitect.com/developer-tools/user-groups/"
+      ]
+    },
+    {
+      "id": "spokane-net-users-group",
+      "name": "Spokane .NET Users Group",
+      "kind": "Group",
+      "what": "User group for developers and architects working with Microsoft .NET, affiliated with the .NET Foundation and hosted by IntelliTect, with hybrid meetings and an annual .NET Conf.",
+      "website": "meetup.com/spokane-net-user-group",
+      "address": "1720 W 4th Ave (IntelliTect)",
+      "city": "Spokane",
+      "lng": -117.437433,
+      "lat": 47.652594,
+      "cadence": "First Tuesday monthly, 5pm",
+      "focus": null,
+      "people": [],
+      "lastActive": "Meeting, 6 October 2026",
+      "sources": [
+        "https://www.meetup.com/spokane-net-user-group/",
+        "https://intellitect.com/developer-tools/user-groups/"
+      ]
+    },
+    {
+      "id": "spokane-devops-meetup",
+      "name": "Spokane DevOps Meetup",
+      "kind": "Group",
+      "what": "Mostly online meetup on DevOps, automation, cloud and deployment, sponsored by IntelliTect.",
+      "website": "meetup.com/spokane-devops-meetup",
+      "address": null,
+      "city": "Spokane",
+      "cadence": "Fourth Tuesday monthly, noon",
+      "focus": null,
+      "people": [],
+      "lastActive": "Co-hosted .NET Conference Spokane, 13 January 2026",
+      "sources": [
+        "https://www.meetup.com/spokane-devops-meetup/",
+        "https://intellitect.com/developer-tools/user-groups/"
+      ]
+    },
+    {
+      "id": "spokane-go-users-group",
+      "name": "Spokane Go Users Group",
+      "kind": "Group",
+      "what": "Community for the Go programming language and software development generally: a little mingling, then a talk.",
+      "website": "meetup.com/spokane-go-users-group",
+      "address": null,
+      "city": "Spokane",
+      "cadence": null,
+      "focus": null,
+      "people": [],
+      "lastActive": "Joint meetup with the Python group, 22 September 2026",
+      "sources": [
+        "https://www.meetup.com/spokane-go-users-group/",
+        "https://www.meetup.com/spokane-go-users-group/events/316433734/"
+      ]
+    },
+    {
+      "id": "spokane-tech-community",
+      "name": "Spokane Tech Community",
+      "kind": "Group",
+      "what": "Meetup for people in the Spokane area who work in tech, used to, or are training for it — project showcases, discussions and socials.",
+      "website": "meetup.com/meetup-group-sdeepfce",
+      "address": null,
+      "city": "Spokane",
+      "cadence": null,
+      "focus": null,
+      "people": [],
+      "lastActive": "Event, 20 September 2026",
+      "sources": [
+        "https://www.meetup.com/meetup-group-sdeepfce/",
+        "https://www.meetup.com/meetup-group-sdeepfce/events/316405925/"
+      ]
+    },
+    {
+      "id": "spokanetech-org",
+      "name": "SpokaneTech.org",
+      "kind": "Group",
+      "what": "Volunteer community site and calendar listing the Inland Northwest's tech groups and their upcoming events, with a shared Discord.",
+      "website": "spokanetech.org",
+      "address": null,
+      "city": "Spokane",
+      "cadence": null,
+      "focus": null,
+      "people": [],
+      "lastActive": "Events listed from October 2026",
+      "sources": [
+        "https://spokanetech.org/"
+      ]
+    },
+    {
+      "id": "spokane-ux",
+      "name": "Spokane UX",
+      "kind": "Group",
+      "what": "Community of user-experience professionals and learners meeting for talks and socials.",
+      "website": "spokaneux.com",
+      "address": null,
+      "city": "Spokane",
+      "cadence": null,
+      "focus": null,
+      "people": [
+        "Brent Schneider (lead organiser)",
+        "Renae Wood (co-organiser)",
+        "Tyreil Poosri (co-organiser)"
+      ],
+      "lastActive": "Meetup, 15 January 2026",
+      "sources": [
+        "https://www.spokaneux.com/",
+        "https://www.meetup.com/spokane-ux/"
+      ]
+    },
+    {
+      "id": "dc509",
+      "name": "DC509",
+      "kind": "Group",
+      "what": "Spokane's DEF CON group, active since 2010: hacking, network security, hardware hacking and secure coding, for beginners and professionals.",
+      "website": "dc509.com",
+      "address": null,
+      "city": "Spokane",
+      "cadence": null,
+      "focus": null,
+      "people": [],
+      "lastActive": "Meeting, 24 September 2026",
+      "sources": [
+        "https://www.meetup.com/dc-509/",
+        "https://www.meetup.com/dc-509/events/316685079/"
+      ]
+    },
+    {
+      "id": "inch360",
+      "name": "INCH360",
+      "kind": "Group",
+      "what": "Inland Northwest Cyber Hub: a regional group connecting cybersecurity and compliance professionals, which runs an annual free security and AI conference.",
+      "website": "inch360.org",
+      "address": null,
+      "city": "Spokane",
+      "cadence": "Annual conference",
+      "focus": null,
+      "people": [
+        "Heather Stratford (co-founder)"
+      ],
+      "lastActive": "Annual conference, 16 September 2026",
+      "sources": [
+        "https://www.inch360.org/",
+        "https://www.eventbrite.com/e/4th-annual-cyber-security-event-by-inch360launchpadinw-tickets-1989625728112"
+      ]
+    },
+    {
+      "id": "spokane-ai",
+      "name": "Spokane AI",
+      "kind": "Group",
+      "what": "Organiser of the Spokane AI Mixer, networking for data scientists, computer scientists and machine-learning practitioners.",
+      "website": "eventbrite.com/o/spokane-ai-103647763911",
+      "address": null,
+      "city": "Spokane",
+      "cadence": null,
+      "focus": null,
+      "people": [],
+      "lastActive": "Spokane AI Mixer, 17 December 2025",
+      "sources": [
+        "https://www.eventbrite.com/e/spokane-ai-mixer-tickets-1969978727404"
+      ]
+    },
+    {
+      "id": "spokane-wordpress-meetup",
+      "name": "Spokane WordPress Meetup",
+      "kind": "Group",
+      "what": "Local group of WordPress developers, designers and publishers running WordPress Wednesday help desks and socials.",
+      "website": "meetup.com/spokane-wordpress-meetup",
+      "address": null,
+      "city": "Spokane",
+      "cadence": "Wednesdays, alternating 11am and 5pm",
+      "focus": null,
+      "people": [],
+      "lastActive": "Meetup, 21 January 2026",
+      "sources": [
+        "https://www.meetup.com/Spokane-WordPress-Meetup/"
+      ]
+    },
+    {
+      "id": "gdg-on-campus-ewu",
+      "name": "GDG on Campus EWU",
+      "kind": "Group",
+      "what": "Eastern Washington University's student Google Developer Group: ML workshops, tech hangouts and the Build With AI hackathon.",
+      "website": "gdg.community.dev/gdg-on-campus-eastern-washington-university-cheney-united-states",
+      "address": null,
+      "city": "Cheney",
+      "cadence": null,
+      "focus": null,
+      "people": [],
+      "lastActive": "Tech Hangout, 5 June 2026",
+      "sources": [
+        "https://gdg.community.dev/gdg-on-campus-eastern-washington-university-cheney-united-states/"
+      ]
+    },
+    {
+      "id": "interface-spokane",
+      "name": "INTERFACE Spokane",
+      "kind": "Event",
+      "what": "Annual one-day IT infrastructure and cybersecurity conference with talks, panels and exhibitors, at the Spokane Convention Center.",
+      "website": "f2fevents.com/event/spk26",
+      "address": "334 W Spokane Falls Blvd (Convention Center)",
+      "city": "Spokane",
+      "lng": -117.41754,
+      "lat": 47.660178,
+      "cadence": "Annual",
+      "focus": null,
+      "people": [],
+      "lastActive": "Scheduled 15 October 2026",
+      "sources": [
+        "https://horizon3.ai/event/interface-spokane-2026/",
+        "https://innovateinw.com/events/"
+      ]
+    },
+    {
+      "id": "inch360-cybersecurity-and-ai-conference",
+      "name": "INCH360 Cybersecurity & AI Conference",
+      "kind": "Event",
+      "what": "Free full-day regional cybersecurity and AI conference with regional and national speakers and CPE credit.",
+      "website": "inch360.org/events",
+      "address": "2426 N Discovery Pl (CenterPlace)",
+      "city": "Spokane Valley",
+      "lng": -117.224904,
+      "lat": 47.67829,
+      "cadence": "Annual",
+      "focus": null,
+      "people": [],
+      "lastActive": "Held 16 September 2026",
+      "sources": [
+        "https://www.inch360.org/events",
+        "https://www.eventbrite.com/e/4th-annual-cyber-security-event-by-inch360launchpadinw-tickets-1989625728112"
+      ]
+    },
+    {
+      "id": "saa-talks",
+      "name": "SAA Talks",
+      "kind": "Event",
+      "what": "Lunchtime speaker series from the Spokane Angel Alliance and Ignite Northwest at the Ignite Loft, featuring founders and investors.",
+      "website": "ignitenorthwest.com",
+      "address": "518 W Riverside Ave (Ignite Loft)",
+      "city": "Spokane",
+      "lng": -117.419881,
+      "lat": 47.658004,
+      "cadence": "Roughly monthly, Wednesdays at noon",
+      "focus": null,
+      "people": [],
+      "lastActive": "30 September 2026",
+      "sources": [
+        "https://www.eventbrite.com/e/saa-talks-with-wayne-williams-tickets-2001000372981",
+        "https://www.eventbrite.com/e/saa-talks-with-riggs-kubiak-tickets-1991294260738"
+      ]
+    },
+    {
+      "id": "ignite-25-5-awards",
+      "name": "Ignite 25+5 Awards",
+      "kind": "Event",
+      "what": "Annual recognition from Ignite Northwest and the Spokane Angel Alliance of the region's 25 most compelling emerging companies plus five startups to watch.",
+      "website": "ignitenorthwest.com",
+      "address": null,
+      "city": "Spokane",
+      "cadence": "Annual, February",
+      "focus": null,
+      "people": [],
+      "lastActive": "Awards, 12 February 2026",
+      "sources": [
+        "https://www.eventbrite.com/e/saa-255-awards-tickets-1980276315768",
+        "https://www.spokanejournal.com/articles/17989-spokanes-future-depends-on-success-of-startup-ecosystem"
+      ]
+    },
+    {
+      "id": "sparks-weekend",
+      "name": "Sparks Weekend",
+      "kind": "Event",
+      "what": "Ignite Northwest's three-day pitch competition, successor to Startup Weekend Spokane, with a $50K investment prize, held at the Catalyst Building.",
+      "website": "ignitenorthwest.com/apply-for-sparks",
+      "address": null,
+      "city": "Spokane",
+      "cadence": null,
+      "focus": null,
+      "people": [],
+      "lastActive": "Last citable edition: November 2023",
+      "sources": [
+        "https://www.spokanejournal.com/local-news/sparks-weekend-to-attract-30-plus-competitors",
+        "https://www.ignitenorthwest.com/apply-for-sparks"
+      ]
+    },
+    {
+      "id": "business-brew",
+      "name": "Business Brew",
+      "kind": "Event",
+      "what": "Informal early-morning coffee where business owners and founders put their questions to a business expert.",
+      "website": "eventbrite.com/o/business-brew-80655815043",
+      "address": "304 W Pacific Ave (Fellow Coworking)",
+      "city": "Spokane",
+      "lng": -117.416612,
+      "lat": 47.655161,
+      "cadence": "First Fridays, 7:30am (2025)",
+      "focus": null,
+      "people": [],
+      "lastActive": "3 October 2025",
+      "sources": [
+        "https://www.eventbrite.com/e/business-brew-startup-spokane-and-the-library-of-things-tickets-1743983434399"
+      ]
+    },
+    {
+      "id": "spark-central",
+      "name": "Spark Central",
+      "kind": "Space",
+      "what": "West Central nonprofit creative-learning centre with free high-speed internet, technology access, and robotics and coding programmes alongside arts and literary work.",
+      "website": "sparkcentral.org",
+      "address": "1214 W Summit Pkwy",
+      "city": "Spokane",
+      "cadence": null,
+      "focus": null,
+      "people": [],
+      "lastActive": "Hosted an EWU event, 20 February 2026",
+      "sources": [
+        "https://www.spokesman.com/calendar/events/119650/526291/",
+        "https://spokesman.com/stories/2018/may/07/spark-central-igniting-creativity"
+      ]
+    },
+    {
+      "id": "central-library-studios-and-business-lab",
+      "name": "Central Library studios & Business Lab",
+      "kind": "Space",
+      "what": "Spokane Public Library's downtown Central Library: three public media studios, a Maker Studio and a Business Lab for entrepreneurs. Home of StartUp Spokane.",
+      "website": "spokanelibrary.org",
+      "address": "906 W Main Ave",
+      "city": "Spokane",
+      "lng": -117.425151,
+      "lat": 47.659079,
+      "cadence": null,
+      "focus": null,
+      "people": [],
+      "lastActive": "Library report, 26 March 2026",
+      "sources": [
+        "https://www.spokanelibrary.org/?p=38708",
+        "https://startupspokane.com/"
+      ]
+    },
+    {
+      "id": "the-lab-at-north-spokane-library",
+      "name": "The Lab at North Spokane Library",
+      "kind": "Space",
+      "what": "Spokane County Library District classroom and makerspace with a laser cutter, VR headsets and media-transfer equipment, open-hours access and STEM programmes.",
+      "website": "scld.org/glowforge-help",
+      "address": "44 E Hawthorne Rd",
+      "city": "Spokane",
+      "lng": -117.409078,
+      "lat": 47.751108,
+      "cadence": "Maker Open Hours on the SCLD calendar",
+      "focus": null,
+      "people": [],
+      "lastActive": null,
+      "sources": [
+        "https://www.scld.org/glowforge-help",
+        "https://www.scld.org/locations/north-spokane/"
+      ]
+    },
+    {
+      "id": "catalyst-building",
+      "name": "Catalyst Building",
+      "kind": "Space",
+      "what": "Five-storey zero-energy building in the University District, home to EWU's computer science, engineering and cybersecurity labs, and a regular venue for ecosystem events and hackathons.",
+      "website": "ewu.edu/catalyst",
+      "address": "601 E Riverside Ave",
+      "city": "Spokane",
+      "lng": -117.403227,
+      "lat": 47.658108,
+      "cadence": null,
+      "focus": null,
+      "people": [],
+      "lastActive": "Spokane UX meetup, 20 November 2025",
+      "sources": [
+        "https://www.ewu.edu/catalyst/",
+        "https://www.meetup.com/spokane-ux/events/311866044/"
+      ]
+    },
+    {
+      "id": "spokane-university-district",
+      "name": "Spokane University District",
+      "kind": "Space",
+      "what": "770-acre innovation district beside downtown, home to the WSU Health Sciences, EWU and Gonzaga campuses, with a life-science hub planned on the river.",
+      "website": "spokaneudistrict.org",
+      "address": null,
+      "city": "Spokane",
+      "cadence": null,
+      "focus": null,
+      "people": [],
+      "lastActive": "Board meeting, 2 September 2026",
+      "sources": [
+        "https://www.spokaneudistrict.org/news",
+        "https://spokaneudistrict.org/uploads/document/files/object/09-02-26_UDPDA_Board_Book.pdf"
+      ]
+    }
+  ]
+}
