@@ -113,3 +113,17 @@ would invite the second ask a person makes when the first left no trace, and
 Playwright and writes `shots/out/`, failing loudly on any console or page error —
 it was carried over from the prototype, so its walk covers the screens as they
 were before the backend went in.
+
+## Tests
+
+```
+bun run test:e2e            # Playwright: behaviour, screenshots, live-map checks
+bun run test:e2e:update     # re-record screenshots after a change you meant
+```
+
+Most tests run against a fixed directory (`tests/e2e/fixtures`) with Mapbox
+switched off, so a screenshot diff means the interface changed, not the data.
+`mapbox.spec.ts` runs against real tiles and the live directory and checks the
+numbers that made the map feel janky: one camera move per click, none during
+the reader's own gesture, and no marker rebuilds while panning. Failures keep a
+trace: `npx playwright show-trace tests/results/<test>/trace.zip`.

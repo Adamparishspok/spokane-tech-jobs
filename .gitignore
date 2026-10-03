@@ -8,3 +8,5 @@ dist
 .DS_Store
 shots/out
 .env*
+tests/results
+tests/report

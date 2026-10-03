@@ -155,6 +155,9 @@ export function MapboxBasemap({
       }) as unknown as MapboxMap;
 
       map.current = instance;
+      /* The end-to-end tests measure camera behaviour on the live map
+         (tests/e2e/mapbox.spec.ts). Dev builds only. */
+      if (import.meta.env.DEV) (window as { __map?: unknown }).__map = instance;
 
       instance.on("style.load", () => retone(instance!));
       const report = () => {
