@@ -18,12 +18,21 @@ import {
   pastCompany,
   PAST_KIND_LABEL,
   isExact,
+  ORG_KINDS,
+  orgPlace,
   type Figure,
+  type Org,
   type PastCompany,
 } from "../ecosystem";
 import { Monogram, logoFor } from "../design/brand";
 import { FirstDay, NoResults, Panel, PanelHeader, Tag } from "./chrome";
-import { EMPTY_QUERY, FilterBar, SearchField, type Query } from "./filters";
+import {
+  EMPTY_QUERY,
+  FilterBar,
+  MultiFilter,
+  SearchField,
+  type Query,
+} from "./filters";
 
 /**
  * The browse panel — the left column, and half of the "one query, two views"
@@ -36,10 +45,11 @@ import { EMPTY_QUERY, FilterBar, SearchField, type Query } from "./filters";
  * list.
  */
 
-export type Tab = "companies" | "jobs" | "people" | "history";
+export type Tab = "companies" | "jobs" | "people" | "community" | "history";
 
 /** The two tabs read from the editorial records rather than the database. */
-export const isEditorial = (tab: Tab) => tab === "history";
+export const isEditorial = (tab: Tab) =>
+  tab === "community" || tab === "history";
 
 const TAB_COPY: Record<Tab, { title: string; noun: string; search: string }> = {
   companies: {
@@ -49,6 +59,11 @@ const TAB_COPY: Record<Tab, { title: string; noun: string; search: string }> = {
   },
   jobs: { title: "Jobs", noun: "role", search: "Search roles, companies…" },
   people: { title: "People", noun: "person", search: "Search people, skills…" },
+  community: {
+    title: "Community",
+    noun: "organisation",
+    search: "Search investors, groups, spaces…",
+  },
   history: {
     title: "History",
     noun: "company",
@@ -64,6 +79,7 @@ export function BrowsePanel({
   jobs,
   people,
   figures,
+  orgs,
   past,
   selectedId,
   hoveredId,
@@ -80,6 +96,7 @@ export function BrowsePanel({
   jobs: Job[];
   people: Person[];
   figures: Figure[];
+  orgs: Org[];
   past: PastCompany[];
   selectedId: string | null;
   hoveredId: string | null;
@@ -100,6 +117,7 @@ export function BrowsePanel({
     companies: companies.length,
     jobs: jobs.length,
     people: figures.length + people.length,
+    community: orgs.length,
     history: past.length,
   }[tab];
 
@@ -117,7 +135,9 @@ export function BrowsePanel({
         figures.filter((f) => !f.companies.some((id) => company(id))).length
       : tab === "history"
         ? past.filter((p) => !isExact(p)).length
-        : 0;
+        : tab === "community"
+          ? orgs.filter((o) => !orgPlace(o)).length
+          : 0;
 
   return (
     <Panel className="pointer-events-auto w-[23rem] shrink-0">
@@ -152,7 +172,16 @@ export function BrowsePanel({
         </div>
         {/* Filters are hidden on the first day. Four pills that can only ever
             narrow nothing to nothing are not a control, they are furniture. */}
-        {tab === "history" ? (
+        {tab === "community" ? (
+          <div className="mt-3 flex flex-wrap items-center gap-1.5">
+            <MultiFilter
+              label="Type"
+              options={ORG_KINDS}
+              value={query.orgKinds}
+              onChange={(orgKinds) => onQuery({ ...query, orgKinds })}
+            />
+          </div>
+        ) : tab === "history" ? (
           <div className="mt-3">
             <Segmented
               size="sm"
@@ -175,7 +204,14 @@ export function BrowsePanel({
         {offMap > 0 && (
           <p className="mt-2.5 flex items-start gap-1.5 text-[0.75rem] leading-relaxed text-ink-4">
             <MapPinOff className="mt-px size-3.5 shrink-0" />
-            {tab === "history" ? (
+            {tab === "community" ? (
+              <span>
+                <span className="num">{offMap}</span> of these{" "}
+                {offMap === 1 ? "has" : "have"} no fixed address — a meetup, an
+                event that moves, a fund — so{" "}
+                {offMap === 1 ? "it has" : "they have"} no pin on the map.
+              </span>
+            ) : tab === "history" ? (
               <span>
                 <span className="num">{offMap}</span> of these{" "}
                 {offMap === 1 ? "has" : "have"} no sourced street address, so{" "}
@@ -253,6 +289,17 @@ export function BrowsePanel({
                   company={p.companyId ? companyOf(p.companyId) : null}
                   selected={p.id === selectedId}
                   hovered={p.id === hoveredId}
+                  onSelect={onSelect}
+                  onHover={onHover}
+                />
+              ))}
+            {tab === "community" &&
+              orgs.map((o) => (
+                <OrgRow
+                  key={o.id}
+                  org={o}
+                  selected={o.id === selectedId}
+                  hovered={o.id === hoveredId}
                   onSelect={onSelect}
                   onHover={onHover}
                 />
@@ -510,6 +557,40 @@ function FigureRow({
           <p className="mt-1 truncate text-[0.75rem] text-ink-4">
             Built {built.join(" · ")}
           </p>
+        )}
+      </div>
+    </Row>
+  );
+}
+
+function OrgRow({
+  org,
+  ...rest
+}: {
+  org: Org;
+  selected: boolean;
+  hovered: boolean;
+  onSelect: (id: string) => void;
+  onHover: (id: string | null) => void;
+}) {
+  /* The second line says when or where, whichever a person would act on:
+     a meetup's night, a space's neighbourhood, a fund's stage. */
+  const detail = org.cadence ?? org.focus ?? org.city;
+  return (
+    <Row id={org.id} label={org.name} {...rest}>
+      <Monogram name={org.name} hue={hueFor(org.name)} />
+      <div className="min-w-0 flex-1">
+        <div className="flex items-baseline gap-2">
+          <h3 className="truncate text-sm font-semibold text-ink">
+            {org.name}
+          </h3>
+          <span className="ml-auto shrink-0">
+            <Tag>{org.kind}</Tag>
+          </span>
+        </div>
+        <p className="truncate text-[0.8125rem] text-ink-3">{org.what}</p>
+        {detail && (
+          <p className="mt-1 truncate text-[0.75rem] text-ink-4">{detail}</p>
         )}
       </div>
     </Row>

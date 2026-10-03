@@ -1,17 +1,19 @@
 /**
  * The ecosystem around the directory: who built it, and what came before.
  *
- * Two editorial records rather than two more tables. A community figure did
- * not sign up and a shut-down company cannot claim its listing, so neither has
- * the write path that put companies, jobs and people in Postgres. They are
+ * Editorial records rather than more tables. A community figure did not sign
+ * up, a shut-down company cannot claim its listing, and an angel group or a
+ * meetup is not an employer, so none of them has the write path that put
+ * companies, jobs and people in Postgres. They are
  * researched, sourced and reviewed in a diff like the research files in
- * `db/research`, and they ship with the app — which also means the History
- * tab, and the community figures on the People tab, work on a build with no
+ * `db/research`, and they ship with the app — which also means the History and
+ * Community tabs, and the figures on the People tab, work on a build with no
  * database at all.
  */
 
 import community from "./data/community.json";
 import history from "./data/history.json";
+import organisations from "./data/organisations.json";
 import type { LngLat } from "./map/projection";
 import { DISTRICTS, type DistrictId } from "./map/spokane";
 
@@ -59,7 +61,51 @@ export type PastCompany = {
   sources: string[];
 };
 
+/** What an organisation is to the scene. Also the Community tab's filter. */
+export type OrgKind =
+  "Investor" | "Accelerator" | "Coworking" | "Group" | "Event" | "Space";
+
+export const ORG_KINDS: OrgKind[] = [
+  "Investor",
+  "Accelerator",
+  "Coworking",
+  "Group",
+  "Event",
+  "Space",
+];
+
+export type Org = {
+  id: string;
+  name: string;
+  kind: OrgKind;
+  what: string;
+  website: string | null;
+  /** A street address, where the organisation has a place of its own. */
+  address: string | null;
+  city: string | null;
+  /** Only where a street address was sourced — a meetup has no pin. */
+  lng?: number;
+  lat?: number;
+  /** When it meets or runs, in the organiser's own terms. */
+  cadence: string | null;
+  /** For an investor: the stage and sector it says it backs. */
+  focus: string | null;
+  /** People who lead it, by name — linked when they are on the People tab. */
+  people: string[];
+  /** The most recent dated sign that it is still running. */
+  lastActive: string | null;
+  sources: string[];
+};
+
 export const FIGURES = community.people as Figure[];
+
+export const ORGS = (organisations.organisations as Org[])
+  .slice()
+  .sort(
+    (a, b) =>
+      ORG_KINDS.indexOf(a.kind) - ORG_KINDS.indexOf(b.kind) ||
+      a.name.localeCompare(b.name),
+  );
 
 /** Newest first: the graveyard reads as a timeline. */
 export const PAST = (history.companies as PastCompany[])
@@ -74,9 +120,24 @@ export const PAST = (history.companies as PastCompany[])
 
 const figureIndex = new Map(FIGURES.map((f) => [f.id, f]));
 const pastIndex = new Map(PAST.map((p) => [p.id, p]));
+const orgIndex = new Map(ORGS.map((o) => [o.id, o]));
+const figureByName = new Map(FIGURES.map((f) => [f.name, f]));
 
 export const figure = (id: string) => figureIndex.get(id) ?? null;
 export const pastCompany = (id: string) => pastIndex.get(id) ?? null;
+export const org = (id: string) => orgIndex.get(id) ?? null;
+
+/** The People-tab entry for a name on an organisation, where there is one. */
+export const figureNamed = (name: string) => figureByName.get(name) ?? null;
+
+/** The organisations a figure leads. */
+export const orgsOf = (f: Figure) =>
+  ORGS.filter((o) => o.people.includes(f.name));
+
+export const orgPlace = (o: Org): LngLat | null =>
+  o.lng !== undefined && o.lat !== undefined
+    ? { lng: o.lng, lat: o.lat }
+    : null;
 
 const districtAt = new Map(DISTRICTS.map((d) => [d.id, d.at]));
 

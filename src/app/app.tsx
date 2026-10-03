@@ -2,16 +2,20 @@ import { logoFor } from "../design/brand";
 import { PortalHost } from "@kit/lib/portal-host";
 import { ThemeProvider, useTheme } from "@kit/lib/theme";
 import { TooltipProvider } from "@kit/ui";
-import { Briefcase, Building2, History, Users } from "lucide-react";
+import { Briefcase, Building2, History, Sparkles, Users } from "lucide-react";
 import { useCallback, useEffect, useMemo, useRef, useState } from "react";
 import { hueFor, type Company, type Job, type Person } from "../domain";
 import {
   FIGURES,
+  ORGS,
   PAST,
+  org as findOrg,
+  orgPlace,
   figure as findFigure,
   pastCompany,
   placeOf,
   type Figure,
+  type Org,
   type PastCompany,
 } from "../ecosystem";
 import { signOut, useViewer } from "../db/auth";
@@ -33,6 +37,7 @@ import {
   DetailPanel,
   FigureDetail,
   JobDetail,
+  OrgDetail,
   PastDetail,
   PersonDetail,
 } from "./detail";
@@ -42,6 +47,7 @@ import {
   filterCompanies,
   filterFigures,
   filterJobs,
+  filterOrgs,
   filterPast,
   filterPeople,
   type Query,
@@ -71,6 +77,7 @@ const NAV: RailItem[] = [
   { id: "companies", label: "Companies", icon: <Building2 /> },
   { id: "jobs", label: "Jobs", icon: <Briefcase /> },
   { id: "people", label: "People", icon: <Users /> },
+  { id: "community", label: "Community", icon: <Sparkles /> },
   { id: "history", label: "History", icon: <History /> },
 ];
 
@@ -81,6 +88,7 @@ type Selection =
   | { kind: "person"; id: string }
   | { kind: "figure"; id: string }
   | { kind: "past"; id: string }
+  | { kind: "org"; id: string }
   | null;
 
 /* The panels' footprint, so `fit` and the map controls stay clear of them.
@@ -170,6 +178,7 @@ function Root() {
     [query, findCompany],
   );
   const shownPast = useMemo(() => filterPast(PAST, query), [query]);
+  const shownOrgs = useMemo(() => filterOrgs(ORGS, query), [query]);
 
   /**
    * Pins.
@@ -210,6 +219,27 @@ function Root() {
           unit: "matching role",
           hiring: true,
         };
+      });
+    }
+
+    if (tab === "community") {
+      /* Only the organisations with a place of their own: a meetup that
+         moves between venues has nowhere honest to put a pin. */
+      return shownOrgs.flatMap((o): Pin[] => {
+        const at = orgPlace(o);
+        return at
+          ? [
+              {
+                id: o.id,
+                at,
+                label: o.name,
+                logo: null,
+                hue: hueFor(o.name),
+                unit: "organisation",
+                hiring: false,
+              },
+            ]
+          : [];
       });
     }
 
@@ -260,6 +290,7 @@ function Root() {
     shownPeople,
     shownFigures,
     shownPast,
+    shownOrgs,
     companyOf,
     findCompany,
   ]);
@@ -281,14 +312,14 @@ function Root() {
           : selection?.kind === "figure"
             ? (findFigure(selection.id)?.companies[0] ?? null)
             : /* A History pin is the past company itself. */
-              selection?.kind === "past"
+              selection?.kind === "past" || selection?.kind === "org"
               ? selection.id
               : null;
 
   const hoveredCompanyId = useMemo(() => {
     if (!hovered) return null;
     if (findCompany(hovered)) return hovered;
-    if (pastCompany(hovered)) return hovered;
+    if (pastCompany(hovered) || findOrg(hovered)) return hovered;
     const fig = findFigure(hovered);
     if (fig) return fig.companies[0] ?? null;
     const job = jobs.find((j) => j.id === hovered);
@@ -302,6 +333,8 @@ function Root() {
   const select = (id: string) => {
     if (tab === "history" && pastCompany(id))
       return setSelection({ kind: "past", id });
+    if (tab === "community" && findOrg(id))
+      return setSelection({ kind: "org", id });
     if (tab === "jobs") {
       const job = jobs.find((j) => j.id === id);
       if (job) return setSelection({ kind: "job", id });
@@ -328,8 +361,11 @@ function Root() {
   useEffect(() => {
     if (!selectedCompanyId) return;
     const past = pastCompany(selectedCompanyId);
+    const o = findOrg(selectedCompanyId);
     const c: LngLat | null =
-      findCompany(selectedCompanyId) ?? (past && placeOf(past));
+      findCompany(selectedCompanyId) ??
+      (past && placeOf(past)) ??
+      (o && orgPlace(o));
     if (!c) return;
     /* A single point has no extent, so `fit` would take it to the top of the
        zoom range and land on a street corner. What is wanted is the
@@ -453,6 +489,7 @@ function Root() {
                   jobs={shownJobs}
                   people={shownPeople}
                   figures={shownFigures}
+                  orgs={shownOrgs}
                   past={shownPast}
                   selectedId={
                     selection?.kind === "company"
@@ -533,6 +570,17 @@ function Root() {
                         onPast={(p: PastCompany) =>
                           setSelection({ kind: "past", id: p.id })
                         }
+                        onOrg={(o: Org) =>
+                          setSelection({ kind: "org", id: o.id })
+                        }
+                      />
+                    )}
+                    {selected.kind === "org" && (
+                      <OrgDetail
+                        org={selected.org}
+                        onFigure={(f: Figure) =>
+                          setSelection({ kind: "figure", id: f.id })
+                        }
                       />
                     )}
                     {selected.kind === "past" && (
@@ -605,6 +653,11 @@ function resolve(selection: Selection, d: Directory) {
   if (selection.kind === "figure") {
     const figure = findFigure(selection.id);
     return figure ? ({ kind: "figure", figure } as const) : null;
+  }
+
+  if (selection.kind === "org") {
+    const o = findOrg(selection.id);
+    return o ? ({ kind: "org", org: o } as const) : null;
   }
 
   if (selection.kind === "past") {
