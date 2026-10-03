@@ -5,8 +5,9 @@
  * not sign up and a shut-down company cannot claim its listing, so neither has
  * the write path that put companies, jobs and people in Postgres. They are
  * researched, sourced and reviewed in a diff like the research files in
- * `db/research`, and they ship with the app — which also means the History and
- * Community tabs work on a build with no database at all.
+ * `db/research`, and they ship with the app — which also means the History
+ * tab, and the community figures on the People tab, work on a build with no
+ * database at all.
  */
 
 import community from "./data/community.json";
