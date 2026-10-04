@@ -94,16 +94,16 @@ export const JOBS = [
 
 export const PEOPLE = [
   {
-    id: "nick-smoot",
+    id: "riley-unclaimed",
     user_id: null,
-    name: "Nick Smoot",
+    name: "Riley Unclaimed",
     hue: 210,
-    role: "CEO, Innovation Collective",
+    role: "Founder, Example Co",
     company_id: null,
     district_id: "coeur-dalene",
     open_to: false,
     skills: [],
-    bio: "Founded Innovation Collective in Coeur d'Alene in 2013.",
+    bio: "Listed from public sources and not yet claimed.",
     years: 0,
     listed: true,
   },
@@ -159,7 +159,7 @@ export const PLACES = [
 ];
 
 export const PLACE_PEOPLE = [
-  { place_id: "indaba-coffee-broadway", person_id: "nick-smoot", role: "Regular" },
+  { place_id: "indaba-coffee-broadway", person_id: "riley-unclaimed", role: "Regular" },
 ];
 
 export const INDUSTRIES = [

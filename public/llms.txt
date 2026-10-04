@@ -40,6 +40,7 @@ Employers: adding a company and posting jobs are both free, and listings run
 - [CDL PowerSuite](https://spokanetechjobs.com/companies/cdl-powersuite.html): FMCSA-compliance software for CDL schools, motor carriers, fleets and government agencies
 - [Caava Design](https://spokanetechjobs.com/companies/caava-design.html): Branding and packaging design agency
 - [CarbonQuest](https://spokanetechjobs.com/companies/carbonquest.html): Modular distributed carbon capture systems that capture, separate and liquefy CO2 from buildings, biogas facilities and industrial sites
+- [Carrot](https://spokanetechjobs.com/companies/carrot.html): Automated cashback offers that bring local businesses steady revenue, paid per sale rather than per click
 - [Cascadia Custom Molding](https://spokanetechjobs.com/companies/cascadia-custom-molding.html): Thermoplastic injection molding, mold construction and prototyping for aerospace, medical and electronics OEMs; part of VRC Engineered Solutions
 - [Cerium Networks](https://spokanetechjobs.com/companies/cerium-networks.html): Managed IT services provider offering networking, communications, cybersecurity, data center and AI solutions
 - [Chief Architect](https://spokanetechjobs.com/companies/chief-architect.html): 3D architectural home design software for builders, remodelers, kitchen and bath designers, and DIY home enthusiasts (Home Designer)

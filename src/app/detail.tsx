@@ -52,6 +52,7 @@ import {
   orgsOf,
   sourceLabel,
   splitPerson,
+  FIGURES,
   type Figure,
   type Org,
   type PastCompany,
@@ -114,18 +115,25 @@ export function CompanyDetail({
   company,
   onJob,
   onPerson,
+  onFigure,
   onSignIn,
 }: {
   company: Company;
   onJob: (job: Job) => void;
   onPerson: (person: Person) => void;
+  onFigure: (figure: Figure) => void;
   onSignIn: () => void;
 }) {
   const { jobsAt, peopleAt } = useDirectory();
   const viewer = useViewer();
   const { hasClaimRequest, noteClaimRequest } = useMine();
   const jobs = jobsAt(company.id);
-  const people = peopleAt(company.id);
+  /* Everyone at the company: people who signed up and said so, and the
+     community figures whose record lists it — a founder belongs on their
+     company's page whichever way they got into the directory. */
+  const members = peopleAt(company.id);
+  const figures = FIGURES.filter((f) => f.companies.includes(company.id));
+  const people = [...figures, ...members];
   const [tab, setTab] = useState("about");
   const [claiming, setClaiming] = useState(false);
   const requested = hasClaimRequest(company.id);
@@ -304,7 +312,31 @@ export function CompanyDetail({
         {people.length > 0 && (
           <TabsContent value="people" className="p-2">
             <ul className="grid gap-1">
-              {people.map((person) => (
+              {figures.map((f) => (
+                <li key={f.id}>
+                  <button
+                    type="button"
+                    onClick={() => onFigure(f)}
+                    className="flex w-full items-center gap-3 rounded-card px-3 py-2.5 text-left transition-colors hover:bg-surface-2"
+                  >
+                    <Monogram
+                      name={f.name}
+                      hue={hueFor(f.name)}
+                      round
+                      className="size-9"
+                    />
+                    <div className="min-w-0 flex-1">
+                      <h4 className="truncate text-sm font-semibold text-ink">
+                        {f.name}
+                      </h4>
+                      <p className="truncate text-[0.8125rem] text-ink-3">
+                        {f.role}
+                      </p>
+                    </div>
+                  </button>
+                </li>
+              ))}
+              {members.map((person) => (
                 <li key={person.id}>
                   <button
                     type="button"

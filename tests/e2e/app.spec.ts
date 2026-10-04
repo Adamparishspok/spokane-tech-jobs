@@ -101,8 +101,8 @@ test.describe("community and people", () => {
   test("an unclaimed profile states only what is known", async ({ page }) => {
     await openApp(page);
     await tab(page, "People");
-    await page.getByRole("button", { name: "Nick Smoot" }).click();
-    await expect(page.getByText("Are you Nick?")).toBeVisible();
+    await page.getByRole("button", { name: "Riley Unclaimed" }).click();
+    await expect(page.getByText("Are you Riley?")).toBeVisible();
     for (const invented of ["Between roles", "0 years", "Get in touch"])
       await expect(page.getByText(invented)).toHaveCount(0);
   });

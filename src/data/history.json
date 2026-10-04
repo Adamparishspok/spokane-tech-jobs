@@ -1,324 +1,345 @@
 {
-  "_about": "Spokane-area tech companies that were acquired (exits) or shut down (the graveyard), researched from public sources 2026-10-02. Every entry carries its sources. A founding year nobody published is null, and so is an end year nobody published. lng/lat are present only where a street address was sourced. district is the area the company was in, from its sourced city or neighbourhood; an entry without lng/lat is drawn at that area's centre and labelled as approximate.",
-  "_excluded": "2nd Watch (Liberty Lake; now part of Ollion) — current structure only sourced from aggregators. Pacinian — Coeur d'Alene, outside the map. Triumph Composite Systems — wind-down year not sourced. Vega Cloud — in receivership in 2026, which is not the same as closed.",
-  "companies": [
-    {
-      "id": "stay-alfred",
-      "name": "Stay Alfred",
-      "kind": "closed",
-      "founded": 2010,
-      "year": 2020,
-      "place": "Downtown Spokane",
-      "district": "downtown",
-      "what": "Short-term rental company that put branded units inside downtown apartment buildings in cities across the US.",
-      "outcome": "Shut down permanently in May 2020 when pandemic travel bans erased its revenue and a planned ~$30M round fell through. It had raised about $60M and passed $100M in revenue in 2019.",
-      "people": [
-        "jordan-allen"
-      ],
-      "sources": [
-        "https://spokanejournal.com/local-news/stay-alfred-closes-its-doors-permanently",
-        "https://shorttermrentalz.com/news/stay-alfred-closure-permanent/"
-      ]
-    },
-    {
-      "id": "etailz",
-      "name": "etailz / Kaspien",
-      "kind": "exited",
-      "founded": 2008,
-      "year": 2016,
-      "place": "Spokane",
-      "district": "downtown",
-      "what": "E-commerce company, founded as GreenCupboards, that grew into a platform selling and managing brands on Amazon and other marketplaces.",
-      "outcome": "Acquired by Trans World Entertainment for $75M in 2016. The business was renamed Kaspien in 2020 and wound down, ceasing operations by May 2024.",
-      "people": [
-        "josh-neblett",
-        "tom-simpson"
-      ],
-      "sources": [
-        "https://www.geekwire.com/2016/qa-meet-30-year-old-entrepreneur-just-sold-profitable-e-commerce-company-cool-75m/",
-        "https://www.geekwire.com/2020/e-commerce-growth-platform-etailz-changes-name-kaspien/",
-        "https://www.sec.gov/Archives/edgar/data/795212/000114036123058191/ef20016853_ex99-1.htm"
-      ],
-      "acquirer": "Trans World Entertainment"
-    },
-    {
-      "id": "rohinni",
-      "name": "Rohinni",
-      "kind": "closed",
-      "founded": null,
-      "year": 2024,
-      "place": "Liberty Lake",
-      "district": "liberty-lake",
-      "what": "Mini- and microLED placement technology company that moved from Coeur d'Alene to Liberty Lake in 2022.",
-      "outcome": "Shut down and filed for bankruptcy in March 2024.",
-      "people": [],
-      "sources": [
-        "https://www.microled-info.com/rohinni-shuts-down-files-bankruptcy",
-        "https://www.spokanejournal.com/articles/1085-rohinni-hires-new-ceo-plans-move-to-liberty-lake"
-      ]
-    },
-    {
-      "id": "servatron",
-      "name": "Servatron",
-      "kind": "closed",
-      "founded": 2000,
-      "year": 2026,
-      "place": "Spokane Valley",
-      "district": "valley",
-      "what": "Electronics contract manufacturer spun out of Itron in 2000, later owned by UK-based Volex.",
-      "outcome": "Volex announced in 2026 that the Spokane Valley plant will close at the end of the year, moving work to Irvine, California; a WARN notice covers 124 layoffs.",
-      "people": [],
-      "sources": [
-        "https://www.spokanejournal.com/articles/18094-servatron-to-close-at-end-of-year",
-        "https://www.spokesman.com/stories/2026/jun/04/servatron-to-lay-off-124-end-spokane-valley-operat/"
-      ]
-    },
-    {
-      "id": "vivato",
-      "name": "Vivato",
-      "kind": "closed",
-      "founded": 2000,
-      "year": 2005,
-      "place": "Spokane",
-      "district": "downtown",
-      "what": "Wi-Fi equipment startup building long-range phased-array antennas with patented beam-steering; Spokane ran a downtown network on its gear.",
-      "outcome": "Ceased operations in December 2005 after five years and more than $65M of venture capital without commercial traction.",
-      "people": [],
-      "sources": [
-        "https://rcrwireless.com/20051226/archived-articles/vivato-pulls-the-plug",
-        "https://wifinetnews.com/archives/2005/12/vivato_ceases_operations.html"
-      ]
-    },
-    {
-      "id": "doorsey",
-      "name": "Doorsey",
-      "kind": "exited",
-      "founded": 2021,
-      "year": 2023,
-      "place": "Spokane Valley",
-      "district": "valley",
-      "what": "Auction-style residential real estate bidding platform, launched as Ruumr.",
-      "outcome": "Acquired by Dallas-based Auction.io in May 2023; terms undisclosed. Its founder joined Auction.io's board.",
-      "acquirer": "Auction.io",
-      "people": [
-        "jordan-allen"
-      ],
-      "sources": [
-        "https://spokanejournal.com/articles/15383-dallas-based-auction-io-acquires-property-tech-startup-doorsey",
-        "https://www.geekwire.com/2023/auction-hosting-site-auction-io-acquires-home-bidding-platform-doorsey/"
-      ]
-    },
-    {
-      "id": "risklens",
-      "name": "RiskLens",
-      "kind": "exited",
-      "founded": null,
-      "year": 2023,
-      "place": "Downtown Spokane",
-      "district": "downtown",
-      "what": "Cyber risk quantification software built on the FAIR standard.",
-      "outcome": "Acquired by Palo Alto-based Safe Security in mid-2023; terms undisclosed.",
-      "acquirer": "Safe Security",
-      "people": [],
-      "sources": [
-        "https://www.spokanejournal.com/articles/15291-risklens-acquired-by-california-company"
-      ]
-    },
-    {
-      "id": "paw-print-genetics",
-      "name": "Paw Print Genetics",
-      "kind": "exited",
-      "founded": 2012,
-      "year": 2021,
-      "place": "Spokane",
-      "district": "hillyard",
-      "lng": -117.40693,
-      "lat": 47.707847,
-      "what": "Genetic disease testing lab for dogs, cats and birds.",
-      "outcome": "Acquired by Neogen Corp. in a deal completed in late 2021; terms undisclosed. The brand is now merging into Orivet.",
-      "acquirer": "Neogen",
-      "people": [
-        "lisa-shaffer"
-      ],
-      "sources": [
-        "https://www.spokanejournal.com/local-news/paw-print-genetics-acquired-by-neogen/",
-        "https://www.spokanejournal.com/articles/7421-signature-genomics-co-founder-starts-new-venture"
-      ]
-    },
-    {
-      "id": "next-it",
-      "name": "Next IT",
-      "kind": "exited",
-      "founded": 2002,
-      "year": 2017,
-      "place": "Spokane Valley",
-      "district": "valley",
-      "what": "Conversational AI company behind enterprise virtual assistants for Alaska Airlines, Amtrak, Aetna and the US Army.",
-      "outcome": "Acquired by Verint Systems in December 2017 for $29.5M in cash plus up to $21.5M in contingent payments.",
-      "acquirer": "Verint",
-      "people": [
-        "fred-brown"
-      ],
-      "sources": [
-        "https://www.sec.gov/Archives/edgar/data/0001166388/000116638817000129/vrnt-dec1920178xkxexh991xp.htm",
-        "https://www.spokanejournal.com/articles/3483-new-york-tech-company-acquires-next-it"
-      ]
-    },
-    {
-      "id": "telect",
-      "name": "Telect",
-      "kind": "exited",
-      "founded": 1982,
-      "year": 2017,
-      "place": "Liberty Lake",
-      "district": "liberty-lake",
-      "what": "Maker of DC power distribution and fiber and copper interconnect products for telecom networks and data centers. Founded in Spokane Valley in 1982 by Bill and Judi Williams, it moved to Liberty Lake in 1989 and peaked in 2000 at $265M in revenue and 2,300 employees.",
-      "outcome": "Acquired by Amphenol in July 2017; terms undisclosed. Merged with All Systems Broadband in 2019 to form Amphenol Network Solutions, still in Liberty Lake.",
-      "acquirer": "Amphenol",
-      "successor": "amphenol-network-solutions",
-      "people": [],
-      "sources": [
-        "https://s21.q4cdn.com/564806605/files/doc_financials/2017/Updates-12032020/2017_07_26-PR-2Q-2017-Results.pdf",
-        "https://www.spokanejournal.com/articles/2566-telect-merges-with-sister-company",
-        "https://spokesman.com/stories/2017/jul/26/telect-history"
-      ]
-    },
-    {
-      "id": "ecova",
-      "name": "Advantage IQ / Ecova",
-      "kind": "exited",
-      "founded": null,
-      "year": 2014,
-      "place": "Spokane",
-      "district": "downtown",
-      "what": "Avista subsidiary providing energy and utility expense management for multi-site businesses; renamed Ecova in 2011.",
-      "outcome": "Avista sold Ecova to a subsidiary of GDF SUEZ (now ENGIE) for $335M in cash in July 2014. It continues as ENGIE Impact.",
-      "acquirer": "GDF SUEZ (ENGIE)",
-      "successor": "engie-impact",
-      "people": [],
-      "sources": [
-        "https://investor.avistacorp.com/node/17061/html",
-        "https://www.engieimpact.com/office/spokane-wa"
-      ]
-    },
-    {
-      "id": "purcell-systems",
-      "name": "Purcell Systems",
-      "kind": "exited",
-      "founded": null,
-      "year": 2013,
-      "place": "Spokane Valley",
-      "district": "valley",
-      "lng": -117.189153,
-      "lat": 47.684311,
-      "what": "Designer and manufacturer of thermally managed outdoor equipment and battery enclosures for telecom, utility, rail and military customers.",
-      "outcome": "Acquired by EnerSys for $115M in October 2013.",
-      "acquirer": "EnerSys",
-      "people": [],
-      "sources": [
-        "https://www.sec.gov/Archives/edgar/data/0001289308/000128930813000014/ens-09182013xex991.htm",
-        "https://www.batterypoweronline.com/news/enersys-completes-acquisition-of-purcell-systems-inc/"
-      ]
-    },
-    {
-      "id": "signature-genomics",
-      "name": "Signature Genomic Laboratories",
-      "kind": "exited",
-      "founded": 2003,
-      "year": 2010,
-      "place": "Spokane",
-      "district": "downtown",
-      "what": "Diagnostic genetics lab and the first to offer microarray-based testing for developmental disabilities.",
-      "outcome": "Acquired by PerkinElmer for $90M in cash in May 2010, with about 120 employees.",
-      "acquirer": "PerkinElmer",
-      "people": [
-        "lisa-shaffer"
-      ],
-      "sources": [
-        "https://www.sec.gov/Archives/edgar/data/0000031791/000119312510083051/d8k.htm",
-        "https://www.labmanager.com/perkinelmer-enters-into-agreement-to-acquire-signature-genomic-laboratories-19714"
-      ]
-    },
-    {
-      "id": "world-wide-packets",
-      "name": "World Wide Packets",
-      "kind": "exited",
-      "founded": 2000,
-      "year": 2008,
-      "place": "Spokane Valley",
-      "district": "valley",
-      "what": "Carrier Ethernet equipment maker that shipped more than 70,000 units to over 100 customers in 25 countries.",
-      "outcome": "Acquired by Ciena in March 2008 for roughly $290–305M in cash and stock; about 180 employees joined Ciena.",
-      "acquirer": "Ciena",
-      "people": [
-        "bernard-daines"
-      ],
-      "sources": [
-        "https://www.lightwaveonline.com/home/article/16662564/ciena-to-acquire-world-wide-packets",
-        "https://spokesman.com/stories/2008/jan/23/world-wide-packets-to-be-sold"
-      ]
-    },
-    {
-      "id": "itronix",
-      "name": "Itronix",
-      "kind": "exited",
-      "founded": null,
-      "year": 2005,
-      "place": "Spokane",
-      "district": "downtown",
-      "what": "Maker of rugged laptops and handheld computers for field workforces.",
-      "outcome": "Acquired by General Dynamics in 2005. GD closed the Spokane operation in 2009, costing about 380 local jobs, and retired the product line by 2013.",
-      "acquirer": "General Dynamics",
-      "people": [],
-      "sources": [
-        "https://spokesman.com/stories/2013/may/02/era-of-itronix-comes-to-an-end",
-        "https://circuitsassembly.com/ca/editorial/menu-news/16708-gd-itronix-set-to-close-spokane-plant-updated.html"
-      ]
-    },
-    {
-      "id": "packet-engines",
-      "name": "Packet Engines",
-      "kind": "exited",
-      "founded": null,
-      "year": 1998,
-      "place": "Spokane",
-      "district": "downtown",
-      "what": "Gigabit Ethernet networking hardware pioneer.",
-      "outcome": "Acquired by Alcatel in December 1998 at an implied value of about $315M. Alcatel ended production in 2001 and laid off about 150 Spokane employees.",
-      "acquirer": "Alcatel",
-      "people": [
-        "bernard-daines"
-      ],
-      "sources": [
-        "https://www.lightwaveonline.com/network-design/packet-transport/article/16655729/alcatel-paris-entered-into-a-definitive-agreement-to-purchase-packet-engines-inc-spokane-wa",
-        "https://www.lightreading.com/cable-technology/alcatel-s-packet-engines-break-down"
-      ]
-    },
-    {
-      "id": "xpenseone",
-      "name": "XpenseOne",
-      "kind": "closed",
-      "founded": 2014,
-      "year": 2020,
-      "place": "Downtown Spokane",
-      "district": "downtown",
-      "lng": -117.416896,
-      "lat": 47.653442,
-      "what": "Fintech startup, incorporated as Obloco Inc., that built white-label expense reporting and receipt-capture software banks offered to their small-business customers. Washington Trust Bank launched it in 2018.",
-      "outcome": "Raised a seed round led by Big Horn Ventures in December 2017 and was still operating in March 2020, in the Falls Fintech accelerator in Sioux Falls. It shut down later in 2020, according to co-founder Adam Parish.",
-      "people": [
-        "victor-yefremov",
-        "jim-schlosser",
-        "adam-parish"
-      ],
-      "sources": [
-        "https://www.spokanejournal.com/articles/4485-expense-reporting-software-company-starts-its-first-test",
-        "https://www.spokanejournal.com/articles/2861-spokane-fintech-startup-launches-expense-software",
-        "https://greaterspokane.org/blog/2015/01/entrepreneur-spotlight-oblocco/",
-        "https://finovate.com/category/obloco/",
-        "https://www.startupsiouxfalls.com/2020/03/falls-fintech-kicks-off-inaugural-accelerator-on-monday-march-9/",
-        "https://atomparish.com/work/xpenseone"
-      ]
-    }
-  ]
+ "_about": "Spokane-area tech companies that were acquired (exits) or shut down (the graveyard), researched from public sources 2026-10-02. Every entry carries its sources. A founding year nobody published is null, and so is an end year nobody published. lng/lat are present only where a street address was sourced. district is the area the company was in, from its sourced city or neighbourhood; an entry without lng/lat is drawn at that area's centre and labelled as approximate.",
+ "_excluded": "2nd Watch (Liberty Lake; now part of Ollion) — current structure only sourced from aggregators. Pacinian — Coeur d'Alene, outside the map. Triumph Composite Systems — wind-down year not sourced. Vega Cloud — in receivership in 2026, which is not the same as closed.",
+ "companies": [
+  {
+   "id": "stay-alfred",
+   "name": "Stay Alfred",
+   "kind": "closed",
+   "founded": 2010,
+   "year": 2020,
+   "place": "Downtown Spokane",
+   "district": "downtown",
+   "what": "Short-term rental company that put branded units inside downtown apartment buildings in cities across the US.",
+   "outcome": "Shut down permanently in May 2020 when pandemic travel bans erased its revenue and a planned ~$30M round fell through. It had raised about $60M and passed $100M in revenue in 2019.",
+   "people": [
+    "jordan-allen"
+   ],
+   "sources": [
+    "https://spokanejournal.com/local-news/stay-alfred-closes-its-doors-permanently",
+    "https://shorttermrentalz.com/news/stay-alfred-closure-permanent/"
+   ]
+  },
+  {
+   "id": "etailz",
+   "name": "etailz / Kaspien",
+   "kind": "exited",
+   "founded": 2008,
+   "year": 2016,
+   "place": "Spokane",
+   "district": "downtown",
+   "what": "E-commerce company, founded as GreenCupboards, that grew into a platform selling and managing brands on Amazon and other marketplaces.",
+   "outcome": "Acquired by Trans World Entertainment for $75M in 2016. The business was renamed Kaspien in 2020 and wound down, ceasing operations by May 2024.",
+   "people": [
+    "josh-neblett",
+    "tom-simpson"
+   ],
+   "sources": [
+    "https://www.geekwire.com/2016/qa-meet-30-year-old-entrepreneur-just-sold-profitable-e-commerce-company-cool-75m/",
+    "https://www.geekwire.com/2020/e-commerce-growth-platform-etailz-changes-name-kaspien/",
+    "https://www.sec.gov/Archives/edgar/data/795212/000114036123058191/ef20016853_ex99-1.htm"
+   ],
+   "acquirer": "Trans World Entertainment"
+  },
+  {
+   "id": "rohinni",
+   "name": "Rohinni",
+   "kind": "closed",
+   "founded": null,
+   "year": 2024,
+   "place": "Liberty Lake",
+   "district": "liberty-lake",
+   "what": "Mini- and microLED placement technology company that moved from Coeur d'Alene to Liberty Lake in 2022.",
+   "outcome": "Shut down and filed for bankruptcy in March 2024.",
+   "people": [
+    "jim-schlosser"
+   ],
+   "sources": [
+    "https://www.microled-info.com/rohinni-shuts-down-files-bankruptcy",
+    "https://www.spokanejournal.com/articles/1085-rohinni-hires-new-ceo-plans-move-to-liberty-lake"
+   ]
+  },
+  {
+   "id": "servatron",
+   "name": "Servatron",
+   "kind": "closed",
+   "founded": 2000,
+   "year": 2026,
+   "place": "Spokane Valley",
+   "district": "valley",
+   "what": "Electronics contract manufacturer spun out of Itron in 2000, later owned by UK-based Volex.",
+   "outcome": "Volex announced in 2026 that the Spokane Valley plant will close at the end of the year, moving work to Irvine, California; a WARN notice covers 124 layoffs.",
+   "people": [],
+   "sources": [
+    "https://www.spokanejournal.com/articles/18094-servatron-to-close-at-end-of-year",
+    "https://www.spokesman.com/stories/2026/jun/04/servatron-to-lay-off-124-end-spokane-valley-operat/"
+   ]
+  },
+  {
+   "id": "vivato",
+   "name": "Vivato",
+   "kind": "closed",
+   "founded": 2000,
+   "year": 2005,
+   "place": "Spokane",
+   "district": "downtown",
+   "what": "Wi-Fi equipment startup building long-range phased-array antennas with patented beam-steering; Spokane ran a downtown network on its gear.",
+   "outcome": "Ceased operations in December 2005 after five years and more than $65M of venture capital without commercial traction.",
+   "people": [],
+   "sources": [
+    "https://rcrwireless.com/20051226/archived-articles/vivato-pulls-the-plug",
+    "https://wifinetnews.com/archives/2005/12/vivato_ceases_operations.html"
+   ]
+  },
+  {
+   "id": "doorsey",
+   "name": "Doorsey",
+   "kind": "exited",
+   "founded": 2021,
+   "year": 2023,
+   "place": "Spokane Valley",
+   "district": "valley",
+   "what": "Auction-style residential real estate bidding platform, launched as Ruumr.",
+   "outcome": "Acquired by Dallas-based Auction.io in May 2023; terms undisclosed. Its founder joined Auction.io's board.",
+   "acquirer": "Auction.io",
+   "people": [
+    "jordan-allen"
+   ],
+   "sources": [
+    "https://spokanejournal.com/articles/15383-dallas-based-auction-io-acquires-property-tech-startup-doorsey",
+    "https://www.geekwire.com/2023/auction-hosting-site-auction-io-acquires-home-bidding-platform-doorsey/"
+   ]
+  },
+  {
+   "id": "risklens",
+   "name": "RiskLens",
+   "kind": "exited",
+   "founded": null,
+   "year": 2023,
+   "place": "Downtown Spokane",
+   "district": "downtown",
+   "what": "Cyber risk quantification software built on the FAIR standard.",
+   "outcome": "Acquired by Palo Alto-based Safe Security in mid-2023; terms undisclosed.",
+   "acquirer": "Safe Security",
+   "people": [],
+   "sources": [
+    "https://www.spokanejournal.com/articles/15291-risklens-acquired-by-california-company"
+   ]
+  },
+  {
+   "id": "paw-print-genetics",
+   "name": "Paw Print Genetics",
+   "kind": "exited",
+   "founded": 2012,
+   "year": 2021,
+   "place": "Spokane",
+   "district": "hillyard",
+   "lng": -117.40693,
+   "lat": 47.707847,
+   "what": "Genetic disease testing lab for dogs, cats and birds.",
+   "outcome": "Acquired by Neogen Corp. in a deal completed in late 2021; terms undisclosed. The brand is now merging into Orivet.",
+   "acquirer": "Neogen",
+   "people": [
+    "lisa-shaffer"
+   ],
+   "sources": [
+    "https://www.spokanejournal.com/local-news/paw-print-genetics-acquired-by-neogen/",
+    "https://www.spokanejournal.com/articles/7421-signature-genomics-co-founder-starts-new-venture"
+   ]
+  },
+  {
+   "id": "next-it",
+   "name": "Next IT",
+   "kind": "exited",
+   "founded": 2002,
+   "year": 2017,
+   "place": "Spokane Valley",
+   "district": "valley",
+   "what": "Conversational AI company behind enterprise virtual assistants for Alaska Airlines, Amtrak, Aetna and the US Army.",
+   "outcome": "Acquired by Verint Systems in December 2017 for $29.5M in cash plus up to $21.5M in contingent payments.",
+   "acquirer": "Verint",
+   "people": [
+    "fred-brown"
+   ],
+   "sources": [
+    "https://www.sec.gov/Archives/edgar/data/0001166388/000116638817000129/vrnt-dec1920178xkxexh991xp.htm",
+    "https://www.spokanejournal.com/articles/3483-new-york-tech-company-acquires-next-it"
+   ]
+  },
+  {
+   "id": "telect",
+   "name": "Telect",
+   "kind": "exited",
+   "founded": 1982,
+   "year": 2017,
+   "place": "Liberty Lake",
+   "district": "liberty-lake",
+   "what": "Maker of DC power distribution and fiber and copper interconnect products for telecom networks and data centers. Founded in Spokane Valley in 1982 by Bill and Judi Williams, it moved to Liberty Lake in 1989 and peaked in 2000 at $265M in revenue and 2,300 employees.",
+   "outcome": "Acquired by Amphenol in July 2017; terms undisclosed. Merged with All Systems Broadband in 2019 to form Amphenol Network Solutions, still in Liberty Lake.",
+   "acquirer": "Amphenol",
+   "successor": "amphenol-network-solutions",
+   "people": [],
+   "sources": [
+    "https://s21.q4cdn.com/564806605/files/doc_financials/2017/Updates-12032020/2017_07_26-PR-2Q-2017-Results.pdf",
+    "https://www.spokanejournal.com/articles/2566-telect-merges-with-sister-company",
+    "https://spokesman.com/stories/2017/jul/26/telect-history"
+   ]
+  },
+  {
+   "id": "ecova",
+   "name": "Advantage IQ / Ecova",
+   "kind": "exited",
+   "founded": null,
+   "year": 2014,
+   "place": "Spokane",
+   "district": "downtown",
+   "what": "Avista subsidiary providing energy and utility expense management for multi-site businesses; renamed Ecova in 2011.",
+   "outcome": "Avista sold Ecova to a subsidiary of GDF SUEZ (now ENGIE) for $335M in cash in July 2014. It continues as ENGIE Impact.",
+   "acquirer": "GDF SUEZ (ENGIE)",
+   "successor": "engie-impact",
+   "people": [],
+   "sources": [
+    "https://investor.avistacorp.com/node/17061/html",
+    "https://www.engieimpact.com/office/spokane-wa"
+   ]
+  },
+  {
+   "id": "purcell-systems",
+   "name": "Purcell Systems",
+   "kind": "exited",
+   "founded": null,
+   "year": 2013,
+   "place": "Spokane Valley",
+   "district": "valley",
+   "lng": -117.189153,
+   "lat": 47.684311,
+   "what": "Designer and manufacturer of thermally managed outdoor equipment and battery enclosures for telecom, utility, rail and military customers.",
+   "outcome": "Acquired by EnerSys for $115M in October 2013.",
+   "acquirer": "EnerSys",
+   "people": [],
+   "sources": [
+    "https://www.sec.gov/Archives/edgar/data/0001289308/000128930813000014/ens-09182013xex991.htm",
+    "https://www.batterypoweronline.com/news/enersys-completes-acquisition-of-purcell-systems-inc/"
+   ]
+  },
+  {
+   "id": "signature-genomics",
+   "name": "Signature Genomic Laboratories",
+   "kind": "exited",
+   "founded": 2003,
+   "year": 2010,
+   "place": "Spokane",
+   "district": "downtown",
+   "what": "Diagnostic genetics lab and the first to offer microarray-based testing for developmental disabilities.",
+   "outcome": "Acquired by PerkinElmer for $90M in cash in May 2010, with about 120 employees.",
+   "acquirer": "PerkinElmer",
+   "people": [
+    "lisa-shaffer"
+   ],
+   "sources": [
+    "https://www.sec.gov/Archives/edgar/data/0000031791/000119312510083051/d8k.htm",
+    "https://www.labmanager.com/perkinelmer-enters-into-agreement-to-acquire-signature-genomic-laboratories-19714"
+   ]
+  },
+  {
+   "id": "world-wide-packets",
+   "name": "World Wide Packets",
+   "kind": "exited",
+   "founded": 2000,
+   "year": 2008,
+   "place": "Spokane Valley",
+   "district": "valley",
+   "what": "Carrier Ethernet equipment maker that shipped more than 70,000 units to over 100 customers in 25 countries.",
+   "outcome": "Acquired by Ciena in March 2008 for roughly $290–305M in cash and stock; about 180 employees joined Ciena.",
+   "acquirer": "Ciena",
+   "people": [
+    "bernard-daines"
+   ],
+   "sources": [
+    "https://www.lightwaveonline.com/home/article/16662564/ciena-to-acquire-world-wide-packets",
+    "https://spokesman.com/stories/2008/jan/23/world-wide-packets-to-be-sold"
+   ]
+  },
+  {
+   "id": "itronix",
+   "name": "Itronix",
+   "kind": "exited",
+   "founded": null,
+   "year": 2005,
+   "place": "Spokane",
+   "district": "downtown",
+   "what": "Maker of rugged laptops and handheld computers for field workforces.",
+   "outcome": "Acquired by General Dynamics in 2005. GD closed the Spokane operation in 2009, costing about 380 local jobs, and retired the product line by 2013.",
+   "acquirer": "General Dynamics",
+   "people": [],
+   "sources": [
+    "https://spokesman.com/stories/2013/may/02/era-of-itronix-comes-to-an-end",
+    "https://circuitsassembly.com/ca/editorial/menu-news/16708-gd-itronix-set-to-close-spokane-plant-updated.html"
+   ]
+  },
+  {
+   "id": "packet-engines",
+   "name": "Packet Engines",
+   "kind": "exited",
+   "founded": null,
+   "year": 1998,
+   "place": "Spokane",
+   "district": "downtown",
+   "what": "Gigabit Ethernet networking hardware pioneer.",
+   "outcome": "Acquired by Alcatel in December 1998 at an implied value of about $315M. Alcatel ended production in 2001 and laid off about 150 Spokane employees.",
+   "acquirer": "Alcatel",
+   "people": [
+    "bernard-daines"
+   ],
+   "sources": [
+    "https://www.lightwaveonline.com/network-design/packet-transport/article/16655729/alcatel-paris-entered-into-a-definitive-agreement-to-purchase-packet-engines-inc-spokane-wa",
+    "https://www.lightreading.com/cable-technology/alcatel-s-packet-engines-break-down"
+   ]
+  },
+  {
+   "id": "xpenseone",
+   "name": "XpenseOne",
+   "kind": "closed",
+   "founded": 2014,
+   "year": 2020,
+   "place": "Downtown Spokane",
+   "district": "downtown",
+   "lng": -117.416896,
+   "lat": 47.653442,
+   "what": "Fintech startup, incorporated as Obloco Inc., that built white-label expense reporting and receipt-capture software banks offered to their small-business customers. Washington Trust Bank launched it in 2018.",
+   "outcome": "Raised a seed round led by Big Horn Ventures in December 2017 and was still operating in March 2020, in the Falls Fintech accelerator in Sioux Falls. It shut down later in 2020, according to co-founder Adam Parish.",
+   "people": [
+    "victor-yefremov",
+    "jim-schlosser",
+    "adam-parish",
+    "dan-watt",
+    "sam-fleming"
+   ],
+   "sources": [
+    "https://www.spokanejournal.com/articles/4485-expense-reporting-software-company-starts-its-first-test",
+    "https://www.spokanejournal.com/articles/2861-spokane-fintech-startup-launches-expense-software",
+    "https://greaterspokane.org/blog/2015/01/entrepreneur-spotlight-oblocco/",
+    "https://finovate.com/category/obloco/",
+    "https://www.startupsiouxfalls.com/2020/03/falls-fintech-kicks-off-inaugural-accelerator-on-monday-march-9/",
+    "https://atomparish.com/work/xpenseone"
+   ]
+  },
+  {
+   "id": "four-degrees-north-real-estate",
+   "name": "Four Degrees North Real Estate",
+   "kind": "exited",
+   "founded": null,
+   "year": null,
+   "place": "Spokane",
+   "district": "downtown",
+   "what": "Real estate company headed by Jim Schlosser.",
+   "outcome": "Sold, with Jim Schlosser leading it through the sale.",
+   "people": [
+    "jim-schlosser"
+   ],
+   "sources": [
+    "Directory owner, 2026-10-03"
+   ]
+  }
+ ]
 }

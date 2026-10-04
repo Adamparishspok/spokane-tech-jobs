@@ -63,6 +63,26 @@
         "https://www.atomicfi.com/careers",
         "Directory owner, 2026-10-03: co-founder Scott Weiner lives in Spokane"
       ]
+    },
+    {
+      "name": "Carrot",
+      "website": "meetcarrot.xyz",
+      "address": null,
+      "city": "Spokane",
+      "state": "WA",
+      "zip": null,
+      "district": "downtown",
+      "lng": null,
+      "lat": null,
+      "phone": null,
+      "founded": null,
+      "headcount": null,
+      "what": "Automated cashback offers that bring local businesses steady revenue, paid per sale rather than per click.",
+      "note": "Listed for its Spokane founder, McLean Reiter, per the directory's owner; the site gives no location, so the pin is Spokane's centre, not an office.",
+      "sources": [
+        "https://meetcarrot.xyz/",
+        "Directory owner, 2026-10-03: founded by McLean Reiter"
+      ]
     }
   ]
 }

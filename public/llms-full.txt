@@ -3,7 +3,7 @@
 Source: https://spokanetechjobs.com
 Licence: CC BY 4.0, attribution to Spokane Tech Jobs
 Generated: 2026-10-04
-Companies: 175. Open roles: 12.
+Companies: 176. Open roles: 12.
 
 Every field here is sourced from public records. A field that could not be
 sourced is absent rather than estimated.
@@ -354,6 +354,17 @@ Website: carbonquest.com
 
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/carbonquest.html
+
+## Carrot
+
+Automated cashback offers that bring local businesses steady revenue, paid per sale rather than per click.
+
+Industry: Business software
+District: Downtown
+Website: meetcarrot.xyz
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/carrot.html
 
 ## Cascadia Custom Molding
 

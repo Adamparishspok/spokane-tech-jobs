@@ -526,6 +526,7 @@ function Root() {
           onPerson={(person: Person) =>
             setSelection({ kind: "person", id: person.id })
           }
+          onFigure={(f: Figure) => setSelection({ kind: "figure", id: f.id })}
         />
       )}
       {selected.kind === "job" && (

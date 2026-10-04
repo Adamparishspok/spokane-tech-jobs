@@ -3,7 +3,7 @@
   "url": "https://spokanetechjobs.com",
   "licence": "CC BY 4.0",
   "attribution": "Spokane Tech Jobs",
-  "generated": "2026-10-04T01:35:24.202Z",
+  "generated": "2026-10-04T02:24:19.163Z",
   "note": "Every field is sourced or null. A null is a fact nobody has published, not a zero.",
   "companies": [
     {
@@ -572,6 +572,27 @@
       "city": "Spokane Valley",
       "state": "WA",
       "industry": "Cleantech"
+    },
+    {
+      "id": "carrot",
+      "name": "Carrot",
+      "tagline": "Automated cashback offers that bring local businesses steady revenue, paid per sale rather than per click",
+      "about": "Automated cashback offers that bring local businesses steady revenue, paid per sale rather than per click.",
+      "headcount": null,
+      "founded": null,
+      "stage": null,
+      "workplace": null,
+      "address": "",
+      "zip": "",
+      "lng": -117.4225,
+      "lat": 47.6555,
+      "website": "meetcarrot.xyz",
+      "phone": null,
+      "logo_url": "/logos/carrot.png",
+      "district": "Downtown",
+      "city": "Spokane",
+      "state": "WA",
+      "industry": "Business software"
     },
     {
       "id": "cascadia-custom-molding",
