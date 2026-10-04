@@ -126,14 +126,15 @@ export function Monogram({
         )}
         aria-hidden="true"
       >
-        {/* `contain`, not `cover`: a wordmark cropped to fill a circle is
-            usually the middle three letters of the company's name. */}
+        {/* Edge to edge. The logos are square icons (logo.dev serves them at
+            256px), so filling the shape crops nothing that matters, and a
+            logo floating in a padded well reads as a thumbnail of a logo. */}
         <img
           src={logo}
           alt=""
           loading="lazy"
           decoding="async"
-          className="size-full object-contain p-1"
+          className="size-full object-cover"
           onError={() => {
             FAILED.add(logo);
             setFailed(true);

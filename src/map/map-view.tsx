@@ -100,10 +100,11 @@ type Cluster = {
   pins: Pin[];
 };
 
-/* Two pins closer than this on screen are one mark. 52px is the marker's own
-   width plus a gap: below it the labels collide and the map stops being
-   readable, above it a genuinely separate company disappears into a cluster. */
-const CLUSTER_PX = 52;
+/* Two pins closer than this on screen are one mark. Less than a marker's own
+   width, on purpose: neighbouring logos may overlap by a third and both still
+   read, and a logo you can half-see says more than a "7" does. Only pins that
+   would sit almost on top of each other become a number. */
+const CLUSTER_PX = 22;
 
 function cluster(
   pins: Pin[],
@@ -113,7 +114,7 @@ function cluster(
 ): Cluster[] {
   /* Past this zoom every pin stands alone — the point of zooming in is to
      stop clustering. */
-  const clustering = zoom < 14.2;
+  const clustering = zoom < 12.5;
   const buckets = new Map<string, Cluster>();
 
   for (const pin of pins) {
@@ -965,9 +966,13 @@ function ClusterMarker({
      sum being non-zero there means people, not roles. */
   const hiring = cluster.pins.some((p) => p.hiring);
   const unit = cluster.pins[0]?.unit ?? "result";
-  /* A cluster grows with what is inside it, but slowly — a linear size makes
-     downtown a disc that covers the river. */
-  const size = 26 + Math.min(14, Math.log2(cluster.pins.length + 1) * 6);
+  /* Hiring members first, so a stack leads with the companies that have
+     something to offer. */
+  const ranked = [...cluster.pins].sort(
+    (a, b) => Number(b.hiring) - Number(a.hiring),
+  );
+  const shown = ranked.slice(0, 3);
+  const more = cluster.pins.length - shown.length;
 
   return (
     <button
@@ -983,17 +988,45 @@ function ClusterMarker({
         total,
       )}. Zoom in.`}
     >
+      {/* A stack of who is here rather than a bare number: the first three
+          members' logos overlapping, then how many more. A number says how
+          busy a spot is; faces say whose it is. */}
       <span
         className={cn(
-          "grid -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border-2 border-surface font-semibold shadow-[var(--shadow-marker)] transition-transform duration-150 hover:scale-110",
-          hiring ? "bg-hiring text-white" : "bg-ink-3 text-ground",
-          active && "scale-110 ring-2 ring-ink ring-offset-1",
+          "flex -translate-x-1/2 -translate-y-1/2 items-center transition-transform duration-150 hover:scale-105",
+          active && "scale-105",
         )}
-        style={{ width: size, height: size }}
       >
-        <span className="num text-[0.8125rem] leading-none">
-          {cluster.pins.length}
-        </span>
+        {shown.map((pin, i) => (
+          <span
+            key={pin.id}
+            className={cn(
+              "block rounded-full border-2 shadow-[var(--shadow-marker)]",
+              i > 0 && "-ml-3.5",
+              pin.hiring ? "border-hiring" : "border-solid",
+              active && "border-ink",
+            )}
+            style={{ zIndex: shown.length - i }}
+          >
+            <Monogram
+              name={pin.label}
+              hue={pin.hue}
+              logo={pin.logo}
+              round
+              className="size-8 bg-solid"
+            />
+          </span>
+        ))}
+        {more > 0 && (
+          <span
+            className={cn(
+              "num -ml-2 grid h-6 min-w-6 place-items-center rounded-full border-2 border-surface px-1.5 text-[0.6875rem] font-semibold shadow-[var(--shadow-marker)]",
+              hiring ? "bg-hiring text-white" : "bg-ink text-ground",
+            )}
+          >
+            +{more}
+          </span>
+        )}
       </span>
     </button>
   );
