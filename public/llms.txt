@@ -18,30 +18,40 @@ Employers: adding a company and posting jobs are both free, and listings run
 - [ALK Source Materials](https://spokanetechjobs.com/companies/alk-source-materials.html): ALK-Abello's source-materials laboratory, supplying pollens, mites, insect venoms and other allergen materials used in allergy immunotherapy and diagnostics
 - [ATC Manufacturing](https://spokanetechjobs.com/companies/atc-manufacturing.html): Thermoplastic composite parts for aerospace and defense
 - [Absco Solutions](https://spokanetechjobs.com/companies/absco-solutions.html): Designs, installs and services fire, life-safety and security systems for facilities; this is its Spokane office
+- [Accra-Fab](https://spokanetechjobs.com/companies/accra-fab.html): Contract manufacturer doing precision sheet metal fabrication, machining, welding, finishing and assembly for aerospace, communications, medical and energy customers
 - [Advanced Input Systems](https://spokanetechjobs.com/companies/advanced-input-systems.html): Human-machine interface hardware: keyboards, embedded computers and custom-designed input technologies
 - [Advantage Advertising](https://spokanetechjobs.com/companies/advantage-advertising.html): Full-service advertising agency doing video, digital and social marketing, web design and public relations
 - [Aerocet](https://spokanetechjobs.com/companies/aerocet.html): Builds aircraft floats, including the 1500 Amphib, 2200 and 3400 Amphib models, in Priest River
 - [Allele Diagnostics](https://spokanetechjobs.com/companies/allele-diagnostics.html): Clinical genetics laboratory providing microarray, karyotyping and FISH testing for neonatal, pediatric and prenatal patients
 - [Alphy](https://spokanetechjobs.com/companies/alphy.html): Makes HarmCheck, AI communication-compliance software that flags harmful or non-compliant messages before they are sent
 - [Alturas Analytics](https://spokanetechjobs.com/companies/alturas-analytics.html): Contract research lab providing LC-MS/MS and GC-MS/MS bioanalytical services for drug discovery and development
+- [Amphenol Network Solutions](https://spokanetechjobs.com/companies/amphenol-network-solutions.html): Network infrastructure hardware for telecom providers and data centers
 - [AmpliFi Advertising](https://spokanetechjobs.com/companies/amplifi-advertising.html): Advertising agency doing brand and digital strategy, logo, graphic and website design, TV/video and media strategy
 - [Anatek Labs](https://spokanetechjobs.com/companies/anatek-labs.html): Accredited analytical lab testing drinking water and wastewater, including PFAS, with labs in Moscow and Spokane
+- [AquiPor Technologies](https://spokanetechjobs.com/companies/aquipor-technologies.html): Permeable concrete pavement that absorbs, filters and redirects stormwater, with a lower-CO2 formulation than conventional concrete
 - [Atomic](https://spokanetechjobs.com/companies/atomic.html): Fintech whose APIs connect apps to people's payroll accounts, for direct deposit switching and income verification; one of its co-founders is based in Spokane
 - [Avista](https://spokanetechjobs.com/companies/avista.html): Investor-owned energy utility; runs a substantial in-house engineering and grid-technology organisation
 - [Bay Shore Systems](https://spokanetechjobs.com/companies/bay-shore-systems.html): U.S.-made foundation drilling rigs (LoDril excavator- and truck-mounted rigs) used for powerline tower and building foundations
+- [Berg Companies](https://spokanetechjobs.com/companies/berg-companies.html): Manufacturer of hard- and soft-wall shelter systems, fuel and water systems and power management, largely for military use
 - [BioTracking](https://spokanetechjobs.com/companies/biotracking.html): Developed and markets BioPRYN, an early blood-based pregnancy test for cattle and other ruminants, based on research at the University of Idaho
+- [Blaze Barrier](https://spokanetechjobs.com/companies/blaze-barrier.html): Portable, flame-activated wildfire suppression modules — a fire line in a box — that deploy on contact with flames to stop a fire's advance
 - [Buck Knives](https://spokanetechjobs.com/companies/buck-knives.html): Knife maker since 1902, headquartered and manufacturing in Post Falls since 2005; every knife carries its Forever Warranty
+- [BuyWander](https://spokanetechjobs.com/companies/buywander.html): Online auction marketplace reselling truckloads of retail returns through daily no-reserve local auctions, using AI-assisted scanning and sorting
 - [CDL PowerSuite](https://spokanetechjobs.com/companies/cdl-powersuite.html): FMCSA-compliance software for CDL schools, motor carriers, fleets and government agencies
 - [Caava Design](https://spokanetechjobs.com/companies/caava-design.html): Branding and packaging design agency
+- [CarbonQuest](https://spokanetechjobs.com/companies/carbonquest.html): Modular distributed carbon capture systems that capture, separate and liquefy CO2 from buildings, biogas facilities and industrial sites
 - [Cascadia Custom Molding](https://spokanetechjobs.com/companies/cascadia-custom-molding.html): Thermoplastic injection molding, mold construction and prototyping for aerospace, medical and electronics OEMs; part of VRC Engineered Solutions
 - [Cerium Networks](https://spokanetechjobs.com/companies/cerium-networks.html): Managed IT services provider offering networking, communications, cybersecurity, data center and AI solutions
 - [Chief Architect](https://spokanetechjobs.com/companies/chief-architect.html): 3D architectural home design software for builders, remodelers, kitchen and bath designers, and DIY home enthusiasts (Home Designer)
+- [Code Lexica](https://spokanetechjobs.com/companies/code-lexica.html): Tracks and cuts teams' AI coding-assistant spend, with a background sidecar for Claude Code, Codex and Cursor and a free usage dashboard
+- [Codespeed](https://spokanetechjobs.com/companies/codespeed.html): Digital agency building custom software, mobile apps, websites and web applications, with offices in Spokane and Coeur d'Alene
 - [Coffee Crafters](https://spokanetechjobs.com/companies/coffee-crafters.html): Fluid-bed coffee roasters, accessories and resources for starting or growing a roasting business
 - [Commerce Architects](https://spokanetechjobs.com/companies/commerce-architects.html): Ecommerce software development: application development, cloud modernisation and commerce platform work. B Corp
 - [Continuous Composites](https://spokanetechjobs.com/companies/continuous-composites.html): Makes continuous-fiber 3D printing machines (CF3D) and composite parts for aerospace and defense
 - [Corporate Tools](https://spokanetechjobs.com/companies/corporate-tools.html): Business infrastructure: entity formation, compliance filings, registered agent and the software behind them
 - [CredHub](https://spokanetechjobs.com/companies/credhub.html): Reports residents' rent payments to the major credit bureaus on behalf of property managers
 - [Credential Network](https://spokanetechjobs.com/companies/credential-network.html): Software that centralizes and automates credential verification for healthcare professionals and the organizations that employ them
+- [Credit Gnomes](https://spokanetechjobs.com/companies/credit-gnomes.html): Reports residents' rent payments to credit bureaus on behalf of property managers, helping residents build credit
 - [Cyan](https://spokanetechjobs.com/companies/cyan.html): Independent video game developer and publisher of the Myst series of adventure games
 - [CyberInsider](https://spokanetechjobs.com/companies/cyberinsider.html): Independent cybersecurity and digital privacy news site that publishes guides, tutorials and reviews
 - [Cōpow Foods](https://spokanetechjobs.com/companies/c-pow-foods.html): Organic prepared-meal company with cafés in Coeur d'Alene
@@ -56,6 +66,7 @@ Employers: adding a company and posting jobs are both free, and listings run
 - [Empire Airlines](https://spokanetechjobs.com/companies/empire-airlines.html): Regional airline and heavy aircraft maintenance operation at Coeur d'Alene Airport, which has also developed agricultural drone operations
 - [Encoder Products Company](https://spokanetechjobs.com/companies/encoder-products-company.html): Designs and manufactures incremental and absolute rotary encoders for motion control, from its Sagle headquarters
 - [Enleaf](https://spokanetechjobs.com/companies/enleaf.html): Digital marketing agency doing SEO, PPC and web design
+- [ExceptioNULL Games](https://spokanetechjobs.com/companies/exceptionull-games.html): Independent game developer making mobile and web games, including the boxing games Election Year Knockout and Knockout 2
 - [Executech](https://spokanetechjobs.com/companies/executech.html): Managed IT services and IT support provider; this is its Spokane office
 - [F5](https://spokanetechjobs.com/companies/f5.html): Application delivery and security: load balancing, API security, fraud prevention and zero-trust access for multicloud applications
 - [FMI-EPS](https://spokanetechjobs.com/companies/fmi-eps.html): Expanded-polystyrene foam molding for insulation and packaging products
@@ -63,24 +74,33 @@ Employers: adding a company and posting jobs are both free, and listings run
 - [Fisher's Technology](https://spokanetechjobs.com/companies/fisher-s-technology.html): Office technology dealer providing copiers, printers, document management and managed IT services; this is its Spokane-area branch
 - [Flame Innovation](https://spokanetechjobs.com/companies/flame-innovation.html): Family-owned maker of wood stoves and the patented Revolve smokeless fire pit, whose airfoil design spins the flame for cleaner combustion
 - [Free Rein Marketing](https://spokanetechjobs.com/companies/free-rein-marketing.html): Boutique advertising, marketing and public relations agency serving the Tri-Cities
+- [FunnerSoft](https://spokanetechjobs.com/companies/funnersoft.html): Independent game studio founded by Lester Bloom; released the VR game PlanTechtor in 2019 and is developing a game built around paper-doll avatar customisation
+- [General Hypersonics](https://spokanetechjobs.com/companies/general-hypersonics.html): Develops reusable, rocketless launch systems based on a ram accelerator, for hypersonic flight testing and suborbital launch
 - [Genius Gourmet](https://spokanetechjobs.com/companies/genius-gourmet.html): Low-sugar, low-carb protein snacks and drinks
 - [Gestalt Diagnostics](https://spokanetechjobs.com/companies/gestalt-diagnostics.html): Digital pathology software, including the PathFlow platform and AI tools for reviewing pathology samples
 - [Gierd](https://spokanetechjobs.com/companies/gierd.html): Software that helps brands scale sales on online marketplaces such as Amazon, eBay and Walmart, with tools for pricing, demand forecasting, fraud protection and sales reconciliation
+- [Glixin](https://spokanetechjobs.com/companies/glixin.html): Screens API and AI-agent transactions by intent, separating legitimate activity from bots, fraud and wasteful automated calls
 - [Global Navigation Sciences](https://spokanetechjobs.com/companies/global-navigation-sciences.html): USB power and LED lighting products for commercial and military aircraft, including retrofit light-and-USB units
 - [GoToTags](https://spokanetechjobs.com/companies/gototags.html): Makes NFC, UHF RFID and barcode software, hardware and encoded tags that link physical objects to digital identities
+- [Grand Fir Analytics](https://spokanetechjobs.com/companies/grand-fir-analytics.html): Independent economic research and data analytics firm serving policymakers in Washington and the Spokane area
 - [Granite Aviation](https://spokanetechjobs.com/companies/granite-aviation.html): Sandpoint Airport's fixed base operator, offering aircraft maintenance, flight training, aircraft rental and deicing
 - [Gravity Jack](https://spokanetechjobs.com/companies/gravity-jack.html): Augmented and virtual reality studio that builds AR/VR experiences, mobile apps and websites for clients
 - [Ground Force Worldwide](https://spokanetechjobs.com/companies/ground-force-worldwide.html): Engineers mining support equipment, including water trucks, fuel and lube bodies, dump bodies and cable-handling systems, from an 80,000 sq ft Post Falls factory
 - [H-Source](https://spokanetechjobs.com/companies/h-source.html): Runs an online marketplace where hospitals and surgery centers buy and sell surplus medical supplies, devices and equipment with each other
+- [Haploos](https://spokanetechjobs.com/companies/haploos.html): Virtual-card and payment services for government agencies and public housing authorities
 - [HardTarget](https://spokanetechjobs.com/companies/hardtarget.html): Cybersecurity governance for pro athletes, entertainers, high-net-worth families and family offices, taught through gamified learning
 - [Hatch Advertising](https://spokanetechjobs.com/companies/hatch-advertising.html): Advertising agency doing traditional and digital advertising, graphic and website design, and event marketing
+- [Hi-Rel Laboratories](https://spokanetechjobs.com/companies/hi-rel-laboratories.html): Tests and analyses microelectronic components for space and high-reliability systems, including parts for NASA's Artemis programme
 - [Hillcrest Aircraft Company](https://spokanetechjobs.com/companies/hillcrest-aircraft-company.html): Aviation services at Lewiston's airport: fixed base operator, aircraft maintenance, avionics and flight training
 - [Historik](https://spokanetechjobs.com/companies/historik.html): Mobile app and CMS platform that brings local history to life where it happened, now focused on Coeur d'Alene
+- [Iasis Molecular Sciences](https://spokanetechjobs.com/companies/iasis-molecular-sciences.html): Develops antimicrobial medical devices and coatings, including a silver-ion Foley catheter, to prevent healthcare-associated infections
 - [Impact Laboratories](https://spokanetechjobs.com/companies/impact-laboratories.html): For-profit arm of the nonprofit My Green Lab that verifies My Green Lab Certification and provides software for measuring sustainability in science labs
 - [Incluud](https://spokanetechjobs.com/companies/incluud.html): AI decision-intelligence platform with products for regulatory compliance, contract management and NCAA athletic departments
+- [Infinetix](https://spokanetechjobs.com/companies/infinetix.html): Contract electrical engineering firm taking electronic products from concept to production
 - [Innovation Collective](https://spokanetechjobs.com/companies/innovation-collective.html): Builds innovation economies for cities
 - [IntelliTect](https://spokanetechjobs.com/companies/intellitect.html): Software architecture and development consultancy; custom development, data and AI, cloud and integration
 - [Intermax Networks](https://spokanetechjobs.com/companies/intermax-networks.html): Locally owned provider of fiber and fixed-wireless internet, hosted voice and managed IT services across the Inland Pacific Northwest
+- [Ithos Wellness](https://spokanetechjobs.com/companies/ithos-wellness.html): Digital health company building North, a behavioural-health navigation platform for veterans, first responders, healthcare workers and other high-stress groups
 - [Itron](https://spokanetechjobs.com/companies/itron.html): Utility and city resource measurement: electricity, gas and water metering, the networks behind them, and utility-grade SaaS
 - [Jubilant HollisterStier](https://spokanetechjobs.com/companies/jubilant-hollisterstier.html): Contract manufacturer of sterile injectable pharmaceuticals, providing fill-finish and lyophilization services
 - [Key Tronic](https://spokanetechjobs.com/companies/key-tronic.html): Electronic manufacturing services and computer peripherals
@@ -94,6 +114,8 @@ Employers: adding a company and posting jobs are both free, and listings run
 - [Litehouse Foods](https://spokanetechjobs.com/companies/litehouse-foods.html): Employee-owned maker of salad dressings, sauces, condiments, cheese and dips, with brands including Litehouse, Organicville, Veggiecraft and Sky Valley
 - [Litehouse Health](https://spokanetechjobs.com/companies/litehouse-health.html): Healthcare workforce platform that supplies hospitals with on-demand local nurses and staffing-management software
 - [METER Group](https://spokanetechjobs.com/companies/meter-group.html): Makes soil, plant and weather sensors and instruments for environmental and food science research
+- [MINDS-i](https://spokanetechjobs.com/companies/minds-i.html): Durable, programmable robot, rover and drone kits with STEM curricula for schools
+- [MacKay Manufacturing](https://spokanetechjobs.com/companies/mackay-manufacturing.html): Family-owned precision CNC machining shop
 - [Maker + Made](https://spokanetechjobs.com/companies/maker-made.html): Creative agency for branding, websites, packaging design and organic social strategy
 - [Matchwood Brewing Company](https://spokanetechjobs.com/companies/matchwood-brewing-company.html): Sandpoint's neighborhood brewery and eatery, making handcrafted beer
 - [Medcurity](https://spokanetechjobs.com/companies/medcurity.html): HIPAA compliance software and services, including security risk analysis, penetration testing and staff training for healthcare organizations
@@ -101,15 +123,22 @@ Employers: adding a company and posting jobs are both free, and listings run
 - [Moat Metrics](https://spokanetechjobs.com/companies/moat-metrics.html): Competitive intelligence software, built on the Innovation Alpha AI platform bought from Aon, that analyzes companies' products, innovation and patent coverage
 - [Monarch Mountain Coffee](https://spokanetechjobs.com/companies/monarch-mountain-coffee.html): Sandpoint coffee company selling its own blends, such as Cafe' Magnific and Espresso Trifecta, online
 - [NRS](https://spokanetechjobs.com/companies/nrs.html): Designs paddling and river gear in-house in Moscow, including rafts, frames, life jackets and dry bags, sold through its catalog, website and Moscow flagship store
+- [Nerd Ninjas](https://spokanetechjobs.com/companies/nerd-ninjas.html): Independent game studio behind the VR game Rogue Piñatas: VRmageddon and the official developer of Dice Throne Digital
 - [North by Northwest](https://spokanetechjobs.com/companies/north-by-northwest.html): Full-service film and video production studio
 - [Northwest Swiss](https://spokanetechjobs.com/companies/northwest-swiss.html): Swiss-style precision machining of small parts for high-tech industries
 - [Nuvodia](https://spokanetechjobs.com/companies/nuvodia.html): Managed IT, cybersecurity and cloud services, with a healthcare and radiology imaging specialism
 - [Omniscia AI](https://spokanetechjobs.com/companies/omniscia-ai.html): Builds AI agents that act as digital representatives for regulated organizations in healthcare, finance, sports and education
+- [OpenEye](https://spokanetechjobs.com/companies/openeye.html): Cloud-managed video surveillance software and hardware, including AI video analytics
 - [OrganicNearby](https://spokanetechjobs.com/companies/organicnearby.html): Online marketplace where local farms, bakers and makers sell to customers who pick up their orders weekly at a set place and time
+- [PSS Urology](https://spokanetechjobs.com/companies/pss-urology.html): Early-stage medical device company developing precision surgical tools for urology procedures
+- [Pacific Microdevices](https://spokanetechjobs.com/companies/pacific-microdevices.html): Whitworth University's first spinout, commercialising a patented 3D-printed PCR device for faster, cheaper infectious-disease testing
 - [PayTrace](https://spokanetechjobs.com/companies/paytrace.html): Payment gateway and B2B payment automation software for merchants, including credit card processing and accounts-receivable tools
+- [Pearson Packaging Systems](https://spokanetechjobs.com/companies/pearson-packaging-systems.html): Designs, builds and services secondary packaging automation: case erectors, sealers, packers and robotic palletizing systems
 - [Pend d'Oreille Winery](https://spokanetechjobs.com/companies/pend-d-oreille-winery.html): Makes award-winning wines, with a downtown Sandpoint tasting room and bistro
 - [Precision Quantomics](https://spokanetechjobs.com/companies/precision-quantomics.html): Develops proteomics-based assay kits, reference standards and services for drug metabolism, transport and toxicity research
 - [Propaganda Creative](https://spokanetechjobs.com/companies/propaganda-creative.html): Full-service design agency doing brand identity, websites and digital advertising campaigns
+- [Proto Technologies](https://spokanetechjobs.com/companies/proto-technologies.html): Contract manufacturer doing rapid prototyping and AS9100-certified production parts for aerospace, aviation and defense
+- [Protogetic](https://spokanetechjobs.com/companies/protogetic.html): Online marketplace for protective-design building security products such as anti-ram vehicle barriers and blast- and ballistic-rated products
 - [Pullman Marketing](https://spokanetechjobs.com/companies/pullman-marketing.html): Outsourced marketing department for businesses, with a focus on financial advisors: strategy, web design and digital marketing
 - [Pyrotek](https://spokanetechjobs.com/companies/pyrotek.html): Engineered materials and process equipment for aluminium and other high-temperature metal industries
 - [QUINN](https://spokanetechjobs.com/companies/quinn.html): Full-service advertising agency
@@ -121,13 +150,16 @@ Employers: adding a company and posting jobs are both free, and listings run
 - [SEVEN2](https://spokanetechjobs.com/companies/seven2.html): Digital creative agency producing online advertising, social content, video, voice skills and websites
 - [Safeguard Equipment](https://spokanetechjobs.com/companies/safeguard-equipment.html): Makes hard-hat-mounted hazard detectors that warn utility and field workers of electrocution risk, falls and impacts
 - [Sandpoint Computers](https://spokanetechjobs.com/companies/sandpoint-computers.html): Locally owned computer shop repairing Apple, Windows and Linux machines, with business network consulting, outsourced IT and network management
+- [Saudara AI](https://spokanetechjobs.com/companies/saudara-ai.html): AI-assisted sourcing broker connecting US brands with vetted Indonesian factories, handling quotes and negotiation
 - [Schweitzer Engineering Laboratories](https://spokanetechjobs.com/companies/schweitzer-engineering-laboratories.html): Designs and manufactures equipment for the protection, monitoring, control, automation and metering of electric power systems
 - [Scout Discoveries](https://spokanetechjobs.com/companies/scout-discoveries.html): Mineral exploration company that drills and defines precious and base metal targets in Idaho
 - [Selkirk Sport](https://spokanetechjobs.com/companies/selkirk-sport.html): Family-founded pickleball paddle and equipment maker; co-developed Tesla's Plaid pickleball paddle
 - [Slate Dental](https://spokanetechjobs.com/companies/slate-dental.html): Makes the Slate electric flosser, a sonic flossing device with reusable floss heads
+- [SleepVibe](https://spokanetechjobs.com/companies/sleepvibe.html): A pocket-sized sleep-aid device combining binaural beats with a low-power magnetic field, manufactured in Spokane Valley
 - [Sno Trac](https://spokanetechjobs.com/companies/sno-trac.html): Small-batch manufacturer that re-engineered the 1950s Swedish Snow Trac into a modern, American-made tracked snow vehicle, designed, fabricated and assembled in Bonners Ferry
 - [Space Screw](https://spokanetechjobs.com/companies/space-screw.html): Precision screw-machining shop founded to serve the aerospace industry; its threaded fittings end up on Boeing and Airbus aircraft
 - [Spiceology](https://spokanetechjobs.com/companies/spiceology.html): Direct-to-consumer spice company built on its own ecommerce stack
+- [Sport Scope](https://spokanetechjobs.com/companies/sport-scope.html): Pole-mounted end-zone cameras and replay systems for sporting events, plus livestreaming software
 - [Sprig Herbals](https://spokanetechjobs.com/companies/sprig-herbals.html): Produces whole-plant herbal extracts as flavor-forward formulas for food and drinks
 - [StaffReady](https://spokanetechjobs.com/companies/staffready.html): Cloud-based clinical workforce management software for hospital departments, built by the Spokane company that began as Maplewood Software
 - [StanCraft Boats](https://spokanetechjobs.com/companies/stancraft-boats.html): Four-generation builder of handmade luxury wooden boats on a 9-acre Hayden campus
@@ -135,10 +167,12 @@ Employers: adding a company and posting jobs are both free, and listings run
 - [Sweetbox Delivery](https://spokanetechjobs.com/companies/sweetbox-delivery.html): Spokane bakery that delivers and ships stuffed bagels and sweets to homes and wholesale customers
 - [Tamarack Aerospace Group](https://spokanetechjobs.com/companies/tamarack-aerospace-group.html): Designs, certifies and installs Active Winglets and other aircraft modifications at Sandpoint Airport
 - [The Woodshop](https://spokanetechjobs.com/companies/the-woodshop.html): Creative agency doing branding, web design, social media management and digital marketing
+- [TierPoint](https://spokanetechjobs.com/companies/tierpoint.html): Operates two colocation data centers in Liberty Lake offering colocation, private cloud, disaster recovery and managed services
 - [Timberline Helicopters](https://spokanetechjobs.com/companies/timberline-helicopters.html): Heavy-lift helicopter services, aerial firefighting and external-load work with a fleet of Black Hawk and K-MAX helicopters, plus a repair station
 - [Tractor Beverage Co.](https://spokanetechjobs.com/companies/tractor-beverage-co.html): Organic craft soft drinks, sustainably sourced, with an organic impact tracker that measures the environmental footprint of its ingredients
 - [Treasury4](https://spokanetechjobs.com/companies/treasury4.html): Treasury management software that unifies cash, payments, debt and banking data for corporate finance teams
 - [Treatment Creative](https://spokanetechjobs.com/companies/treatment-creative.html): Worker-owned creative agency doing brand, design and creative strategy, a member of the Spokane Workers Cooperative
+- [Two Barrels](https://spokanetechjobs.com/companies/two-barrels.html): Software development and marketing company; the tech and marketing arm of a business-formation and website-services group, with satellite offices in Austin and West Jordan, Utah
 - [Unitech Composites](https://spokanetechjobs.com/companies/unitech-composites.html): Aerospace composite structures, a business unit of Apex Space & Defense Systems; formed to supply composite products to NASA's Space Shuttle program
 - [Univision Computers](https://spokanetechjobs.com/companies/univision-computers.html): Managed IT services, cybersecurity, VoIP and business automation provider; this is its Liberty Lake office
 - [Uptic Studios](https://spokanetechjobs.com/companies/uptic-studios.html): Spokane architecture and interior design firm doing residential, commercial and hospitality projects
@@ -147,6 +181,7 @@ Employers: adding a company and posting jobs are both free, and listings run
 - [Vaagen Timbers](https://spokanetechjobs.com/companies/vaagen-timbers.html): Manufactures cross-laminated timber and glue-laminated mass timber products
 - [Vega Cloud](https://spokanetechjobs.com/companies/vega-cloud.html): Cloud cost optimization and automation software for multi-cloud environments
 - [Wagstaff](https://spokanetechjobs.com/companies/wagstaff.html): Builds direct-chill casting machinery, automation and technology for aluminium billet and ingot production
+- [Wassoc](https://spokanetechjobs.com/companies/wassoc.html): Subsea engineering firm making underwater imaging and lighting systems, sensors, geotechnical tools and seafloor drilling systems for ocean science and offshore work
 - [Wipliance](https://spokanetechjobs.com/companies/wipliance.html): Home automation, audio-video and lighting-control integrator with a Spokane Valley showroom
 - [Wonderboy Creative](https://spokanetechjobs.com/companies/wonderboy-creative.html): Small owner-led web design, development and SEO shop, with wine and winery marketing among its focus areas
 - [YB Marketing (Yakima Branding)](https://spokanetechjobs.com/companies/yb-marketing-yakima-branding.html): Branding and digital marketing agency doing web design, SEO, Google Ads and social media

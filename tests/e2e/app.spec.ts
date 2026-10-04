@@ -14,14 +14,24 @@ test.describe("the directory", () => {
   test("every tab lists its rows", async ({ page }) => {
     await openApp(page);
     await tab(page, "Jobs");
-    await expect(page.getByRole("button", { name: /Senior Firmware Engineer/ })).toBeVisible();
+    await expect(
+      page.getByRole("button", { name: /Senior Firmware Engineer/ }),
+    ).toBeVisible();
     await tab(page, "People");
-    await expect(page.getByRole("button", { name: "Nick Smoot" })).toBeVisible();
+    await expect(
+      page.getByRole("button", { name: "Nick Smoot" }),
+    ).toBeVisible();
     await tab(page, "Community");
-    await expect(page.getByText("2 places")).toBeVisible();
+    await expect(
+      page.getByRole("button", { name: /Spokane Angel Alliance/ }).first(),
+    ).toBeVisible();
+    await tab(page, "History");
+    await expect(page.getByRole("heading", { name: "History" })).toBeVisible();
   });
 
-  test("selecting a company opens its detail, Escape closes it", async ({ page }) => {
+  test("selecting a company opens its detail, Escape closes it", async ({
+    page,
+  }) => {
     await openApp(page);
     await page.getByRole("button", { name: "Itron" }).first().click();
     const detail = page.getByRole("heading", { name: "Itron", level: 2 });
@@ -33,23 +43,22 @@ test.describe("the directory", () => {
 });
 
 test.describe("loading and failure", () => {
-  test("loading shows placeholder rows, never an empty directory", async ({ page }) => {
+  test("loading shows placeholder rows, never an empty directory", async ({
+    page,
+  }) => {
     await useFixtures(page, { delay: 1500 });
     await page.goto("/");
     await expect(page.getByLabel("Loading")).toBeVisible();
-    await expect(page.getByText(/0 companies|No companies|Nothing on the map/)).toHaveCount(0);
+    await expect(
+      page.getByText(/0 companies|No companies|Nothing on the map/),
+    ).toHaveCount(0);
     await expect(page.getByText("3 companies")).toBeVisible();
     await expect(page.getByLabel("Loading")).toBeHidden();
   });
 
-  test("a missing places table empties Community, not the whole app", async ({ page }) => {
-    await useFixtures(page, { fail: "places" });
-    await openApp(page);
-    await tab(page, "Community");
-    await expect(page.getByText("Can't reach the directory")).toHaveCount(0);
-  });
-
-  test("an unreachable directory says so, rather than looking empty", async ({ page }) => {
+  test("an unreachable directory says so, rather than looking empty", async ({
+    page,
+  }) => {
     await useFixtures(page, { fail: "companies" });
     await page.goto("/");
     await expect(page.getByText("Can't reach the directory")).toBeVisible();
@@ -62,20 +71,31 @@ test.describe("community and people", () => {
   test("kind filters narrow the list", async ({ page }) => {
     await openApp(page);
     await tab(page, "Community");
-    await page.getByRole("button", { name: "Meetups" }).click();
-    await expect(page.getByText("1 place", { exact: true })).toBeVisible();
-    await expect(page.getByRole("button", { name: "DC509" }).first()).toBeVisible();
-    await expect(page.getByRole("button", { name: /Indaba/ })).toHaveCount(0);
+    await page.getByRole("button", { name: /^Type/ }).click();
+    await page.getByRole("checkbox", { name: "Coffee shop" }).click();
+    await page.keyboard.press("Escape");
+    await expect(
+      page.getByRole("button", { name: /Indaba Coffee \(Broadway\)/ }).first(),
+    ).toBeVisible();
+    await expect(
+      page.getByRole("button", { name: /Spokane Angel Alliance/ }),
+    ).toHaveCount(0);
   });
 
-  test("a place links to the people there, and back", async ({ page }) => {
+  test("an organisation links to the people who run it", async ({ page }) => {
     await openApp(page);
     await tab(page, "Community");
-    await page.getByRole("button", { name: /Indaba Coffee/ }).first().click();
-    await expect(page.getByText("People here")).toBeVisible();
-    await page.getByRole("button", { name: /Nick Smoot/ }).last().click();
-    await expect(page.getByRole("heading", { name: "Nick Smoot", level: 2 })).toBeVisible();
-    await expect(page.getByText("Around the community")).toBeVisible();
+    await page
+      .getByRole("button", { name: /Innovation Collective/ })
+      .first()
+      .click();
+    await page
+      .getByRole("button", { name: /Nick Smoot/ })
+      .last()
+      .click();
+    await expect(
+      page.getByRole("heading", { name: "Nick Smoot", level: 2 }),
+    ).toBeVisible();
   });
 
   test("an unclaimed profile states only what is known", async ({ page }) => {
@@ -92,6 +112,8 @@ test.describe("community and people", () => {
     await tab(page, "People");
     await page.getByRole("button", { name: "Avery Tester" }).click();
     await expect(page.getByText("Logan, Spokane, WA")).toBeVisible();
-    await expect(page.getByRole("button", { name: /Get in touch/ })).toBeVisible();
+    await expect(
+      page.getByRole("button", { name: /Get in touch/ }),
+    ).toBeVisible();
   });
 });

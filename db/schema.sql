@@ -306,6 +306,16 @@ $$;
 revoke all on function claim_person(text) from public;
 grant execute on function claim_person(text) to authenticated;
 
+-- Hourly ranges in Washington are posted to the cent ("$31.57 - $50.76"), and
+-- a board that rounds them is quoting a number the employer never published.
+-- The views read j.*, so they are dropped here and recreated below — Postgres
+-- will not change a column's type underneath a view. Re-running is a no-op
+-- type change.
+drop view if exists company_open_roles;
+drop view if exists live_jobs;
+alter table jobs alter column pay_low  type numeric(10,2);
+alter table jobs alter column pay_high type numeric(10,2);
+
 -- ------------------------------------------------------------ claims
 -- Claiming a listing is a request, not an action. Approving it is the one
 -- thing in this product that cannot be self-serve: the whole point is that

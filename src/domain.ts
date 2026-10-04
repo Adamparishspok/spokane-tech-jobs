@@ -256,10 +256,13 @@ export {
  */
 
 export function payRange(job: Job): string {
+  /* Hourly rates are quoted as posted, cents included where there are any —
+     "$31.57" is the employer's number, and "$15.9" is nobody's. */
+  const hr = (n: number) => `$${Number.isInteger(n) ? n : n.toFixed(2)}`;
   if (job.hourly)
     return job.payLow === job.payHigh
-      ? `$${job.payLow}/hr`
-      : `$${job.payLow}–$${job.payHigh}/hr`;
+      ? `${hr(job.payLow)}/hr`
+      : `${hr(job.payLow)}–${hr(job.payHigh)}/hr`;
   const k = (n: number) => `$${Math.round(n / 1000)}k`;
   return `${k(job.payLow)}–${k(job.payHigh)}`;
 }

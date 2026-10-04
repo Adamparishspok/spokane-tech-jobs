@@ -8,8 +8,7 @@ import {
   useRef,
   useState,
 } from "react";
-import { Monogram, PlaceMark } from "../design/brand";
-import type { PlaceKind } from "../domain";
+import { Monogram } from "../design/brand";
 import { Basemap } from "./basemap";
 import {
   hasMapbox,
@@ -20,6 +19,9 @@ import {
 import {
   pan as panCamera,
   projector,
+  toWorld,
+  fromWorld,
+  worldSize,
   viewportBounds,
   zoomAbout,
   type Camera,
@@ -47,6 +49,15 @@ import { HOME, ZOOM_LIMITS } from "./spokane";
  * rather than nothing at all. At this scale — a few dozen pins — the cost of
  * that is zero and the alternative is a canvas that nobody can use without a
  * mouse.
+ *
+ * **The camera has two speeds, and that split is the performance model.**
+ * While a gesture is live — a drag, a wheel, an arrow key, one of Mapbox's own
+ * eases — the camera belongs to this component: it changes a local state per
+ * animation frame and re-renders the map alone. Only when the gesture ends is
+ * the camera *committed* upward through `onCamera`, so the rest of the app —
+ * the list, the strip, the detail column — re-renders once per gesture rather
+ * than once per frame. The first build committed every frame, and dragging the
+ * map meant reconciling the entire screen at 60Hz; that was the clunk.
  */
 
 export type Pin = {
@@ -57,8 +68,6 @@ export type Pin = {
   logo?: string | null;
   /** The monogram's hue, used when there is no logo. */
   hue: number;
-  /** Set on the Community tab: the pin is a place, drawn as its kind. */
-  kind?: PlaceKind;
   /** What the mark counts on this tab. */
   count?: number;
   /**
@@ -73,6 +82,8 @@ export type Pin = {
    * mark would be claiming something the number does not say.
    */
   hiring: boolean;
+  /** A company that is no longer trading — drawn desaturated, on History. */
+  ghost?: boolean;
 };
 
 /** Room the panels take out of the map, so `fit` never centres under one. */
@@ -137,10 +148,13 @@ function cluster(
     }
   }
 
+  const out = [...buckets.values()];
+  if (!clustering) fan(out);
+
   /* A marker's identity is who is in it, not where it is. A lone pin keeps
      its company's id and a cluster the ids of its members, so React keeps
      the same node — and its loaded logo — for as long as that is true. */
-  for (const c of buckets.values())
+  for (const c of out)
     c.key =
       c.pins.length === 1
         ? c.pins[0].id
@@ -151,7 +165,7 @@ function cluster(
 
   /* Southernmost last, so a marker lower on the screen overlaps the one above
      it — the same depth cue a physical map gets for free. */
-  return [...buckets.values()].sort((a, b) => a.at.y - b.at.y);
+  return out.sort((a, b) => a.at.y - b.at.y);
 }
 
 /** The world-pixel cell a point falls in at the current whole zoom level. */
@@ -162,6 +176,51 @@ function bucketOf(at: LngLat, zoom: number) {
   const y = (0.5 - Math.log((1 + s) / (1 - s)) / (4 * Math.PI)) * scale;
   return `${Math.floor(x / CLUSTER_PX)}:${Math.floor(y / CLUSTER_PX)}`;
 }
+
+/**
+ * Spread marks that share one exact spot into a ring around it.
+ *
+ * A company that publishes only its city sits on the city's centroid, and
+ * several do — so past the clustering zoom they would stack into what looks
+ * like one pin, with no zoom level that separates them. The ring is a display
+ * offset around the true point, never a coordinate: the detail column still
+ * says "Spokane, WA" rather than inventing a street.
+ */
+function fan(marks: Cluster[]) {
+  const spots = new Map<string, Cluster[]>();
+  for (const m of marks) {
+    const key = `${Math.round(m.at.x)}:${Math.round(m.at.y)}`;
+    const list = spots.get(key);
+    if (list) list.push(m);
+    else spots.set(key, [m]);
+  }
+  for (const group of spots.values()) {
+    if (group.length < 2) continue;
+    const radius = 18 + group.length * 4;
+    group.forEach((m, i) => {
+      const angle = (i / group.length) * Math.PI * 2 - Math.PI / 2;
+      m.at = {
+        x: m.at.x + Math.cos(angle) * radius,
+        y: m.at.y + Math.sin(angle) * radius,
+      };
+    });
+  }
+}
+
+/* How far past the visible box the fallback basemap is drawn. A pan inside
+   this margin is a CSS transform of a picture already painted; only a pan
+   past it, or any change of zoom, redraws the streets. */
+const OVERSCAN = 360;
+
+const sameCamera = (a: Camera, b: Camera, eps = 1e-9) =>
+  Math.abs(a.center.lng - b.center.lng) < eps &&
+  Math.abs(a.center.lat - b.center.lat) < eps &&
+  Math.abs(a.zoom - b.zoom) < eps * 1000;
+
+/* The ease Mapbox uses for its own camera, so the fallback basemap moves with
+   the same hand. */
+const easeOutCubic = (t: number) => 1 - Math.pow(1 - t, 3);
+const FLY_MS = 420;
 
 export function MapView({
   pins,
@@ -208,10 +267,109 @@ export function MapView({
      it does all of that outside React. The markers are DOM on top of that
      canvas, so they have to be re-projected on the same frames or they hang
      behind the basemap and snap into place at the end of the move. Bumping a
-     counter on Mapbox's own events is what puts the two back on one clock. */
+     counter on Mapbox's own events is what puts the two back on one clock —
+     and it re-renders this component alone, never the app above it. */
   const [frame, setFrame] = useState(0);
   const [dragging, setDragging] = useState(false);
   const [moved, setMoved] = useState(false);
+
+  /* The gesture-speed camera for the fallback basemap. `liveRef` is the truth
+     between renders (pointer events arrive faster than React paints);  the
+     state is what the basemap and markers draw. While Mapbox is mounted both
+     are idle — Mapbox owns the live camera and `frame` reads it. */
+  const liveRef = useRef<Camera>(camera);
+  const [live, setLive] = useState<Camera>(camera);
+  /* The camera this component last sent up or received — the echo detector.
+     A prop change that matches it is our own commit coming back and must not
+     start a tween; one that differs is the app moving the map (a selection,
+     Home) and is animated. */
+  const committed = useRef<Camera>(camera);
+
+  const setLiveCamera = useCallback((next: Camera) => {
+    liveRef.current = next;
+    setLive(next);
+  }, []);
+
+  /* ---- tween ------------------------------------------------------------
+     The fallback basemap's answer to Mapbox's `easeTo`: app-driven camera
+     changes glide rather than teleport. Interpolated in world coordinates so
+     a pan during a zoom tracks straight. */
+  const tween = useRef<number | null>(null);
+
+  const stopTween = useCallback(() => {
+    if (tween.current !== null) cancelAnimationFrame(tween.current);
+    tween.current = null;
+  }, []);
+
+  const tweenTo = useCallback(
+    (to: Camera) => {
+      stopTween();
+      const from = liveRef.current;
+      if (sameCamera(from, to)) return;
+      const a = toWorld(from.center);
+      const b = toWorld(to.center);
+      const t0 = performance.now();
+      const step = (now: number) => {
+        const t = Math.min(1, (now - t0) / FLY_MS);
+        const k = easeOutCubic(t);
+        const next: Camera = {
+          center: fromWorld({
+            x: a.x + (b.x - a.x) * k,
+            y: a.y + (b.y - a.y) * k,
+          }),
+          zoom: from.zoom + (to.zoom - from.zoom) * k,
+        };
+        liveRef.current = next;
+        setLive(next);
+        tween.current = t < 1 ? requestAnimationFrame(step) : null;
+      };
+      tween.current = requestAnimationFrame(step);
+    },
+    [stopTween],
+  );
+
+  /* An app-driven change arrives as a new `camera` prop. Our own commits come
+     back the same way, so only a camera we did not just send starts a tween. */
+  useEffect(() => {
+    if (sameCamera(camera, committed.current)) return;
+    committed.current = camera;
+    if (mapbox) return; // Mapbox eases itself from the prop, in MapboxBasemap.
+    tweenTo(camera);
+  }, [camera, mapbox, tweenTo]);
+
+  /* Commit: the gesture is over, tell the app where the map is. One render of
+     the whole screen per gesture, here and nowhere else. */
+  const commit = useCallback(() => {
+    const now = liveRef.current;
+    if (sameCamera(now, committed.current)) return;
+    committed.current = now;
+    onCamera(now);
+  }, [onCamera]);
+
+  /* Wheel and keyboard are gestures without an end event; they commit when
+     the input goes quiet for a beat. */
+  const settle = useRef<ReturnType<typeof setTimeout> | null>(null);
+  const commitSoon = useCallback(() => {
+    if (settle.current) clearTimeout(settle.current);
+    settle.current = setTimeout(commit, 180);
+  }, [commit]);
+  useEffect(
+    () => () => {
+      if (settle.current) clearTimeout(settle.current);
+    },
+    [],
+  );
+
+  /* The app moving the camera on purpose: zoom buttons, Home, a cluster.
+     Commit immediately — it is one event, not a stream — and glide there. */
+  const flyTo = useCallback(
+    (next: Camera) => {
+      committed.current = next;
+      onCamera(next);
+      if (!mapbox) tweenTo(next);
+    },
+    [mapbox, onCamera, tweenTo],
+  );
 
   useLayoutEffect(() => {
     const el = host.current;
@@ -243,37 +401,43 @@ export function MapView({
   }, [mapbox]);
 
   const project: Projector = useMemo(
-    () => (mapbox ? mapboxProjector(mapbox) : projector(camera, size)),
+    () => (mapbox ? mapboxProjector(mapbox) : projector(live, size)),
     /* `frame` is the dependency that matters while Mapbox owns the camera: it
-       is what re-reads the live transform. `camera` and `size` drive the
+       is what re-reads the live transform. `live` and `size` drive the
        fallback basemap's own projector. */
     // eslint-disable-next-line react-hooks/exhaustive-deps
-    [mapbox, camera, size, frame],
+    [mapbox, live, size, frame],
   );
 
   const clusters = useMemo(
     () =>
       size.width
-        ? cluster(pins, project, size, mapbox ? mapbox.getZoom() : camera.zoom)
+        ? cluster(pins, project, size, mapbox ? mapbox.getZoom() : live.zoom)
         : [],
-    [pins, project, size, camera.zoom, mapbox],
+    [pins, project, size, live.zoom, mapbox],
   );
 
-  const move = useCallback(
-    (next: Camera) => {
-      setMoved(true);
-      onCamera(next);
-    },
-    [onCamera],
-  );
-
-  /* ---- pointer -------------------------------------------------------- */
+  /* ---- pointer ----------------------------------------------------------
+     Deltas accumulate in a ref and land once per animation frame. Pointer
+     events outrun the display — folding three of them into one pan keeps the
+     drag glued to the cursor instead of three renders behind it. */
 
   const drag = useRef<{ x: number; y: number; moved: boolean } | null>(null);
+  const pending = useRef({ dx: 0, dy: 0, raf: 0 });
+
+  const flushPan = useCallback(() => {
+    pending.current.raf = 0;
+    const { dx, dy } = pending.current;
+    if (!dx && !dy) return;
+    pending.current.dx = 0;
+    pending.current.dy = 0;
+    setLiveCamera(panCamera(liveRef.current, dx, dy));
+  }, [setLiveCamera]);
 
   const onPointerDown = (e: React.PointerEvent) => {
     if (mapbox) return; // Mapbox handles its own input.
     if (e.button !== 0) return;
+    stopTween();
     (e.target as Element).setPointerCapture?.(e.pointerId);
     drag.current = { x: e.clientX, y: e.clientY, moved: false };
     setDragging(true);
@@ -286,14 +450,24 @@ export function MapView({
     const dy = e.clientY - d.y;
     if (!d.moved && Math.hypot(dx, dy) < 3) return;
     d.moved = true;
+    setMoved(true);
     d.x = e.clientX;
     d.y = e.clientY;
-    move(panCamera(camera, dx, dy));
+    pending.current.dx += dx;
+    pending.current.dy += dy;
+    if (!pending.current.raf)
+      pending.current.raf = requestAnimationFrame(flushPan);
   };
 
   const endDrag = () => {
+    if (!drag.current) return;
+    const wasDrag = drag.current.moved;
     drag.current = null;
     setDragging(false);
+    if (wasDrag) {
+      flushPan();
+      commit();
+    }
   };
 
   useEffect(() => {
@@ -302,18 +476,42 @@ export function MapView({
 
     /* Registered natively rather than through React, because a passive wheel
        listener cannot preventDefault and the page would scroll under the map
-       while it zoomed. */
+       while it zoomed. Registered once — it reads the live camera from a ref,
+       so it does not need re-attaching per move the way it would if it closed
+       over state. */
     const onWheel = (e: WheelEvent) => {
       e.preventDefault();
+      stopTween();
       const box = el.getBoundingClientRect();
       const at = { x: e.clientX - box.left, y: e.clientY - box.top };
       /* Trackpads report pixels and mice report lines; normalising here keeps
          a two-finger swipe from crossing four zoom levels. */
       const step = (e.deltaMode === 1 ? e.deltaY * 16 : e.deltaY) * -0.0022;
-      move(
+      setMoved(true);
+      setLiveCamera(
         zoomAbout(
-          camera,
+          liveRef.current,
           Math.max(-0.6, Math.min(0.6, step)),
+          at,
+          { width: box.width, height: box.height },
+          ZOOM_LIMITS,
+        ),
+      );
+      commitSoon();
+    };
+
+    /* Double-click zooms about the cursor — the gesture every map teaches.
+       Markers are buttons above this layer; a double-click on one is a click
+       on a company, not a zoom. */
+    const onDblClick = (e: MouseEvent) => {
+      if ((e.target as Element).closest("button")) return;
+      const box = el.getBoundingClientRect();
+      const at = { x: e.clientX - box.left, y: e.clientY - box.top };
+      setMoved(true);
+      flyToRef.current(
+        zoomAbout(
+          liveRef.current,
+          1,
           at,
           { width: box.width, height: box.height },
           ZOOM_LIMITS,
@@ -322,23 +520,37 @@ export function MapView({
     };
 
     el.addEventListener("wheel", onWheel, { passive: false });
-    return () => el.removeEventListener("wheel", onWheel);
-  }, [camera, move, mapbox]);
+    el.addEventListener("dblclick", onDblClick);
+    return () => {
+      el.removeEventListener("wheel", onWheel);
+      el.removeEventListener("dblclick", onDblClick);
+    };
+  }, [mapbox, commitSoon, setLiveCamera, stopTween]);
 
-  const nudgeZoom = (delta: number) =>
-    move(
+  /* `flyTo` changes identity with `onCamera`; the listeners above live on a
+     ref so they register once. */
+  const flyToRef = useRef(flyTo);
+  flyToRef.current = flyTo;
+
+  const nudgeZoom = (delta: number) => {
+    const base = mapbox
+      ? { center: mapbox.getCenter(), zoom: mapbox.getZoom() }
+      : liveRef.current;
+    setMoved(true);
+    flyTo(
       zoomAbout(
-        camera,
+        base,
         delta,
         { x: size.width / 2, y: size.height / 2 },
         size,
         ZOOM_LIMITS,
       ),
     );
+  };
 
   const home = () => {
     setMoved(false);
-    onCamera(HOME);
+    flyTo(HOME);
   };
 
   /* Keyboard: the map is focusable and pans with the arrows, which is the only
@@ -353,8 +565,12 @@ export function MapView({
     };
     if (moves[e.key]) {
       e.preventDefault();
+      if (mapbox) return;
+      stopTween();
       const [dx, dy] = moves[e.key];
-      move(panCamera(camera, -dx, -dy));
+      setMoved(true);
+      setLiveCamera(panCamera(liveRef.current, -dx, -dy));
+      commitSoon();
       return;
     }
     if (e.key === "+" || e.key === "=") {
@@ -367,7 +583,41 @@ export function MapView({
     }
   };
 
-  const bounds = size.width ? viewportBounds(camera, size) : null;
+  /* ---- basemap, drawn once per zoom ----------------------------------- */
+  const anchorRef = useRef<Camera>(live);
+  let shift = { x: 0, y: 0 };
+  if (!mapbox) {
+    const a = anchorRef.current;
+    const scale = worldSize(live.zoom);
+    const wa = toWorld(a.center);
+    const wl = toWorld(live.center);
+    shift = { x: (wa.x - wl.x) * scale, y: (wa.y - wl.y) * scale };
+    if (
+      a.zoom !== live.zoom ||
+      Math.abs(shift.x) > OVERSCAN * 0.8 ||
+      Math.abs(shift.y) > OVERSCAN * 0.8
+    ) {
+      anchorRef.current = live;
+      shift = { x: 0, y: 0 };
+    }
+  }
+  const anchor = anchorRef.current;
+  const basemap = useMemo(
+    () =>
+      size.width > 0 ? (
+        <Basemap
+          camera={anchor}
+          size={{
+            width: size.width + OVERSCAN * 2,
+            height: size.height + OVERSCAN * 2,
+          }}
+        />
+      ) : null,
+    [anchor, size],
+  );
+
+  const zoomNow = mapbox ? mapbox.getZoom() : live.zoom;
+  const bounds = size.width ? viewportBounds(live, size) : null;
   const scale = useMemo(() => scaleBar(project.metersPerPixel()), [project]);
 
   return (
@@ -398,15 +648,33 @@ export function MapView({
           camera={camera}
           size={size}
           theme={theme}
-          /* A move the reader made arms "Search this area"; one this app
-             asked for only keeps the camera honest. */
-          onCamera={(next, fromUser) =>
-            fromUser ? move(next) : onCamera(next)
-          }
+          /* A move the reader makes arms "Search this area" the moment it
+             starts; the camera itself is committed once, when the move ends.
+             An app-driven ease commits the same way, so the camera prop stays
+             honest without a single mid-flight render above the map. */
+          onUserMove={() => setMoved(true)}
+          onMoveEnd={(next) => {
+            /* An ease this app asked for lands where it was sent, give or
+               take Mapbox's rounding. That is not a move to report back. */
+            if (sameCamera(next, committed.current, 1e-6)) return;
+            committed.current = next;
+            onCamera(next);
+          }}
           onReady={setMapbox}
         />
       ) : (
-        size.width > 0 && <Basemap camera={camera} size={size} />
+        <div
+          className="absolute will-change-transform"
+          style={{
+            left: -OVERSCAN,
+            top: -OVERSCAN,
+            width: size.width + OVERSCAN * 2,
+            height: size.height + OVERSCAN * 2,
+            transform: `translate3d(${shift.x}px, ${shift.y}px, 0)`,
+          }}
+        >
+          {basemap}
+        </div>
       )}
 
       {/* Markers. Pointer events are on the buttons only, so a drag that
@@ -431,7 +699,17 @@ export function MapView({
                 (pin) => pin.id === selectedId || pin.id === hoveredId,
               )}
               onZoom={() =>
-                move(zoomAbout(camera, 1.4, c.at, size, ZOOM_LIMITS))
+                flyTo(
+                  zoomAbout(
+                    mapbox
+                      ? { center: mapbox.getCenter(), zoom: mapbox.getZoom() }
+                      : liveRef.current,
+                    1.4,
+                    c.at,
+                    size,
+                    ZOOM_LIMITS,
+                  ),
+                )
               }
             />
           ),
@@ -469,7 +747,7 @@ export function MapView({
               <MapButton
                 label="Zoom in"
                 onClick={() => nudgeZoom(0.8)}
-                disabled={camera.zoom >= ZOOM_LIMITS[1] - 0.01}
+                disabled={zoomNow >= ZOOM_LIMITS[1] - 0.01}
               >
                 <Plus />
               </MapButton>
@@ -477,7 +755,7 @@ export function MapView({
               <MapButton
                 label="Zoom out"
                 onClick={() => nudgeZoom(-0.8)}
-                disabled={camera.zoom <= ZOOM_LIMITS[0] + 0.01}
+                disabled={zoomNow <= ZOOM_LIMITS[0] + 0.01}
               >
                 <Minus />
               </MapButton>
@@ -548,6 +826,11 @@ function MapButton({
  *
  * A company with no logo gets its monogram at the same size, so a directory
  * that is mostly small companies does not read as a map of broken images.
+ *
+ * Positioned with a transform rather than `left`/`top`: a transform moves on
+ * the compositor, while `left` re-runs layout — and this element moves every
+ * frame of every pan. The hover scale lives on an inner element so its
+ * transition never fights the positional transform above it.
  */
 function Marker({
   pin,
@@ -567,33 +850,29 @@ function Marker({
   const active = selected || hovered;
 
   return (
-    /* Placed by a compositor transform on a wrapper rather than left/top on
-       the button: no layout per frame, and the button's own scale
-       transition never applies to its position, so a pin cannot trail
-       the tiles under it. */
-    <div
-      className="absolute top-0 left-0"
+    <button
+      type="button"
+      className="pointer-events-auto absolute top-0 left-0 will-change-transform"
       style={{
         transform: `translate3d(${at.x}px, ${at.y}px, 0)`,
         zIndex: active ? 20 : pin.hiring ? 10 : 5,
       }}
+      onClick={() => onSelect(pin.id)}
+      onMouseEnter={() => onHover(pin.id)}
+      onMouseLeave={() => onHover(null)}
+      onFocus={() => onHover(pin.id)}
+      onBlur={() => onHover(null)}
+      aria-label={
+        pin.count
+          ? `${pin.label}, ${pin.count} ${plural(pin.unit, pin.count)}`
+          : pin.label
+      }
     >
-      <button
-        type="button"
+      <span
         className={cn(
-          "pointer-events-auto absolute -translate-x-1/2 -translate-y-1/2 rounded-full transition-[transform,box-shadow] duration-150",
-          active && "z-20 scale-110",
+          "relative block -translate-x-1/2 -translate-y-1/2 rounded-full transition-transform duration-150",
+          active && "scale-110",
         )}
-        onClick={() => onSelect(pin.id)}
-        onMouseEnter={() => onHover(pin.id)}
-        onMouseLeave={() => onHover(null)}
-        onFocus={() => onHover(pin.id)}
-        onBlur={() => onHover(null)}
-        aria-label={
-          pin.count
-            ? `${pin.label}, ${pin.count} ${plural(pin.unit, pin.count)}`
-            : pin.label
-        }
       >
         <span
           className={cn(
@@ -605,29 +884,22 @@ function Marker({
               ? "border-ink"
               : pin.hiring
                 ? "border-hiring"
-                : "border-solid",
+                : pin.ghost
+                  ? "border-dashed border-ink-4"
+                  : "border-solid",
           )}
         >
-          {pin.kind ? (
-            <PlaceMark
-              id={pin.id}
-              name={pin.label}
-              kind={pin.kind}
-              round
-              className="size-8 bg-solid"
-            />
-          ) : (
-            <Monogram
-              name={pin.label}
-              hue={pin.hue}
-              logo={pin.logo}
-              round
-              className={cn(
-                "size-8 bg-solid",
-                !pin.hiring && !active && "opacity-90",
-              )}
-            />
-          )}
+          <Monogram
+            name={pin.label}
+            hue={pin.hue}
+            logo={pin.logo}
+            round
+            className={cn(
+              "size-8 bg-solid",
+              !pin.hiring && !active && "opacity-90",
+              pin.ghost && !active && "grayscale",
+            )}
+          />
         </span>
 
         {/* How many roles are open, on the corner. Only where there are any:
@@ -656,8 +928,8 @@ function Marker({
         >
           {pin.label}
         </span>
-      </button>
-    </div>
+      </span>
+    </button>
   );
 }
 
@@ -681,36 +953,32 @@ function ClusterMarker({
   const size = 26 + Math.min(14, Math.log2(cluster.pins.length + 1) * 6);
 
   return (
-    /* Placed by a compositor transform on a wrapper rather than left/top on
-       the button: no layout per frame, and the button's own scale
-       transition never applies to its position, so a pin cannot trail
-       the tiles under it. */
-    <div
-      className="absolute top-0 left-0"
+    <button
+      type="button"
+      className="pointer-events-auto absolute top-0 left-0 will-change-transform"
       style={{
         transform: `translate3d(${cluster.at.x}px, ${cluster.at.y}px, 0)`,
         zIndex: 15,
       }}
+      onClick={onZoom}
+      aria-label={`${cluster.pins.length} companies here, ${total} ${plural(
+        unit,
+        total,
+      )}. Zoom in.`}
     >
-      <button
-        type="button"
+      <span
         className={cn(
-          "pointer-events-auto absolute grid -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border-2 border-surface font-semibold shadow-[var(--shadow-marker)] transition-transform duration-150 hover:scale-110",
+          "grid -translate-x-1/2 -translate-y-1/2 place-items-center rounded-full border-2 border-surface font-semibold shadow-[var(--shadow-marker)] transition-transform duration-150 hover:scale-110",
           hiring ? "bg-hiring text-white" : "bg-ink-3 text-ground",
           active && "scale-110 ring-2 ring-ink ring-offset-1",
         )}
         style={{ width: size, height: size }}
-        onClick={onZoom}
-        aria-label={`${cluster.pins.length} companies here, ${total} ${plural(
-          unit,
-          total,
-        )}. Zoom in.`}
       >
         <span className="num text-[0.8125rem] leading-none">
           {cluster.pins.length}
         </span>
-      </button>
-    </div>
+      </span>
+    </button>
   );
 }
 

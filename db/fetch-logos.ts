@@ -26,7 +26,7 @@
  * draws its monogram — the same thing it does for a listing nobody has added a
  * website for.
  */
-import { mkdirSync, writeFileSync } from "node:fs";
+import { mkdirSync, readFileSync, writeFileSync } from "node:fs";
 import { neon } from "@neondatabase/serverless";
 
 const url = process.env.DATABASE_URL;
@@ -206,6 +206,38 @@ if (!placesOnly) {
     JSON.stringify(manifest, null, 2) + "\n",
   );
   console.log(`${found} of ${rows.length} companies have a logo`);
+}
+
+/* The Community tab's organisations — coffee shops, coworking, investors,
+   groups — from the reviewed list that ships with the app. Keyed by the
+   organisation's id; one without a logo draws its initials. */
+{
+  const { organisations } = JSON.parse(
+    readFileSync(
+      new URL("../src/data/organisations.json", import.meta.url),
+      "utf8",
+    ),
+  ) as {
+    organisations: { id: string; name: string; website: string | null }[];
+  };
+  const orgOut = out + "orgs/";
+  mkdirSync(orgOut, { recursive: true });
+  const orgManifest: Record<string, string> = {};
+  for (const o of organisations) {
+    if (!o.website) continue;
+    const got = await grab(domainOf(o.website));
+    if (!got) continue;
+    const file = `${o.id}.${got.ext}`;
+    writeFileSync(orgOut + file, got.bytes);
+    orgManifest[o.id] = `/logos/orgs/${file}`;
+  }
+  writeFileSync(
+    new URL("../src/generated/org-logos.json", import.meta.url).pathname,
+    JSON.stringify(orgManifest, null, 2) + "\n",
+  );
+  console.log(
+    `${Object.keys(orgManifest).length} of ${organisations.filter((o) => o.website).length} organisations have a logo`,
+  );
 }
 
 /* The Community tab's places, by the same route. Manifest only, no column:

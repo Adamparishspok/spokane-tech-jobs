@@ -4,6 +4,7 @@ import { CalendarDays, Coffee, Landmark, Laptop } from "lucide-react";
 import { initials, type PlaceKind } from "../domain";
 import LOGOS from "../generated/logos.json";
 import PLACE_LOGOS from "../generated/place-logos.json";
+import ORG_LOGOS from "../generated/org-logos.json";
 
 /**
  * The company's logo, or null.
@@ -19,6 +20,10 @@ const FAILED = new Set<string>();
 
 export const logoFor = (id: string): string | null =>
   (LOGOS as Record<string, string>)[id] ?? null;
+
+/** A Community organisation's logo, by its id — see db/fetch-logos.ts. */
+export const orgLogoFor = (id: string): string | null =>
+  (ORG_LOGOS as Record<string, string>)[id] ?? null;
 
 /** A Community place's logo, from its own manifest — see db/fetch-logos.ts. */
 export const placeLogoFor = (id: string): string | null =>

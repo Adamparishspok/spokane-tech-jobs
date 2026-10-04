@@ -148,8 +148,9 @@ const toJob = (row: JobRow): Job => ({
   level: row.level,
   employment: row.employment,
   workplace: row.workplace,
-  payLow: row.pay_low,
-  payHigh: row.pay_high,
+  /* numeric(10,2) in the table, so a cent-precise hourly rate survives. */
+  payLow: Number(row.pay_low),
+  payHigh: Number(row.pay_high),
   hourly: row.hourly,
   /* The fixture stored "days ago" and the table stores a timestamp. The
      interface still wants the number, so the conversion happens once here

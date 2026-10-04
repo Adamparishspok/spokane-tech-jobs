@@ -1,22 +1,38 @@
 import { cn } from "@kit/lib/cn";
-import { Button } from "@kit/ui";
+import { Button, Segmented } from "@kit/ui";
 import { Building2, MapPin, MapPinOff, Plus, Users } from "lucide-react";
 import { useEffect, useRef } from "react";
 import {
   districtLabel,
+  hueFor,
   payRange,
-  placeKindLabel,
   postedLabel,
   sizeBand,
   type Company,
   type Job,
   type Person,
-  type Place,
 } from "../domain";
 import { useDirectory } from "../db/directory";
-import { Monogram, PlaceMark, logoFor } from "../design/brand";
+import {
+  lifespan,
+  pastCompany,
+  PAST_KIND_LABEL,
+  isExact,
+  ORG_KINDS,
+  orgPlace,
+  type Figure,
+  type Org,
+  type PastCompany,
+} from "../ecosystem";
+import { Monogram, logoFor, orgLogoFor } from "../design/brand";
 import { FirstDay, NoResults, Panel, PanelHeader, Tag } from "./chrome";
-import { EMPTY_QUERY, FilterBar, SearchField, type Query } from "./filters";
+import {
+  EMPTY_QUERY,
+  FilterBar,
+  MultiFilter,
+  SearchField,
+  type Query,
+} from "./filters";
 
 /**
  * The browse panel — the left column, and half of the "one query, two views"
@@ -29,7 +45,11 @@ import { EMPTY_QUERY, FilterBar, SearchField, type Query } from "./filters";
  * list.
  */
 
-export type Tab = "companies" | "jobs" | "people" | "community";
+export type Tab = "companies" | "jobs" | "people" | "community" | "history";
+
+/** The two tabs read from the editorial records rather than the database. */
+export const isEditorial = (tab: Tab) =>
+  tab === "community" || tab === "history";
 
 const TAB_COPY: Record<Tab, { title: string; noun: string; search: string }> = {
   companies: {
@@ -41,8 +61,13 @@ const TAB_COPY: Record<Tab, { title: string; noun: string; search: string }> = {
   people: { title: "People", noun: "person", search: "Search people, skills…" },
   community: {
     title: "Community",
-    noun: "place",
-    search: "Search coffee shops, meetups…",
+    noun: "organisation",
+    search: "Search investors, groups, spaces…",
+  },
+  history: {
+    title: "History",
+    noun: "company",
+    search: "Search exits, closures, acquirers…",
   },
 };
 
@@ -53,14 +78,16 @@ export function BrowsePanel({
   companies,
   jobs,
   people,
-  places,
+  figures,
+  orgs,
+  past,
   selectedId,
   hoveredId,
   onSelect,
   onHover,
   onAdd,
   companyOf,
-  firstDay,
+  firstDay: noData,
   loading,
 }: {
   tab: Tab;
@@ -69,7 +96,9 @@ export function BrowsePanel({
   companies: Company[];
   jobs: Job[];
   people: Person[];
-  places: Place[];
+  figures: Figure[];
+  orgs: Org[];
+  past: PastCompany[];
   selectedId: string | null;
   hoveredId: string | null;
   onSelect: (id: string) => void;
@@ -81,26 +110,37 @@ export function BrowsePanel({
   /** The first load has not answered yet. */
   loading: boolean;
 }) {
-  const { jobsAt } = useDirectory();
+  const { jobsAt, company } = useDirectory();
   const copy = TAB_COPY[tab];
-  const count =
-    tab === "companies"
-      ? companies.length
-      : tab === "jobs"
-        ? jobs.length
-        : tab === "community"
-          ? places.length
-          : people.length;
+  const editorial = isEditorial(tab);
+  /* The editorial tabs ship with the app, so an empty database is not a
+     first day for them. */
+  const firstDay = noData && !editorial;
+  const count = {
+    companies: companies.length,
+    jobs: jobs.length,
+    people: figures.length + people.length,
+    community: orgs.length,
+    history: past.length,
+  }[tab];
 
   const empty = count === 0;
 
-  /* A person between roles has no company and therefore no place, so the
+  /* A person between roles has no company and therefore no place, and nor
+     does a community figure whose company is not in the directory — so the
      People tab can legitimately show more rows than the map shows marks. That
      is a mismatch a person will notice and distrust, so it is stated rather
      than left to be discovered — and the people it concerns are exactly the
      ones most likely to be looking. */
   const offMap =
-    tab === "people" ? people.filter((p) => !p.companyId).length : 0;
+    tab === "people"
+      ? people.filter((p) => !p.companyId).length +
+        figures.filter((f) => !f.companies.some((id) => company(id))).length
+      : tab === "history"
+        ? past.filter((p) => !isExact(p)).length
+        : tab === "community"
+          ? orgs.filter((o) => !orgPlace(o)).length
+          : 0;
 
   return (
     <Panel className="pointer-events-auto w-[23rem] shrink-0">
@@ -109,9 +149,7 @@ export function BrowsePanel({
         count={loading ? null : count}
         noun={copy.noun}
         actions={
-          /* Places are researched and sourced rather than submitted, so the
-             Community tab has nothing to add from here. */
-          tab !== "community" && (
+          !editorial && (
             <Button size="sm" variant="accent" onClick={onAdd}>
               <Plus />
               {/* On the first day there is nothing to post a job against, so
@@ -137,16 +175,59 @@ export function BrowsePanel({
         </div>
         {/* Filters are hidden on the first day. Four pills that can only ever
             narrow nothing to nothing are not a control, they are furniture. */}
-        {!firstDay && <FilterBar tab={tab} query={query} onQuery={onQuery} />}
+        {tab === "community" ? (
+          <div className="mt-3 flex flex-wrap items-center gap-1.5">
+            <MultiFilter
+              label="Type"
+              options={ORG_KINDS}
+              value={query.orgKinds}
+              onChange={(orgKinds) => onQuery({ ...query, orgKinds })}
+            />
+          </div>
+        ) : tab === "history" ? (
+          <div className="mt-3">
+            <Segmented
+              size="sm"
+              className="w-full"
+              aria-label="Exits or closures"
+              value={query.pastKind}
+              onChange={(pastKind) => onQuery({ ...query, pastKind })}
+              items={[
+                { value: "all", label: "All" },
+                { value: "exited", label: "Exits" },
+                { value: "closed", label: "Graveyard" },
+              ]}
+            />
+          </div>
+        ) : (
+          !firstDay &&
+          !editorial && <FilterBar tab={tab} query={query} onQuery={onQuery} />
+        )}
 
         {offMap > 0 && (
           <p className="mt-2.5 flex items-start gap-1.5 text-[0.75rem] leading-relaxed text-ink-4">
             <MapPinOff className="mt-px size-3.5 shrink-0" />
-            <span>
-              <span className="num">{offMap}</span> of these{" "}
-              {offMap === 1 ? "isn't" : "aren't"} at a company in the directory,
-              so {offMap === 1 ? "it has" : "they have"} no pin on the map.
-            </span>
+            {tab === "community" ? (
+              <span>
+                <span className="num">{offMap}</span> of these{" "}
+                {offMap === 1 ? "has" : "have"} no fixed address — a meetup, an
+                event that moves, a fund — so{" "}
+                {offMap === 1 ? "it has" : "they have"} no pin on the map.
+              </span>
+            ) : tab === "history" ? (
+              <span>
+                <span className="num">{offMap}</span> of these{" "}
+                {offMap === 1 ? "has" : "have"} no sourced street address, so{" "}
+                {offMap === 1 ? "its pin marks" : "their pins mark"} the area,
+                not the building.
+              </span>
+            ) : (
+              <span>
+                <span className="num">{offMap}</span> of these{" "}
+                {offMap === 1 ? "is" : "are"} not at a company in the directory,
+                so {offMap === 1 ? "it has" : "they have"} no pin on the map.
+              </span>
+            )}
           </p>
         )}
       </PanelHeader>
@@ -154,11 +235,14 @@ export function BrowsePanel({
       {/* Loading is not empty. Before the first answer the list draws the
           shape of rows rather than "0 companies" and an empty state, which
           read as a broken directory for the second it took to arrive. */}
-      {loading ? (
+      {loading && !editorial ? (
         <RowsLoading />
       ) : empty ? (
-        firstDay ? (
-          <FirstDay tab={tab} onAdd={onAdd} />
+        firstDay && !editorial ? (
+          <FirstDay
+            tab={tab as "companies" | "jobs" | "people"}
+            onAdd={onAdd}
+          />
         ) : (
           <NoResults noun={copy.noun} onClear={() => onQuery(EMPTY_QUERY)} />
         )
@@ -191,13 +275,16 @@ export function BrowsePanel({
                   onHover={onHover}
                 />
               ))}
-            {tab === "community" &&
-              places.map((p) => (
-                <PlaceRow
-                  key={p.id}
-                  place={p}
-                  selected={p.id === selectedId}
-                  hovered={p.id === hoveredId}
+            {tab === "people" &&
+              figures.map((f) => (
+                <FigureRow
+                  key={f.id}
+                  figure={f}
+                  selected={f.id === selectedId}
+                  hovered={
+                    f.id === hoveredId ||
+                    (hoveredId !== null && f.companies.includes(hoveredId))
+                  }
                   onSelect={onSelect}
                   onHover={onHover}
                 />
@@ -208,6 +295,28 @@ export function BrowsePanel({
                   key={p.id}
                   person={p}
                   company={p.companyId ? companyOf(p.companyId) : null}
+                  selected={p.id === selectedId}
+                  hovered={p.id === hoveredId}
+                  onSelect={onSelect}
+                  onHover={onHover}
+                />
+              ))}
+            {tab === "community" &&
+              orgs.map((o) => (
+                <OrgRow
+                  key={o.id}
+                  org={o}
+                  selected={o.id === selectedId}
+                  hovered={o.id === hoveredId}
+                  onSelect={onSelect}
+                  onHover={onHover}
+                />
+              ))}
+            {tab === "history" &&
+              past.map((p) => (
+                <PastRow
+                  key={p.id}
+                  past={p}
                   selected={p.id === selectedId}
                   hovered={p.id === hoveredId}
                   onSelect={onSelect}
@@ -429,33 +538,114 @@ function PersonRow({
   );
 }
 
-function PlaceRow({
-  place,
+function FigureRow({
+  figure,
   ...rest
 }: {
-  place: Place;
+  figure: Figure;
+  selected: boolean;
+  hovered: boolean;
+  onSelect: (id: string) => void;
+  onHover: (id: string | null) => void;
+}) {
+  /* What they built, by name — the reason anybody in this list is in it. */
+  const built = figure.history
+    .map((id) => pastCompany(id)?.name)
+    .filter(Boolean);
+
+  return (
+    <Row id={figure.id} label={figure.name} {...rest}>
+      <Monogram name={figure.name} hue={hueFor(figure.name)} round />
+      <div className="min-w-0 flex-1">
+        <h3 className="truncate text-sm font-semibold text-ink">
+          {figure.name}
+        </h3>
+        <p className="truncate text-[0.8125rem] text-ink-3">{figure.role}</p>
+        {built.length > 0 && (
+          <p className="mt-1 truncate text-[0.75rem] text-ink-4">
+            Built {built.join(" · ")}
+          </p>
+        )}
+      </div>
+    </Row>
+  );
+}
+
+function OrgRow({
+  org,
+  ...rest
+}: {
+  org: Org;
+  selected: boolean;
+  hovered: boolean;
+  onSelect: (id: string) => void;
+  onHover: (id: string | null) => void;
+}) {
+  /* The second line says when or where, whichever a person would act on:
+     a meetup's night, a space's neighbourhood, a fund's stage. */
+  const detail = org.cadence ?? org.focus ?? org.city;
+  return (
+    <Row id={org.id} label={org.name} {...rest}>
+      <Monogram
+        name={org.name}
+        hue={hueFor(org.name)}
+        logo={orgLogoFor(org.id)}
+      />
+      <div className="min-w-0 flex-1">
+        <div className="flex items-baseline gap-2">
+          <h3 className="truncate text-sm font-semibold text-ink">
+            {org.name}
+          </h3>
+          <span className="ml-auto shrink-0">
+            <Tag>{org.kind}</Tag>
+          </span>
+        </div>
+        <p className="truncate text-[0.8125rem] text-ink-3">{org.what}</p>
+        {detail && (
+          <p className="mt-1 truncate text-[0.75rem] text-ink-4">{detail}</p>
+        )}
+      </div>
+    </Row>
+  );
+}
+
+function PastRow({
+  past,
+  ...rest
+}: {
+  past: PastCompany;
   selected: boolean;
   hovered: boolean;
   onSelect: (id: string) => void;
   onHover: (id: string | null) => void;
 }) {
   return (
-    <Row id={place.id} label={place.name} {...rest}>
-      <PlaceMark id={place.id} name={place.name} kind={place.kind} />
+    <Row id={past.id} label={past.name} {...rest}>
+      {/* Desaturated: the mark of something that is no longer trading, in
+          the same tile every live company gets. */}
+      <Monogram
+        name={past.name}
+        hue={hueFor(past.name)}
+        className="grayscale"
+      />
       <div className="min-w-0 flex-1">
-        <h3 className="truncate text-sm font-semibold text-ink">
-          {place.name}
-        </h3>
-        <p className="line-clamp-2 text-[0.8125rem] text-ink-3">
-          {place.kind === "meetup" && place.schedule
-            ? `${place.schedule}${place.venue ? ` · ${place.venue}` : ""}`
-            : place.why}
-        </p>
-        <p className="mt-1 flex items-center gap-1 truncate text-[0.75rem] text-ink-4">
-          <MapPin className="size-3 shrink-0" />
-          {districtLabel(place.district)}
+        <div className="flex items-baseline gap-2">
+          <h3 className="truncate text-sm font-semibold text-ink">
+            {past.name}
+          </h3>
+          <span className="ml-auto shrink-0">
+            <Tag tone={past.kind === "exited" ? "brand" : "neutral"}>
+              {PAST_KIND_LABEL[past.kind]}
+            </Tag>
+          </span>
+        </div>
+        <p className="truncate text-[0.8125rem] text-ink-3">{past.what}</p>
+        <p className="mt-1 flex items-center gap-1.5 text-[0.75rem] text-ink-4">
+          <span className="num">{lifespan(past)}</span>
           <span aria-hidden>·</span>
-          {placeKindLabel(place.kind)}
+          <span className="truncate">
+            {past.acquirer ? `to ${past.acquirer}` : past.place}
+          </span>
         </p>
       </div>
     </Row>

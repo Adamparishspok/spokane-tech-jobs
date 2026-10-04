@@ -2,8 +2,8 @@
 
 Source: https://spokanetechjobs.com
 Licence: CC BY 4.0, attribution to Spokane Tech Jobs
-Generated: 2026-10-03
-Companies: 140. Open roles: 0.
+Generated: 2026-10-04
+Companies: 175. Open roles: 12.
 
 Every field here is sourced from public records. A field that could not be
 sourced is absent rather than estimated.
@@ -70,6 +70,20 @@ Phone: (509) 321-1190
 
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/absco-solutions.html
+
+## Accra-Fab
+
+Contract manufacturer doing precision sheet metal fabrication, machining, welding, finishing and assembly for aerospace, communications, medical and energy customers.
+
+Industry: Advanced manufacturing
+District: Liberty Lake
+Address: 23201 E Appleway Dr, Liberty Lake, WA 99019
+Founded: 1979
+Website: accrafab.com
+Phone: (509) 922-3300
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/accra-fab.html
 
 ## Advanced Input Systems
 
@@ -149,6 +163,20 @@ Phone: 208-883-3400
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/alturas-analytics.html
 
+## Amphenol Network Solutions
+
+Network infrastructure hardware for telecom providers and data centers: fiber distribution, DC power, cable management, racks and enclosures. Formed in 2019 from Telect (founded in Liberty Lake in 1982) and All Systems Broadband.
+
+Industry: Advanced manufacturing
+District: Liberty Lake
+Address: 22425 E Appleway Ave #11, Liberty Lake, WA 99019
+Founded: 1982
+Website: amphenol-ns.com
+Phone: (509) 926-6000
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/amphenol-network-solutions.html
+
 ## AmpliFi Advertising
 
 Advertising agency doing brand and digital strategy, logo, graphic and website design, TV/video and media strategy.
@@ -176,6 +204,18 @@ Phone: 208-883-2839
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/anatek-labs.html
 
+## AquiPor Technologies
+
+Permeable concrete pavement that absorbs, filters and redirects stormwater, with a lower-CO2 formulation than conventional concrete.
+
+Industry: Cleantech
+District: Downtown
+Founded: 2015
+Website: aquipor.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/aquipor-technologies.html
+
 ## Atomic
 
 Fintech whose APIs connect apps to people's payroll accounts, for direct deposit switching and income verification; one of its co-founders is based in Spokane.
@@ -197,7 +237,7 @@ Address: 1411 E Mission Ave, Spokane, WA 99202
 Founded: 1889
 Website: myavista.com
 
-Open roles: none listed
+Open roles: Integrations Developer
 Page: https://spokanetechjobs.com/companies/avista.html
 
 ## Bay Shore Systems
@@ -214,6 +254,19 @@ Website: bayshoresystems.com
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/bay-shore-systems.html
 
+## Berg Companies
+
+Manufacturer of hard- and soft-wall shelter systems, fuel and water systems and power management, largely for military use. Part of HDT Global since 2019.
+
+Industry: Advanced manufacturing
+District: Spokane Valley
+Address: 6811 E Mission Ave, Spokane Valley, WA 99212
+Website: hdtglobal.com
+Phone: (509) 624-8921
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/berg-companies.html
+
 ## BioTracking
 
 Developed and markets BioPRYN, an early blood-based pregnancy test for cattle and other ruminants, based on research at the University of Idaho.
@@ -227,6 +280,17 @@ Phone: (208) 882-9736
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/biotracking.html
 
+## Blaze Barrier
+
+Portable, flame-activated wildfire suppression modules — a fire line in a box — that deploy on contact with flames to stop a fire's advance.
+
+Industry: Advanced manufacturing
+District: Downtown
+Website: blaze-barrier.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/blaze-barrier.html
+
 ## Buck Knives
 
 Knife maker since 1902, headquartered and manufacturing in Post Falls since 2005; every knife carries its Forever Warranty.
@@ -239,6 +303,19 @@ Website: buckknives.com
 
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/buck-knives.html
+
+## BuyWander
+
+Online auction marketplace reselling truckloads of retail returns through daily no-reserve local auctions, using AI-assisted scanning and sorting. Founded in Spokane Valley by Jordan Allen and Brock Kowalchuk.
+
+Industry: E-commerce
+District: Spokane Valley
+Address: 12606 E Sprague Ave, Spokane Valley, WA 99216
+Founded: 2024
+Website: buywander.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/buywander.html
 
 ## CDL PowerSuite
 
@@ -264,6 +341,19 @@ Website: caavadesign.com
 
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/caava-design.html
+
+## CarbonQuest
+
+Modular distributed carbon capture systems that capture, separate and liquefy CO2 from buildings, biogas facilities and industrial sites. Offices also in New York and Washington, DC.
+
+Industry: Cleantech
+District: Spokane Valley
+Address: 3010 N First St, Spokane Valley, WA 99216
+Founded: 2020
+Website: carbonquest.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/carbonquest.html
 
 ## Cascadia Custom Molding
 
@@ -303,6 +393,29 @@ Phone: (208) 292-3400
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/chief-architect.html
 
+## Code Lexica
+
+Tracks and cuts teams' AI coding-assistant spend, with a background sidecar for Claude Code, Codex and Cursor and a free usage dashboard.
+
+Industry: Developer tools
+District: Downtown
+Website: codelexica.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/code-lexica.html
+
+## Codespeed
+
+Digital agency building custom software, mobile apps, websites and web applications, with offices in Spokane and Coeur d'Alene.
+
+Industry: IT services
+District: Downtown
+Address: 1024 W Railroad Alley, Spokane, WA 99201
+Website: codespeed.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/codespeed.html
+
 ## Coffee Crafters
 
 Fluid-bed coffee roasters, accessories and resources for starting or growing a roasting business.
@@ -326,7 +439,7 @@ Team: 45 people
 Founded: 2008
 Website: commerce-architects.com
 
-Open roles: none listed
+Open roles: Principal Sales Account Executive, Senior Software Engineer, Software Engineer (1-3 Years Experience)
 Page: https://spokanetechjobs.com/companies/commerce-architects.html
 
 ## Continuous Composites
@@ -382,6 +495,17 @@ Website: credentialnetwork.com
 
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/credential-network.html
+
+## Credit Gnomes
+
+Reports residents' rent payments to credit bureaus on behalf of property managers, helping residents build credit.
+
+Industry: Fintech
+District: Liberty Lake
+Website: creditgnomes.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/credit-gnomes.html
 
 ## Cyan
 
@@ -565,6 +689,17 @@ Phone: (509) 416-6221
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/enleaf.html
 
+## ExceptioNULL Games
+
+Independent game developer making mobile and web games, including the boxing games Election Year Knockout and Knockout 2: Wrath of the Karen, plus word and puzzle games.
+
+Industry: Games
+District: Spokane Valley
+Website: exceptionullgames.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/exceptionull-games.html
+
 ## Executech
 
 Managed IT services and IT support provider; this is its Spokane office.
@@ -658,6 +793,30 @@ Phone: (509) 521-2863
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/free-rein-marketing.html
 
+## FunnerSoft
+
+Independent game studio founded by Lester Bloom; released the VR game PlanTechtor in 2019 and is developing a game built around paper-doll avatar customisation.
+
+Industry: Games
+District: Downtown
+Founded: 2018
+Website: funnersoft.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/funnersoft.html
+
+## General Hypersonics
+
+Develops reusable, rocketless launch systems based on a ram accelerator, for hypersonic flight testing and suborbital launch.
+
+Industry: Aerospace
+District: East Central
+Address: 2311 E Main Ave, Suite 200, Spokane, WA 99202
+Website: generalhypersonics.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/general-hypersonics.html
+
 ## Genius Gourmet
 
 Low-sugar, low-carb protein snacks and drinks.
@@ -697,6 +856,17 @@ Website: gierd.com
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/gierd.html
 
+## Glixin
+
+Screens API and AI-agent transactions by intent, separating legitimate activity from bots, fraud and wasteful automated calls.
+
+Industry: Cybersecurity
+District: Liberty Lake
+Website: glixin.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/glixin.html
+
 ## Global Navigation Sciences
 
 USB power and LED lighting products for commercial and military aircraft, including retrofit light-and-USB units.
@@ -723,6 +893,18 @@ Phone: (844) 632-8247
 
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/gototags.html
+
+## Grand Fir Analytics
+
+Independent economic research and data analytics firm serving policymakers in Washington and the Spokane area.
+
+Industry: Data & analytics
+District: Downtown
+Founded: 2020
+Website: grandfiranalytics.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/grand-fir-analytics.html
 
 ## Granite Aviation
 
@@ -776,6 +958,18 @@ Phone: (888) 900-4549
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/h-source.html
 
+## Haploos
+
+Virtual-card and payment services for government agencies and public housing authorities.
+
+Industry: Fintech
+District: Downtown
+Address: 203 N Washington St, Spokane, WA 99201
+Website: haploos.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/haploos.html
+
 ## HardTarget
 
 Cybersecurity governance for pro athletes, entertainers, high-net-worth families and family offices, taught through gamified learning.
@@ -801,6 +995,19 @@ Phone: (509) 228-0654
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/hatch-advertising.html
 
+## Hi-Rel Laboratories
+
+Tests and analyses microelectronic components for space and high-reliability systems, including parts for NASA's Artemis programme.
+
+Industry: Aerospace
+District: Hillyard
+Address: 6116 N Freya St, Spokane, WA 99217
+Founded: 1968
+Website: hrlabs.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/hi-rel-laboratories.html
+
 ## Hillcrest Aircraft Company
 
 Aviation services at Lewiston's airport: fixed base operator, aircraft maintenance, avionics and flight training.
@@ -825,6 +1032,19 @@ Website: historik.com
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/historik.html
 
+## Iasis Molecular Sciences
+
+Develops antimicrobial medical devices and coatings, including a silver-ion Foley catheter, to prevent healthcare-associated infections.
+
+Industry: Health tech
+District: University District
+Address: 120 N Pine St, Spokane, WA 99202
+Founded: 2007
+Website: iasismolecular.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/iasis-molecular-sciences.html
+
 ## Impact Laboratories
 
 For-profit arm of the nonprofit My Green Lab that verifies My Green Lab Certification and provides software for measuring sustainability in science labs.
@@ -847,6 +1067,19 @@ Website: incluud.com
 
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/incluud.html
+
+## Infinetix
+
+Contract electrical engineering firm taking electronic products from concept to production: embedded hardware, PCB and FPGA design, firmware and software.
+
+Industry: Advanced manufacturing
+District: Spokane Valley
+Address: 2721 N Van Marter Rd #3, Spokane Valley, WA 99206
+Founded: 1994
+Website: infinetix.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/infinetix.html
 
 ## Innovation Collective
 
@@ -887,6 +1120,17 @@ Phone: (208) 762-8065
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/intermax-networks.html
 
+## Ithos Wellness
+
+Digital health company building North, a behavioural-health navigation platform for veterans, first responders, healthcare workers and other high-stress groups.
+
+Industry: Health tech
+District: Downtown
+Website: ithoswellness.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/ithos-wellness.html
+
 ## Itron
 
 Utility and city resource measurement: electricity, gas and water metering, the networks behind them, and utility-grade SaaS.
@@ -899,7 +1143,7 @@ Founded: 1977
 Website: itron.com
 Phone: (509) 924-9900
 
-Open roles: none listed
+Open roles: Intern - Artificial Intelligence, Intern - Data Science, Distributed Intelligence
 Page: https://spokanetechjobs.com/companies/itron.html
 
 ## Jubilant HollisterStier
@@ -1057,6 +1301,31 @@ Phone: (509) 332-2756
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/meter-group.html
 
+## MINDS-i
+
+Durable, programmable robot, rover and drone kits with STEM curricula for schools.
+
+Industry: Education
+District: Liberty Lake
+Address: 22819 E Appleway Ave, Liberty Lake, WA 99019
+Website: mindsieducation.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/minds-i.html
+
+## MacKay Manufacturing
+
+Family-owned precision CNC machining shop: milling, turning, laser welding, engraving and assembly for medical device, aerospace, military and electronics customers.
+
+Industry: Advanced manufacturing
+District: Spokane Valley
+Address: 10011 E Montgomery Dr, Spokane Valley, WA 99206
+Website: mackaymfg.com
+Phone: (509) 922-7742
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/mackay-manufacturing.html
+
 ## Maker + Made
 
 Creative agency for branding, websites, packaging design and organic social strategy.
@@ -1148,6 +1417,17 @@ Phone: 877.677.4327
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/nrs.html
 
+## Nerd Ninjas
+
+Independent game studio behind the VR game Rogue Piñatas: VRmageddon and the official developer of Dice Throne Digital.
+
+Industry: Games
+District: Downtown
+Website: nerdninjas.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/nerd-ninjas.html
+
 ## North by Northwest
 
 Full-service film and video production studio.
@@ -1184,7 +1464,7 @@ Address: 801 S Stevens St, Spokane, WA 99204
 Website: nuvodia.com
 Phone: (509) 461-2596
 
-Open roles: none listed
+Open roles: Deployment Systems Engineer II
 Page: https://spokanetechjobs.com/companies/nuvodia.html
 
 ## Omniscia AI
@@ -1199,6 +1479,20 @@ Website: omnisciahealth.com
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/omniscia-ai.html
 
+## OpenEye
+
+Cloud-managed video surveillance software and hardware, including AI video analytics. Founded in 1999 by Rick Sheppard while a Gonzaga student; a subsidiary of Alarm.com since 2019.
+
+Industry: Cybersecurity
+District: Liberty Lake
+Address: 1730 N Madson St, Liberty Lake, WA 99019
+Founded: 1999
+Website: openeye.net
+Phone: (509) 232-5261
+
+Open roles: Software Engineer II, Senior Software Engineer, DevOps Engineer II
+Page: https://spokanetechjobs.com/companies/openeye.html
+
 ## OrganicNearby
 
 Online marketplace where local farms, bakers and makers sell to customers who pick up their orders weekly at a set place and time.
@@ -1209,6 +1503,31 @@ Website: organicnearby.com
 
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/organicnearby.html
+
+## PSS Urology
+
+Early-stage medical device company developing precision surgical tools for urology procedures.
+
+Industry: Health tech
+District: Spokane Valley
+Address: 11616 E Montgomery Dr, Suite 15, Spokane Valley, WA 99206
+Website: pssurology.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/pss-urology.html
+
+## Pacific Microdevices
+
+Whitworth University's first spinout, commercialising a patented 3D-printed PCR device for faster, cheaper infectious-disease testing.
+
+Industry: Health tech
+District: Hillyard
+Address: 10220 N Nevada St, Spokane, WA 99218
+Founded: 2025
+Website: pacmicrodev.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/pacific-microdevices.html
 
 ## PayTrace
 
@@ -1223,6 +1542,20 @@ Phone: (888) 806-6545
 
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/paytrace.html
+
+## Pearson Packaging Systems
+
+Designs, builds and services secondary packaging automation: case erectors, sealers, packers and robotic palletizing systems.
+
+Industry: Robotics
+District: Airway Heights
+Address: 8120 W Sunset Hwy, Airway Heights, WA 99224
+Founded: 1955
+Website: pearsonpkg.com
+Phone: (509) 838-6226
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/pearson-packaging-systems.html
 
 ## Pend d'Oreille Winery
 
@@ -1260,6 +1593,30 @@ Phone: (509) 413-1719
 
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/propaganda-creative.html
+
+## Proto Technologies
+
+Contract manufacturer doing rapid prototyping and AS9100-certified production parts for aerospace, aviation and defense.
+
+Industry: Aerospace
+District: Liberty Lake
+Address: 22808 E Appleway Ave, Liberty Lake, WA 99019
+Website: prototech.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/proto-technologies.html
+
+## Protogetic
+
+Online marketplace for protective-design building security products such as anti-ram vehicle barriers and blast- and ballistic-rated products.
+
+Industry: E-commerce
+District: Downtown
+Founded: 2021
+Website: protogetic.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/protogetic.html
 
 ## Pullman Marketing
 
@@ -1406,6 +1763,18 @@ Phone: (208) 265-1608
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/sandpoint-computers.html
 
+## Saudara AI
+
+AI-assisted sourcing broker connecting US brands with vetted Indonesian factories, handling quotes and negotiation.
+
+Industry: Logistics
+District: Downtown
+Founded: 2025
+Website: saudara.ai
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/saudara-ai.html
+
 ## Schweitzer Engineering Laboratories
 
 Designs and manufactures equipment for the protection, monitoring, control, automation and metering of electric power systems.
@@ -1460,6 +1829,18 @@ Website: slateflosser.com
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/slate-dental.html
 
+## SleepVibe
+
+A pocket-sized sleep-aid device combining binaural beats with a low-power magnetic field, manufactured in Spokane Valley.
+
+Industry: Health tech
+District: Downtown
+Founded: 2022
+Website: thesleepvibe.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/sleepvibe.html
+
 ## Sno Trac
 
 Small-batch manufacturer that re-engineered the 1950s Swedish Snow Trac into a modern, American-made tracked snow vehicle, designed, fabricated and assembled in Bonners Ferry.
@@ -1491,11 +1872,24 @@ Direct-to-consumer spice company built on its own ecommerce stack.
 
 Industry: E-commerce
 District: East Central
-Address: 715 E Sprague Ave, Suite 115, Spokane, WA 99202
+Address: 2770 E Ferry Ave, Spokane, WA 99202
 Website: spiceology.com
+Phone: (509) 241-3040
 
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/spiceology.html
+
+## Sport Scope
+
+Pole-mounted end-zone cameras and replay systems for sporting events, plus livestreaming software.
+
+Industry: Advanced manufacturing
+District: Spokane Valley
+Founded: 2012
+Website: sportscope.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/sport-scope.html
 
 ## Sprig Herbals
 
@@ -1589,6 +1983,19 @@ Phone: (509) 413-2082
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/the-woodshop.html
 
+## TierPoint
+
+Operates two colocation data centers in Liberty Lake offering colocation, private cloud, disaster recovery and managed services.
+
+Industry: IT services
+District: Liberty Lake
+Address: 23403 E Mission Ave, Liberty Lake, WA 99019
+Website: tierpoint.com
+Phone: (877) 859-8437
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/tierpoint.html
+
 ## Timberline Helicopters
 
 Heavy-lift helicopter services, aerial firefighting and external-load work with a fleet of Black Hawk and K-MAX helicopters, plus a repair station. Building a $13 million, 50,000-square-foot facility near Sandpoint Airport.
@@ -1637,6 +2044,19 @@ Website: wearetreatment.com
 
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/treatment-creative.html
+
+## Two Barrels
+
+Software development and marketing company; the tech and marketing arm of a business-formation and website-services group, with satellite offices in Austin and West Jordan, Utah.
+
+Industry: Business software
+District: Downtown
+Address: 522 W Riverside Ave, Spokane, WA 99201
+Website: twobarrels.com
+Phone: (509) 315-1149
+
+Open roles: Marketing Manager, Software Engineer
+Page: https://spokanetechjobs.com/companies/two-barrels.html
 
 ## Unitech Composites
 
@@ -1742,6 +2162,19 @@ Phone: (509) 922-1404
 
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/wagstaff.html
+
+## Wassoc
+
+Subsea engineering firm making underwater imaging and lighting systems, sensors, geotechnical tools and seafloor drilling systems for ocean science and offshore work.
+
+Industry: Advanced manufacturing
+District: Airway Heights
+Address: 5807 W Thorpe Rd, Unit D, Airway Heights, WA 99224
+Founded: 1982
+Website: wassoc.com
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/wassoc.html
 
 ## Wipliance
 
