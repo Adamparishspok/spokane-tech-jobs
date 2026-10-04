@@ -236,6 +236,7 @@ export function MapView({
   onSearchArea,
   areaSearched,
   topInset = 0,
+  compact = false,
   onSize,
   className,
 }: {
@@ -256,6 +257,8 @@ export function MapView({
    * and would otherwise land on top of it.
    */
   topInset?: number;
+  /** A phone: pinch zooms, so no zoom buttons and no scale bar. */
+  compact?: boolean;
   /** The map's measured box, so the app can fit a camera against the truth. */
   onSize?: (size: Size) => void;
   className?: string;
@@ -742,24 +745,33 @@ export function MapView({
             </button>
           )}
 
-          <div className="pointer-events-auto absolute right-4 bottom-4 flex flex-col gap-2">
-            <div className="glass flex flex-col overflow-hidden rounded-field border">
-              <MapButton
-                label="Zoom in"
-                onClick={() => nudgeZoom(0.8)}
-                disabled={zoomNow >= ZOOM_LIMITS[1] - 0.01}
-              >
-                <Plus />
-              </MapButton>
-              <div className="h-px bg-line" />
-              <MapButton
-                label="Zoom out"
-                onClick={() => nudgeZoom(-0.8)}
-                disabled={zoomNow <= ZOOM_LIMITS[0] + 0.01}
-              >
-                <Minus />
-              </MapButton>
-            </div>
+          <div
+            className={cn(
+              "pointer-events-auto absolute right-4 bottom-4 flex flex-col gap-2",
+              /* On a phone the sheets own the bottom of the screen and two
+                 fingers own the zoom. */
+              compact && "hidden",
+            )}
+          >
+            {!compact && (
+              <div className="glass flex flex-col overflow-hidden rounded-field border">
+                <MapButton
+                  label="Zoom in"
+                  onClick={() => nudgeZoom(0.8)}
+                  disabled={zoomNow >= ZOOM_LIMITS[1] - 0.01}
+                >
+                  <Plus />
+                </MapButton>
+                <div className="h-px bg-line" />
+                <MapButton
+                  label="Zoom out"
+                  onClick={() => nudgeZoom(-0.8)}
+                  disabled={zoomNow <= ZOOM_LIMITS[0] + 0.01}
+                >
+                  <Minus />
+                </MapButton>
+              </div>
+            )}
             <div className="glass overflow-hidden rounded-field border">
               <MapButton label="Back to Spokane" onClick={home}>
                 <Crosshair />
@@ -769,7 +781,12 @@ export function MapView({
 
           {/* Scale bar and provenance. A map that does not say what it is
               measuring, or where it came from, is a picture. */}
-          <div className="absolute bottom-4 left-4 flex items-end gap-3">
+          <div
+            className={cn(
+              "absolute bottom-4 left-4 flex items-end gap-3",
+              compact && "hidden",
+            )}
+          >
             <div className="text-[0.6875rem] text-map-ink">
               <div
                 className="mb-1 h-1.5 border-x border-b border-map-ink/70"

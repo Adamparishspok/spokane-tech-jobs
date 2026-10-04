@@ -33,12 +33,12 @@ export default defineConfig({
   projects: [
     {
       name: "desktop",
-      testIgnore: /mapbox\.spec/,
+      testIgnore: /(mapbox|mobile)\.spec/,
       use: { baseURL: "http://localhost:5210", viewport: { width: 1440, height: 900 } },
     },
     {
       name: "phone",
-      testMatch: /(static|visual)\.spec/,
+      testMatch: /(static|visual|mobile)\.spec/,
       use: {
         ...devices["iPhone 13"],
         defaultBrowserType: "chromium",

@@ -31,7 +31,19 @@ import {
 import { HOME } from "../map/spokane";
 import { AuthDialog, Unreachable } from "./auth";
 import { BrowsePanel, EcosystemStrip, isEditorial, type Tab } from "./browse";
-import { Rail, Shell, type RailItem } from "./chrome";
+import {
+  AnimatePresence,
+  DetailSheet,
+  FilterSheet,
+  ListSheet,
+  MapListToggle,
+  MobileMenu,
+  MobileTopBar,
+  MOBILE_TOP,
+  useIsMobile,
+  type Snap,
+} from "./mobile";
+import { Rail, Shell, type RailItem, plural } from "./chrome";
 import {
   CompanyDetail,
   DetailPanel,
@@ -83,6 +95,32 @@ const NAV: RailItem[] = [
   { id: "history", label: "History", icon: <History /> },
 ];
 
+/* The phone's search placeholder per section. */
+const SEARCH_HINT: Record<Tab, string> = {
+  companies: "Search companies",
+  jobs: "Search jobs",
+  people: "Search people",
+  community: "Search coffee, groups, spaces",
+  history: "Search exits and closures",
+};
+
+/**
+ * What of the map a phone can see: below the top bar, above whichever sheet
+ * is up. `fit` and the pins use this, so a selected company lands in the gap
+ * rather than under a sheet.
+ */
+function mobilePad(detail: boolean, snap: Snap): Padding {
+  const vh = window.innerHeight;
+  const bottom = detail
+    ? Math.round(vh * 0.68)
+    : snap === "peek"
+      ? 92
+      : snap === "half"
+        ? Math.round(vh * 0.48)
+        : vh - MOBILE_TOP;
+  return { top: MOBILE_TOP, left: 16, right: 16, bottom };
+}
+
 /** What the detail column is showing. */
 type Selection =
   | { kind: "company"; id: string }
@@ -130,6 +168,27 @@ function Root() {
   const [selection, setSelection] = useState<Selection>(null);
   const [hovered, setHovered] = useState<string | null>(null);
   const [camera, setCamera] = useState<Camera>(HOME);
+  /* The phone layout's own state: where the list sheet rests, and whether
+     the filters sheet is open. Everything else is shared with the desktop. */
+  const mobile = useIsMobile();
+  const [snap, setSnap] = useState<Snap>("half");
+  const [filtersOpen, setFiltersOpen] = useState(false);
+
+  /* A detail sheet rises over the list, so the list steps down to peek while
+     it is open — two handles stacked read as a bug — and returns to wherever
+     it was when the detail closes. */
+  const snapBeforeDetail = useRef<Snap | null>(null);
+  useEffect(() => {
+    if (!mobile) return;
+    if (selection && snapBeforeDetail.current === null) {
+      snapBeforeDetail.current = snap;
+      setSnap("peek");
+    } else if (!selection && snapBeforeDetail.current !== null) {
+      setSnap(snapBeforeDetail.current);
+      snapBeforeDetail.current = null;
+    }
+    // eslint-disable-next-line react-hooks/exhaustive-deps
+  }, [selection, mobile]);
   const [form, setForm] = useState<"company" | "job" | "profile" | null>(null);
 
   /* Every write in this product needs a session, so the gate lives in one
@@ -403,7 +462,7 @@ function Root() {
     const next = fit(
       [{ lng: c.lng, lat: c.lat }],
       mapSize.current,
-      PANEL_PAD_DETAIL,
+      mobile ? mobilePad(true, snap) : PANEL_PAD_DETAIL,
       [zoom, zoom],
     );
     if (next) setCamera(next);
@@ -455,23 +514,149 @@ function Root() {
 
   const selected = resolve(selection, directory);
 
+  /* The detail column's contents, the same on a desktop panel and a phone's
+     sheet. */
+  const detailBody = selected && (
+    <>
+      {selected.kind === "company" && (
+        <CompanyDetail
+          company={selected.company}
+          onSignIn={() => setAuthOpen(true)}
+          onJob={(job: Job) => setSelection({ kind: "job", id: job.id })}
+          onPerson={(person: Person) =>
+            setSelection({ kind: "person", id: person.id })
+          }
+        />
+      )}
+      {selected.kind === "job" && (
+        <JobDetail
+          job={selected.job}
+          company={selected.company}
+          onSignIn={() => setAuthOpen(true)}
+          onCompany={(c: Company) =>
+            setSelection({ kind: "company", id: c.id })
+          }
+        />
+      )}
+      {selected.kind === "figure" && (
+        <FigureDetail
+          figure={selected.figure}
+          onCompany={(c: Company) =>
+            setSelection({ kind: "company", id: c.id })
+          }
+          onPast={(p: PastCompany) => setSelection({ kind: "past", id: p.id })}
+          onOrg={(o: Org) => setSelection({ kind: "org", id: o.id })}
+        />
+      )}
+      {selected.kind === "org" && (
+        <OrgDetail
+          org={selected.org}
+          onFigure={(f: Figure) => setSelection({ kind: "figure", id: f.id })}
+          onPerson={(p: Person) => setSelection({ kind: "person", id: p.id })}
+        />
+      )}
+      {selected.kind === "past" && (
+        <PastDetail
+          past={selected.past}
+          onCompany={(c: Company) =>
+            setSelection({ kind: "company", id: c.id })
+          }
+          onFigure={(f: Figure) => setSelection({ kind: "figure", id: f.id })}
+        />
+      )}
+      {selected.kind === "person" && (
+        <PersonDetail
+          person={selected.person}
+          company={selected.company}
+          onCompany={(c: Company) =>
+            setSelection({ kind: "company", id: c.id })
+          }
+        />
+      )}
+    </>
+  );
+  const detailBack =
+    (selected?.kind === "job" || selected?.kind === "person") &&
+    selectedCompanyId
+      ? () =>
+          setSelection({
+            kind: "company",
+            id: selectedCompanyId,
+          })
+      : undefined;
+
+  const browse = (variant: "panel" | "sheet") => (
+    <BrowsePanel
+      tab={tab}
+      query={query}
+      onQuery={setQuery}
+      companies={shownCompanies}
+      jobs={shownJobs}
+      people={shownPeople}
+      figures={shownFigures}
+      orgs={shownOrgs}
+      past={shownPast}
+      selectedId={
+        selection?.kind === "company" ? selection.id : (selection?.id ?? null)
+      }
+      hoveredId={hovered ?? hoveredCompanyId}
+      onSelect={select}
+      onHover={setHovered}
+      onAdd={() =>
+        openForm(
+          /* Posting a job needs a company to hang it on, so on the
+             first day the Jobs tab's action is still Add company —
+             same button, same destination as its empty state. */
+          tab === "jobs" && !empty
+            ? "job"
+            : tab === "people"
+              ? "profile"
+              : "company",
+        )
+      }
+      companyOf={companyOf}
+      firstDay={empty}
+      loading={loading}
+      variant={variant}
+    />
+  );
+
+  const signOutAndRefresh = async () => {
+    await signOut();
+    directory.refresh();
+  };
+
+  const shownCount = {
+    companies: shownCompanies.length,
+    jobs: shownJobs.length,
+    people: shownPeople.length + shownFigures.length,
+    community: shownOrgs.length,
+    history: shownPast.length,
+  }[tab];
+  const noun = {
+    companies: "company",
+    jobs: "role",
+    people: "person",
+    community: "organisation",
+    history: "company",
+  }[tab];
+
   return (
     <div data-proto="spokane" data-theme={resolved}>
       <TooltipProvider delayDuration={250}>
         <PortalHost>
           <Shell>
-            <Rail
-              items={NAV}
-              active={tab}
-              onNavigate={(id) => changeTab(id as Tab)}
-              onAccount={() => setForm("profile")}
-              viewer={viewer}
-              onSignIn={() => setAuthOpen(true)}
-              onSignOut={async () => {
-                await signOut();
-                directory.refresh();
-              }}
-            />
+            {!mobile && (
+              <Rail
+                items={NAV}
+                active={tab}
+                onNavigate={(id) => changeTab(id as Tab)}
+                onAccount={() => setForm("profile")}
+                viewer={viewer}
+                onSignIn={() => setAuthOpen(true)}
+                onSignOut={signOutAndRefresh}
+              />
+            )}
 
             {/* The map is the page. The panels sit on it in a padded grid
                 rather than beside it, which is what keeps the city visible
@@ -492,146 +677,100 @@ function Root() {
                 hoveredId={hoveredCompanyId}
                 onSelect={select}
                 onHover={setHovered}
-                padding={selection ? PANEL_PAD_DETAIL : PANEL_PAD}
+                padding={
+                  mobile
+                    ? mobilePad(Boolean(selection), snap)
+                    : selection
+                      ? PANEL_PAD_DETAIL
+                      : PANEL_PAD
+                }
+                compact={mobile}
                 theme={resolved}
                 onSearchArea={isEditorial(tab) ? undefined : searchArea}
                 areaSearched={query.area !== null}
                 /* The strip sits in the same top-centre slot; 44px of pill
                    plus a 12px gap puts "Search this area" under it. */
-                topInset={empty ? 0 : 56}
+                topInset={mobile ? MOBILE_TOP - 8 : empty ? 0 : 56}
                 onSize={(size) => (mapSize.current = size)}
               />
 
-              <div className="pointer-events-none absolute inset-0 flex gap-4 p-4">
-                <BrowsePanel
-                  tab={tab}
-                  query={query}
-                  onQuery={setQuery}
-                  companies={shownCompanies}
-                  jobs={shownJobs}
-                  people={shownPeople}
-                  figures={shownFigures}
-                  orgs={shownOrgs}
-                  past={shownPast}
-                  selectedId={
-                    selection?.kind === "company"
-                      ? selection.id
-                      : (selection?.id ?? null)
-                  }
-                  hoveredId={hovered ?? hoveredCompanyId}
-                  onSelect={select}
-                  onHover={setHovered}
-                  onAdd={() =>
-                    openForm(
-                      /* Posting a job needs a company to hang it on, so on the
-                         first day the Jobs tab's action is still Add company —
-                         same button, same destination as its empty state. */
-                      tab === "jobs" && !empty
-                        ? "job"
-                        : tab === "people"
-                          ? "profile"
-                          : "company",
-                    )
-                  }
-                  companyOf={companyOf}
-                  firstDay={empty}
-                  loading={loading}
-                />
-
-                <div className="flex flex-1 flex-col items-center">
-                  {!empty && !loading && (
-                    <EcosystemStrip
-                      companies={companies}
-                      jobs={jobs}
-                      onTab={changeTab}
-                    />
-                  )}
-                </div>
-
-                {selected && (
-                  <DetailPanel
-                    onClose={() => setSelection(null)}
-                    onBack={
-                      (selected.kind === "job" || selected.kind === "person") &&
-                      selectedCompanyId
-                        ? () =>
-                            setSelection({
-                              kind: "company",
-                              id: selectedCompanyId,
-                            })
-                        : undefined
+              {mobile ? (
+                <>
+                  <MobileTopBar
+                    query={query}
+                    onQuery={setQuery}
+                    placeholder={SEARCH_HINT[tab]}
+                    sections={NAV}
+                    tab={tab}
+                    onTab={changeTab}
+                    onFilters={() => setFiltersOpen(true)}
+                    showFilters={!(empty && !isEditorial(tab))}
+                    menu={
+                      <MobileMenu
+                        viewer={viewer}
+                        onSignIn={() => setAuthOpen(true)}
+                        onAccount={() => setForm("profile")}
+                        onSignOut={signOutAndRefresh}
+                      />
+                    }
+                  />
+                  <ListSheet
+                    snap={snap}
+                    onSnap={setSnap}
+                    title={
+                      loading
+                        ? "Loading…"
+                        : `${shownCount} ${plural(noun, shownCount)}`
                     }
                   >
-                    {selected.kind === "company" && (
-                      <CompanyDetail
-                        company={selected.company}
-                        onSignIn={() => setAuthOpen(true)}
-                        onJob={(job: Job) =>
-                          setSelection({ kind: "job", id: job.id })
-                        }
-                        onPerson={(person: Person) =>
-                          setSelection({ kind: "person", id: person.id })
-                        }
+                    {browse("sheet")}
+                  </ListSheet>
+                  {!selected && <MapListToggle snap={snap} onSnap={setSnap} />}
+                  <AnimatePresence>
+                    {selected && (
+                      <DetailSheet
+                        key="detail"
+                        onClose={() => setSelection(null)}
+                        onBack={detailBack}
+                      >
+                        {detailBody}
+                      </DetailSheet>
+                    )}
+                  </AnimatePresence>
+                  <FilterSheet
+                    open={filtersOpen}
+                    onClose={() => setFiltersOpen(false)}
+                    tab={tab}
+                    query={query}
+                    onQuery={setQuery}
+                    count={shownCount}
+                    noun={noun}
+                  />
+                </>
+              ) : (
+                <div className="pointer-events-none absolute inset-0 flex gap-4 p-4">
+                  {browse("panel")}
+
+                  <div className="flex flex-1 flex-col items-center">
+                    {!empty && !loading && (
+                      <EcosystemStrip
+                        companies={companies}
+                        jobs={jobs}
+                        onTab={changeTab}
                       />
                     )}
-                    {selected.kind === "job" && (
-                      <JobDetail
-                        job={selected.job}
-                        company={selected.company}
-                        onSignIn={() => setAuthOpen(true)}
-                        onCompany={(c: Company) =>
-                          setSelection({ kind: "company", id: c.id })
-                        }
-                      />
-                    )}
-                    {selected.kind === "figure" && (
-                      <FigureDetail
-                        figure={selected.figure}
-                        onCompany={(c: Company) =>
-                          setSelection({ kind: "company", id: c.id })
-                        }
-                        onPast={(p: PastCompany) =>
-                          setSelection({ kind: "past", id: p.id })
-                        }
-                        onOrg={(o: Org) =>
-                          setSelection({ kind: "org", id: o.id })
-                        }
-                      />
-                    )}
-                    {selected.kind === "org" && (
-                      <OrgDetail
-                        org={selected.org}
-                        onFigure={(f: Figure) =>
-                          setSelection({ kind: "figure", id: f.id })
-                        }
-                        onPerson={(p: Person) =>
-                          setSelection({ kind: "person", id: p.id })
-                        }
-                      />
-                    )}
-                    {selected.kind === "past" && (
-                      <PastDetail
-                        past={selected.past}
-                        onCompany={(c: Company) =>
-                          setSelection({ kind: "company", id: c.id })
-                        }
-                        onFigure={(f: Figure) =>
-                          setSelection({ kind: "figure", id: f.id })
-                        }
-                      />
-                    )}
-                    {selected.kind === "person" && (
-                      <PersonDetail
-                        person={selected.person}
-                        company={selected.company}
-                        onCompany={(c: Company) =>
-                          setSelection({ kind: "company", id: c.id })
-                        }
-                      />
-                    )}
-                  </DetailPanel>
-                )}
-              </div>
+                  </div>
+
+                  {selected && (
+                    <DetailPanel
+                      onClose={() => setSelection(null)}
+                      onBack={detailBack}
+                    >
+                      {detailBody}
+                    </DetailPanel>
+                  )}
+                </div>
+              )}
             </div>
           </Shell>
 

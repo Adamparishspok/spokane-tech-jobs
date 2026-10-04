@@ -89,6 +89,7 @@ export function BrowsePanel({
   companyOf,
   firstDay: noData,
   loading,
+  variant = "panel",
 }: {
   tab: Tab;
   query: Query;
@@ -109,6 +110,8 @@ export function BrowsePanel({
   firstDay: boolean;
   /** The first load has not answered yet. */
   loading: boolean;
+  /** A desktop panel, or the list alone inside a phone's bottom sheet. */
+  variant?: "panel" | "sheet";
 }) {
   const { jobsAt, company } = useDirectory();
   const copy = TAB_COPY[tab];
@@ -142,96 +145,10 @@ export function BrowsePanel({
           ? orgs.filter((o) => !orgPlace(o)).length
           : 0;
 
-  return (
-    <Panel className="pointer-events-auto w-[23rem] shrink-0">
-      <PanelHeader
-        title={copy.title}
-        count={loading ? null : count}
-        noun={copy.noun}
-        actions={
-          !editorial && (
-            <Button size="sm" variant="accent" onClick={onAdd}>
-              <Plus />
-              {/* On the first day there is nothing to post a job against, so
-                the header offers the same thing the empty state does rather
-                than contradicting it. */}
-              {firstDay && tab === "jobs"
-                ? "Add"
-                : tab === "jobs"
-                  ? "Post a job"
-                  : tab === "companies"
-                    ? "Add"
-                    : "Profile"}
-            </Button>
-          )
-        }
-      >
-        <div className="mt-3">
-          <SearchField
-            value={query.text}
-            onChange={(text) => onQuery({ ...query, text })}
-            placeholder={copy.search}
-          />
-        </div>
-        {/* Filters are hidden on the first day. Four pills that can only ever
-            narrow nothing to nothing are not a control, they are furniture. */}
-        {tab === "community" ? (
-          <div className="mt-3 flex flex-wrap items-center gap-1.5">
-            <MultiFilter
-              label="Type"
-              options={ORG_KINDS}
-              value={query.orgKinds}
-              onChange={(orgKinds) => onQuery({ ...query, orgKinds })}
-            />
-          </div>
-        ) : tab === "history" ? (
-          <div className="mt-3">
-            <Segmented
-              size="sm"
-              className="w-full"
-              aria-label="Exits or closures"
-              value={query.pastKind}
-              onChange={(pastKind) => onQuery({ ...query, pastKind })}
-              items={[
-                { value: "all", label: "All" },
-                { value: "exited", label: "Exits" },
-                { value: "closed", label: "Graveyard" },
-              ]}
-            />
-          </div>
-        ) : (
-          !firstDay &&
-          !editorial && <FilterBar tab={tab} query={query} onQuery={onQuery} />
-        )}
-
-        {offMap > 0 && (
-          <p className="mt-2.5 flex items-start gap-1.5 text-[0.75rem] leading-relaxed text-ink-4">
-            <MapPinOff className="mt-px size-3.5 shrink-0" />
-            {tab === "community" ? (
-              <span>
-                <span className="num">{offMap}</span> of these{" "}
-                {offMap === 1 ? "has" : "have"} no fixed address — a meetup, an
-                event that moves, a fund — so{" "}
-                {offMap === 1 ? "it has" : "they have"} no pin on the map.
-              </span>
-            ) : tab === "history" ? (
-              <span>
-                <span className="num">{offMap}</span> of these{" "}
-                {offMap === 1 ? "has" : "have"} no sourced street address, so{" "}
-                {offMap === 1 ? "its pin marks" : "their pins mark"} the area,
-                not the building.
-              </span>
-            ) : (
-              <span>
-                <span className="num">{offMap}</span> of these{" "}
-                {offMap === 1 ? "is" : "are"} not at a company in the directory,
-                so {offMap === 1 ? "it has" : "they have"} no pin on the map.
-              </span>
-            )}
-          </p>
-        )}
-      </PanelHeader>
-
+  /* The rows, the same on a desktop panel and a phone's sheet. On a phone
+     the search and filters live in the top bar instead of this header. */
+  const list = (
+    <>
       {/* Loading is not empty. Before the first answer the list draws the
           shape of rows rather than "0 companies" and an empty state, which
           read as a broken directory for the second it took to arrive. */}
@@ -330,6 +247,102 @@ export function BrowsePanel({
           />
         </div>
       )}
+    </>
+  );
+
+  if (variant === "sheet")
+    return <div className="flex min-h-0 flex-1 flex-col">{list}</div>;
+
+  return (
+    <Panel className="pointer-events-auto w-[23rem] shrink-0">
+      <PanelHeader
+        title={copy.title}
+        count={loading ? null : count}
+        noun={copy.noun}
+        actions={
+          !editorial && (
+            <Button size="sm" variant="accent" onClick={onAdd}>
+              <Plus />
+              {/* On the first day there is nothing to post a job against, so
+                the header offers the same thing the empty state does rather
+                than contradicting it. */}
+              {firstDay && tab === "jobs"
+                ? "Add"
+                : tab === "jobs"
+                  ? "Post a job"
+                  : tab === "companies"
+                    ? "Add"
+                    : "Profile"}
+            </Button>
+          )
+        }
+      >
+        <div className="mt-3">
+          <SearchField
+            value={query.text}
+            onChange={(text) => onQuery({ ...query, text })}
+            placeholder={copy.search}
+          />
+        </div>
+        {/* Filters are hidden on the first day. Four pills that can only ever
+            narrow nothing to nothing are not a control, they are furniture. */}
+        {tab === "community" ? (
+          <div className="mt-3 flex flex-wrap items-center gap-1.5">
+            <MultiFilter
+              label="Type"
+              options={ORG_KINDS}
+              value={query.orgKinds}
+              onChange={(orgKinds) => onQuery({ ...query, orgKinds })}
+            />
+          </div>
+        ) : tab === "history" ? (
+          <div className="mt-3">
+            <Segmented
+              size="sm"
+              className="w-full"
+              aria-label="Exits or closures"
+              value={query.pastKind}
+              onChange={(pastKind) => onQuery({ ...query, pastKind })}
+              items={[
+                { value: "all", label: "All" },
+                { value: "exited", label: "Exits" },
+                { value: "closed", label: "Graveyard" },
+              ]}
+            />
+          </div>
+        ) : (
+          !firstDay &&
+          !editorial && <FilterBar tab={tab} query={query} onQuery={onQuery} />
+        )}
+
+        {offMap > 0 && (
+          <p className="mt-2.5 flex items-start gap-1.5 text-[0.75rem] leading-relaxed text-ink-4">
+            <MapPinOff className="mt-px size-3.5 shrink-0" />
+            {tab === "community" ? (
+              <span>
+                <span className="num">{offMap}</span> of these{" "}
+                {offMap === 1 ? "has" : "have"} no fixed address — a meetup, an
+                event that moves, a fund — so{" "}
+                {offMap === 1 ? "it has" : "they have"} no pin on the map.
+              </span>
+            ) : tab === "history" ? (
+              <span>
+                <span className="num">{offMap}</span> of these{" "}
+                {offMap === 1 ? "has" : "have"} no sourced street address, so{" "}
+                {offMap === 1 ? "its pin marks" : "their pins mark"} the area,
+                not the building.
+              </span>
+            ) : (
+              <span>
+                <span className="num">{offMap}</span> of these{" "}
+                {offMap === 1 ? "is" : "are"} not at a company in the directory,
+                so {offMap === 1 ? "it has" : "they have"} no pin on the map.
+              </span>
+            )}
+          </p>
+        )}
+      </PanelHeader>
+      {list}
     </Panel>
   );
 }

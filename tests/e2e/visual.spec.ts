@@ -29,7 +29,12 @@ test("community", async ({ page }) => {
 test("region view", async ({ page }, info) => {
   test.skip(info.project.name === "phone", "zoom controls are a desktop affordance");
   const out = page.getByRole("button", { name: /zoom out/i }).first();
-  while (await out.isEnabled()) await out.click();
+  /* The button disables itself at the limit, possibly between the check and
+     the click, so each click is allowed to find it already done. */
+  for (let i = 0; i < 12 && (await out.isEnabled()); i++) {
+    await out.click({ timeout: 2000 }).catch(() => {});
+    await page.waitForTimeout(450);
+  }
   await page.waitForTimeout(600);
   await expect(page).toHaveScreenshot("region.png");
 });
