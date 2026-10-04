@@ -3,7 +3,7 @@
   "url": "https://spokanetechjobs.com",
   "licence": "CC BY 4.0",
   "attribution": "Spokane Tech Jobs",
-  "generated": "2026-10-04T03:08:11.370Z",
+  "generated": "2026-10-04T03:17:46.627Z",
   "note": "Every field is sourced or null. A null is a fact nobody has published, not a zero.",
   "companies": [
     {
@@ -2802,8 +2802,8 @@
     {
       "id": "qurrent",
       "name": "Qurrent",
-      "tagline": "Coeur d'Alene startup building Tomahawk, announced as coming soon",
-      "about": "Coeur d'Alene startup building Tomahawk, announced as coming soon.",
+      "tagline": "Coeur d'Alene startup building Tomahawk, an electric boat",
+      "about": "Coeur d'Alene startup building Tomahawk, an electric boat.",
       "headcount": null,
       "founded": null,
       "stage": null,
