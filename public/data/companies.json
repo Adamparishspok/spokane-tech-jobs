@@ -3,7 +3,7 @@
   "url": "https://spokanetechjobs.com",
   "licence": "CC BY 4.0",
   "attribution": "Spokane Tech Jobs",
-  "generated": "2026-10-04T02:55:28.864Z",
+  "generated": "2026-10-04T03:08:11.370Z",
   "note": "Every field is sourced or null. A null is a fact nobody has published, not a zero.",
   "companies": [
     {
@@ -2798,6 +2798,27 @@
       "city": "Spokane",
       "state": "WA",
       "industry": "Marketing & design"
+    },
+    {
+      "id": "qurrent",
+      "name": "Qurrent",
+      "tagline": "Coeur d'Alene startup building Tomahawk, announced as coming soon",
+      "about": "Coeur d'Alene startup building Tomahawk, announced as coming soon.",
+      "headcount": null,
+      "founded": null,
+      "stage": null,
+      "workplace": null,
+      "address": "",
+      "zip": "",
+      "lng": -116.7805,
+      "lat": 47.6777,
+      "website": "qurrent.co",
+      "phone": null,
+      "logo_url": "/logos/qurrent.png",
+      "district": "Coeur d'Alene",
+      "city": "Coeur d'Alene",
+      "state": "ID",
+      "industry": "Advanced manufacturing"
     },
     {
       "id": "retokens",

@@ -246,21 +246,22 @@
   {
    "id": "jim-schlosser",
    "name": "Jim Schlosser",
-   "role": "Co-founder, Pacinian, Arevo Health and XpenseOne",
-   "summary": "Serial Spokane startup co-founder. Led the touch-keyboard startup Pacinian through its 2012 sale to Synaptics, co-founded the health-cost analytics company Arevo Health in 2013, was COO of XpenseOne, headed Four Degrees North Real Estate and helped sell it, and worked with Rohinni and the electric-boat startup Current. Holds six patents.",
+   "role": "Finance and Operations, Qurrent · co-founder, Pacinian",
+   "summary": "Serial Spokane startup co-founder. Led the touch-keyboard startup Pacinian, founded with Cody Peterson and Andy Huska, through its 2012 sale to Synaptics; co-founded the health-cost analytics company Arevo Health in 2013; was COO of XpenseOne; worked with Rohinni, and now runs finance and operations at Qurrent in Coeur d'Alene. Holds six patents.",
    "roles": [
+    "Finance and Operations, Qurrent",
     "COO and CFO, XpenseOne / Obloco Inc. (2016–at least 2020)",
     "Co-founder, president and COO, Arevo Health (2013–)",
     "Co-founder and CEO, Pacinian (2007–2012, acquired by Synaptics)",
-    "Rohinni",
-    "Current (electric boats), for a time",
-    "Head of Four Degrees North Real Estate, through its sale"
+    "Rohinni"
    ],
-   "companies": [],
+   "companies": [
+    "qurrent"
+   ],
    "history": [
     "xpenseone",
     "rohinni",
-    "four-degrees-north-real-estate"
+    "pacinian"
    ],
    "links": [],
    "sources": [
@@ -268,7 +269,8 @@
     "https://www.spokanejournal.com/articles/4485-expense-reporting-software-company-starts-its-first-test",
     "https://www.spokanejournal.com/articles/2941-arevo-plans-reintroduction-to-health-care-markets",
     "https://www.sec.gov/Archives/edgar/data/0000817720/000119312512449129/d415185d10q.htm",
-    "Directory owner, 2026-10-03: Rohinni, Current and Four Degrees North Real Estate"
+    "Directory owner, 2026-10-03: Pacinian co-founders, Rohinni, Qurrent",
+    "Directory owner, 2026-10-03: Qurrent team (from LinkedIn)"
    ]
   },
   {
@@ -436,6 +438,93 @@
    ],
    "sources": [
     "https://4degrees.com/"
+   ]
+  },
+  {
+   "id": "cody-peterson",
+   "name": "Cody Peterson",
+   "role": "Qurrent · co-founder, Pacinian",
+   "summary": "Co-founded the touch-keyboard startup Pacinian with Jim Schlosser, through its 2012 sale to Synaptics; now at Qurrent in Coeur d'Alene.",
+   "roles": [
+    "Qurrent",
+    "Co-founder, Pacinian (acquired by Synaptics, 2012)"
+   ],
+   "companies": [
+    "qurrent"
+   ],
+   "history": [
+    "pacinian"
+   ],
+   "links": [
+    {
+     "label": "LinkedIn",
+     "url": "https://www.linkedin.com/in/cody-peterson-a5784a5/"
+    }
+   ],
+   "sources": [
+    "Directory owner, 2026-10-03",
+    "https://www.linkedin.com/in/cody-peterson-a5784a5/"
+   ]
+  },
+  {
+   "id": "andy-huska",
+   "name": "Andy Huska",
+   "role": "Qurrent · technical program and platform leader",
+   "summary": "Co-founded the touch-keyboard startup Pacinian with Jim Schlosser, through its 2012 sale to Synaptics; now at Qurrent in Coeur d'Alene.",
+   "roles": [
+    "Technical program and platform leader, Qurrent (systems architecture, embedded systems, AI and industrial automation)",
+    "Co-founder, Pacinian (acquired by Synaptics, 2012)"
+   ],
+   "companies": [
+    "qurrent"
+   ],
+   "history": [
+    "pacinian"
+   ],
+   "links": [
+    {
+     "label": "LinkedIn",
+     "url": "https://www.linkedin.com/in/andyhuska/"
+    }
+   ],
+   "sources": [
+    "Directory owner, 2026-10-03",
+    "https://www.linkedin.com/in/andyhuska/"
+   ]
+  },
+  {
+   "id": "andrew-witsoe",
+   "name": "Andrew Witsoe",
+   "role": "UX and graphic design, Qurrent",
+   "summary": "Washington State University graduate working on UX design, graphic design, SEO and copywriting at Qurrent.",
+   "roles": [
+    "UX and graphic design, Qurrent"
+   ],
+   "companies": [
+    "qurrent"
+   ],
+   "history": [],
+   "links": [],
+   "sources": [
+    "Directory owner, 2026-10-03: Qurrent team (from LinkedIn)"
+   ]
+  },
+  {
+   "id": "william-maier",
+   "name": "William Maier",
+   "role": "Qurrent · sales engineer",
+   "summary": "Sales engineer and software developer with virtual and augmented reality experience, working on Qurrent; also a sales engineer at Onit.",
+   "roles": [
+    "Qurrent",
+    "Sales engineer, Onit"
+   ],
+   "companies": [
+    "qurrent"
+   ],
+   "history": [],
+   "links": [],
+   "sources": [
+    "Directory owner, 2026-10-03: Qurrent team (from LinkedIn)"
    ]
   }
  ]

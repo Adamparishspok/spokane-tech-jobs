@@ -325,20 +325,24 @@
    ]
   },
   {
-   "id": "four-degrees-north-real-estate",
-   "name": "Four Degrees North Real Estate",
+   "id": "pacinian",
+   "name": "Pacinian",
    "kind": "exited",
-   "founded": null,
-   "year": null,
+   "founded": 2007,
+   "year": 2012,
    "place": "Spokane",
    "district": "downtown",
-   "what": "Real estate company headed by Jim Schlosser.",
-   "outcome": "Sold, with Jim Schlosser leading it through the sale.",
+   "acquirer": "Synaptics",
+   "what": "Touch-keyboard technology startup co-founded by Jim Schlosser, Cody Peterson and Andy Huska.",
+   "outcome": "Acquired by Synaptics in 2012.",
    "people": [
-    "jim-schlosser"
+    "jim-schlosser",
+    "cody-peterson",
+    "andy-huska"
    ],
    "sources": [
-    "Directory owner, 2026-10-03"
+    "https://www.sec.gov/Archives/edgar/data/0000817720/000119312512449129/d415185d10q.htm",
+    "Directory owner, 2026-10-03: co-founders"
    ]
   }
  ]

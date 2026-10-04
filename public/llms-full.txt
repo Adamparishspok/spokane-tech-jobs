@@ -3,7 +3,7 @@
 Source: https://spokanetechjobs.com
 Licence: CC BY 4.0, attribution to Spokane Tech Jobs
 Generated: 2026-10-04
-Companies: 177. Open roles: 12.
+Companies: 178. Open roles: 12.
 
 Every field here is sourced from public records. A field that could not be
 sourced is absent rather than estimated.
@@ -1706,6 +1706,17 @@ Phone: (509) 325-0701
 
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/quisenberry.html
+
+## Qurrent
+
+Coeur d'Alene startup building Tomahawk, announced as coming soon.
+
+Industry: Advanced manufacturing
+District: Coeur d'Alene
+Website: qurrent.co
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/qurrent.html
 
 ## REtokens
 

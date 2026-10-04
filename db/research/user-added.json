@@ -101,6 +101,26 @@
       "sources": [
         "https://4degrees.com/"
       ]
+    },
+    {
+      "name": "Qurrent",
+      "website": "qurrent.co",
+      "address": null,
+      "city": "Coeur d'Alene",
+      "state": "ID",
+      "zip": null,
+      "district": "coeur-dalene",
+      "lng": null,
+      "lat": null,
+      "phone": null,
+      "founded": null,
+      "headcount": null,
+      "what": "Coeur d'Alene startup building Tomahawk, announced as coming soon.",
+      "note": "Andy Huska and Cody Peterson work here, per the directory's owner. Its site gives Coeur d'Alene but no street address, so the pin is the city's centre.",
+      "sources": [
+        "https://qurrent.co/",
+        "Directory owner, 2026-10-03"
+      ]
     }
   ]
 }
