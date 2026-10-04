@@ -83,6 +83,24 @@
         "https://meetcarrot.xyz/",
         "Directory owner, 2026-10-03: founded by McLean Reiter"
       ]
+    },
+    {
+      "name": "4 Degrees Real Estate",
+      "website": "4degrees.com",
+      "address": "10 S Grant St",
+      "city": "Spokane",
+      "state": "WA",
+      "zip": "99202",
+      "district": "university",
+      "lng": -117.405518,
+      "lat": 47.656893,
+      "phone": "(509) 413-1956",
+      "founded": null,
+      "headcount": null,
+      "what": "Full-service real estate company — realty, property management and investment — started by brothers Jordan and Joel Tampien.",
+      "sources": [
+        "https://4degrees.com/"
+      ]
     }
   ]
 }

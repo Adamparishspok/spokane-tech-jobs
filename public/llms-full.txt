@@ -3,7 +3,7 @@
 Source: https://spokanetechjobs.com
 Licence: CC BY 4.0, attribution to Spokane Tech Jobs
 Generated: 2026-10-04
-Companies: 176. Open roles: 12.
+Companies: 177. Open roles: 12.
 
 Every field here is sourced from public records. A field that could not be
 sourced is absent rather than estimated.
@@ -30,6 +30,19 @@ Website: 14four.com
 
 Open roles: none listed
 Page: https://spokanetechjobs.com/companies/14four.html
+
+## 4 Degrees Real Estate
+
+Full-service real estate company — realty, property management and investment — started by brothers Jordan and Joel Tampien.
+
+Industry: Real estate
+District: University District
+Address: 10 S Grant St, Spokane, WA 99202
+Website: 4degrees.com
+Phone: (509) 413-1956
+
+Open roles: none listed
+Page: https://spokanetechjobs.com/companies/4-degrees-real-estate.html
 
 ## ALK Source Materials
 

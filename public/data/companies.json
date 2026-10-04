@@ -3,7 +3,7 @@
   "url": "https://spokanetechjobs.com",
   "licence": "CC BY 4.0",
   "attribution": "Spokane Tech Jobs",
-  "generated": "2026-10-04T02:24:19.163Z",
+  "generated": "2026-10-04T02:55:28.864Z",
   "note": "Every field is sourced or null. A null is a fact nobody has published, not a zero.",
   "companies": [
     {
@@ -47,6 +47,27 @@
       "city": "Spokane",
       "state": "WA",
       "industry": "Marketing & design"
+    },
+    {
+      "id": "4-degrees-real-estate",
+      "name": "4 Degrees Real Estate",
+      "tagline": "Full-service real estate company — realty, property management and investment — started by brothers Jordan and Joel Tampien",
+      "about": "Full-service real estate company — realty, property management and investment — started by brothers Jordan and Joel Tampien.",
+      "headcount": null,
+      "founded": null,
+      "stage": null,
+      "workplace": null,
+      "address": "10 S Grant St",
+      "zip": "99202",
+      "lng": -117.405518,
+      "lat": 47.656893,
+      "website": "4degrees.com",
+      "phone": "(509) 413-1956",
+      "logo_url": "/logos/4-degrees-real-estate.png",
+      "district": "University District",
+      "city": "Spokane",
+      "state": "WA",
+      "industry": "Real estate"
     },
     {
       "id": "alk-source-materials",

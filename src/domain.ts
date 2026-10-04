@@ -37,7 +37,8 @@ export type Industry =
   | "Marketing & design"
   | "Life sciences"
   | "Legal & IP"
-  | "Food & beverage";
+  | "Food & beverage"
+  | "Real estate";
 
 export type Stage =
   | "Bootstrapped"
@@ -211,6 +212,7 @@ export const INDUSTRIES: Industry[] = [
      it writes no code. */
   "Legal & IP",
   "Food & beverage",
+  "Real estate",
 ];
 
 export const STAGES: Stage[] = [
