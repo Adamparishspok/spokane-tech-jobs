@@ -420,17 +420,14 @@
    "id": "jordan-tampien",
    "name": "Jordan Tampien",
    "role": "Co-founder, 4 Degrees Real Estate",
-   "summary": "Started 4 Degrees Real Estate in Spokane with his brother Joel after years with other real estate firms in the city; earlier part of Four Degrees North Real Estate.",
+   "summary": "Started 4 Degrees Real Estate in Spokane with his brother Joel after years with other real estate firms in the city.",
    "roles": [
-    "Co-founder, 4 Degrees Real Estate",
-    "Four Degrees North Real Estate"
+    "Co-founder, 4 Degrees Real Estate"
    ],
    "companies": [
     "4-degrees-real-estate"
    ],
-   "history": [
-    "four-degrees-north-real-estate"
-   ],
+   "history": [],
    "links": [
     {
      "label": "4degrees.com",
@@ -438,8 +435,7 @@
     }
    ],
    "sources": [
-    "https://4degrees.com/",
-    "Directory owner, 2026-10-03: also part of Four Degrees North Real Estate"
+    "https://4degrees.com/"
    ]
   }
  ]
